@@ -1,0 +1,20 @@
+﻿<form data-bind="submit: createSPT">
+<fieldset>
+    <legend>Create Service Principal Template</legend>
+    <div>   
+        <label>
+            Title:
+            <input data-bind="value: sptToAdd.name" required />
+        </label>
+    </div>
+    <div>
+        <label>
+            Director:
+            <input data-bind="value: sptToAdd.environment" required />
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Add" />
+    </div>
+</fieldset>
+</form>
