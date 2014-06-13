@@ -13,6 +13,8 @@ namespace Onboarding {
 			.Include("~/Scripts/bootstrap.js")
 			.Include("~/Scripts/knockout-{version}.js")
             .Include("~/Scripts/toastr.js")
+            .Include("~/scripts/Q.js")
+            .Include("~/scripts/breeze.debug.js")
 		);
 
       bundles.Add(

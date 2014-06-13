@@ -1,4 +1,4 @@
-﻿<table>
+﻿<!--<table>
     <thead>
         <tr>
             <th>Name</th>
@@ -9,6 +9,22 @@
         <tr>
             <td data-bind="text: name"></td>
             <td data-bind="text: environment"></td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="#/create">Create SPT</a>-->
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Environment</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: servicePrincipalTemplates">
+        <tr>
+            <td data-bind="text: Name"></td>
+            <td data-bind="text: Environment"></td>
         </tr>
     </tbody>
 </table>

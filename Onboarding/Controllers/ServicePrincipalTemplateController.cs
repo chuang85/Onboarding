@@ -4,36 +4,35 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Breeze.ContextProvider;
+using Breeze.ContextProvider.EF6;
+using Breeze.WebApi2;
+using Newtonsoft.Json.Linq;
+using Onboarding.Models;
 
 namespace Onboarding.Controllers
 {
+    [BreezeController]
     public class ServicePrincipalTemplateController : ApiController
     {
-        // GET api/serviceprincipaltemplate
-        public IEnumerable<string> Get()
+        readonly EFContextProvider<OnboardingDbContext> _contextProvider = new EFContextProvider<OnboardingDbContext>();
+
+        [HttpGet]
+        public string Metadata()
         {
-            return new string[] { "value1", "value2" };
+            return _contextProvider.Metadata();
         }
 
-        // GET api/serviceprincipaltemplate/5
-        public string Get(int id)
+        [HttpPost]
+        public SaveResult SaveChanges(JObject saveBundle)
         {
-            return "value";
+            return _contextProvider.SaveChanges(saveBundle);
         }
 
-        // POST api/serviceprincipaltemplate
-        public void Post([FromBody]string value)
+        [HttpGet]
+        public IQueryable<ServicePrincipalTemplate> ServicePrincipalTemplates()
         {
-        }
-
-        // PUT api/serviceprincipaltemplate/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/serviceprincipaltemplate/5
-        public void Delete(int id)
-        {
+            return _contextProvider.Context.ServicePrincipalTemplates;
         }
     }
 }
