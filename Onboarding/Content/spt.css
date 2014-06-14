@@ -1,0 +1,31 @@
+﻿.spt {
+}
+
+.spt img.spt-cover {
+    float:left;
+    max-height:250px;
+    max-width:250px;
+	border: solid 3px #fff;
+	-moz-box-shadow: 1px 1px 5px #999;
+	-webkit-box-shadow: 1px 1px 5px #999;
+    box-shadow: 1px 1px 5px #999;
+    margin:4px;
+}
+
+.spt div.spt-environment {
+    float:left;
+    height:200px;
+}
+
+.spt div.spt-name {
+    font-weight:bold;
+}
+
+.backLink {
+    cursor:pointer;
+}
+
+.propertyError
+{
+    color:#f00;
+}

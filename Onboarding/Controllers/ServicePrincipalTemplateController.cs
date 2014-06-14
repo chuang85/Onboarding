@@ -7,14 +7,17 @@ using System.Web.Http;
 using Breeze.ContextProvider;
 using Breeze.ContextProvider.EF6;
 using Breeze.WebApi2;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Onboarding.Models;
+using Onboarding.Data;
 
 namespace Onboarding.Controllers
 {
     [BreezeController]
     public class ServicePrincipalTemplateController : ApiController
     {
+        //readonly ServicePrincipalTemplateContextProvider _contextProvider = new ServicePrincipalTemplateContextProvider();
         readonly EFContextProvider<OnboardingDbContext> _contextProvider = new EFContextProvider<OnboardingDbContext>();
 
         [HttpGet]
@@ -27,6 +30,13 @@ namespace Onboarding.Controllers
         public SaveResult SaveChanges(JObject saveBundle)
         {
             return _contextProvider.SaveChanges(saveBundle);
+        }
+
+        private static JsonSerializer CreateJsonSerializer()
+        {
+            var serializerSettings = BreezeConfig.Instance.GetJsonSerializerSettings();
+            var jsonSerializer = JsonSerializer.Create(serializerSettings);
+            return jsonSerializer;
         }
 
         [HttpGet]

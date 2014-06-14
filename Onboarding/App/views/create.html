@@ -1,0 +1,22 @@
+﻿<section>
+    <div>
+        <a data-bind="click: goBack" class="backLink">< Back</a>
+    </div>
+    <table>
+        <tr>
+            <td colspan="2">
+                <label for="name">Name</label>
+                <input type="text" id="name" data-bind="value: name">
+                <!--<div class="propertyError" data-bind="text: getPropertyError('Name')"></div>-->
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label for="environment">Environment</label>
+                <input type="text" id="environment" data-bind="value: environment">
+                <!--<div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>-->
+            </td>
+        </tr>        
+    </table>
+    <button type="button" data-bind="click: createEntity">Create</button>
+</section>
