@@ -1,15 +1,15 @@
 ﻿<section>
     <h2>Service Principal Template</h2>
     <!--<div>
-        <label for="filter">Find a restaurant</label>
+        <label for="filter">Find a Service Principal Template</label>
         <input type="text" id="filter" data-bind="value: filterText, valueUpdate: 'afterkeydown'"
-               placeholder="restaurant name" type="text" />
+               placeholder="spt name" type="text" />
     </div>-->
     <br />
     <div class="grid" data-bind="foreach: servicePrincipalTemplates">
         <div class="column">
-            <a data-bind="attr: { href: '#spt/' + Id }">
-                <span id="name" data-bind="text: Name"></span>
+            <a data-bind="attr: { href: '#spt/detail/' + Id() }">
+                <span id="displayName" data-bind="text: DisplayName"></span>
             </a>
             <br />
         </div>

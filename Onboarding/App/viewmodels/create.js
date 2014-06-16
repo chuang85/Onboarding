@@ -2,8 +2,9 @@
     function (router) {
 
         var vm = {
-            name: ko.observable(),
+            displayName: ko.observable(),
             environment: ko.observable(),
+            availableEnvironment: ko.observableArray(['Not specified', 'grn001', 'grn002', 'grnppe']),
             activate: activate,
             //canDeactivate: canDeactivate,
             createEntity: createEntity,
@@ -17,10 +18,10 @@
         var manager = new breeze.EntityManager(serviceName);
 
         //var sptType = manager.metadataStore.getEntityType('ServicePrincipalTemplate');
-        //var urlProperty = sptType.getProperty('name');
+        //var urlProperty = sptType.getProperty('displayName');
         
 
-        function activate(context) {
+        function activate() {
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
             }
@@ -41,7 +42,7 @@
 
             var newServicePrincipalTemplate = manager.
                 createEntity('ServicePrincipalTemplate:#Onboarding.Models',
-                { Name: vm.name(), Environment: vm.environment() });
+                { DisplayName: vm.displayName(), Environment: vm.environment() });
             manager.addEntity(newServicePrincipalTemplate);
             manager.saveChanges()
                 .then(createSucceeded)

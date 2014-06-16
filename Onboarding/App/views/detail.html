@@ -1,16 +1,14 @@
 ﻿<section>
     <h2 class="page-title">
-        <span id="spt title" data-bind="text: spt.Name"></span>
+        <span id="spt title" data-bind="text: spt.DisplayName"></span>
     </h2>
     <div>
-        <a data-bind="click: goBack" class="backLink">< Back</a>
+        <a data-bind="click: goBack" class="pointerLink">< Back</a>
     </div>
     <table data-bind="with: spt">
         <tr>
             <td colspan="2">
-                <a data-bind="attr: { href: '#spt/' + Id() }">
-                    <div id="name" data-bind="text: Name"></div>
-                </a>
+                <div id="displayName" data-bind="text: DisplayName"></div>
             </td>
         </tr>
         <tr>
@@ -19,10 +17,10 @@
             </td>
         </tr>
     </table>
-    <!--<a data-bind="attr: { href: '#updateSpt/' + spt().Id() }">
+    <a data-bind="attr: { href: '#spt/update/' + spt().Id() }">
         <span>Update</span>
-    </a>-->
-    <a data-bind="click: deleteSpt" class="deleteBtn">
+    </a>
+    <a data-bind="click: deleteSpt" class="pointerLink">
         <span>Delete</span>
     </a>
 

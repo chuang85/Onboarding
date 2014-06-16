@@ -10,8 +10,8 @@
 
     var manager = new breeze.EntityManager(serviceName);
 
-    function activate(context) {
-        return getSpt(context.id);
+    function activate(id) {
+        return getSpt(id);
     }
 
     function getSpt(id) {
@@ -44,7 +44,7 @@
             toastr.info('Aborted');
         }
         else {
-            vm.servicePrincipalTemplates().entityAspect.setDeleted();
+            vm.spt().entityAspect.setDeleted();
 
             manager.saveChanges()
                 .then(deleteSucceeded)

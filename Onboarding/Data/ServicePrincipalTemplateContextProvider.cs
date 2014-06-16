@@ -14,9 +14,9 @@ namespace Onboarding.Data
         protected override bool BeforeSaveEntity(EntityInfo entityInfo)
         {
             ServicePrincipalTemplate servicePrincipalTemplate = (ServicePrincipalTemplate)entityInfo.Entity;
-            if (string.IsNullOrEmpty(servicePrincipalTemplate.Name))
+            if (string.IsNullOrEmpty(servicePrincipalTemplate.DisplayName))
             {
-                //servicePrincipalTemplate.Name = "wtf";
+                //servicePrincipalTemplate.DisplayName = "wtf";
             }
             return true;
         }

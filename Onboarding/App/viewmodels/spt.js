@@ -9,7 +9,7 @@
 
     var manager = new breeze.EntityManager(serviceName);
 
-    function activate(context) {
+    function activate() {
         return getServicePrincipalTemplates();
     };
 

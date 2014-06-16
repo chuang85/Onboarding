@@ -1,19 +1,19 @@
 ﻿<section>
     <div>
-        <a data-bind="click: goBack" class="backLink">< Back</a>
+        <a data-bind="click: goBack" class="pointerLink">< Back</a>
     </div>
     <table>
         <tr>
             <td colspan="2">
-                <label for="name">Name</label>
-                <input type="text" id="name" data-bind="value: name">
-                <!--<div class="propertyError" data-bind="text: getPropertyError('Name')"></div>-->
+                <label for="displayName">DisplayName</label>
+                <input type="text" id="displayName" data-bind="value: displayName">
+                <!--<div class="propertyError" data-bind="text: getPropertyError('DisplayName')"></div>-->
             </td>
         </tr>
         <tr>
             <td colspan="2">
                 <label for="environment">Environment</label>
-                <input type="text" id="environment" data-bind="value: environment">
+                <select id="environment" data-bind="options: availableEnvironment, value: environment"></select>
                 <!--<div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>-->
             </td>
         </tr>        
