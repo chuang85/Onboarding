@@ -14,7 +14,8 @@ namespace Onboarding.Models
         public OnboardingDbContext()
             : base("OnboardingConnection")
 		{
-            Database.SetInitializer<OnboardingDbContext>(new OnboardingDbContextInitializer());
+            // Uncomment for data migration
+            //Database.SetInitializer<OnboardingDbContext>(new OnboardingDbContextInitializer());
 		}
     }
 }
