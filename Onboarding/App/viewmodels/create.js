@@ -50,7 +50,7 @@
 
             function createSucceeded(data) {
                 toastr.success("Created");
-                router.navigate('#/data');
+                router.navigate('#/spt');
             }
 
             function createFailed(error) {

@@ -10,8 +10,8 @@
             router.map([
                 { route: '', title: 'Home', moduleId: 'viewmodels/home', nav: true },
                 { route: 'create', title: 'Create', moduleId: 'viewmodels/create', nav: true },
-                { route: 'update', title: 'Update', moduleId: 'viewmodels/update', nav: true },
-                { route: 'data', title: 'Data', moduleId: 'viewmodels/data', nav: true }
+                { route: 'spt', title: 'SPT', moduleId: 'viewmodels/spt', nav: true },
+                { route: 'spt/:id', moduleId: 'viewmodels/detail' }
             ]).buildNavigationModel();
 
             return router.activate();

@@ -1,0 +1,19 @@
+﻿<section>
+    <h2>Service Principal Template</h2>
+    <!--<div>
+        <label for="filter">Find a restaurant</label>
+        <input type="text" id="filter" data-bind="value: filterText, valueUpdate: 'afterkeydown'"
+               placeholder="restaurant name" type="text" />
+    </div>-->
+    <br />
+    <div class="grid" data-bind="foreach: servicePrincipalTemplates">
+        <div class="column">
+            <a data-bind="attr: { href: '#spt/' + Id }">
+                <span id="name" data-bind="text: Name"></span>
+            </a>
+            <br />
+        </div>
+    </div>
+
+    <a href="#/create">Create SPT</a>
+</section>

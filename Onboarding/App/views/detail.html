@@ -1,0 +1,29 @@
+﻿<section>
+    <h2 class="page-title">
+        <span id="spt title" data-bind="text: spt.Name"></span>
+    </h2>
+    <div>
+        <a data-bind="click: goBack" class="backLink">< Back</a>
+    </div>
+    <table data-bind="with: spt">
+        <tr>
+            <td colspan="2">
+                <a data-bind="attr: { href: '#spt/' + Id() }">
+                    <div id="name" data-bind="text: Name"></div>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <span id="environment" data-bind="text: Environment"></span>
+            </td>
+        </tr>
+    </table>
+    <!--<a data-bind="attr: { href: '#updateSpt/' + spt().Id() }">
+        <span>Update</span>
+    </a>-->
+    <a data-bind="click: deleteSpt" class="deleteBtn">
+        <span>Delete</span>
+    </a>
+
+</section>
