@@ -2,8 +2,9 @@
     <h2 class="page-title">
         <span id="spt title" data-bind="text: spt.DisplayName"></span>
     </h2>
+    <!--Back link-->
     <div>
-        <a data-bind="click: goBack" class="pointerLink">< Back</a>
+        <a data-bind="click: goBack" class="btn btn-link">< Back</a>
     </div>
     <!--<table data-bind="with: spt">
         <tr>
@@ -19,15 +20,37 @@
             </td>
         </tr>
     </table>-->
-    <dl class="dl-horizontal" data-bind="with: spt">
-        <dt>DisplayName</dt>
-        <dd><div id="displayName" data-bind="text: DisplayName"></div></dd>
-    </dl>
-    <a data-bind="attr: { href: '#spt/update/' + spt().Id() }">
-        <span>Update</span>
-    </a>
-    <a data-bind="click: deleteSpt" class="pointerLink">
-        <span>Delete</span>
-    </a>
+    <form class="form-horizontal" role="form">
+        <!--DisplayName-->
+        <div class="form-group">
+            <dl class="dl-horizontal" data-bind="with: spt">
+                <dt>DisplayName</dt>
+                <dd>
+                    <div class="col-sm-6" id="displayName" data-bind="text: DisplayName"></div>
+                </dd>
+            </dl>
+        </div>
+        <!--Environment-->
+        <div class="form-group">
+            <dl class="dl-horizontal" data-bind="with: spt">
+                <dt>Environment</dt>
+                <dd>
+                    <div class="col-sm-6" id="environment" data-bind="text: Environment"></div>
+                </dd>
+            </dl>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2">
+                <!--Update button-->
+                <a class="btn btn-default" data-bind="attr: { href: '#spt/update/' + spt().Id() }">
+                    <span>Update</span>
+                </a>
+                <!--Delete button-->
+                <a class="btn btn-danger" data-bind="click: deleteSpt">
+                    <span>Delete</span>
+                </a>
+            </div>
+        </div>
+    </form>
 
 </section>

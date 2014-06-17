@@ -1,4 +1,5 @@
 ﻿<section>
+    <!--Back link-->
     <div>
         <h3><a class="pointerLink" data-bind="click: goBack">< Back</a></h3>
     </div>
@@ -19,18 +20,21 @@
         </tr>        
     </table>-->
     <form class="form-horizontal" role="form">
+        <!--DisplayName-->
         <div class="form-group">
             <label for="displayName" class="col-sm-2 control-label">DisplayName</label>
             <div class="col-sm-6">
                 <input class="form-control" id="displayName" placeholder="DisplayName" data-bind="value: displayName">
             </div>
         </div>
+        <!--Environment-->
         <div class="form-group">
             <label for="environment" class="col-sm-2 control-label">Environment</label>
             <div class="col-sm-6">
                 <select class="form-control" id="environment" data-bind="options: availableEnvironment, value: environment"></select>
             </div>
         </div>
+        <!--Create button-->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
                 <button class="btn btn-default" data-bind="click: createEntity">Create</button>

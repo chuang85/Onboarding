@@ -2,6 +2,7 @@
 define(['plugins/router'], function (router) {
     var vm = {
         editableSpt: ko.observable(),
+        availableEnvironment: ko.observableArray(['Not specified', 'grn001', 'grn002', 'grnppe']),
         activate: activate,
         saveChanges: saveChanges,
         goBack: goBack

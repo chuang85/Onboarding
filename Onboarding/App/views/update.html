@@ -1,20 +1,28 @@
 ﻿<section>
+    <!--Back link-->
     <div>
         <h3><a data-bind="click: goBack" class="pointerLink">< Back</a></h3>
     </div>
-    <table data-bind="with: editableSpt">
-        <tr>
-            <td colspan="2">
-                <label for="displayName">DisplayName</label>
-                <input type="text" id="displayName" data-bind="value: DisplayName" />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <label for="environment">Environment</label>
-                <input type="text" id="environment" data-bind="value: Environment" />
-            </td>
-        </tr>
-    </table>
-    <button type="button" data-bind="click: saveChanges">Save</button>
+    <form class="form-horizontal" role="form">
+        <!--DisplayName-->
+        <div class="form-group">
+            <label for="displayName" class="col-sm-2 control-label">DisplayName</label>
+            <div class="col-sm-6">
+                <input class="form-control" type="text" id="displayName" data-bind="value: editableSpt().DisplayName" />
+            </div>
+        </div>
+        <!--Environment-->
+        <div class="form-group">
+            <label for="environment" class="col-sm-2 control-label">Environment</label>
+            <div class="col-sm-6">
+                <select class="form-control" id="environment" data-bind="options: availableEnvironment(), value: editableSpt().Environment" ></select>
+            </div>
+        </div>
+        <!--Save button-->
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-6">
+                <button class="btn btn-primary" data-bind="click: saveChanges">Save</button>
+            </div>
+        </div>
+    </form>
 </section>

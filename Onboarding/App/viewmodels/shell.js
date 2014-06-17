@@ -11,8 +11,8 @@
                 { route: '', title: 'Home', moduleId: 'viewmodels/home', nav: true },
                 { route: 'create', title: 'Create', moduleId: 'viewmodels/create', nav: true },
                 { route: 'spt', title: 'SPT', moduleId: 'viewmodels/spt', nav: true },
-                { route: 'spt/detail/:id', moduleId: 'viewmodels/detail' },
-                { route: 'spt/update/:id', moduleId: 'viewmodels/update' }
+                { route: 'spt/detail/:id', title: 'Detail', moduleId: 'viewmodels/detail' },
+                { route: 'spt/update/:id', title: 'Update', moduleId: 'viewmodels/update' }
             ]).buildNavigationModel();
 
             return router.activate();
