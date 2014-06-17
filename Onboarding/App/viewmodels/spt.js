@@ -22,7 +22,6 @@
     }
 
     function getSpts() {
-        toastr.info("Querying...");
         var query = breeze.EntityQuery.
                 from("ServicePrincipalTemplates");
 
@@ -43,7 +42,6 @@
 
         function querySucceeded(data) {
             vm.spts(data.results);
-            toastr.success("Spts loaded!");
         }
 
         function queryFailed(error) {
