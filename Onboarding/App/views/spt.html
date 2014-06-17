@@ -1,19 +1,32 @@
-﻿<section>
+﻿<section class="container">
     <h2>Service Principal Template</h2>
-    <!--<div>
-        <label for="filter">Find a Service Principal Template</label>
-        <input type="text" id="filter" data-bind="value: filterText, valueUpdate: 'afterkeydown'"
-               placeholder="spt name" type="text" />
-    </div>-->
-    <br />
-    <div class="grid" data-bind="foreach: servicePrincipalTemplates">
-        <div class="column">
-            <a data-bind="attr: { href: '#spt/detail/' + Id() }">
-                <span id="displayName" data-bind="text: DisplayName"></span>
-            </a>
-            <br />
-        </div>
+    <div>
+        <a href="#/create">Create SPT</a>
     </div>
+    <br />
+    <div class="jumbotron">
+        <label for="filter">Find a Service Principal Template</label>
+        <input type="search" id="filter" data-bind="value: filterText, valueUpdate: 'afterkeydown'"
+            placeholder="SPT name" />
+    </div>
+    <br />
 
-    <a href="#/create">Create SPT</a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>SPT Name</th>
+                <th>AppPrincipalId</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: spts">
+            <tr>
+                <td>
+                    <a data-bind="attr: { href: '#spt/detail/' + Id() }">
+                        <span id="displayName" data-bind="text: DisplayName"></span>
+                    </a>
+                </td>
+                <td>not implemented</td>
+            </tr>
+        </tbody>
+    </table>
 </section>
