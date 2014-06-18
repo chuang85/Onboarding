@@ -1,12 +1,13 @@
-﻿define(['plugins/router'],
-    function (router) {
+﻿define(['plugins/router', 'durandal/app'],
+    function (router, app) {
 
         var vm = {
             displayName: ko.observable(),
+            appClass: ko.observable(),
             environment: ko.observable(),
             availableEnvironment: ko.observableArray(['Not specified', 'grn001', 'grn002', 'grnppe']),
             activate: activate,
-            //canDeactivate: canDeactivate,
+            canDeactivate: canDeactivate,
             createEntity: createEntity,
             goBack: goBack,
             //validationErrors: ko.observableArray([]),
@@ -17,11 +18,10 @@
 
         var manager = new breeze.EntityManager(serviceName);
 
-        //var sptType = manager.metadataStore.getEntityType('ServicePrincipalTemplate');
-        //var urlProperty = sptType.getProperty('displayName');
-        
+        var hasCreated = false;
 
         function activate() {
+            hasCreated = false;
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
             }
@@ -30,26 +30,23 @@
             }
 
             function fetchMetadataFail(exception) {
+                toastr.error("Fetch metadata failed");
             }
         }
 
         function createEntity() {
             //vm.validationErrors([]);
 
-            //var validators = urlProperty.validators;
-            //validators.push(Validitor.required());
-            //validators.push(Validitor.url());
-
             var newServicePrincipalTemplate = manager.
                 createEntity('ServicePrincipalTemplate:#Onboarding.Models',
-                { DisplayName: vm.displayName(), Environment: vm.environment() });
+                { DisplayName: vm.displayName(), AppClass: vm.appClass(), Environment: vm.environment() });
             manager.addEntity(newServicePrincipalTemplate);
             manager.saveChanges()
                 .then(createSucceeded)
                 .fail(createFailed);
 
-
             function createSucceeded(data) {
+                hasCreated = true;
                 toastr.success("Created");
                 router.navigate('#/spt');
             }
@@ -70,22 +67,28 @@
         };
 
         //function getPropertyError(propertyName) {
+        //    toastr.info("1");
         //    var validationErrors = ko.utils.arrayFilter(vm.validationErrors(), function (validationError) {
         //        return validationError.propertyName == propertyName;
         //    });
 
-        //    if (validationErrors.length > 0)
+        //    if (validationErrors.length > 0) {
+        //        toastr.info("2");
         //        return validationErrors[0].errorMessage;
-        //    else
+        //    }
+        //    else {
+        //        toastr.info("3");
         //        return '';
+        //    }
         //};
 
         function canDeactivate() {
-            //if (this._sptToAdd == false) {
-            //    return app.showMessage('Are you sure you want to leave this page?', 'Navigate', ['Yes', 'No']);
-            //} else {
-            //    return true;
-            //}
+            if (!hasCreated) {
+                return app.showMessage('Create is not finished, are you sure you want to leave this page?', 'Create Not Finished', ['Yes', 'No']);
+            }
+            else {
+                return true;
+            }
         };
 
         return vm;

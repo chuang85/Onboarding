@@ -2,29 +2,23 @@
     <!--Back link-->
     <div>
         <h3><a class="pointerLink" data-bind="click: goBack">< Back</a></h3>
+        <!--<div class="propertyError" data-bind="text: getPropertyError('DisplayName')">kkkkkkkkkkk</div>-->
     </div>
-    <!-- <table>
-        <tr>
-            <td colspan="2">
-                <label for="displayName">DisplayName</label>
-                <input type="text" id="displayName" data-bind="value: displayName">
-                <div class="propertyError" data-bind="text: getPropertyError('DisplayName')"></div>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <label for="environment">Environment</label>
-                <select id="environment" data-bind="options: availableEnvironment, value: environment"></select>
-                <div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>
-            </td>
-        </tr>        
-    </table>-->
     <form class="form-horizontal" role="form">
         <!--DisplayName-->
         <div class="form-group">
             <label for="displayName" class="col-sm-2 control-label">DisplayName</label>
             <div class="col-sm-6">
                 <input class="form-control" id="displayName" placeholder="DisplayName" data-bind="value: displayName">
+                <!--<div class="propertyError" data-bind="text: getPropertyError('DisplayName')"></div>-->
+            </div>
+        </div>
+        <!--AppClass-->
+        <div class="form-group">
+            <label for="appClass" class="col-sm-2 control-label">AppClass</label>
+            <div class="col-sm-6">
+                <input class="form-control" id="appClass" placeholder="AppClass" data-bind="value: appClass">
+                <!--<div class="propertyError" data-bind="text: getPropertyError('AppClass')"></div>-->
             </div>
         </div>
         <!--Environment-->
@@ -32,6 +26,7 @@
             <label for="environment" class="col-sm-2 control-label">Environment</label>
             <div class="col-sm-6">
                 <select class="form-control" id="environment" data-bind="options: availableEnvironment, value: environment"></select>
+                <!--<div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>-->
             </div>
         </div>
         <!--Create button-->

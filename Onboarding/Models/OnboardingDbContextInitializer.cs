@@ -15,12 +15,14 @@ namespace Onboarding.Models
             context.ServicePrincipalTemplates.Add(new ServicePrincipalTemplate
             {
                 DisplayName = "Office 365",
+                AppClass = "Office365Portal",
                 Environment = "grn001"
             });
 
             context.ServicePrincipalTemplates.Add(new ServicePrincipalTemplate
             {
                 DisplayName = "Exchange",
+                AppClass = "Exchange",
                 Environment = "grnppe"
             });
 

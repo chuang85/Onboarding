@@ -6,20 +6,6 @@
     <div>
         <a data-bind="click: goBack" class="btn btn-link">< Back</a>
     </div>
-    <!--<table data-bind="with: spt">
-        <tr>
-            <td colspan="2">
-                <label for="displayName">DisplayName</label>
-                <div id="displayName" data-bind="text: DisplayName"></div>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <label for="environment">Environment</label>
-                <span id="environment" data-bind="text: Environment"></span>
-            </td>
-        </tr>
-    </table>-->
     <form class="form-horizontal" role="form">
         <!--DisplayName-->
         <div class="form-group">
@@ -27,6 +13,15 @@
                 <dt>DisplayName</dt>
                 <dd>
                     <div class="col-sm-6" id="displayName" data-bind="text: DisplayName"></div>
+                </dd>
+            </dl>
+        </div>
+        <!--AppClass-->
+        <div class="form-group">
+            <dl class="dl-horizontal" data-bind="with: spt">
+                <dt>AppClass</dt>
+                <dd>
+                    <div class="col-sm-6" id="appClass" data-bind="text: AppClass"></div>
                 </dd>
             </dl>
         </div>

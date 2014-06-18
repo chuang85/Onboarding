@@ -11,11 +11,18 @@
                 <input class="form-control" type="text" id="displayName" data-bind="value: editableSpt().DisplayName" />
             </div>
         </div>
+        <!--AppClass-->
+        <div class="form-group">
+            <label for="appClass" class="col-sm-2 control-label">AppClass</label>
+            <div class="col-sm-6">
+                <input class="form-control" type="text" id="AppClass" data-bind="value: editableSpt().AppClass" />
+            </div>
+        </div>
         <!--Environment-->
         <div class="form-group">
             <label for="environment" class="col-sm-2 control-label">Environment</label>
             <div class="col-sm-6">
-                <select class="form-control" id="environment" data-bind="options: availableEnvironment(), value: editableSpt().Environment" ></select>
+                <select class="form-control" id="environment" data-bind="options: availableEnvironment(), value: editableSpt().Environment"></select>
             </div>
         </div>
         <!--Save button-->
