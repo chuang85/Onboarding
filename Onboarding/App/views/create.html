@@ -4,6 +4,9 @@
         <h3><a class="pointerLink" data-bind="click: goBack">< Back</a></h3>
         <!--<div class="propertyError" data-bind="text: getPropertyError('DisplayName')">kkkkkkkkkkk</div>-->
     </div>
+
+    <h2>Create a Service Principal Template</h2> <br />
+
     <form class="form-horizontal" role="form">
         <!--DisplayName-->
         <div class="form-group">
@@ -34,13 +37,6 @@
             <div class="col-sm-6">
                 <select class="form-control" id="environment" data-bind="options: availableEnvironment, value: environment"></select>
                 <!--<div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>-->
-            </div>
-        </div>
-        <!--Upload cert file-->
-        <div class="form-group">
-            <label for="certFile" class="col-sm-2 control-label">Upload Cert File</label>
-            <div class="col-sm-6">
-                <input type="file" id="certFile">
             </div>
         </div>
         <!--Create button-->

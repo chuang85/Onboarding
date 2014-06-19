@@ -19,11 +19,19 @@ namespace Onboarding.Models
 
         [Required]
         public string Environment { get; set; }
+        //public Environment Environment { get; set; }
+
+        [Required]
+        public Guid AppPrincipalID { get; set; }
+
+        //[Required]
+        //public Guid KeyGroupID { get; set; }
 
         //[Required]
         //public ICollection<string> ConstrainedDelegationTo { get; set; }
 
-        [Required]
-        public Guid AppPrincipalID { get; set; }
+        //public ICollection<TaskSetScopeReference> AppOnlyAuthPolicy { get; set; }
+
+        //public ICollection<TaskSetScopeReference> AppPlusUserAuthPolicy { get; set; }
     }
 }

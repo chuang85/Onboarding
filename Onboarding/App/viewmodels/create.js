@@ -22,7 +22,7 @@
         var hasCreated = false;
 
         function activate() {
-            hasCreated = false;
+            clearInputOnLoading();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
             }
@@ -35,6 +35,21 @@
             }
         }
 
+        /// <summary>
+        /// When "create" page is activated, clear input filed. 
+        /// Otherwise the input from last time is still there.
+        /// </summary>
+        function clearInputOnLoading() {
+            hasCreated = false;
+            vm.displayName("");
+            vm.appClass("");
+            vm.environment("Not specified");
+        }
+
+        /// <summary>
+        /// Listener for create button.
+        /// Create an entity.
+        /// </summary>
         function createEntity() {
             //vm.validationErrors([]);
 
@@ -88,6 +103,9 @@
         //    }
         //};
 
+        /// <summary>
+        /// Pop up a window to make sure to navigate away.
+        /// </summary>
         function canDeactivate() {
             if (!hasCreated) {
                 return app.showMessage('Create is not finished, are you sure you want to leave this page?', 'Create Not Finished', ['Yes', 'No']);

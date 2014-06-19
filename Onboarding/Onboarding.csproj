@@ -172,9 +172,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Environment.cs" />
     <Compile Include="Models\OnboardingDbContext.cs" />
     <Compile Include="Models\OnboardingDbContextInitializer.cs" />
     <Compile Include="Models\ServicePrincipalTemplate.cs" />
+    <Compile Include="Models\TaskSetScopeReference.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,12 +184,14 @@
     <Content Include="App\main.js" />
     <Content Include="App\services\guidgenerator.js" />
     <Content Include="App\services\logger.js" />
+    <Content Include="App\viewmodels\cert.js" />
     <Content Include="App\viewmodels\detail.js" />
     <Content Include="App\viewmodels\spt.js" />
     <Content Include="App\viewmodels\update.js" />
     <Content Include="App\viewmodels\create.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\viewmodels\home.js" />
+    <Content Include="App\views\cert.html" />
     <Content Include="App\views\detail.html" />
     <Content Include="App\views\spt.html" />
     <Content Include="App\views\update.html" />

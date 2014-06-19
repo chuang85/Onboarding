@@ -15,12 +15,18 @@
         return getSpts();
     };
 
+    /// <summary>
+    /// Once there is text input, SPT will be quried accordingly.
+    /// </summary>
     function onFilterChange() {
         if (vm.filterText().length >= 0) {
             getSpts();
         }
     }
 
+    /// <summary>
+    /// Query all SPT data.
+    /// </summary>
     function getSpts() {
         var query = breeze.EntityQuery.
                 from("ServicePrincipalTemplates");

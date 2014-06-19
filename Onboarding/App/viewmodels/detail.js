@@ -1,4 +1,5 @@
 ﻿define(['plugins/router', 'durandal/app'], function (router, app) {
+
     var vm = {
         spt: ko.observable(),
         activate: activate,
@@ -14,6 +15,10 @@
         return getSpt(id);
     }
 
+    /// <summary>
+    /// Get a specific SPT given its id.
+    /// </summary>
+    /// <param name="id">The id of SPT to be queried</param>
     function getSpt(id) {
         var query = breeze.EntityQuery.
                 from("ServicePrincipalTemplates").
@@ -34,11 +39,18 @@
         }
     };
 
+    /// <summary>
+    /// Listener for delete button.
+    /// If confirmed, "goDelete" will be called.
+    /// </summary>
     function deleteSpt() {
         app.showMessage("Are you sure you want to delete this SPT?", "Delete SPT", ['Yes', 'No'])
             .then(goDelete);
     }
 
+    /// <summary>
+    /// Handle a delete operation.
+    /// </summary>
     function goDelete(data) {
         if (data == 'No') {
             toastr.info('Aborted');

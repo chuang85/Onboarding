@@ -15,6 +15,10 @@
         return getSpt(id);
     }
 
+    /// <summary>
+    /// Get a specific SPT given its id.
+    /// </summary>
+    /// <param name="id">The id of SPT to be queried</param>
     function getSpt(id) {
         var query = breeze.EntityQuery.
                 from("ServicePrincipalTemplates").
@@ -35,6 +39,10 @@
         }
     };
 
+    /// <summary>
+    /// Listener for update button.
+    /// Make change to DB.
+    /// </summary>
     function saveChanges() {
         if (manager.hasChanges()) {
             manager.saveChanges()
