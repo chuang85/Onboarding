@@ -16,6 +16,7 @@ namespace Onboarding.Models
             {
                 DisplayName = "Office 365",
                 AppClass = "Office365Portal",
+                AppPrincipalID = Guid.NewGuid(),
                 Environment = "grn001"
             });
 
@@ -23,6 +24,7 @@ namespace Onboarding.Models
             {
                 DisplayName = "Exchange",
                 AppClass = "Exchange",
+                AppPrincipalID = Guid.NewGuid(),
                 Environment = "grnppe"
             });
 

@@ -1,10 +1,11 @@
-﻿define(['plugins/router', 'durandal/app'],
-    function (router, app) {
+﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator'],
+    function (router, app, guidgenerator) {
 
         var vm = {
             displayName: ko.observable(),
             appClass: ko.observable(),
             environment: ko.observable(),
+            appPrincipalId: ko.observable(guidgenerator.generateGuid()),
             availableEnvironment: ko.observableArray(['Not specified', 'grn001', 'grn002', 'grnppe']),
             activate: activate,
             canDeactivate: canDeactivate,
@@ -39,7 +40,12 @@
 
             var newServicePrincipalTemplate = manager.
                 createEntity('ServicePrincipalTemplate:#Onboarding.Models',
-                { DisplayName: vm.displayName(), AppClass: vm.appClass(), Environment: vm.environment() });
+                {
+                    DisplayName: vm.displayName(),
+                    AppClass: vm.appClass(),
+                    Environment: vm.environment(),
+                    AppPrincipalID: vm.appPrincipalId()
+                });
             manager.addEntity(newServicePrincipalTemplate);
             manager.saveChanges()
                 .then(createSucceeded)

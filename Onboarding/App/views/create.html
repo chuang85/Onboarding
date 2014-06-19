@@ -21,12 +21,26 @@
                 <!--<div class="propertyError" data-bind="text: getPropertyError('AppClass')"></div>-->
             </div>
         </div>
+        <!--AppPrincipalId-->
+        <div class="form-group">
+            <label for="appPrincipalId" class="col-sm-2 control-label">AppPrincipalId</label>
+            <div class="col-sm-6">
+                <input class="form-control" id="appPrincipalId" data-bind="value: appPrincipalId" readonly="readonly">
+            </div>
+        </div>
         <!--Environment-->
         <div class="form-group">
             <label for="environment" class="col-sm-2 control-label">Environment</label>
             <div class="col-sm-6">
                 <select class="form-control" id="environment" data-bind="options: availableEnvironment, value: environment"></select>
                 <!--<div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>-->
+            </div>
+        </div>
+        <!--Upload cert file-->
+        <div class="form-group">
+            <label for="certFile" class="col-sm-2 control-label">Upload Cert File</label>
+            <div class="col-sm-6">
+                <input type="file" id="certFile">
             </div>
         </div>
         <!--Create button-->

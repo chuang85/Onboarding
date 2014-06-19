@@ -23,7 +23,7 @@ namespace Onboarding.Models
         //[Required]
         //public ICollection<string> ConstrainedDelegationTo { get; set; }
 
-        //[Required]
-        //public Guid AppPrincipalID { get; set; }
+        [Required]
+        public Guid AppPrincipalID { get; set; }
     }
 }
