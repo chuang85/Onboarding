@@ -11,7 +11,7 @@
             canDeactivate: canDeactivate,
             createEntity: createEntity,
             goBack: goBack,
-            //validationErrors: ko.observableArray([]),
+            //validationErrors: ko.observableArray(),
             //getPropertyError: getPropertyError
         };
 
@@ -21,6 +21,9 @@
 
         var hasCreated = false;
 
+        // Prevent metaData not fetched exception
+        var metaDataFetched = false;
+
         function activate() {
             clearInputOnLoading();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
@@ -28,6 +31,8 @@
             }
 
             function fetchMetadataSuccess(rawMetadata) {
+                toastr.success("Fetch metadata succeed");
+                metaDataFetched = true;
             }
 
             function fetchMetadataFail(exception) {
@@ -41,6 +46,7 @@
         /// </summary>
         function clearInputOnLoading() {
             hasCreated = false;
+            metaDataFetched = false;
             vm.displayName("");
             vm.appClass("");
             vm.environment("Not specified");
@@ -51,35 +57,39 @@
         /// Create an entity.
         /// </summary>
         function createEntity() {
-            //vm.validationErrors([]);
+            if (metaDataFetched) {
+                //vm.validationErrors([]);
 
-            var newServicePrincipalTemplate = manager.
-                createEntity('ServicePrincipalTemplate:#Onboarding.Models',
-                {
-                    DisplayName: vm.displayName(),
-                    AppClass: vm.appClass(),
-                    Environment: vm.environment(),
-                    AppPrincipalID: vm.appPrincipalId()
-                });
-            manager.addEntity(newServicePrincipalTemplate);
-            manager.saveChanges()
-                .then(createSucceeded)
-                .fail(createFailed);
+                var newServicePrincipalTemplate = manager.
+                    createEntity('ServicePrincipalTemplate:#Onboarding.Models',
+                    {
+                        DisplayName: vm.displayName(),
+                        AppClass: vm.appClass(),
+                        Environment: vm.environment(),
+                        AppPrincipalID: vm.appPrincipalId()
+                    });
+                manager.addEntity(newServicePrincipalTemplate);
+                manager.saveChanges()
+                    .then(createSucceeded)
+                    .fail(createFailed);
 
-            function createSucceeded(data) {
-                hasCreated = true;
-                toastr.success("Created");
-                router.navigate('#/spt');
-            }
+                function createSucceeded(data) {
+                    hasCreated = true;
+                    toastr.success("Created");
+                    router.navigate('#/spt');
+                }
 
-            function createFailed(error) {
-                toastr.error("Create failed");
-                //error.entitiesWithErrors.map(function (entity) {
-                //    entity.entityAspect.getValidationErrors().map(function (validationError) {
-                //        vm.validationErrors.push(validationError);
-                //    });
-                //});
-                manager.rejectChanges();
+                function createFailed(error) {
+                    toastr.error("Create failed");
+                    error.entitiesWithErrors.map(function (entity) {
+                        toastr.info("out");
+                        entity.entityAspect.getValidationErrors().map(function (validationError) {
+                            vm.validationErrors.push(validationError);
+                            toastr.info("in");
+                        });
+                    });
+                    manager.rejectChanges();
+                }
             }
         };
 
