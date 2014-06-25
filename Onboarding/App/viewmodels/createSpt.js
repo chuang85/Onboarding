@@ -25,9 +25,6 @@
         var metaDataFetched = false;
 
         function activate() {
-            //var json = { "Environment": { "@name": "grn002", "Hostnames": { "Hostname": ["configure.office.net", "other"] } } };
-            //console.log(dataformatter.json2xml(json));
-            console.log(dataformatter.json2xml(createJSONSpt()));
             clearInputOnLoading();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
@@ -62,6 +59,9 @@
         function createEntity() {
             if (metaDataFetched) {
                 //vm.validationErrors([]);
+
+
+                console.log(dataformatter.json2xml(createJSONSpt()));
 
                 // Disable "create" button after hit
                 // Prevent multiple submits
@@ -145,22 +145,16 @@
         function createJSONSpt() {
             var json = {};
             json["ServicePrincipalTemplate"] = {};
+            json["ServicePrincipalTemplate"]["Value"] = {};
+            json["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"] = {};
+            json["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"]["@xmlns"] = "";
 
-            var sptContent = json["ServicePrincipalTemplate"]["Value"] = {};
-            var sptEnvironment = sptContent["Environment"] = {};
-            sptEnvironment["@name"] = "grn002";
-            sptEnvironment["Hostnames"] = {};
+            var body = json["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"]["ServicePrincipal"] = {};
+            body["DisplayName"] = vm.displayName();
+            body["AppClass"] = vm.appClass();
 
-            var hostnameArr = sptEnvironment["Hostnames"]["Hostname"] = [];
-            hostnameArr.push("configure.office.net");
-            hostnameArr.push("other");
+            body["AppPrincipalID"] = vm.appPrincipalId();
 
-            //json["ServicePrincipalTemplate"]["Value"]["Environment"] = {};
-            //json["ServicePrincipalTemplate"]["Value"]["Environment"]["@name"] = "grn002";
-            //json["ServicePrincipalTemplate"]["Value"]["Environment"]["Hostnames"] = {};
-            //json["ServicePrincipalTemplate"]["Value"]["Environment"]["Hostnames"]["Hostname"] = [];
-            //json["ServicePrincipalTemplate"]["Value"]["Environment"]["Hostnames"]["Hostname"].push("configure.office.net");
-            //json["ServicePrincipalTemplate"]["Value"]["Environment"]["Hostnames"]["Hostname"].push("other");
             return json;
         };
 
