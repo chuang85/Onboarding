@@ -36,9 +36,8 @@
             function fetchMetadataSuccess(rawMetadata) {
                 toastr.success("Fetch metadata succeed");
                 metaDataFetched = true;
-
                 // Enable "create" button when metadata has been fetched
-                $("#createBtn").attr("disabled", false);
+                enableButton();
             }
 
             function fetchMetadataFail(exception) {
@@ -52,10 +51,8 @@
         /// </summary>
         function clearInputOnLoading() {
             hasCreated = false;
-            metaDataFetched = false;
             vm.displayName("");
             vm.appClass("");
-            vm.environment("Not specified");
         }
 
         /// <summary>
@@ -67,7 +64,8 @@
                 //vm.validationErrors([]);
 
                 // Disable "create" button after hit
-                $("#createBtn").attr("disabled", true);
+                // Prevent multiple submits
+                disableButton();
 
                 var newServicePrincipalTemplate = manager.
                     createEntity('ServicePrincipalTemplate:#Onboarding.Models',
@@ -85,15 +83,13 @@
                 function createSucceeded(data) {
                     hasCreated = true;
                     toastr.success("Created");
+                    enableButton();
                     router.navigate('#/request');
                 }
 
                 function createFailed(error) {
                     toastr.error("Create failed");
-
-                    // Enable "create" button after failed submit
-                    $("#createBtn").attr("disabled", false);
-
+                    enableButton();
                     //error.entitiesWithErrors.map(function (entity) {
                     //    toastr.info("out");
                     //    entity.entityAspect.getValidationErrors().map(function (validationError) {
@@ -138,12 +134,19 @@
             }
         };
 
+        function enableButton() {
+            $("#createBtn").attr("disabled", false);
+        }
+
+        function disableButton() {
+            $("#createBtn").attr("disabled", false);
+        }
+
         function createJSONSpt() {
             var json = {};
             json["ServicePrincipalTemplate"] = {};
-            json["ServicePrincipalTemplate"]["Value"] = {};
 
-            var sptContent = json["ServicePrincipalTemplate"]["Value"];
+            var sptContent = json["ServicePrincipalTemplate"]["Value"] = {};
             var sptEnvironment = sptContent["Environment"] = {};
             sptEnvironment["@name"] = "grn002";
             sptEnvironment["Hostnames"] = {};
