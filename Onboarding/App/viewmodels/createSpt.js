@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator'],
-    function (router, app, guidgenerator) {
+﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter'],
+    function (router, app, guidgenerator, dataformatter) {
 
         var vm = {
             displayName: ko.observable(),
@@ -25,6 +25,9 @@
         var metaDataFetched = false;
 
         function activate() {
+            //var json = { "Environment": { "@name": "grn002", "Hostnames": { "Hostname": ["configure.office.net", "other"] } } };
+            //console.log(dataformatter.json2xml(json));
+            console.log(dataformatter.json2xml(createJSONSpt()));
             clearInputOnLoading();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
@@ -123,6 +126,29 @@
             else {
                 return true;
             }
+        };
+
+        function createJSONSpt() {
+            var json = {};
+            json["ServicePrincipalTemplate"] = {};
+            json["ServicePrincipalTemplate"]["Value"] = {};
+
+            var sptContent = json["ServicePrincipalTemplate"]["Value"];
+            var sptEnvironment = sptContent["Environment"] = {};
+            sptEnvironment["@name"] = "grn002";
+            sptEnvironment["Hostnames"] = {};
+
+            var hostnameArr = sptEnvironment["Hostnames"]["Hostname"] = [];
+            hostnameArr.push("configure.office.net");
+            hostnameArr.push("other");
+
+            //json["ServicePrincipalTemplate"]["Value"]["Environment"] = {};
+            //json["ServicePrincipalTemplate"]["Value"]["Environment"]["@name"] = "grn002";
+            //json["ServicePrincipalTemplate"]["Value"]["Environment"]["Hostnames"] = {};
+            //json["ServicePrincipalTemplate"]["Value"]["Environment"]["Hostnames"]["Hostname"] = [];
+            //json["ServicePrincipalTemplate"]["Value"]["Environment"]["Hostnames"]["Hostname"].push("configure.office.net");
+            //json["ServicePrincipalTemplate"]["Value"]["Environment"]["Hostnames"]["Hostname"].push("other");
+            return json;
         };
 
         return vm;
