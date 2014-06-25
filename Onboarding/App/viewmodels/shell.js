@@ -9,11 +9,11 @@
         activate: function () {
             router.map([
                 { route: '', title: 'Home', moduleId: 'viewmodels/home', nav: true },
-                { route: 'create', title: 'Create', moduleId: 'viewmodels/create', nav: true },
-                { route: 'spt', title: 'SPT', moduleId: 'viewmodels/spt', nav: true },
-                { route: 'spt/detail/:id', title: 'Detail', moduleId: 'viewmodels/detail' },
-                { route: 'spt/update/:id', title: 'Update', moduleId: 'viewmodels/update' },
-                { route: 'spt/cert/:id', title: 'Cert', moduleId: 'viewmodels/cert' }
+                { route: 'createSpt', title: 'Create SPT', moduleId: 'viewmodels/createSpt', nav: true },
+                { route: 'request', title: 'Request', moduleId: 'viewmodels/request', nav: true },
+                { route: 'request/detail/:id', title: 'Detail', moduleId: 'viewmodels/detail' },
+                { route: 'request/update/:id', title: 'Update', moduleId: 'viewmodels/update' },
+                { route: 'request/cert/:id', title: 'Cert', moduleId: 'viewmodels/cert' }
             ]).buildNavigationModel();
 
             return router.activate();

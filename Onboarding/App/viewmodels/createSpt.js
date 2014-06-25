@@ -41,7 +41,7 @@
         }
 
         /// <summary>
-        /// When "create" page is activated, clear input filed. 
+        /// When "create" page is activated, clear input filled. 
         /// Otherwise the input from last time is still there.
         /// </summary>
         function clearInputOnLoading() {
