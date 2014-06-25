@@ -35,14 +35,14 @@
         <div class="form-group">
             <label for="environment" class="col-sm-2 control-label">Environment</label>
             <div class="col-sm-6">
-                <select class="form-control" id="environment" data-bind="options: availableEnvironment, value: environment"></select>
+                <select class="form-control" id="environment" data-bind="options: availableEnvironment, value: environment, optionsCaption: 'Choose...'"></select>
                 <!--<div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>-->
             </div>
         </div>
         <!--Create button-->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
-                <button class="btn btn-default" data-bind="click: createEntity">Create</button>
+                <button id="createBtn" class="btn btn-default" data-bind="click: createEntity" disabled>Create</button>
             </div>
         </div>
     </form>

@@ -1,7 +1,7 @@
 ﻿<section>
     <h2>Request Queue</h2>
     <div>
-        <a href="#/create">Create SPT</a>
+        <a href="#createSpt">Create SPT</a>
     </div>
     <br />
     <!--Search area-->
@@ -22,7 +22,7 @@
         <tbody data-bind="foreach: spts">
             <tr>
                 <td>
-                    <a data-bind="attr: { href: '#spt/detail/' + Id() }">
+                    <a data-bind="attr: { href: '#request/detail/' + Id() }">
                         <span id="displayName" data-bind="text: DisplayName"></span>
                     </a>
                 </td>

@@ -6,7 +6,7 @@
             appClass: ko.observable(),
             environment: ko.observable(),
             appPrincipalId: ko.observable(guidgenerator.generateGuid()),
-            availableEnvironment: ko.observableArray(['Not specified', 'grn001', 'grn002', 'grnppe']),
+            availableEnvironment: ko.observableArray(['grn001', 'grn002', 'grnppe', 'default']),
             activate: activate,
             canDeactivate: canDeactivate,
             createEntity: createEntity,
@@ -36,6 +36,9 @@
             function fetchMetadataSuccess(rawMetadata) {
                 toastr.success("Fetch metadata succeed");
                 metaDataFetched = true;
+
+                // Enable "create" button when metadata has been fetched
+                $("#createBtn").attr("disabled", false);
             }
 
             function fetchMetadataFail(exception) {
@@ -63,6 +66,9 @@
             if (metaDataFetched) {
                 //vm.validationErrors([]);
 
+                // Disable "create" button after hit
+                $("#createBtn").attr("disabled", true);
+
                 var newServicePrincipalTemplate = manager.
                     createEntity('ServicePrincipalTemplate:#Onboarding.Models',
                     {
@@ -79,18 +85,22 @@
                 function createSucceeded(data) {
                     hasCreated = true;
                     toastr.success("Created");
-                    router.navigate('#/spt');
+                    router.navigate('#/request');
                 }
 
                 function createFailed(error) {
                     toastr.error("Create failed");
-                    error.entitiesWithErrors.map(function (entity) {
-                        toastr.info("out");
-                        entity.entityAspect.getValidationErrors().map(function (validationError) {
-                            vm.validationErrors.push(validationError);
-                            toastr.info("in");
-                        });
-                    });
+
+                    // Enable "create" button after failed submit
+                    $("#createBtn").attr("disabled", false);
+
+                    //error.entitiesWithErrors.map(function (entity) {
+                    //    toastr.info("out");
+                    //    entity.entityAspect.getValidationErrors().map(function (validationError) {
+                    //        vm.validationErrors.push(validationError);
+                    //        toastr.info("in");
+                    //    });
+                    //});
                     manager.rejectChanges();
                 }
             }
