@@ -153,6 +153,35 @@
             body["DisplayName"] = vm.displayName();
             body["AppClass"] = vm.appClass();
 
+            /********HARD CODING********/
+            // Environments
+            body["Environments"] = {};
+            var envArr = body["Environments"]["Environment"] = [];
+            var env = {};
+            env["@name"] = "grn001";
+            // Hostnames
+            env["Hostnames"] = {};
+            var hostnameArr = env["Hostnames"]["Hostname"] = [];
+            hostnameArr.push("portal.partner.microsoftonline.cn");
+            hostnameArr.push("portal.bosint.bosxlab.com");
+            // AdditionalSPNames
+            env["AdditionalServicePrincipalNames"] = {};
+            var additionalSPNameArr = env["AdditionalServicePrincipalNames"]["ServicePrincipalName"] = [];
+            additionalSPNameArr.push("https://odc.officeapps.live.com");
+            additionalSPNameArr.push("https://roaming.officeapps.live.com");
+            // AppAddresses
+            env["AppAddresses"] = {};
+            var appAddressArr = env["AppAddresses"]["AppAddress"] = [];
+            var appAddress = {};
+            appAddress["@Address"] = "https://account.activedirectory.windowsazure.com";
+            appAddress["@AddressType"] = "Reply";        
+            appAddressArr.push(appAddress);
+            appAddress = {};
+            appAddress["@Address"] = "https://account.activedirectory-ppe.windowsazure.com";
+            appAddress["@AddressType"] = "Reply";
+            appAddressArr.push(appAddress);
+            envArr.push(env);
+
             body["AppPrincipalID"] = vm.appPrincipalId();
 
             return json;
