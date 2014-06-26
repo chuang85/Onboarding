@@ -13,7 +13,6 @@
             <label for="displayName" class="col-sm-2 control-label">DisplayName</label>
             <div class="col-sm-6">
                 <input class="form-control" id="displayName" placeholder="DisplayName" data-bind="value: displayName">
-                <!--<div class="propertyError" data-bind="text: getPropertyError('DisplayName')"></div>-->
             </div>
         </div>
         <!--AppClass-->
@@ -21,7 +20,6 @@
             <label for="appClass" class="col-sm-2 control-label">AppClass</label>
             <div class="col-sm-6">
                 <input class="form-control" id="appClass" placeholder="AppClass" data-bind="value: appClass">
-                <!--<div class="propertyError" data-bind="text: getPropertyError('AppClass')"></div>-->
             </div>
         </div>
         <!--AppPrincipalId-->
@@ -38,7 +36,6 @@
                 <label for="environment" class="col-sm-2 control-label">Environment</label>
                 <div class="col-sm-6">
                     <select class="form-control" id="environment" data-bind="options: availableEnvironment, value: environment, optionsCaption: 'Choose...'"></select>
-                    <!--<div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>-->
                 </div>
             </div>
             <!--Env details-->
@@ -74,25 +71,20 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <a class="pointerLink center" data-bind="click: addServicePrincipalName">Add ServicePrincipalName</a>
+                                <a class="pointerLink center">Add ServicePrincipalName</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--test each-->
-            <!--<div id="test-each-area" class="jumbotron">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-            </div>-->
-            <!--add-->
-            <!--<button id="add-env-button" data-bind="click: addEnvironment">Add</button>-->
-            <!--Create button-->
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-6">
-                    <button id="create-btn" class="btn btn-default" data-bind="click: createEntity" disabled>Create</button>
-                </div>
+        </div>
+        <!--add-->
+        <!--<button id="add-env-button" data-bind="click: addEnvironment">Add</button>-->
+        <!--Create button-->
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-6">
+                <button id="create-btn" class="btn btn-default" data-bind="click: createEntity" disabled>Create</button>
             </div>
+        </div>
     </form>
 </section>

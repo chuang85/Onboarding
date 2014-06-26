@@ -11,10 +11,8 @@
             canDeactivate: canDeactivate,
             createEntity: createEntity,
             goBack: goBack,
-            //validationErrors: ko.observableArray(),
-            //getPropertyError: getPropertyError,
-            addEnvironment: addEnvironment,
-            addHostname: addHostname,
+            //addEnvironment: addEnvironment,
+            addHostname: addHostname
         };
 
         var serviceName = 'breeze/servicePrincipalTemplate';
@@ -26,18 +24,7 @@
         // Prevent metaData not fetched exception
         var metaDataFetched = false;
 
-        function activate() {
-            /********TEST********/
-            //var json = {};
-            //json["TEST"] = {};
-            //var arr = json["TEST"]["test"] = [];
-            //$("#test-each-area p").each(function () {
-            //    arr.push($(this).text());
-            //});
-            //console.log("start");
-            //console.log(dataformatter.json2xml(json));
-            //console.log("end");
-            
+        function activate() {            
             clearInputOnLoading();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
@@ -71,8 +58,18 @@
         /// </summary>
         function createEntity() {
             if (metaDataFetched) {
-                //vm.validationErrors([]);
-
+                //var json = {};
+                //json["TEST"] = {};
+                //var arr = json["TEST"]["test"] = [];
+                //$(".repeating-hostname-section input").each(function(i, o) {
+                //    var value = $(this).val();
+                //    if (value != "") {
+                //        arr.push(value);
+                //    }
+                //});
+                //console.log("start");
+                //console.log(dataformatter.json2xml(json));
+                //console.log("end");
 
                 console.log(dataformatter.json2xml(createJSONSpt()));
 
@@ -103,13 +100,6 @@
                 function createFailed(error) {
                     toastr.error("Create failed");
                     enableButton();
-                    //error.entitiesWithErrors.map(function (entity) {
-                    //    toastr.info("out");
-                    //    entity.entityAspect.getValidationErrors().map(function (validationError) {
-                    //        vm.validationErrors.push(validationError);
-                    //        toastr.info("in");
-                    //    });
-                    //});
                     manager.rejectChanges();
                 }
             }
@@ -118,22 +108,6 @@
         function goBack() {
             router.navigateBack();
         };
-
-        //function getPropertyError(propertyName) {
-        //    toastr.info("1");
-        //    var validationErrors = ko.utils.arrayFilter(vm.validationErrors(), function (validationError) {
-        //        return validationError.propertyName == propertyName;
-        //    });
-
-        //    if (validationErrors.length > 0) {
-        //        toastr.info("2");
-        //        return validationErrors[0].errorMessage;
-        //    }
-        //    else {
-        //        toastr.info("3");
-        //        return '';
-        //    }
-        //};
 
         /// <summary>
         /// Pop up a window to make sure to navigate away.
@@ -184,33 +158,36 @@
             body["DisplayName"] = vm.displayName();
             body["AppClass"] = vm.appClass();            
 
-            /********HARD CODING********/
             // Environments
             body["Environments"] = {};
             var envArr = body["Environments"]["Environment"] = [];
             var env = {};
-            env["@name"] = "grn001";
+            env["@name"] = $("#environment").val();
             // Hostnames
             env["Hostnames"] = {};
             var hostnameArr = env["Hostnames"]["Hostname"] = [];
-            hostnameArr.push("portal.partner.microsoftonline.cn");
-            hostnameArr.push("portal.bosint.bosxlab.com");
-            // AdditionalSPNames
-            env["AdditionalServicePrincipalNames"] = {};
-            var additionalSPNameArr = env["AdditionalServicePrincipalNames"]["ServicePrincipalName"] = [];
-            additionalSPNameArr.push("https://odc.officeapps.live.com");
-            additionalSPNameArr.push("https://roaming.officeapps.live.com");
-            // AppAddresses
-            env["AppAddresses"] = {};
-            var appAddressArr = env["AppAddresses"]["AppAddress"] = [];
-            var appAddress = {};
-            appAddress["@Address"] = "https://account.activedirectory.windowsazure.com";
-            appAddress["@AddressType"] = "Reply";        
-            appAddressArr.push(appAddress);
-            appAddress = {};
-            appAddress["@Address"] = "https://account.activedirectory-ppe.windowsazure.com";
-            appAddress["@AddressType"] = "Reply";
-            appAddressArr.push(appAddress);
+            $(".repeating-hostname-section input").each(function() {
+                var value = $(this).val();
+                if (value != "") {
+                    hostnameArr.push(value);
+                }
+            });
+            //// AdditionalSPNames
+            //env["AdditionalServicePrincipalNames"] = {};
+            //var additionalSPNameArr = env["AdditionalServicePrincipalNames"]["ServicePrincipalName"] = [];
+            //additionalSPNameArr.push("https://odc.officeapps.live.com");
+            //additionalSPNameArr.push("https://roaming.officeapps.live.com");
+            //// AppAddresses
+            //env["AppAddresses"] = {};
+            //var appAddressArr = env["AppAddresses"]["AppAddress"] = [];
+            //var appAddress = {};
+            //appAddress["@Address"] = "https://account.activedirectory.windowsazure.com";
+            //appAddress["@AddressType"] = "Reply";        
+            //appAddressArr.push(appAddress);
+            //appAddress = {};
+            //appAddress["@Address"] = "https://account.activedirectory-ppe.windowsazure.com";
+            //appAddress["@AddressType"] = "Reply";
+            //appAddressArr.push(appAddress);
             envArr.push(env);
 
             body["AppPrincipalID"] = vm.appPrincipalId();
