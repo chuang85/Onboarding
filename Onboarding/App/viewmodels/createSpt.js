@@ -13,7 +13,8 @@
             goBack: goBack,
             //validationErrors: ko.observableArray(),
             //getPropertyError: getPropertyError,
-            addEnvironment: addEnvironment
+            addEnvironment: addEnvironment,
+            addHostname: addHostname,
         };
 
         var serviceName = 'breeze/servicePrincipalTemplate';
@@ -27,14 +28,16 @@
 
         function activate() {
             /********TEST********/
-            var list = [];
-            $("#test-each-area").each(function () {
-                list.push($("p").innerHTML);
-            });
-            console.log("start");
-            console.log(list.toString());
-            console.log("end");
-
+            //var json = {};
+            //json["TEST"] = {};
+            //var arr = json["TEST"]["test"] = [];
+            //$("#test-each-area p").each(function () {
+            //    arr.push($(this).text());
+            //});
+            //console.log("start");
+            //console.log(dataformatter.json2xml(json));
+            //console.log("end");
+            
             clearInputOnLoading();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
@@ -154,6 +157,20 @@
 
         function addEnvironment() {
             $("#env-group").append("<h1>TEST</h1>");
+        }
+
+        function addHostname() {
+            var fieldWrapper = $("<div class=\"fieldwrapper\" />");
+            var inputField = $("<input class=\"form-control\" />");
+            var removeButton = $("<span class=\"pull-right pointerLink glyphicon glyphicon-trash\"></span>");
+
+            removeButton.click(function () {
+                $(this).parent().remove();
+            });
+
+            fieldWrapper.append(inputField);
+            fieldWrapper.append(removeButton);
+            $(".repeating-hostname-section").append(fieldWrapper);
         }
 
         function createJSONSpt() {

@@ -33,27 +33,66 @@
         </div>
         <!--Environment-->
         <div id="env-group">
+            <!--Env selector-->
             <div class="form-group">
                 <label for="environment" class="col-sm-2 control-label">Environment</label>
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                     <select class="form-control" id="environment" data-bind="options: availableEnvironment, value: environment, optionsCaption: 'Choose...'"></select>
                     <!--<div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>-->
                 </div>
             </div>
-        </div>
-        <!--test each-->
-        <div id="test-each-area" class="jumbotron">
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-        </div>
-        <!--add-->
-        <button id="add-env-button" data-bind="click: addEnvironment">Add</button>
-        <!--Create button-->
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-6">
-                <button id="create-btn" class="btn btn-default" data-bind="click: createEntity" disabled>Create</button>
+            <!--Env details-->
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-2 panel-group" id="accordion">
+                    <!--Hostnames-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    Hostnames
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="repeating-hostname-section">
+                                    <!--<input class="form-control" />
+                                    <span class="pointerLink glyphicon glyphicon-trash"></span>-->
+                                </div>
+                                <a class="pointerLink center" data-bind="click: addHostname">Add Hostname</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ServicePrincipalNames-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                    AdditionalServicePrincipalNames
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <a class="pointerLink center" data-bind="click: addServicePrincipalName">Add ServicePrincipalName</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <!--test each-->
+            <!--<div id="test-each-area" class="jumbotron">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+            </div>-->
+            <!--add-->
+            <!--<button id="add-env-button" data-bind="click: addEnvironment">Add</button>-->
+            <!--Create button-->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <button id="create-btn" class="btn btn-default" data-bind="click: createEntity" disabled>Create</button>
+                </div>
+            </div>
     </form>
 </section>
