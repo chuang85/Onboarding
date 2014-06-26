@@ -26,6 +26,15 @@
         var metaDataFetched = false;
 
         function activate() {
+            /********TEST********/
+            var list = [];
+            $("#test-each-area").each(function () {
+                list.push($("p").innerHTML);
+            });
+            console.log("start");
+            console.log(list.toString());
+            console.log("end");
+
             clearInputOnLoading();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
@@ -156,7 +165,7 @@
 
             var body = json["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"]["ServicePrincipal"] = {};
             body["DisplayName"] = vm.displayName();
-            body["AppClass"] = vm.appClass();
+            body["AppClass"] = vm.appClass();            
 
             /********HARD CODING********/
             // Environments
