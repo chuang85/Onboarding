@@ -12,7 +12,8 @@
             createEntity: createEntity,
             goBack: goBack,
             //validationErrors: ko.observableArray(),
-            //getPropertyError: getPropertyError
+            //getPropertyError: getPropertyError,
+            addEnvironment: addEnvironment
         };
 
         var serviceName = 'breeze/servicePrincipalTemplate';
@@ -135,11 +136,15 @@
         };
 
         function enableButton() {
-            $("#createBtn").attr("disabled", false);
+            $("#create-btn").attr("disabled", false);
         }
 
         function disableButton() {
-            $("#createBtn").attr("disabled", false);
+            $("#create-btn").attr("disabled", false);
+        }
+
+        function addEnvironment() {
+            $("#env-group").append("<h1>TEST</h1>");
         }
 
         function createJSONSpt() {

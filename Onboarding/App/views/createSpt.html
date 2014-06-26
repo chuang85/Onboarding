@@ -32,17 +32,20 @@
             </div>
         </div>
         <!--Environment-->
-        <div class="form-group">
-            <label for="environment" class="col-sm-2 control-label">Environment</label>
-            <div class="col-sm-6">
-                <select class="form-control" id="environment" data-bind="options: availableEnvironment, value: environment, optionsCaption: 'Choose...'"></select>
-                <!--<div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>-->
+        <div id="env-group">
+            <div class="form-group">
+                <label for="environment" class="col-sm-2 control-label">Environment</label>
+                <div class="col-sm-6">
+                    <select class="form-control" id="environment" data-bind="options: availableEnvironment, value: environment, optionsCaption: 'Choose...'"></select>
+                    <!--<div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>-->
+                </div>
             </div>
         </div>
+        <button id="add-env-button" data-bind="click: addEnvironment">Add</button>
         <!--Create button-->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
-                <button id="createBtn" class="btn btn-default" data-bind="click: createEntity" disabled>Create</button>
+                <button id="create-btn" class="btn btn-default" data-bind="click: createEntity" disabled>Create</button>
             </div>
         </div>
     </form>
