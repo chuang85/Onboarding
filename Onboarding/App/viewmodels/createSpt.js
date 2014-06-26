@@ -11,7 +11,6 @@
             canDeactivate: canDeactivate,
             createEntity: createEntity,
             goBack: goBack,
-            //addEnvironment: addEnvironment,
             addHostname: addHostname
         };
 
@@ -58,19 +57,6 @@
         /// </summary>
         function createEntity() {
             if (metaDataFetched) {
-                //var json = {};
-                //json["TEST"] = {};
-                //var arr = json["TEST"]["test"] = [];
-                //$(".repeating-hostname-section input").each(function(i, o) {
-                //    var value = $(this).val();
-                //    if (value != "") {
-                //        arr.push(value);
-                //    }
-                //});
-                //console.log("start");
-                //console.log(dataformatter.json2xml(json));
-                //console.log("end");
-
                 console.log(dataformatter.json2xml(createJSONSpt()));
 
                 // Disable "create" button after hit
@@ -127,10 +113,6 @@
 
         function disableButton() {
             $("#create-btn").attr("disabled", false);
-        }
-
-        function addEnvironment() {
-            $("#env-group").append("<h1>TEST</h1>");
         }
 
         function addHostname() {
