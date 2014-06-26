@@ -4,45 +4,38 @@
     </h2>
     <!--Back link-->
     <div>
-        <a data-bind="click: goBack" class="btn btn-link">< Back</a>
+        <h3><a data-bind="click: goBack" class="pointerLink">< Back</a></h3>
     </div>
     <form class="form-horizontal" role="form">
         <!--DisplayName-->
         <div class="form-group">
-            <dl class="dl-horizontal" data-bind="with: spt">
-                <dt>DisplayName</dt>
-                <dd>
-                    <div class="col-sm-6" id="displayName" data-bind="text: DisplayName"></div>
-                </dd>
-            </dl>
+            <label for="displayName" class="col-sm-2 control-label">DisplayName</label>
+            <div class="col-sm-6">
+                <p class="form-control-static" id="displayName" data-bind="text: spt().DisplayName" />
+            </div>
         </div>
         <!--AppClass-->
         <div class="form-group">
-            <dl class="dl-horizontal" data-bind="with: spt">
-                <dt>AppClass</dt>
-                <dd>
-                    <div class="col-sm-6" id="appClass" data-bind="text: AppClass"></div>
-                </dd>
-            </dl>
+            <label for="appClass" class="col-sm-2 control-label">AppClass</label>
+            <div class="col-sm-6">
+                <p class="form-control-static" id="appClass" data-bind="text: spt().AppClass" />
+            </div>
         </div>
         <!--AppPrincipalId-->
         <div class="form-group">
-            <dl class="dl-horizontal" data-bind="with: spt">
-                <dt>AppPrincipalId</dt>
-                <dd>
-                    <div class="col-sm-6" id="appPrincipalId" data-bind="text: AppPrincipalID"></div>
-                </dd>
-            </dl>
+            <label for="appPrincipalId" class="col-sm-2 control-label">AppPrincipalID</label>
+            <div class="col-sm-6">
+                <p class="form-control-static" id="appPrincipalId" data-bind="text: spt().AppPrincipalID" />
+            </div>
         </div>
         <!--Environment-->
         <div class="form-group">
-            <dl class="dl-horizontal" data-bind="with: spt">
-                <dt>Environment</dt>
-                <dd>
-                    <div class="col-sm-6" id="environment" data-bind="text: Environment"></div>
-                </dd>
-            </dl>
+            <label for="environment" class="col-sm-2 control-label">Environment</label>
+            <div class="col-sm-6">
+                <p class="form-control-static" id="environment" data-bind="text: spt().Environment" />
+            </div>
         </div>
+
         <div class="form-group">
             <div class="col-sm-offset-2">
                 <!--Update button-->
