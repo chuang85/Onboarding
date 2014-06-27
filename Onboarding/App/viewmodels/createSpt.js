@@ -23,7 +23,7 @@
         // Prevent metaData not fetched exception
         var metaDataFetched = false;
 
-        function activate() {            
+        function activate() {
             clearInputOnLoading();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
@@ -133,10 +133,10 @@
 
         function createJSONSpt() {
             var map = {
-                "PROD" : "grn001",
-                "Gallatin": "grn002",
-                "PPE": "grnppe",
-                "Default" : "*"
+                "prod": "grn001",
+                "gallatin": "grn002",
+                "ppe": "grnppe",
+                "default": "*"
             };
 
             var json = {};
@@ -147,51 +147,53 @@
 
             var body = json["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"]["ServicePrincipal"] = {};
             body["DisplayName"] = vm.displayName();
-            body["AppClass"] = vm.appClass();            
+            body["AppClass"] = vm.appClass();
 
             // Environments
             body["Environments"] = {};
             var envArr = body["Environments"]["Environment"] = [];
 
-            var env = {};
-            env["@name"] = $("#environment").val();
+            $("#environment .env-title a").each(function () {
+                var env = {};
+                var envType = $(this).text().toLowerCase();
+                env["@name"] = map[envType];
 
-            // Hostnames
-            env["Hostnames"] = {};
-            var hostnameArr = env["Hostnames"]["Hostname"] = [];
-            $(".prod-hostname-section input").each(function() {
-                var value = $(this).val();
-                if (value != "") {
-                    hostnameArr.push(value);
-                }
+                // Hostnames
+                env["Hostnames"] = {};
+                var hostnameArr = env["Hostnames"]["Hostname"] = [];
+                $("." + envType + "-hostname-section input").each(function () {
+                    var value = $(this).val();
+                    if (value != "") {
+                        hostnameArr.push(value);
+                    }
+                });
+
+                // AdditionalSPNames
+                env["AdditionalServicePrincipalNames"] = {};
+                var additionalSPNameArr = env["AdditionalServicePrincipalNames"]["ServicePrincipalName"] = [];
+                $("." + envType + "-spname-section input").each(function () {
+                    var value = $(this).val();
+                    if (value != "") {
+                        additionalSPNameArr.push(value);
+                    }
+                });
+
+                // AppAddresses
+                env["AppAddresses"] = {};
+                var appAddressArr = env["AppAddresses"]["AppAddress"] = [];
+                $("." + envType + "-appaddress-section input").each(function () {
+                    var value = $(this).val();
+                    if (value != "") {
+                        var appAddress = {};
+                        appAddress["@Address"] = value;
+                        appAddress["@AddressType"] = "Reply";
+                        appAddressArr.push(appAddress);
+                    }
+                });
+
+                // Finish up Environments
+                envArr.push(env);
             });
-
-            // AdditionalSPNames
-            env["AdditionalServicePrincipalNames"] = {};
-            var additionalSPNameArr = env["AdditionalServicePrincipalNames"]["ServicePrincipalName"] = [];
-            $(".prod-spname-section input").each(function () {
-                var value = $(this).val();
-                if (value != "") {
-                    additionalSPNameArr.push(value);
-                }
-            });
-
-            // AppAddresses
-            env["AppAddresses"] = {};
-            var appAddressArr = env["AppAddresses"]["AppAddress"] = [];
-            $(".prod-appaddress-section input").each(function () {
-                var value = $(this).val();
-                if (value != "") {
-                    var appAddress = {};
-                    appAddress["@Address"] = value;
-                    appAddress["@AddressType"] = "Reply";
-                    appAddressArr.push(appAddress);
-                }
-            });
-            
-            // Finish up Environments
-            envArr.push(env);
-
             body["AppPrincipalID"] = vm.appPrincipalId();
 
             return json;
