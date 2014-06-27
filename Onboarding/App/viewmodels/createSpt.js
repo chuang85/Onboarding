@@ -24,7 +24,7 @@
         function activate() {
             clearInputOnLoading();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
-                manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
+                manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess);
             } else {
                 enableButton();
             }
@@ -49,6 +49,9 @@
             hasCreated = false;
             vm.displayName("");
             vm.appClass("");
+            //$(":input").each(function () {
+            //    $(this).val("");
+            //});
         }
 
         /// <summary>

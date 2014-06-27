@@ -20,9 +20,9 @@ namespace Onboarding.Models
 
         public string CreatedBy { get; set; }
 
-        //public RequestState State { get; set; }
+        //public RequestState RequestState { get; set; }
 
-        //public RequestType Type { get; set; }
+        //public RequestType RequestType { get; set; }
 
         public byte[] Blob { get; set; }
 
