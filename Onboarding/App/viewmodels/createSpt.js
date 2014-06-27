@@ -209,12 +209,20 @@
                 });
 
                 // Finish up Environments
-                envArr.push(env);
+                if (!envEmpty(env)) {
+                    envArr.push(env);
+                }
             });
+            // AppPrincipalID
             body["AppPrincipalID"] = vm.appPrincipalId();
-
             return json;
         };
+
+        function envEmpty(env) {
+            return (env["Hostnames"]["Hostname"].length
+                || env["AdditionalServicePrincipalNames"]["ServicePrincipalName"].length
+                || env["AppAddresses"]["AppAddress"].length) == 0;
+        }
 
         return vm;
 

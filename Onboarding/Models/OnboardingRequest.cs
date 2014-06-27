@@ -12,6 +12,7 @@ namespace Onboarding.Models
         public int RequestId { get; set; }
 
         // Need this?
+        [Required]
         public string DisplayName { get; set; }
 
         public DateTime CreatedDate { get; set; }
