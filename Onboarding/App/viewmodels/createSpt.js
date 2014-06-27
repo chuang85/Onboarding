@@ -27,6 +27,8 @@
             clearInputOnLoading();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
+            } else {
+                enableButton();
             }
 
             function fetchMetadataSuccess(rawMetadata) {
@@ -115,7 +117,7 @@
             $("#create-btn").attr("disabled", false);
         }
 
-        function addItem(cargo) {
+        function addItem(envType, itemType) {
             var fieldWrapper = $("<div class=\"fieldwrapper\" />");
             var inputField = $("<input class=\"form-control\" />");
             var removeButton = $("<span class=\"pull-right pointerLink glyphicon glyphicon-trash\"></span>");
@@ -126,10 +128,17 @@
 
             fieldWrapper.append(inputField);
             fieldWrapper.append(removeButton);
-            $(".repeating-" + cargo + "-section").append(fieldWrapper);
+            $("." + envType + "-" + itemType + "-section").append(fieldWrapper);
         }
 
         function createJSONSpt() {
+            var map = {
+                "PROD" : "grn001",
+                "Gallatin": "grn002",
+                "PPE": "grnppe",
+                "Default" : "*"
+            };
+
             var json = {};
             json["ServicePrincipalTemplate"] = {};
             json["ServicePrincipalTemplate"]["Value"] = {};
@@ -143,13 +152,14 @@
             // Environments
             body["Environments"] = {};
             var envArr = body["Environments"]["Environment"] = [];
+
             var env = {};
             env["@name"] = $("#environment").val();
 
             // Hostnames
             env["Hostnames"] = {};
             var hostnameArr = env["Hostnames"]["Hostname"] = [];
-            $(".repeating-hostname-section input").each(function() {
+            $(".prod-hostname-section input").each(function() {
                 var value = $(this).val();
                 if (value != "") {
                     hostnameArr.push(value);
@@ -159,7 +169,7 @@
             // AdditionalSPNames
             env["AdditionalServicePrincipalNames"] = {};
             var additionalSPNameArr = env["AdditionalServicePrincipalNames"]["ServicePrincipalName"] = [];
-            $(".repeating-spname-section input").each(function () {
+            $(".prod-spname-section input").each(function () {
                 var value = $(this).val();
                 if (value != "") {
                     additionalSPNameArr.push(value);
@@ -169,7 +179,7 @@
             // AppAddresses
             env["AppAddresses"] = {};
             var appAddressArr = env["AppAddresses"]["AppAddress"] = [];
-            $(".repeating-appaddress-section input").each(function () {
+            $(".prod-appaddress-section input").each(function () {
                 var value = $(this).val();
                 if (value != "") {
                     var appAddress = {};

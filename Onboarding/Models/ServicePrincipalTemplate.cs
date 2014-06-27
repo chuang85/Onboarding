@@ -17,7 +17,7 @@ namespace Onboarding.Models
         [Required]
         public string AppClass { get; set; }
 
-        [Required]
+        //[Required]
         public string Environment { get; set; }
         //public Environment Environment { get; set; }
 

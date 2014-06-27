@@ -2,7 +2,6 @@
     <!--Back link-->
     <div>
         <h3><a class="pointerLink" data-bind="click: goBack">< Back</a></h3>
-        <!--<div class="propertyError" data-bind="text: getPropertyError('DisplayName')">kkkkkkkkkkk</div>-->
     </div>
 
     <h2>Create a Service Principal Template</h2> <br />
@@ -34,58 +33,71 @@
             <!--Env selector-->
             <div class="form-group">
                 <label for="environment" class="col-sm-2 control-label">Environment</label>
-                <div class="col-sm-6">
-                    <select class="form-control" id="environment" data-bind="options: availableEnvironment, value: environment, optionsCaption: 'Choose...'"></select>
-                </div>
-            </div>
-            <!--Env details-->
-            <div class="form-group">
-                <div class="col-sm-6 col-sm-offset-2 panel-group" id="accordion">
-                    <!--Hostnames-->
+                <div class="col-sm-6 col-sm-offset-2 panel-group" id="environment">
+                    <!--PROD-->
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse-hostname">
-                                    Hostnames
+                                <a data-toggle="collapse" href="#collapse-prod">
+                                    PROD
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapse-hostname" class="panel-collapse collapse">
+                        <!--PROD details-->
+                        <div id="collapse-prod" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <div class="repeating-hostname-section"></div>
-                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'hostname')">Add Hostname</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--ServicePrincipalNames-->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse-spname">
-                                    AdditionalServicePrincipalNames
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapse-spname" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div class="repeating-spname-section"></div>
-                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'spname')">Add ServicePrincipalName</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--AppAddress-->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse-appaddress">
-                                    AppAddress
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapse-appaddress" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div class="repeating-appaddress-section"></div>
-                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'appaddress')">Add AppAddress</a>
+                                <div class="form-group">
+                                    <div class="col-sm-6 col-sm-offset-2 panel-group" id="accordion">
+                                        <!--Hostnames-->
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" href="#collapse-prod-hostname">
+                                                        Hostnames
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse-prod-hostname" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <div class="prod-hostname-section"></div>
+                                                    <a class="pointerLink center" data-bind="click: addItem.bind($data, 'prod', 'hostname')">Add Hostname</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--ServicePrincipalNames-->
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" href="#collapse-prod-spname">
+                                                        AdditionalServicePrincipalNames
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse-prod-spname" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <div class="prod-spname-section"></div>
+                                                    <a class="pointerLink center" data-bind="click: addItem.bind($data, 'prod', 'spname')">Add ServicePrincipalName</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--AppAddress-->
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" href="#collapse-prod-appaddress">
+                                                        AppAddress
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse-prod-appaddress" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <div class="prod-appaddress-section"></div>
+                                                    <a class="pointerLink center" data-bind="click: addItem.bind($data, 'prod', 'appaddress')">Add AppAddress</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
