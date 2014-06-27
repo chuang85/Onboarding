@@ -173,11 +173,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Environment.cs" />
     <Compile Include="Models\OnboardingDbContext.cs" />
     <Compile Include="Models\OnboardingDbContextInitializer.cs" />
     <Compile Include="Models\ServicePrincipalTemplate.cs" />
-    <Compile Include="Models\TaskSetScopeReference.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
