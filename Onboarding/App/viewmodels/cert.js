@@ -9,7 +9,7 @@
             goBack: goBack
         };
 
-        var serviceName = 'breeze/servicePrincipalTemplate';
+        var serviceName = 'breeze/Breeze';
 
         var manager = new breeze.EntityManager(serviceName);
 

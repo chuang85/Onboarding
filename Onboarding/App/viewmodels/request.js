@@ -6,7 +6,7 @@
         filterText: ko.observable().extend({ rateLimit: 400 })
     };
 
-    var serviceName = 'breeze/servicePrincipalTemplate';
+    var serviceName = 'breeze/Breeze';
 
     var manager = new breeze.EntityManager(serviceName);
 
@@ -29,7 +29,8 @@
     /// </summary>
     function getSpts() {
         var query = breeze.EntityQuery.
-                from("ServicePrincipalTemplates");
+                //from("ServicePrincipalTemplates");
+                from("OnboardingRequest");
 
         // Create where clause for filtering
         if (vm.filterText() && vm.filterText().length > 0) {

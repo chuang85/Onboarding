@@ -16,7 +16,7 @@ using System.Net.Mail;
 namespace Onboarding.Controllers
 {
     [BreezeController]
-    public class ServicePrincipalTemplateController : ApiController
+    public class BreezeController : ApiController
     {
         //readonly ServicePrincipalTemplateContextProvider _contextProvider = new ServicePrincipalTemplateContextProvider();
         readonly EFContextProvider<OnboardingDbContext> _contextProvider = new EFContextProvider<OnboardingDbContext>();
@@ -48,10 +48,16 @@ namespace Onboarding.Controllers
             return jsonSerializer;
         }
 
+        //[HttpGet]
+        //public IQueryable<ServicePrincipalTemplate> ServicePrincipalTemplates()
+        //{
+        //    return _contextProvider.Context.ServicePrincipalTemplates;
+        //}
+
         [HttpGet]
-        public IQueryable<ServicePrincipalTemplate> ServicePrincipalTemplates()
+        public IQueryable<OnboardingRequest> OnboardingRequest()
         {
-            return _contextProvider.Context.ServicePrincipalTemplates;
+            return _contextProvider.Context.OnboardingRequest;
         }
 
         //private static void SendEmail(string from, string from_name, string to, string cc, string bcc, string subject, string body, bool isHtml)

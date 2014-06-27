@@ -12,21 +12,21 @@ namespace Onboarding.Models
         {
             base.Seed(context);
 
-            context.ServicePrincipalTemplates.Add(new ServicePrincipalTemplate
-            {
-                DisplayName = "Office 365",
-                AppClass = "Office365Portal",
-                AppPrincipalID = Guid.NewGuid(),
-                Environment = "grn001"
-            });
+            //context.ServicePrincipalTemplates.Add(new ServicePrincipalTemplate
+            //{
+            //    DisplayName = "Office 365",
+            //    AppClass = "Office365Portal",
+            //    AppPrincipalID = Guid.NewGuid(),
+            //    Environment = "grn001"
+            //});
 
-            context.ServicePrincipalTemplates.Add(new ServicePrincipalTemplate
-            {
-                DisplayName = "Exchange",
-                AppClass = "Exchange",
-                AppPrincipalID = Guid.NewGuid(),
-                Environment = "grnppe"
-            });
+            //context.ServicePrincipalTemplates.Add(new ServicePrincipalTemplate
+            //{
+            //    DisplayName = "Exchange",
+            //    AppClass = "Exchange",
+            //    AppPrincipalID = Guid.NewGuid(),
+            //    Environment = "grnppe"
+            //});
 
             context.SaveChanges();
         }

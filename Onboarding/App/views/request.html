@@ -15,19 +15,39 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>SPT Name</th>
-                <th>AppPrincipalId</th>
+                <th>Request Id</th>
+                <th>Name</th>
+                <th>Created</th>
+                <th>Created By</th>
+                <th>Modified</th>
+                <th>Type</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody data-bind="foreach: spts">
             <tr>
                 <td>
-                    <a data-bind="attr: { href: '#request/detail/' + Id() }">
+                    <span id="RequestId" data-bind="text: RequestId"></span>
+                </td>
+                <td>
+                    <a data-bind="attr: { href: '#request/detail/' + RequestId() }">
                         <span id="displayName" data-bind="text: DisplayName"></span>
                     </a>
                 </td>
                 <td>
-                    <span id="displayName" data-bind="text: AppPrincipalID"></span>
+                    <!--<span id="CreatedDate" data-bind="text: CreatedDate"></span>-->
+                </td>
+                <td>
+                    <span id="CreatedBy" data-bind="text: CreatedBy"></span>
+                </td>
+                <td>
+                    <!--<span id="ModifiedDate" data-bind="text: LastModifiedDate"></span>-->
+                </td>
+                <td>
+                    <span id="Type" data-bind="text: Type"></span>
+                </td>
+                <td>
+                    <span id="State" data-bind="text: State"></span>
                 </td>
             </tr>
         </tbody>

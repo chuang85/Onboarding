@@ -4,9 +4,7 @@
         var vm = {
             displayName: ko.observable(),
             appClass: ko.observable(),
-            environment: ko.observable(),
             appPrincipalId: ko.observable(guidgenerator.generateGuid()),
-            availableEnvironment: ko.observableArray(['grn001', 'grn002', 'grnppe', 'default']),
             activate: activate,
             canDeactivate: canDeactivate,
             createEntity: createEntity,
@@ -14,7 +12,7 @@
             addItem: addItem
         };
 
-        var serviceName = 'breeze/servicePrincipalTemplate';
+        var serviceName = 'breeze/Breeze';
 
         var manager = new breeze.EntityManager(serviceName);
 
@@ -66,12 +64,12 @@
                 disableButton();
 
                 var newServicePrincipalTemplate = manager.
-                    createEntity('ServicePrincipalTemplate:#Onboarding.Models',
+                    //createEntity('ServicePrincipalTemplate:#Onboarding.Models',
+                    createEntity('OnboardingRequest:#Onboarding.Models',
                     {
                         DisplayName: vm.displayName(),
-                        AppClass: vm.appClass(),
-                        Environment: vm.environment(),
-                        AppPrincipalID: vm.appPrincipalId()
+                        //AppClass: vm.appClass(),
+                        //AppPrincipalID: vm.appPrincipalId()
                     });
                 manager.addEntity(newServicePrincipalTemplate);
                 manager.saveChanges()
@@ -110,11 +108,11 @@
         };
 
         function enableButton() {
-            $("#create-btn").attr("disabled", false);
+            $("#submit-btn").attr("disabled", false);
         }
 
         function disableButton() {
-            $("#create-btn").attr("disabled", false);
+            $("#submit-btn").attr("disabled", false);
         }
 
         function addItem(envType, itemType) {
