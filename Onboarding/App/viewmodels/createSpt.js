@@ -4,12 +4,13 @@
         var vm = {
             displayName: ko.observable(),
             appClass: ko.observable(),
-            appPrincipalId: ko.observable(guidgenerator.generateGuid()),
+            appPrincipalId: ko.observable(),
             activate: activate,
             canDeactivate: canDeactivate,
             createEntity: createEntity,
+            clearInput: clearInput,
             goBack: goBack,
-            addItem: addItem
+            addItem: addItem,
         };
 
         var serviceName = 'breeze/Breeze';
@@ -22,9 +23,24 @@
         var metaDataFetched = false;
 
         function activate() {
-            clearInputOnLoading();
+            clearInput();
+            // Generate guid every time loaded
+            vm.appPrincipalId(guidgenerator.generateGuid());
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess);
+                //.then(function (data) {
+                //    console.log(data);
+                //    // extract all enums as global objects
+                //    ko.utils.arrayForEach(data.schema.enumType, function (c) {
+                //        window[c.name] = {};
+                //        ko.utils.arrayForEach(c.member, function (m) {
+                //            window[c.name][m.name] = m.value;
+                //        });
+                //    });
+                //    console.log("start");
+                //    console.log(window);
+                //    console.log("end");
+                //});
             } else {
                 enableButton();
             }
@@ -42,17 +58,16 @@
         }
 
         /// <summary>
-        /// When "create" page is activated, clear input filled. 
-        /// Otherwise the input from last time is still there.
+        /// Pop up a window to make sure to navigate away.
         /// </summary>
-        function clearInputOnLoading() {
-            hasCreated = false;
-            vm.displayName("");
-            vm.appClass("");
-            //$(":input").each(function () {
-            //    $(this).val("");
-            //});
-        }
+        function canDeactivate() {
+            if (!hasCreated) {
+                return app.showMessage('Create is not finished, are you sure you want to leave this page?', 'Create Not Finished', ['Yes', 'No']);
+            }
+            else {
+                return true;
+            }
+        };
 
         /// <summary>
         /// Listener for create button.
@@ -73,6 +88,7 @@
                         DisplayName: vm.displayName(),
                         //AppClass: vm.appClass(),
                         //AppPrincipalID: vm.appPrincipalId()
+                        //RequestState: RequestState.Created
                     });
                 manager.addEntity(newServicePrincipalTemplate);
                 manager.saveChanges()
@@ -94,22 +110,22 @@
             }
         };
 
+        /// <summary>
+        /// When "create" page is activated, clear input filled. 
+        /// Otherwise the input from last time is still there.
+        /// </summary>
+        function clearInput() {
+            hasCreated = false;
+            vm.displayName("");
+            vm.appClass("");
+            $(":input").not("#appPrincipalId").val("");
+        }
+
         function goBack() {
             router.navigateBack();
         };
 
-        /// <summary>
-        /// Pop up a window to make sure to navigate away.
-        /// </summary>
-        function canDeactivate() {
-            if (!hasCreated) {
-                return app.showMessage('Create is not finished, are you sure you want to leave this page?', 'Create Not Finished', ['Yes', 'No']);
-            }
-            else {
-                return true;
-            }
-        };
-
+        /********************PRIVATE METHODS********************/
         function enableButton() {
             $("#submit-btn").attr("disabled", false);
         }

@@ -30,28 +30,28 @@ namespace Onboarding.Models
 
         public int BuildNumber { get; set; }
 
-        public int RTONumber { get; set; }
-
-        public enum RequestType
-        {
-            CreateSPT,
-            UpdateSPT,
-            CreateApplication,
-            UpdateApplication,
-            AddCertToKeyGroup
-        };
-
-        public enum RequestState
-        {
-            Created,
-            PendingApproval,
-            Approved,
-            CheckedIn,
-            BuildQueued,
-            BuildFinished,
-            RTDQueued,
-            RTDApproved,
-            Completed
-        };
+        public int RTONumber { get; set; } 
     }
+
+    public enum RequestType
+    {
+        CreateSPT,
+        UpdateSPT,
+        CreateApplication,
+        UpdateApplication,
+        AddCertToKeyGroup
+    };
+
+    public enum RequestState
+    {
+        Created,
+        PendingApproval,
+        Approved,
+        CheckedIn,
+        BuildQueued,
+        BuildFinished,
+        RTDQueued,
+        RTDApproved,
+        Completed
+    };
 }
