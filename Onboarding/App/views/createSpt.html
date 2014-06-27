@@ -45,18 +45,15 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                <a data-toggle="collapse" href="#collapse-hostname">
                                     Hostnames
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse">
+                        <div id="collapse-hostname" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <div class="repeating-hostname-section">
-                                    <!--<input class="form-control" />
-                                    <span class="pointerLink glyphicon glyphicon-trash"></span>-->
-                                </div>
-                                <a class="pointerLink center" data-bind="click: addHostname">Add Hostname</a>
+                                <div class="repeating-hostname-section"></div>
+                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'hostname')">Add Hostname</a>
                             </div>
                         </div>
                     </div>
@@ -64,14 +61,31 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                <a data-toggle="collapse" href="#collapse-spname">
                                     AdditionalServicePrincipalNames
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseTwo" class="panel-collapse collapse">
+                        <div id="collapse-spname" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <a class="pointerLink center">Add ServicePrincipalName</a>
+                                <div class="repeating-spname-section"></div>
+                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'spname')">Add ServicePrincipalName</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--AppAddress-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse-appaddress">
+                                    AppAddress
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-appaddress" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="repeating-appaddress-section"></div>
+                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'appaddress')">Add AppAddress</a>
                             </div>
                         </div>
                     </div>

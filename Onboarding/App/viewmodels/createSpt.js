@@ -11,7 +11,7 @@
             canDeactivate: canDeactivate,
             createEntity: createEntity,
             goBack: goBack,
-            addHostname: addHostname
+            addItem: addItem
         };
 
         var serviceName = 'breeze/servicePrincipalTemplate';
@@ -115,7 +115,7 @@
             $("#create-btn").attr("disabled", false);
         }
 
-        function addHostname() {
+        function addItem(cargo) {
             var fieldWrapper = $("<div class=\"fieldwrapper\" />");
             var inputField = $("<input class=\"form-control\" />");
             var removeButton = $("<span class=\"pull-right pointerLink glyphicon glyphicon-trash\"></span>");
@@ -126,7 +126,7 @@
 
             fieldWrapper.append(inputField);
             fieldWrapper.append(removeButton);
-            $(".repeating-hostname-section").append(fieldWrapper);
+            $(".repeating-" + cargo + "-section").append(fieldWrapper);
         }
 
         function createJSONSpt() {
@@ -145,6 +145,7 @@
             var envArr = body["Environments"]["Environment"] = [];
             var env = {};
             env["@name"] = $("#environment").val();
+
             // Hostnames
             env["Hostnames"] = {};
             var hostnameArr = env["Hostnames"]["Hostname"] = [];
@@ -154,22 +155,31 @@
                     hostnameArr.push(value);
                 }
             });
-            //// AdditionalSPNames
-            //env["AdditionalServicePrincipalNames"] = {};
-            //var additionalSPNameArr = env["AdditionalServicePrincipalNames"]["ServicePrincipalName"] = [];
-            //additionalSPNameArr.push("https://odc.officeapps.live.com");
-            //additionalSPNameArr.push("https://roaming.officeapps.live.com");
-            //// AppAddresses
-            //env["AppAddresses"] = {};
-            //var appAddressArr = env["AppAddresses"]["AppAddress"] = [];
-            //var appAddress = {};
-            //appAddress["@Address"] = "https://account.activedirectory.windowsazure.com";
-            //appAddress["@AddressType"] = "Reply";        
-            //appAddressArr.push(appAddress);
-            //appAddress = {};
-            //appAddress["@Address"] = "https://account.activedirectory-ppe.windowsazure.com";
-            //appAddress["@AddressType"] = "Reply";
-            //appAddressArr.push(appAddress);
+
+            // AdditionalSPNames
+            env["AdditionalServicePrincipalNames"] = {};
+            var additionalSPNameArr = env["AdditionalServicePrincipalNames"]["ServicePrincipalName"] = [];
+            $(".repeating-spname-section input").each(function () {
+                var value = $(this).val();
+                if (value != "") {
+                    additionalSPNameArr.push(value);
+                }
+            });
+
+            // AppAddresses
+            env["AppAddresses"] = {};
+            var appAddressArr = env["AppAddresses"]["AppAddress"] = [];
+            $(".repeating-appaddress-section input").each(function () {
+                var value = $(this).val();
+                if (value != "") {
+                    var appAddress = {};
+                    appAddress["@Address"] = value;
+                    appAddress["@AddressType"] = "Reply";
+                    appAddressArr.push(appAddress);
+                }
+            });
+            
+            // Finish up Environments
             envArr.push(env);
 
             body["AppPrincipalID"] = vm.appPrincipalId();
