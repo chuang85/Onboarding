@@ -75,7 +75,7 @@
         /// </summary>
         function createEntity() {
             if (metaDataFetched) {
-                console.log(dataformatter.json2xml(createJSONSpt()));
+                console.log(dataformatter.formatXml(dataformatter.json2xml(createJSONSpt())));
 
                 // Disable "create" button after hit
                 // Prevent multiple submits
