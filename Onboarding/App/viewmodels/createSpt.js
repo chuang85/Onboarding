@@ -175,29 +175,39 @@
                 var envType = $(this).text().toLowerCase();
                 env["@name"] = map[envType];
 
+                // Init flags to prevent adding emtpy array
+                var hostnameEmpty = spnameEmpty = appaddressEmpty = true;
+
                 // Hostnames
-                env["Hostnames"] = {};
-                var hostnameArr = env["Hostnames"]["Hostname"] = [];
+                var hostnameArr = [];
                 $("." + envType + "-hostname-section input").each(function () {
                     var value = $(this).val();
                     if (value != "") {
                         hostnameArr.push(value);
+                        hostnameEmpty = false;
                     }
                 });
+                if (!hostnameEmpty) {
+                    env["Hostnames"] = {};
+                    env["Hostnames"]["Hostname"] = hostnameArr;
+                }
 
                 // AdditionalSPNames
-                env["AdditionalServicePrincipalNames"] = {};
-                var additionalSPNameArr = env["AdditionalServicePrincipalNames"]["ServicePrincipalName"] = [];
+                var additionalSPNameArr = [];
                 $("." + envType + "-spname-section input").each(function () {
                     var value = $(this).val();
                     if (value != "") {
                         additionalSPNameArr.push(value);
+                        spnameEmpty = false;
                     }
                 });
+                if (!spnameEmpty) {
+                    env["AdditionalServicePrincipalNames"] = {};
+                    env["AdditionalServicePrincipalNames"]["ServicePrincipalName"] = additionalSPNameArr;
+                }
 
                 // AppAddresses
-                env["AppAddresses"] = {};
-                var appAddressArr = env["AppAddresses"]["AppAddress"] = [];
+                var appAddressArr = [];
                 $("." + envType + "-appaddress-section input").each(function () {
                     var value = $(this).val();
                     if (value != "") {
@@ -205,11 +215,16 @@
                         appAddress["@Address"] = value;
                         appAddress["@AddressType"] = "Reply";
                         appAddressArr.push(appAddress);
+                        appaddressEmpty = false;
                     }
                 });
+                if (!appaddressEmpty) {
+                    env["AppAddresses"] = {};
+                    env["AppAddresses"]["AppAddress"] = appAddressArr;
+                }
 
-                // Finish up Environments
-                if (!envEmpty(env)) {
+                // Add environments if arrays are not all empty
+                if (!(hostnameEmpty && spnameEmpty && appaddressEmpty)) {
                     envArr.push(env);
                 }
             });
@@ -217,12 +232,6 @@
             body["AppPrincipalID"] = vm.appPrincipalId();
             return json;
         };
-
-        function envEmpty(env) {
-            return (env["Hostnames"]["Hostname"].length
-                || env["AdditionalServicePrincipalNames"]["ServicePrincipalName"].length
-                || env["AppAddresses"]["AppAddress"].length) == 0;
-        }
 
         return vm;
 
