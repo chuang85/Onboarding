@@ -81,7 +81,7 @@
                 // Prevent multiple submits
                 disableButton();
 
-                var newServicePrincipalTemplate = manager.
+                var newOnboardingRequest = manager.
                     //createEntity('ServicePrincipalTemplate:#Onboarding.Models',
                     createEntity('OnboardingRequest:#Onboarding.Models',
                     {
@@ -90,7 +90,7 @@
                         //AppPrincipalID: vm.appPrincipalId()
                         //RequestState: RequestState.Created
                     });
-                manager.addEntity(newServicePrincipalTemplate);
+                manager.addEntity(newOnboardingRequest);
                 manager.saveChanges()
                     .then(createSucceeded)
                     .fail(createFailed);
