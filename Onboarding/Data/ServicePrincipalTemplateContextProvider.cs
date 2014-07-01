@@ -9,15 +9,12 @@ using Onboarding.Models;
 
 namespace Onboarding.Data
 {
-    public class ServicePrincipalTemplateContextProvider : EFContextProvider<OnboardingDbContext>
+    public class OnboardingRequestContextProvider : EFContextProvider<OnboardingDbContext>
     {
         protected override bool BeforeSaveEntity(EntityInfo entityInfo)
         {
-            ServicePrincipalTemplate servicePrincipalTemplate = (ServicePrincipalTemplate)entityInfo.Entity;
-            if (string.IsNullOrEmpty(servicePrincipalTemplate.DisplayName))
-            {
-                //servicePrincipalTemplate.DisplayName = "wtf";
-            }
+            OnboardingRequest onboardingRequest = (OnboardingRequest)entityInfo.Entity;
+            onboardingRequest.CreatedDate = DateTime.Now;
             return true;
         }
     }

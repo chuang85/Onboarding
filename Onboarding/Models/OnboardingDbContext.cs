@@ -8,9 +8,6 @@ namespace Onboarding.Models
 {
     public class OnboardingDbContext : DbContext
     {
-
-        //public DbSet<ServicePrincipalTemplate> ServicePrincipalTemplates { get; set; }
-
         public DbSet<OnboardingRequest> OnboardingRequest { get; set; }
 
         public OnboardingDbContext()

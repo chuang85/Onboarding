@@ -176,7 +176,6 @@
     <Compile Include="Models\OnboardingDbContext.cs" />
     <Compile Include="Models\OnboardingDbContextInitializer.cs" />
     <Compile Include="Models\OnboardingRequest.cs" />
-    <Compile Include="Models\ServicePrincipalTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

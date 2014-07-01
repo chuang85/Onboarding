@@ -1,7 +1,7 @@
 ﻿define(['services/logger'], function (logger) {
 
     var vm = {
-        spts: ko.observableArray(),
+        requests: ko.observableArray(),
         activate: activate,
         filterText: ko.observable().extend({ rateLimit: 400 })
     };
@@ -12,7 +12,7 @@
 
     function activate() {
         vm.filterText.subscribe(onFilterChange);
-        return getSpts();
+        return getRequests();
     };
 
     /// <summary>
@@ -20,17 +20,16 @@
     /// </summary>
     function onFilterChange() {
         if (vm.filterText().length >= 0) {
-            getSpts();
+            getRequests();
         }
     }
 
     /// <summary>
     /// Query all SPT data.
     /// </summary>
-    function getSpts() {
+    function getRequests() {
         var query = breeze.EntityQuery.
-                //from("ServicePrincipalTemplates");
-                from("OnboardingRequest");
+                from("OnboardingRequests");
 
         // Create where clause for filtering
         if (vm.filterText() && vm.filterText().length > 0) {
@@ -48,7 +47,7 @@
             .fail(queryFailed);
 
         function querySucceeded(data) {
-            vm.spts(data.results);
+            vm.requests(data.results);
         }
 
         function queryFailed(error) {

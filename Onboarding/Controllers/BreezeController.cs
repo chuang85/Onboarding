@@ -18,9 +18,10 @@ namespace Onboarding.Controllers
     [BreezeController]
     public class BreezeController : ApiController
     {
-        //readonly ServicePrincipalTemplateContextProvider _contextProvider = new ServicePrincipalTemplateContextProvider();
-        readonly EFContextProvider<OnboardingDbContext> _contextProvider = new EFContextProvider<OnboardingDbContext>();
+        //readonly EFContextProvider<OnboardingDbContext> _contextProvider = new EFContextProvider<OnboardingDbContext>();
+        readonly OnboardingRequestContextProvider _contextProvider = new OnboardingRequestContextProvider();
 
+        // ~/breeze/Breeze/Metadata 
         [HttpGet]
         public string Metadata()
         {
@@ -35,6 +36,7 @@ namespace Onboarding.Controllers
             
         }
 
+        // ~/breeze/Breeze/SaveChanges
         [HttpPost]
         public SaveResult SaveChanges(JObject saveBundle)
         {
@@ -48,14 +50,9 @@ namespace Onboarding.Controllers
             return jsonSerializer;
         }
 
-        //[HttpGet]
-        //public IQueryable<ServicePrincipalTemplate> ServicePrincipalTemplates()
-        //{
-        //    return _contextProvider.Context.ServicePrincipalTemplates;
-        //}
-
+        // ~/breeze/Breeze/OnboardingRequests
         [HttpGet]
-        public IQueryable<OnboardingRequest> OnboardingRequest()
+        public IQueryable<OnboardingRequest> OnboardingRequests()
         {
             return _contextProvider.Context.OnboardingRequest;
         }
