@@ -14,7 +14,10 @@ namespace Onboarding.Data
         protected override bool BeforeSaveEntity(EntityInfo entityInfo)
         {
             OnboardingRequest onboardingRequest = (OnboardingRequest)entityInfo.Entity;
-            onboardingRequest.CreatedDate = DateTime.Now;
+            onboardingRequest.CreatedDate = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.Local);
+            //DateTime timeUtc = DateTime.UtcNow;
+            //TimeZoneInfo ptZone = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
+            //onboardingRequest.CreatedDate = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, ptZone);
             return true;
         }
     }

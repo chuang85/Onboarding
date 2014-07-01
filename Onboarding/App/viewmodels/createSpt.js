@@ -118,13 +118,13 @@
         /// And close all the panels and added items
         /// </summary>
         function clearInput() {
-            app.showMessage('All the input fields will be cleaned, continue?', 'Clear All', ['Yes', 'No']).
-            then(function (dialogResult) {
-                if (dialogResult == 'Yes') {
-                    clearInputOnloading();
-                    collapsePanels();
-                }
-            });
+            app.showMessage('All the input fields will be cleaned, continue?', 'Clear All', ['Yes', 'No'])
+                .then(function (dialogResult) {
+                    if (dialogResult == 'Yes') {
+                        clearInputOnloading();
+                        collapsePanels();
+                    }
+                });
         }
 
         function goBack() {
