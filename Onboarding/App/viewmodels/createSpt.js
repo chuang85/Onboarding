@@ -23,9 +23,10 @@
         var metaDataFetched = false;
 
         function activate() {
-            clearInput();
-            // Generate guid every time loaded
-            vm.appPrincipalId(guidgenerator.generateGuid());
+            clearInputOnloading();
+            collapsePanels();
+            generateAppId();
+
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess);
                 //.then(function (data) {
@@ -43,13 +44,15 @@
                 //});
             } else {
                 enableButton();
+                //toastr.warning("in else");
             }
 
             function fetchMetadataSuccess(rawMetadata) {
-                toastr.success("Fetch metadata succeed");
-                metaDataFetched = true;
                 // Enable "create" button when metadata has been fetched
                 enableButton();
+                //toastr.warning("in success");
+                toastr.success("Fetch metadata succeed");
+                metaDataFetched = true;
             }
 
             function fetchMetadataFail(exception) {
@@ -111,14 +114,17 @@
         };
 
         /// <summary>
-        /// When "create" page is activated, clear input filled. 
-        /// Otherwise the input from last time is still there.
+        /// Listener for clear button, clear input filled EXCEPT appId
+        /// And close all the panels and added items
         /// </summary>
         function clearInput() {
-            hasCreated = false;
-            vm.displayName("");
-            vm.appClass("");
-            $(":input").not("#appPrincipalId").val("");
+            app.showMessage('All the input fields will be cleaned, continue?', 'Clear All', ['Yes', 'No']).
+            then(function (dialogResult) {
+                if (dialogResult == 'Yes') {
+                    clearInputOnloading();
+                    collapsePanels();
+                }
+            });
         }
 
         function goBack() {
@@ -126,12 +132,28 @@
         };
 
         /********************PRIVATE METHODS********************/
+        function generateAppId() {
+            vm.appPrincipalId(guidgenerator.generateGuid());
+        }
+
         function enableButton() {
             $("#submit-btn").attr("disabled", false);
         }
 
         function disableButton() {
             $("#submit-btn").attr("disabled", false);
+        }
+
+        function clearInputOnloading() {
+            hasCreated = false;
+            vm.displayName("");
+            vm.appClass("");
+            $(":input").not("#appPrincipalId").val("");
+        }
+
+        function collapsePanels() {
+            $('.fieldwrapper').remove();
+            $('.panel-collapse').removeClass('in');
         }
 
         function addItem(envType, itemType) {
