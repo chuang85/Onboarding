@@ -7,6 +7,13 @@
     <h2>Create a Service Principal Template</h2> <br />
 
     <form class="form-horizontal" role="form">
+        <!--CreatedBy-->
+        <div class="form-group">
+            <label for="contact" class="col-sm-2 control-label">Contact</label>
+            <div class="col-sm-6">
+                <input class="form-control" id="contact" placeholder="Your alias" data-bind="value: contact">
+            </div>
+        </div>
         <!--DisplayName-->
         <div class="form-group">
             <label for="displayName" class="col-sm-2 control-label">DisplayName</label>
@@ -270,10 +277,12 @@
                 </div>
             </div>
         </div>
+        <!--xml hidden area-->
+
         <!--Create&Clear button-->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
-                <button id="submit-btn" class="btn btn-default" data-bind="click: createEntity" disabled>Submit</button>
+                <button id="submit-btn" class="btn btn-default" data-bind="click: createEntity">Submit</button>
                 <button id="clear-btn" class="btn btn-default" data-bind="click: clearInput">Clear</button>
             </div>
         </div>

@@ -2,6 +2,7 @@
     function (router, app, guidgenerator, dataformatter) {
 
         var vm = {
+            contact: ko.observable(),
             displayName: ko.observable(),
             appClass: ko.observable(),
             appPrincipalId: ko.observable(),
@@ -12,6 +13,8 @@
             goBack: goBack,
             addItem: addItem,
         };
+
+        var hasSubmitted = false;
 
         var serviceName = 'breeze/Breeze';
 
@@ -42,15 +45,9 @@
                 //    console.log(window);
                 //    console.log("end");
                 //});
-            } else {
-                enableButton();
-                //toastr.warning("in else");
             }
 
             function fetchMetadataSuccess(rawMetadata) {
-                // Enable "create" button when metadata has been fetched
-                enableButton();
-                //toastr.warning("in success");
                 toastr.success("Fetch metadata succeed");
                 metaDataFetched = true;
             }
@@ -77,17 +74,18 @@
         /// Create an entity.
         /// </summary>
         function createEntity() {
-            if (metaDataFetched) {
+            if (metaDataFetched && !hasSubmitted) {
+                //// Disable "create" button after hit
+                //// Prevent multiple submits
+                //disableButton();
+                hasSubmitted = true;
                 console.log(dataformatter.formatXml(dataformatter.json2xml(createJSONSpt())));
-
-                // Disable "create" button after hit
-                // Prevent multiple submits
-                disableButton();
 
                 var newOnboardingRequest = manager.
                     //createEntity('ServicePrincipalTemplate:#Onboarding.Models',
                     createEntity('OnboardingRequest:#Onboarding.Models',
                     {
+                        CreatedBy: vm.contact(),
                         DisplayName: vm.displayName(),
                         //AppClass: vm.appClass(),
                         //AppPrincipalID: vm.appPrincipalId()
@@ -101,13 +99,12 @@
                 function createSucceeded(data) {
                     hasCreated = true;
                     toastr.success("Created");
-                    enableButton();
                     router.navigate('#/request');
                 }
 
                 function createFailed(error) {
+                    hasSubmitted = false;
                     toastr.error("Create failed");
-                    enableButton();
                     manager.rejectChanges();
                 }
             }
@@ -136,16 +133,9 @@
             vm.appPrincipalId(guidgenerator.generateGuid());
         }
 
-        function enableButton() {
-            $("#submit-btn").attr("disabled", false);
-        }
-
-        function disableButton() {
-            $("#submit-btn").attr("disabled", false);
-        }
-
         function clearInputOnloading() {
             hasCreated = false;
+            hasSubmitted = false;
             vm.displayName("");
             vm.appClass("");
             $(":input").not("#appPrincipalId").val("");
