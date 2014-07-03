@@ -40,6 +40,7 @@ namespace Onboarding.Utils
         /// <param name="format">Code package format, dpk/tfs shelve set.</param>
         /// <param name="location">The uri location of the package.</param>
         /// <returns>An instance of <see cref="CodePackage"/>.</returns>
+        //public static CodePackage CreateCodePackage(string name, string author, string userAgent, Uri location)
         public static CodePackage CreateCodePackage(string name, string author, string userAgent, CodePackageFormat format, Uri location)
         {
             return new CodePackage

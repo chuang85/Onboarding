@@ -190,6 +190,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Utils\SystemHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\main-built.js" />
