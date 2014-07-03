@@ -171,7 +171,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DurandalController.cs" />
     <Compile Include="Controllers\BreezeController.cs" />
-    <Compile Include="Data\ServicePrincipalTemplateContextProvider.cs" />
+    <Compile Include="Data\OnboardingContextProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
