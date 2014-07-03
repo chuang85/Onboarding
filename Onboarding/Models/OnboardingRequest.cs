@@ -21,6 +21,7 @@ namespace Onboarding.Models
 
         public DateTime LastModifiedDate { get; set; }
 
+        [Required]
         public string CreatedBy { get; set; }
 
         //public RequestState RequestState { get; set; }
