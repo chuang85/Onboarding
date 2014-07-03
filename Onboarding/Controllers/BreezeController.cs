@@ -10,7 +10,7 @@ using Breeze.WebApi2;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Onboarding.Models;
-using Onboarding.Data;
+using Onboarding.Utils;
 using System.Net.Mail;
 
 namespace Onboarding.Controllers

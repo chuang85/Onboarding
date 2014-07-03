@@ -30,6 +30,8 @@ namespace Onboarding.Models
 
         public byte[] Blob { get; set; }
 
+        public string CodeFlowId { get; set; }
+
         public int ChangelistNumber { get; set; }
 
         public int BuildNumber { get; set; }
