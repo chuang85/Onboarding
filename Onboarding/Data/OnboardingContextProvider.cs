@@ -18,7 +18,16 @@ namespace Onboarding.Data
             //DateTime timeUtc = DateTime.UtcNow;
             //TimeZoneInfo ptZone = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
             //onboardingRequest.CreatedDate = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, ptZone);
+
+            //onboardingRequest.Blob = GetBytes(onboardingRequest.TempXmlStore);
             return true;
+        }
+
+        private byte[] GetBytes(string str)
+        {
+            byte[] bytes = new byte[str.Length * sizeof(char)];
+            System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
         }
     }
 }

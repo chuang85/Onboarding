@@ -75,20 +75,16 @@
         /// </summary>
         function createEntity() {
             if (metaDataFetched && !hasSubmitted) {
-                //// Disable "create" button after hit
-                //// Prevent multiple submits
-                //disableButton();
                 hasSubmitted = true;
-                console.log(dataformatter.formatXml(dataformatter.json2xml(createJSONSpt())));
+                var xmlString = dataformatter.formatXml(dataformatter.json2xml(createJSONSpt()));
+                console.log(xmlString);
 
                 var newOnboardingRequest = manager.
-                    //createEntity('ServicePrincipalTemplate:#Onboarding.Models',
                     createEntity('OnboardingRequest:#Onboarding.Models',
                     {
                         CreatedBy: vm.contact(),
                         DisplayName: vm.displayName(),
-                        //AppClass: vm.appClass(),
-                        //AppPrincipalID: vm.appPrincipalId()
+                        TempXmlStore: xmlString,
                         //RequestState: RequestState.Created
                     });
                 manager.addEntity(newOnboardingRequest);

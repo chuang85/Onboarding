@@ -15,6 +15,8 @@ namespace Onboarding.Models
         [Required]
         public string DisplayName { get; set; }
 
+        public string TempXmlStore { get; set; }
+
         public DateTime CreatedDate { get; set; }
 
         public DateTime LastModifiedDate { get; set; }
