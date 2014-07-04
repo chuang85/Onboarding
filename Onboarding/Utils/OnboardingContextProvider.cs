@@ -11,6 +11,7 @@ using Onboarding.Models;
 using System.Xml;
 using System.Text;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace Onboarding.Utils
 {
@@ -31,6 +32,8 @@ namespace Onboarding.Utils
 
             // Set create time to Now.
             onboardingRequest.CreatedDate = DateTime.UtcNow;
+            onboardingRequest.DisplayCreatedDate = onboardingRequest.CreatedDate.ToString("D",
+                  CultureInfo.CreateSpecificCulture("en-US"));
 
             //// Write string formatted xml in to an file and assign it to Blob field.
             //string filename = onboardingRequest.DisplayName + "_" + onboardingRequest.CreatedBy + ".xml";
