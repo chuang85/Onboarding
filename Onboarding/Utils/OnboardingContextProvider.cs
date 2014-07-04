@@ -19,7 +19,7 @@ namespace Onboarding.Utils
         private const string CmdPath = @"C:\WINDOWS\system32\cmd.exe";
         private const string CmdConfigArgs = @"/k set inetroot=e:\cumulus_main&set corextbranch=main&e:\cumulus_main\tools\path1st\myenv.cmd";
         private const string SourcePath = @"C:\Users\t-chehu\Source\Repos\Onboarding\Onboarding\App_Data\";
-        private const string DestPath = @"E:\CUMULUS_MAIN\sources\dev\RestServices\GraphService\Tools";
+        private const string DestPath = @"E:\CUMULUS_MAIN\sources\dev\RestServices\GraphService\Tools\";
         private const string SavingPathXml = @"../../App_Data/";
 
         public ReviewDashboardServiceClient qClient = new ReviewDashboardServiceClient();
@@ -27,15 +27,15 @@ namespace Onboarding.Utils
 
         protected override bool BeforeSaveEntity(EntityInfo entityInfo)
         {
+            // Convert time format from UTC to local.
             OnboardingRequest onboardingRequest = (OnboardingRequest)entityInfo.Entity;
             onboardingRequest.CreatedDate = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.Local);
-            //DateTime timeUtc = DateTime.UtcNow;
-            //TimeZoneInfo ptZone = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
-            //onboardingRequest.CreatedDate = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, ptZone);
 
+            // Write string formatted xml in to an xml file and assign it to Blob field.
             string filename = onboardingRequest.DisplayName + "_" + onboardingRequest.CreatedBy + ".xml";
             onboardingRequest.Blob = SystemHelpers.SavesStringToXml(onboardingRequest.TempXmlStore, SavingPathXml, filename);
-
+            
+            // Handle file copy and add to (local) source depot operations.
             RunCmd(filename);
 
             // Step 1 - Create a code review
@@ -45,6 +45,8 @@ namespace Onboarding.Utils
 
             // Step 2 - Create a code package and add it to the review
             CodeFlowHelpers.AddCodePackage(rClient, onboardingRequest.CodeFlowId, CodeFlowHelpers.CreateCodePackage("testing pack", onboardingRequest.CreatedBy, onboardingRequest.CreatedBy, CodePackageFormat.SourceDepotPack, new Uri(DestPath + filename)));
+            //CodeFlowHelpers.AddCodePackage(rClient, onboardingRequest.CodeFlowId, CodeFlowHelpers.CreateCodePackage("testing pack", onboardingRequest.CreatedBy, onboardingRequest.CreatedBy, new Uri(DestPath + filename)));
+
 
             // Step 3 - Add reviewers to the review
             CodeFlowHelpers.AddReviewers(rClient, onboardingRequest.CodeFlowId, new ReviewService.Reviewer[]
