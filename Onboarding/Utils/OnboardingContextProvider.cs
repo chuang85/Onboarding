@@ -32,7 +32,7 @@ namespace Onboarding.Utils
 
             // Set create time to Now.
             onboardingRequest.CreatedDate = DateTime.UtcNow;
-            onboardingRequest.DisplayCreatedDate = onboardingRequest.CreatedDate.ToString("D",
+            onboardingRequest.DisplayCreatedDate = onboardingRequest.CreatedDate.ToString("M/d/yyyy h:m tt",
                   CultureInfo.CreateSpecificCulture("en-US"));
 
             //// Write string formatted xml in to an file and assign it to Blob field.
