@@ -6,6 +6,8 @@
             displayName: ko.observable(),
             appClass: ko.observable(),
             appPrincipalId: ko.observable(),
+            // Set request type by default
+            requestType: "Create SPT",
             activate: activate,
             canDeactivate: canDeactivate,
             createEntity: createEntity,
@@ -33,12 +35,17 @@
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess);
                 //.then(function (data) {
-                //    console.log(data);
+                //    console.log(data.schema.enumType);
                 //    // extract all enums as global objects
+                //    console.log("out");
                 //    ko.utils.arrayForEach(data.schema.enumType, function (c) {
+                //        console.log("mid");
                 //        window[c.name] = {};
                 //        ko.utils.arrayForEach(c.member, function (m) {
+                //            console.log("in");
                 //            window[c.name][m.name] = m.value;
+                //            console.log(c.name);
+                //            console.log(m.name);
                 //        });
                 //    });
                 //    console.log("start");
@@ -85,7 +92,8 @@
                         CreatedBy: vm.contact(),
                         DisplayName: vm.displayName(),
                         TempXmlStore: xmlString,
-                        //RequestState: RequestState.Created
+                        //State: RequestState.Created,
+                        Type: vm.requestType
                     });
                 manager.addEntity(newOnboardingRequest);
                 manager.saveChanges()
@@ -101,6 +109,7 @@
                 function createFailed(error) {
                     hasSubmitted = false;
                     toastr.error("Create failed");
+                    console.log(error);
                     manager.rejectChanges();
                 }
             }

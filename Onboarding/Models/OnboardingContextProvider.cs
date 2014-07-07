@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Breeze.ContextProvider;
+﻿using Breeze.ContextProvider;
 using Breeze.ContextProvider.EF6;
-using Breeze.WebApi2;
 using Onboarding.DashboardService;
 using Onboarding.ReviewService;
 using Onboarding.Utils;
-using System.Xml;
-using System.Text;
-using System.Diagnostics;
+using System;
 using System.Globalization;
 
 namespace Onboarding.Models
@@ -31,18 +24,22 @@ namespace Onboarding.Models
                 // Set CreatedDate & ModifiedDate to Now.
                 SetCreatedTimeOnInitialization(onboardingRequest);
 
+                // Set RequestState to "Created".
+                //onboardingRequest.State = RequestState.Created;
+                onboardingRequest.State = "Created";
+
                 // Write string formatted xml in to an file and assign it to Blob field.
                 string filename = SetSptFilename(onboardingRequest);
-                onboardingRequest.Blob = SystemHelpers.SavesStringToXml(onboardingRequest.TempXmlStore, filename);
+                onboardingRequest.Blob = SystemHelpers.SaveStringToXml(onboardingRequest.TempXmlStore, filename);
 
                 // Add xml to (local) source depot.
                 SystemHelpers.AddFileToDepot(filename);
 
                 // Create and submit a code review from information provided in a request
                 // Filename - the file attached to be reviewed.
-                SubmitCodeReviewFromRequest(onboardingRequest, filename);
+                //SubmitCodeReviewFromRequest(rClient, onboardingRequest, filename);
 
-                // Close clients
+                // Close clients.
                 rClient.Close();
 
                 return true;
@@ -64,7 +61,7 @@ namespace Onboarding.Models
             return onboardingRequest.DisplayName + "_" + onboardingRequest.CreatedBy + ".xml";
         }
 
-        private void SubmitCodeReviewFromRequest(OnboardingRequest onboardingRequest, string filename)
+        private void SubmitCodeReviewFromRequest(ReviewServiceClient rClient, OnboardingRequest onboardingRequest, string filename)
         {
             // Step 1 - Create a code review
             // Assign ReviewId to the corresponding field in OnboardingRequest

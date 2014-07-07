@@ -12,7 +12,7 @@ namespace Onboarding.Models
         public int RequestId { get; set; }
 
         // Need this?
-        [Required]
+        //[Required]
         public string DisplayName { get; set; }
 
         public string TempXmlStore { get; set; }
@@ -25,12 +25,16 @@ namespace Onboarding.Models
 
         public string DisplayModifiedDate { get; set; }
 
-        [Required]
+        //[Required]
         public string CreatedBy { get; set; }
 
-        //public RequestState RequestState { get; set; }
+        //public RequestState State { get; set; }
 
-        //public RequestType RequestType { get; set; }
+        //public RequestType Type { get; set; }
+
+        public string State { get; set; }
+
+        public string Type { get; set; }
 
         public byte[] Blob { get; set; }
 
@@ -50,11 +54,11 @@ namespace Onboarding.Models
         CreateApplication,
         UpdateApplication,
         AddCertToKeyGroup
-    };
+    }
 
     public enum RequestState
     {
-        Created,
+        Created = 1,
         PendingApproval,
         Approved,
         CheckedIn,
@@ -63,5 +67,5 @@ namespace Onboarding.Models
         RTDQueued,
         RTDApproved,
         Completed
-    };
+    }
 }

@@ -1,8 +1,4 @@
-﻿using Onboarding.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Text;
 using System.Web;
 using System.Xml;
@@ -23,7 +19,7 @@ namespace Onboarding.Utils
         /// <param name="path">The saving path.</param>
         /// <param name="filename">Name of file</param>
         /// <returns>The xml in type of byte[]</returns>
-        public static byte[] SavesStringToXml(string xmlString, string filename)
+        public static byte[] SaveStringToXml(string xmlString, string filename)
         {
             XmlDocument xdoc = new XmlDocument();
             xdoc.LoadXml(xmlString);
