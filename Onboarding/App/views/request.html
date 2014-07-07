@@ -17,9 +17,9 @@
             <tr>
                 <th>Request Id</th>
                 <th>Name</th>
+                <th>Modified</th>
                 <th>Created</th>
                 <th>Created By</th>
-                <th>Modified</th>
                 <th>Type</th>
                 <th>Status</th>
             </tr>
@@ -36,13 +36,13 @@
                     </a>
                 </td>
                 <td>
+                    <span id="ModifiedDate" data-bind="text: DisplayModifiedDate"></span>
+                </td>
+                <td>
                     <span id="CreatedDate" data-bind="text: DisplayCreatedDate"></span>
                 </td>
                 <td>
                     <span id="CreatedBy" data-bind="text: CreatedBy"></span>
-                </td>
-                <td>
-                    <!--<span id="ModifiedDate" data-bind="text: LastModifiedDate"></span>-->
                 </td>
                 <td>
                     <span id="Type" data-bind="text: Type"></span>

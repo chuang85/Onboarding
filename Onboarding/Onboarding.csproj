@@ -172,7 +172,7 @@
     <Compile Include="Controllers\DurandalController.cs" />
     <Compile Include="Controllers\BreezeController.cs" />
     <Compile Include="Utils\CodeFlowHelpers.cs" />
-    <Compile Include="Utils\OnboardingContextProvider.cs" />
+    <Compile Include="Models\OnboardingContextProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

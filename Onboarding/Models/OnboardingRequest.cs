@@ -21,7 +21,9 @@ namespace Onboarding.Models
 
         public string DisplayCreatedDate { get; set; }
 
-        public DateTime LastModifiedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
+
+        public string DisplayModifiedDate { get; set; }
 
         [Required]
         public string CreatedBy { get; set; }
