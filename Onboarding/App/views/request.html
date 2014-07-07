@@ -42,7 +42,9 @@
                     <span id="CreatedDate" data-bind="text: DisplayCreatedDate"></span>
                 </td>
                 <td>
-                    <span id="CreatedBy" data-bind="text: CreatedBy"></span>
+                    <a data-bind="attr: { href: 'https://who/is/' + CreatedBy() }">
+                        <span id="CreatedBy" data-bind="text: CreatedBy"></span>
+                    </a>
                 </td>
                 <td>
                     <span id="Type" data-bind="text: Type"></span>
