@@ -190,6 +190,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Utils\DBHelpers.cs" />
     <Compile Include="Utils\SystemHelpers.cs" />
   </ItemGroup>
   <ItemGroup>

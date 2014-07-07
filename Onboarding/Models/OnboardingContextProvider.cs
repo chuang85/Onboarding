@@ -35,16 +35,19 @@ namespace Onboarding.Models
                 string filename = SetSptFilename(onboardingRequest);
                 onboardingRequest.Blob = SystemHelpers.SavesStringToXml(onboardingRequest.TempXmlStore, filename);
 
-                // Handle file copy and add to (local) source depot operations.
-                SystemHelpers.RunCmd(filename);
+                // Add xml to (local) source depot.
+                SystemHelpers.AddFileToDepot(filename);
 
+                // Create and submit a code review from information provided in a request
+                // Filename - the file attached to be reviewed.
                 SubmitCodeReviewFromRequest(onboardingRequest, filename);
 
                 // Close clients
                 rClient.Close();
-            }
 
-            return true;
+                return true;
+            }
+            return false;
         }
 
         private void SetCreatedTimeOnInitialization(OnboardingRequest onboardingRequest)
@@ -69,7 +72,7 @@ namespace Onboarding.Models
                 onboardingRequest.CreatedBy + "@microsoft.com", "Testing integration", "MSODS");
 
             // Step 2 - Create a code package and add it to the review
-            CodeFlowHelpers.AddCodePackage(rClient, onboardingRequest.CodeFlowId, CodeFlowHelpers.CreateCodePackage("testing pack", onboardingRequest.CreatedBy, onboardingRequest.CreatedBy, CodePackageFormat.SourceDepotPack, new Uri(SystemHelpers.DestPath + filename)));
+            CodeFlowHelpers.AddCodePackage(rClient, onboardingRequest.CodeFlowId, CodeFlowHelpers.CreateCodePackage("testing pack", onboardingRequest.CreatedBy, onboardingRequest.CreatedBy, CodePackageFormat.SourceDepotPack, new Uri(SystemHelpers.DepotPath + filename)));
             //CodeFlowHelpers.AddCodePackage(rClient, onboardingRequest.CodeFlowId, CodeFlowHelpers.CreateCodePackage("testing pack", onboardingRequest.CreatedBy, onboardingRequest.CreatedBy, new Uri(SystemHelpers.DestPath + filename)));
 
 
