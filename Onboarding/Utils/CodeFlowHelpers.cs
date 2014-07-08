@@ -10,8 +10,11 @@ namespace Onboarding.Utils
 {
     public static class CodeFlowHelpers
     {
+        public const string ProjectShortName = "MSODS";
+        public const string EmailDomain = "@microsoft.com";
+
         /// <summary>
-        /// Step 1 - Create a review.
+        /// Step 1 - Create a review. An id will be generated, but not pushlished.
         /// </summary>
         /// <param name="client">An instance of <see cref="ReviewServiceClient"/>.</param>
         /// <param name="authorName">Author's alias.</param>
@@ -40,7 +43,6 @@ namespace Onboarding.Utils
         /// <param name="format">Code package format, dpk/tfs shelve set.</param>
         /// <param name="location">The uri location of the package.</param>
         /// <returns>An instance of <see cref="CodePackage"/>.</returns>
-        //public static CodePackage CreateCodePackage(string name, string author, string userAgent, Uri location)
         public static CodePackage CreateCodePackage(string name, string author, string userAgent, CodePackageFormat format, Uri location)
         {
             return new CodePackage

@@ -58,9 +58,9 @@ namespace Onboarding.Models
 
     public enum RequestState
     {
-        Created = 1,
-        PendingApproval,
-        Approved,
+        Created,
+        PendingReview,
+        ReviewCompleted,
         CheckedIn,
         BuildQueued,
         BuildFinished,

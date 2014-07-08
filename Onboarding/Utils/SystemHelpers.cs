@@ -36,13 +36,31 @@ namespace Onboarding.Utils
             ProcessStartInfo startInfo = new ProcessStartInfo(CmdPath);
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
             startInfo.Arguments = CmdConfigArgs
-                + CmdAddToDepotArgs(DepotPath, filename);
+                + CmdAddToDepotArgs(filename);
             Process process = Process.Start(startInfo);
         }
 
-        private static string CmdAddToDepotArgs(string depotPath, string filename)
+        /// <summary>
+        /// Revert the file from changelist.
+        /// </summary>
+        /// <param name="filename">SPT xml file's name.</param>
+        public static void RevertFile(string filename)
         {
-            return " && cd " + depotPath + " && sd add " + filename;
+            ProcessStartInfo startInfo = new ProcessStartInfo(CmdPath);
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.Arguments = CmdConfigArgs
+                + CmdRevertFile(filename);
+            Process process = Process.Start(startInfo);
+        }
+
+        private static string CmdRevertFile(string filename)
+        {
+            return " && cd " + DepotPath + " && sd revert -d " + filename;
+        }
+
+        private static string CmdAddToDepotArgs(string filename)
+        {
+            return " && cd " + DepotPath + " && sd add " + filename + " && sdp pack " + filename + " -C \"some desc\"";
         }
     }
 }

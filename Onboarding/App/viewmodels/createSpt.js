@@ -4,7 +4,7 @@
         var vm = {
             contact: ko.observable(),
             displayName: ko.observable(),
-            appClass: ko.observable(),
+            serviceType: ko.observable(),
             appPrincipalId: ko.observable(),
             // Set request type by default when navigating to this page
             requestType: "Create SPT",
@@ -142,7 +142,7 @@
             hasCreated = false;
             hasSubmitted = false;
             vm.displayName("");
-            vm.appClass("");
+            vm.serviceType("");
             $(":input").not("#appPrincipalId").val("");
         }
 
@@ -181,7 +181,7 @@
 
             var body = json["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"]["ServicePrincipal"] = {};
             body["DisplayName"] = vm.displayName();
-            body["AppClass"] = vm.appClass();
+            body["ServiceType"] = vm.serviceType();
 
             // Environments
             body["Environments"] = {};
