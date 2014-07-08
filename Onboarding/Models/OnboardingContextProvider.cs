@@ -49,8 +49,9 @@ namespace Onboarding.Models
 
         private void SetCreatedTimeOnInitialization(OnboardingRequest onboardingRequest)
         {
+            string dateFormat = "M/d/yyyy h:mm tt";
             onboardingRequest.CreatedDate = DateTime.UtcNow;
-            onboardingRequest.DisplayCreatedDate = onboardingRequest.CreatedDate.ToLocalTime().ToString("M/d/yyyy h:mm tt",
+            onboardingRequest.DisplayCreatedDate = onboardingRequest.CreatedDate.ToLocalTime().ToString(dateFormat,
                   CultureInfo.CreateSpecificCulture("en-US"));
             onboardingRequest.ModifiedDate = onboardingRequest.CreatedDate;
             onboardingRequest.DisplayModifiedDate = onboardingRequest.DisplayCreatedDate;
