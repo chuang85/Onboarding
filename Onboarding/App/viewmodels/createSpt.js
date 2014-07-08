@@ -6,7 +6,7 @@
             displayName: ko.observable(),
             appClass: ko.observable(),
             appPrincipalId: ko.observable(),
-            // Set request type by default
+            // Set request type by default when navigating to this page
             requestType: "Create SPT",
             activate: activate,
             canDeactivate: canDeactivate,

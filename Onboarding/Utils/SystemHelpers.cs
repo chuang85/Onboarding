@@ -16,7 +16,6 @@ namespace Onboarding.Utils
         /// Write string into an xml file and then save it
         /// </summary>
         /// <param name="xmlString">Xml in format of string, to be written into file.</param>
-        /// <param name="path">The saving path.</param>
         /// <param name="filename">Name of file</param>
         /// <returns>The xml in type of byte[]</returns>
         public static byte[] SaveStringToXml(string xmlString, string filename)
