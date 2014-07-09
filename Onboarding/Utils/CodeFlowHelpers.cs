@@ -117,7 +117,7 @@ namespace Onboarding.Utils
         /// <param name="key">Key of the request to be monitored. Can be accessed from DB.</param>
         /// <param name="author">Author of the review.</param>
         /// <returns>True if at least one reviewer is signed off.</returns>
-        public bool ReviewCompleted(ReviewDashboardServiceClient client, string key, string author)
+        public static bool ReviewCompleted(ReviewDashboardServiceClient client, string key, string author)
         {
             var response = client.Query(new CodeReviewQuery
             {
