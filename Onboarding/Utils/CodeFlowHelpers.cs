@@ -108,5 +108,41 @@ namespace Onboarding.Utils
         {
             client.PublishReview(reviewId, messageFromAuthor);
         }
+
+        /// <summary>
+        /// Monitor status for an active review, given the key.
+        /// A review is regarded as completed when at least one reviewer is signed off.
+        /// </summary>
+        /// <param name="client">An instance of <see cref="ReviewDashboardServiceClient"/>.</param>
+        /// <param name="key">Key of the request to be monitored. Can be accessed from DB.</param>
+        /// <param name="author">Author of the review.</param>
+        /// <returns>True if at least one reviewer is signed off.</returns>
+        public bool ReviewCompleted(ReviewDashboardServiceClient client, string key, string author)
+        {
+            var response = client.Query(new CodeReviewQuery
+            {
+                Authors = new string[] { author },
+                ReviewStatuses = new DashboardService.CodeReviewStatus[] { DashboardService.CodeReviewStatus.Active },
+                UserAgent = author
+            });
+            if (response != null) {
+                foreach (var review in response.Reviews)
+                {
+                    if (review.Key.Equals(key))
+                    {
+                        foreach (var reviewer in review.Reviewers)
+                        {
+                            if (reviewer.Status == DashboardService.ReviewerStatus.SignedOff)
+                            {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                    throw new Exception("Given key not exist.");
+                }
+            }
+            throw new Exception("No response found.");
+        }
     }
 }
