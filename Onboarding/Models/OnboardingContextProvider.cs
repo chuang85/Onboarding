@@ -28,18 +28,18 @@ namespace Onboarding.Models
                 //onboardingRequest.State = RequestState.Created;
                 onboardingRequest.State = "Created";
 
-                // Write string formatted xml in to an file and assign it to Blob field.
-                string filename = SetSptFilename(onboardingRequest);
-                onboardingRequest.Blob = SystemHelpers.SaveStringToXml(onboardingRequest.TempXmlStore, filename);
+                //// Write string formatted xml in to an file and assign it to Blob field.
+                //string filename = SetSptFilename(onboardingRequest);
+                //onboardingRequest.Blob = SystemHelpers.SaveStringToXml(onboardingRequest.TempXmlStore, filename);
 
-                // Add xml to (local) source depot.
-                SystemHelpers.AddFileToDepot(filename);
+                //// Add xml to (local) source depot.
+                //SystemHelpers.AddFileToDepot(filename);
 
-                // Create and submit a code review from information provided in a request
-                // with the file attached to be reviewed.
-                SubmitCodeReviewFromRequest(rClient, onboardingRequest, filename);
+                //// Create and submit a code review from information provided in a request
+                //// with the file attached to be reviewed.
+                //SubmitCodeReviewFromRequest(rClient, onboardingRequest, filename);
 
-                // Revert file (after review completed?)
+                //// Revert file (after review completed?)
                 //SystemHelpers.RevertFile(filename);
 
                 // Close clients.

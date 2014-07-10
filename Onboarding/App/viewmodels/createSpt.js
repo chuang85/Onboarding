@@ -166,7 +166,7 @@
         }
 
         function createJSONSpt() {
-            var map = {
+            var envMap = {
                 "prod": "grn001",
                 "gallatin": "grn002",
                 "ppe": "grnppe",
@@ -174,23 +174,56 @@
             };
 
             var json = {};
-            json["ServicePrincipalTemplate"] = {};
-            json["ServicePrincipalTemplate"]["Value"] = {};
-            json["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"] = {};
-            json["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"]["@xmlns"] = "";
+            // DirectoryChanges
+            json["DirectoryChanges"] = {};
+            json["DirectoryChanges"]["@xmlns:xsi"] = "http://www.w3.org/2001/XMLSchema-instance";
+            json["DirectoryChanges"]["@xmlns"] = "http://schemas.microsoft.com/online/directoryservices/change/2008/11";
 
-            var body = json["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"]["ServicePrincipal"] = {};
-            body["DisplayName"] = vm.displayName();
-            body["ServiceType"] = vm.serviceType();
+            // DirectoryObject
+            var body = json["DirectoryChanges"]["DirectoryObject"] = {};
+            body["@xsi:type"] = "Service";
+            body["@ContextId"] = "00000000-0000-0000-0000-000000000000";
+            body["@ObjectId"] = guidgenerator.generateGuid().toString();
+
+            // ServiceInstanceMap
+            body["ServiceInstanceMap"] = {};
+            body["ServiceInstanceMap"]["Value"] = {};
+            body["ServiceInstanceMap"]["Value"]["Maps"] = {};
+            var maps = body["ServiceInstanceMap"]["Value"]["Maps"]["Map"] = [];
+            var map = {};
+            map["WeightedServiceInstances"] = {};
+            var wsis = map["WeightedServiceInstances"]["WeightedServiceInstance"] = [];
+            var wsi = {};
+            wsi["@Name"] = vm.serviceType() + "/SDF";
+            wsi["@Weight"] = "1";
+            wsis.push(wsi);
+            maps.push(map);
+
+            // ServiceType
+            body["ServiceType"] = {};
+            body["ServiceType"]["Value"] = vm.serviceType();
+
+            // ServicePrincipalTemplate
+            body["ServicePrincipalTemplate"] = {};
+            body["ServicePrincipalTemplate"]["Value"] = {};
+            body["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"] = {};
+            body["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"]["@xmlns"] = "";
+
+            var sp = body["ServicePrincipalTemplate"]["Value"]["ServicePrincipals"]["ServicePrincipal"] = {};
+            // DisplayName
+            sp["DisplayName"] = vm.displayName();
+
+            // AppClass
+            sp["AppClass"] = vm.serviceType();
 
             // Environments
-            body["Environments"] = {};
-            var envArr = body["Environments"]["Environment"] = [];
+            sp["Environments"] = {};
+            var envArr = sp["Environments"]["Environment"] = [];
 
             $("#environment .env-title a").each(function () {
                 var env = {};
                 var envType = $(this).text().toLowerCase();
-                env["@name"] = map[envType];
+                env["@name"] = envMap[envType];
 
                 // Init flags to prevent adding emtpy array
                 var hostnameEmpty = spnameEmpty = appaddressEmpty = true;
@@ -245,8 +278,22 @@
                     envArr.push(env);
                 }
             });
+
             // AppPrincipalID
-            body["AppPrincipalID"] = vm.appPrincipalId();
+            sp["AppPrincipalID"] = vm.appPrincipalId();
+
+            // ExternalUserAccountDelegationsAllowed
+            sp["ExternalUserAccountDelegationsAllowed"] = "";
+
+            // KeyGroupID
+            sp["KeyGroupID"] = guidgenerator.generateGuid().toString();
+
+            // MicrosoftPolicyGroup
+            sp["MicrosoftPolicyGroup"] = "";
+
+            // ManagedExternally
+            sp["ManagedExternally"] = "";
+
             return json;
         };
 
