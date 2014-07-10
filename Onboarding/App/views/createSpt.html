@@ -277,8 +277,38 @@
                 </div>
             </div>
         </div>
-        <!--Create&Clear button-->
+        <!--ExternalUserAccountDelegationsAllowed-->
         <div class="form-group">
+            <label for="externalUserAccountDelegationsAllowed" class="col-sm-2 control-label">ExternalUserAccountDelegationsAllowed</label>
+            <div class="col-sm-offset-4 col-sm-6">
+                <div class="btn-group btn-toggle" id="externalUserAccountDelegationsAllowed">
+                    <button class="btn btn-default">YES</button>
+                    <button class="btn btn-primary active">NO</button>
+                </div>
+            </div>
+        </div>
+        <!--MicrosoftPolicyGroup-->
+        <div class="form-group">
+            <label for="microsoftPolicyGroup" class="col-sm-2 control-label">MicrosoftPolicyGroup</label>
+            <div class="col-sm-offset-4 col-sm-6">
+                <div class="btn-group btn-toggle" id="microsoftPolicyGroup">
+                    <button class="btn btn-default">YES</button>
+                    <button class="btn btn-primary active">NO</button>
+                </div>
+            </div>
+        </div>
+        <!--ManagedExternally-->
+        <div class="form-group">
+            <label for="managedExternally" class="col-sm-2 control-label">ManagedExternally</label>
+            <div class="col-sm-offset-4 col-sm-6">
+                <div class="btn-group btn-toggle" id="managedExternally">
+                    <button class="btn btn-default">YES</button>
+                    <button class="btn btn-primary active">NO</button>
+                </div>
+            </div>
+        </div>
+        <!--Create&Clear button-->
+        <div class="form-inline">
             <div class="col-sm-offset-2 col-sm-6">
                 <button id="submit-btn" class="btn btn-default" data-bind="click: createEntity">Submit</button>
                 <button id="clear-btn" class="btn btn-default" data-bind="click: clearInput">Clear</button>
