@@ -1,10 +1,10 @@
-using System;
 using System.Web.Optimization;
+using Onboarding;
 
 [assembly: WebActivator.PostApplicationStartMethod(
-    typeof(Onboarding.App_Start.DurandalConfig), "PreStart")]
+    typeof(DurandalConfig), "PreStart")]
 
-namespace Onboarding.App_Start
+namespace Onboarding
 {
     public static class DurandalConfig
     {

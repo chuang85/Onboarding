@@ -1,4 +1,4 @@
-﻿namespace OnboardingService
+﻿namespace Onboarding.Service
 {
     partial class ProjectInstaller
     {

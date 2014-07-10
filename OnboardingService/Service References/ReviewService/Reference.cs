@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnboardingService.ReviewService {
+namespace Onboarding.Service.ReviewService {
     using System.Runtime.Serialization;
     using System;
     
@@ -30,7 +30,7 @@ namespace OnboardingService.ReviewService {
         
         private string NameField;
         
-        private OnboardingService.ReviewService.AuthorStatus StatusField;
+        private Onboarding.Service.ReviewService.AuthorStatus StatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -95,7 +95,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.AuthorStatus Status {
+        public Onboarding.Service.ReviewService.AuthorStatus Status {
             get {
                 return this.StatusField;
             }
@@ -143,7 +143,7 @@ namespace OnboardingService.ReviewService {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private OnboardingService.ReviewService.Author AuthorField;
+        private Onboarding.Service.ReviewService.Author AuthorField;
         
         private string KeyField;
         
@@ -151,18 +151,18 @@ namespace OnboardingService.ReviewService {
         
         private string ProjectShortNameField;
         
-        private OnboardingService.ReviewService.CodeReviewStatus StatusField;
+        private Onboarding.Service.ReviewService.CodeReviewStatus StatusField;
         
-        private OnboardingService.ReviewService.CodeFlowVersion VersionField;
+        private Onboarding.Service.ReviewService.CodeFlowVersion VersionField;
         
-        private OnboardingService.ReviewService.CodePackage[] codePackagesField;
+        private Onboarding.Service.ReviewService.CodePackage[] codePackagesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.ReviewService.WorkItem[] relatedWorkItemsField;
+        private Onboarding.Service.ReviewService.WorkItem[] relatedWorkItemsField;
         
-        private OnboardingService.ReviewService.Reviewer[] reviewersField;
+        private Onboarding.Service.ReviewService.Reviewer[] reviewersField;
         
-        private OnboardingService.ReviewService.CommentThread[] threadsField;
+        private Onboarding.Service.ReviewService.CommentThread[] threadsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CreatedByField;
@@ -171,13 +171,13 @@ namespace OnboardingService.ReviewService {
         private System.Collections.Generic.Dictionary<string, string> CustomDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.ReviewService.AuditLog AuditLogField;
+        private Onboarding.Service.ReviewService.AuditLog AuditLogField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CompletionMessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.ReviewService.ReviewIteration[] IterationsField;
+        private Onboarding.Service.ReviewService.ReviewIteration[] IterationsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -190,7 +190,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.Author Author {
+        public Onboarding.Service.ReviewService.Author Author {
             get {
                 return this.AuthorField;
             }
@@ -242,7 +242,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.CodeReviewStatus Status {
+        public Onboarding.Service.ReviewService.CodeReviewStatus Status {
             get {
                 return this.StatusField;
             }
@@ -255,7 +255,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.CodeFlowVersion Version {
+        public Onboarding.Service.ReviewService.CodeFlowVersion Version {
             get {
                 return this.VersionField;
             }
@@ -268,7 +268,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.CodePackage[] codePackages {
+        public Onboarding.Service.ReviewService.CodePackage[] codePackages {
             get {
                 return this.codePackagesField;
             }
@@ -281,7 +281,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public OnboardingService.ReviewService.WorkItem[] relatedWorkItems {
+        public Onboarding.Service.ReviewService.WorkItem[] relatedWorkItems {
             get {
                 return this.relatedWorkItemsField;
             }
@@ -294,7 +294,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.Reviewer[] reviewers {
+        public Onboarding.Service.ReviewService.Reviewer[] reviewers {
             get {
                 return this.reviewersField;
             }
@@ -307,7 +307,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.CommentThread[] threads {
+        public Onboarding.Service.ReviewService.CommentThread[] threads {
             get {
                 return this.threadsField;
             }
@@ -346,7 +346,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=12)]
-        public OnboardingService.ReviewService.AuditLog AuditLog {
+        public Onboarding.Service.ReviewService.AuditLog AuditLog {
             get {
                 return this.AuditLogField;
             }
@@ -372,7 +372,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=14)]
-        public OnboardingService.ReviewService.ReviewIteration[] Iterations {
+        public Onboarding.Service.ReviewService.ReviewIteration[] Iterations {
             get {
                 return this.IterationsField;
             }
@@ -576,7 +576,7 @@ namespace OnboardingService.ReviewService {
         
         private string DescriptionField;
         
-        private OnboardingService.ReviewService.CodePackageFormat FormatField;
+        private Onboarding.Service.ReviewService.CodePackageFormat FormatField;
         
         private System.Uri LocationField;
         
@@ -584,18 +584,18 @@ namespace OnboardingService.ReviewService {
         
         private int RevisionField;
         
-        private OnboardingService.ReviewService.CodePackageStatus StatusField;
+        private Onboarding.Service.ReviewService.CodePackageStatus StatusField;
         
         private System.DateTime SubmittedOnField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.ReviewService.FileChange[] FileChangesField;
+        private Onboarding.Service.ReviewService.FileChange[] FileChangesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.ReviewService.Layer[] LayersField;
+        private Onboarding.Service.ReviewService.Layer[] LayersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.ReviewService.CodePackageSourceInfo SourceInfoField;
+        private Onboarding.Service.ReviewService.CodePackageSourceInfo SourceInfoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserAgentField;
@@ -640,7 +640,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.CodePackageFormat Format {
+        public Onboarding.Service.ReviewService.CodePackageFormat Format {
             get {
                 return this.FormatField;
             }
@@ -692,7 +692,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.CodePackageStatus Status {
+        public Onboarding.Service.ReviewService.CodePackageStatus Status {
             get {
                 return this.StatusField;
             }
@@ -718,7 +718,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=8)]
-        public OnboardingService.ReviewService.FileChange[] FileChanges {
+        public Onboarding.Service.ReviewService.FileChange[] FileChanges {
             get {
                 return this.FileChangesField;
             }
@@ -731,7 +731,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=9)]
-        public OnboardingService.ReviewService.Layer[] Layers {
+        public Onboarding.Service.ReviewService.Layer[] Layers {
             get {
                 return this.LayersField;
             }
@@ -744,7 +744,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=10)]
-        public OnboardingService.ReviewService.CodePackageSourceInfo SourceInfo {
+        public Onboarding.Service.ReviewService.CodePackageSourceInfo SourceInfo {
             get {
                 return this.SourceInfoField;
             }
@@ -901,7 +901,7 @@ namespace OnboardingService.ReviewService {
         
         private bool RequiredField;
         
-        private OnboardingService.ReviewService.ReviewerStatus StatusField;
+        private Onboarding.Service.ReviewService.ReviewerStatus StatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -979,7 +979,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.ReviewerStatus Status {
+        public Onboarding.Service.ReviewService.ReviewerStatus Status {
             get {
                 return this.StatusField;
             }
@@ -1010,7 +1010,7 @@ namespace OnboardingService.ReviewService {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private OnboardingService.ReviewService.DiffContext ContextField;
+        private Onboarding.Service.ReviewService.DiffContext ContextField;
         
         private int IdField;
         
@@ -1018,13 +1018,13 @@ namespace OnboardingService.ReviewService {
         
         private System.DateTime LastUpdatedOnField;
         
-        private OnboardingService.ReviewService.CommentScope LevelField;
+        private Onboarding.Service.ReviewService.CommentScope LevelField;
         
         private int ParentThreadIdField;
         
-        private OnboardingService.ReviewService.Comment RootField;
+        private Onboarding.Service.ReviewService.Comment RootField;
         
-        private OnboardingService.ReviewService.CommentThreadStatus StatusField;
+        private Onboarding.Service.ReviewService.CommentThreadStatus StatusField;
         
         private string SubjectField;
         
@@ -1042,7 +1042,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.DiffContext Context {
+        public Onboarding.Service.ReviewService.DiffContext Context {
             get {
                 return this.ContextField;
             }
@@ -1094,7 +1094,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.CommentScope Level {
+        public Onboarding.Service.ReviewService.CommentScope Level {
             get {
                 return this.LevelField;
             }
@@ -1120,7 +1120,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.Comment Root {
+        public Onboarding.Service.ReviewService.Comment Root {
             get {
                 return this.RootField;
             }
@@ -1133,7 +1133,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.CommentThreadStatus Status {
+        public Onboarding.Service.ReviewService.CommentThreadStatus Status {
             get {
                 return this.StatusField;
             }
@@ -1200,11 +1200,11 @@ namespace OnboardingService.ReviewService {
         
         private int FirstCodePackageIndexField;
         
-        private OnboardingService.ReviewService.Layer[] LayersField;
+        private Onboarding.Service.ReviewService.Layer[] LayersField;
         
         private int RevisionField;
         
-        private OnboardingService.ReviewService.IterationStatus StatusField;
+        private Onboarding.Service.ReviewService.IterationStatus StatusField;
         
         private System.DateTime SubmittedOnField;
         
@@ -1284,7 +1284,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.Layer[] Layers {
+        public Onboarding.Service.ReviewService.Layer[] Layers {
             get {
                 return this.LayersField;
             }
@@ -1310,7 +1310,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.IterationStatus Status {
+        public Onboarding.Service.ReviewService.IterationStatus Status {
             get {
                 return this.StatusField;
             }
@@ -1692,12 +1692,12 @@ namespace OnboardingService.ReviewService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LeftCodePackageNameField;
         
-        private OnboardingService.ReviewService.FileRegion RegionField;
+        private Onboarding.Service.ReviewService.FileRegion RegionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RightCodePackageNameField;
         
-        private OnboardingService.ReviewService.CommentViewContext ViewField;
+        private Onboarding.Service.ReviewService.CommentViewContext ViewField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int LeftIterationField;
@@ -1742,7 +1742,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.FileRegion Region {
+        public Onboarding.Service.ReviewService.FileRegion Region {
             get {
                 return this.RegionField;
             }
@@ -1768,7 +1768,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.CommentViewContext View {
+        public Onboarding.Service.ReviewService.CommentViewContext View {
             get {
                 return this.ViewField;
             }
@@ -1830,7 +1830,7 @@ namespace OnboardingService.ReviewService {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.ReviewService.Like[] LikesField;
+        private Onboarding.Service.ReviewService.Like[] LikesField;
         
         private int ParentIdField;
         
@@ -1840,7 +1840,7 @@ namespace OnboardingService.ReviewService {
         
         private int ThreadIdField;
         
-        private OnboardingService.ReviewService.Comment[] childrenField;
+        private Onboarding.Service.ReviewService.Comment[] childrenField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool WithdrawnField;
@@ -1882,7 +1882,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public OnboardingService.ReviewService.Like[] Likes {
+        public Onboarding.Service.ReviewService.Like[] Likes {
             get {
                 return this.LikesField;
             }
@@ -1947,7 +1947,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.Comment[] children {
+        public Onboarding.Service.ReviewService.Comment[] children {
             get {
                 return this.childrenField;
             }
@@ -2297,10 +2297,10 @@ namespace OnboardingService.ReviewService {
         
         private int RevisionField;
         
-        private OnboardingService.ReviewService.CodeReviewStatus StatusField;
+        private Onboarding.Service.ReviewService.CodeReviewStatus StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.ReviewService.Author AuthorField;
+        private Onboarding.Service.ReviewService.Author AuthorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime CompletedOnField;
@@ -2312,10 +2312,10 @@ namespace OnboardingService.ReviewService {
         private int IterationCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.ReviewService.Reviewer[] ReviewersField;
+        private Onboarding.Service.ReviewService.Reviewer[] ReviewersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.ReviewService.WorkItem[] WorkItemsField;
+        private Onboarding.Service.ReviewService.WorkItem[] WorkItemsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2406,7 +2406,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.ReviewService.CodeReviewStatus Status {
+        public Onboarding.Service.ReviewService.CodeReviewStatus Status {
             get {
                 return this.StatusField;
             }
@@ -2419,7 +2419,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=7)]
-        public OnboardingService.ReviewService.Author Author {
+        public Onboarding.Service.ReviewService.Author Author {
             get {
                 return this.AuthorField;
             }
@@ -2471,7 +2471,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=11)]
-        public OnboardingService.ReviewService.Reviewer[] Reviewers {
+        public Onboarding.Service.ReviewService.Reviewer[] Reviewers {
             get {
                 return this.ReviewersField;
             }
@@ -2484,7 +2484,7 @@ namespace OnboardingService.ReviewService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=12)]
-        public OnboardingService.ReviewService.WorkItem[] WorkItems {
+        public Onboarding.Service.ReviewService.WorkItem[] WorkItems {
             get {
                 return this.WorkItemsField;
             }
@@ -2511,279 +2511,279 @@ namespace OnboardingService.ReviewService {
     public interface IReviewService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/CreateReview", ReplyAction="http://tempuri.org/IReviewService/CreateReviewResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/CreateReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CodeReview CreateReview(OnboardingService.ReviewService.Author author, string reviewName, string projectShortName);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/CreateReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CodeReview CreateReview(Onboarding.Service.ReviewService.Author author, string reviewName, string projectShortName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/CreateReview", ReplyAction="http://tempuri.org/IReviewService/CreateReviewResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> CreateReviewAsync(OnboardingService.ReviewService.Author author, string reviewName, string projectShortName);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> CreateReviewAsync(Onboarding.Service.ReviewService.Author author, string reviewName, string projectShortName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/SetTitle", ReplyAction="http://tempuri.org/IReviewService/SetTitleResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/SetTitleServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/SetTitleServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
         void SetTitle(string codeReviewKey, string title);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/SetTitle", ReplyAction="http://tempuri.org/IReviewService/SetTitleResponse")]
         System.Threading.Tasks.Task SetTitleAsync(string codeReviewKey, string title);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/PublishReview", ReplyAction="http://tempuri.org/IReviewService/PublishReviewResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/PublishReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CodeReview PublishReview(string codeReviewKey, string messageFromAuthor);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/PublishReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CodeReview PublishReview(string codeReviewKey, string messageFromAuthor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/PublishReview", ReplyAction="http://tempuri.org/IReviewService/PublishReviewResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> PublishReviewAsync(string codeReviewKey, string messageFromAuthor);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> PublishReviewAsync(string codeReviewKey, string messageFromAuthor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/CompleteReview", ReplyAction="http://tempuri.org/IReviewService/CompleteReviewResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/CompleteReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CodeReview CompleteReview(string codeReviewKey, string messageFromAuthor);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/CompleteReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CodeReview CompleteReview(string codeReviewKey, string messageFromAuthor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/CompleteReview", ReplyAction="http://tempuri.org/IReviewService/CompleteReviewResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> CompleteReviewAsync(string codeReviewKey, string messageFromAuthor);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> CompleteReviewAsync(string codeReviewKey, string messageFromAuthor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/ExpireReview", ReplyAction="http://tempuri.org/IReviewService/ExpireReviewResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/ExpireReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CodeReview ExpireReview(string codeReviewKey);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/ExpireReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CodeReview ExpireReview(string codeReviewKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/ExpireReview", ReplyAction="http://tempuri.org/IReviewService/ExpireReviewResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> ExpireReviewAsync(string codeReviewKey);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> ExpireReviewAsync(string codeReviewKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/WithdrawReview", ReplyAction="http://tempuri.org/IReviewService/WithdrawReviewResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/WithdrawReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CodeReview WithdrawReview(string codeReviewKey, string messageFromAuthor);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/WithdrawReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CodeReview WithdrawReview(string codeReviewKey, string messageFromAuthor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/WithdrawReview", ReplyAction="http://tempuri.org/IReviewService/WithdrawReviewResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> WithdrawReviewAsync(string codeReviewKey, string messageFromAuthor);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> WithdrawReviewAsync(string codeReviewKey, string messageFromAuthor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/ReactivateReview", ReplyAction="http://tempuri.org/IReviewService/ReactivateReviewResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/ReactivateReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/ReactivateReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
         void ReactivateReview(string codeReviewKey, string messageFromAuthor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/ReactivateReview", ReplyAction="http://tempuri.org/IReviewService/ReactivateReviewResponse")]
         System.Threading.Tasks.Task ReactivateReviewAsync(string codeReviewKey, string messageFromAuthor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/DeleteReview", ReplyAction="http://tempuri.org/IReviewService/DeleteReviewResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/DeleteReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/DeleteReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
         void DeleteReview(string codeReviewKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/DeleteReview", ReplyAction="http://tempuri.org/IReviewService/DeleteReviewResponse")]
         System.Threading.Tasks.Task DeleteReviewAsync(string codeReviewKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddAuditLogEvent", ReplyAction="http://tempuri.org/IReviewService/AddAuditLogEventResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddAuditLogEventServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddAuditLogEventServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
         void AddAuditLogEvent(string codeReviewKey, string user, string eventName, string message, System.Collections.Generic.Dictionary<string, string> arguments);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddAuditLogEvent", ReplyAction="http://tempuri.org/IReviewService/AddAuditLogEventResponse")]
         System.Threading.Tasks.Task AddAuditLogEventAsync(string codeReviewKey, string user, string eventName, string message, System.Collections.Generic.Dictionary<string, string> arguments);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddAuditLog", ReplyAction="http://tempuri.org/IReviewService/AddAuditLogResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddAuditLogServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        void AddAuditLog(string codeReviewKey, OnboardingService.ReviewService.AuditLog auditLog);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddAuditLogServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        void AddAuditLog(string codeReviewKey, Onboarding.Service.ReviewService.AuditLog auditLog);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddAuditLog", ReplyAction="http://tempuri.org/IReviewService/AddAuditLogResponse")]
-        System.Threading.Tasks.Task AddAuditLogAsync(string codeReviewKey, OnboardingService.ReviewService.AuditLog auditLog);
+        System.Threading.Tasks.Task AddAuditLogAsync(string codeReviewKey, Onboarding.Service.ReviewService.AuditLog auditLog);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/SetCustomData", ReplyAction="http://tempuri.org/IReviewService/SetCustomDataResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/SetCustomDataServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/SetCustomDataServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
         void SetCustomData(string codeReviewKey, System.Collections.Generic.Dictionary<string, string> customDataToSet);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/SetCustomData", ReplyAction="http://tempuri.org/IReviewService/SetCustomDataResponse")]
         System.Threading.Tasks.Task SetCustomDataAsync(string codeReviewKey, System.Collections.Generic.Dictionary<string, string> customDataToSet);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/SetWorkItems", ReplyAction="http://tempuri.org/IReviewService/SetWorkItemsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/SetWorkItemsServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        void SetWorkItems(string codeReviewKey, OnboardingService.ReviewService.WorkItem[] workItems);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/SetWorkItemsServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        void SetWorkItems(string codeReviewKey, Onboarding.Service.ReviewService.WorkItem[] workItems);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/SetWorkItems", ReplyAction="http://tempuri.org/IReviewService/SetWorkItemsResponse")]
-        System.Threading.Tasks.Task SetWorkItemsAsync(string codeReviewKey, OnboardingService.ReviewService.WorkItem[] workItems);
+        System.Threading.Tasks.Task SetWorkItemsAsync(string codeReviewKey, Onboarding.Service.ReviewService.WorkItem[] workItems);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/GetReview", ReplyAction="http://tempuri.org/IReviewService/GetReviewResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/GetReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CodeReview GetReview(string codeReviewKey);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/GetReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CodeReview GetReview(string codeReviewKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/GetReview", ReplyAction="http://tempuri.org/IReviewService/GetReviewResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> GetReviewAsync(string codeReviewKey);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> GetReviewAsync(string codeReviewKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/CheckUpdates", ReplyAction="http://tempuri.org/IReviewService/CheckUpdatesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/CheckUpdatesServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.ReviewUpdateCode CheckUpdates(string codeReviewKey, int currRevision);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/CheckUpdatesServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.ReviewUpdateCode CheckUpdates(string codeReviewKey, int currRevision);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/CheckUpdates", ReplyAction="http://tempuri.org/IReviewService/CheckUpdatesResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.ReviewUpdateCode> CheckUpdatesAsync(string codeReviewKey, int currRevision);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.ReviewUpdateCode> CheckUpdatesAsync(string codeReviewKey, int currRevision);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/PokeReview", ReplyAction="http://tempuri.org/IReviewService/PokeReviewResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/PokeReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/PokeReviewServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
         void PokeReview(string codeReviewKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/PokeReview", ReplyAction="http://tempuri.org/IReviewService/PokeReviewResponse")]
         System.Threading.Tasks.Task PokeReviewAsync(string codeReviewKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddCodePackage", ReplyAction="http://tempuri.org/IReviewService/AddCodePackageResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddCodePackageServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CodePackage AddCodePackage(string codeReviewKey, OnboardingService.ReviewService.CodePackage codePackage);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddCodePackageServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CodePackage AddCodePackage(string codeReviewKey, Onboarding.Service.ReviewService.CodePackage codePackage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddCodePackage", ReplyAction="http://tempuri.org/IReviewService/AddCodePackageResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CodePackage> AddCodePackageAsync(string codeReviewKey, OnboardingService.ReviewService.CodePackage codePackage);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodePackage> AddCodePackageAsync(string codeReviewKey, Onboarding.Service.ReviewService.CodePackage codePackage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateCodePackage", ReplyAction="http://tempuri.org/IReviewService/UpdateCodePackageResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateCodePackageServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        void UpdateCodePackage(string codeReviewKey, string codePackageName, OnboardingService.ReviewService.CodePackage codePackage);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateCodePackageServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        void UpdateCodePackage(string codeReviewKey, string codePackageName, Onboarding.Service.ReviewService.CodePackage codePackage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateCodePackage", ReplyAction="http://tempuri.org/IReviewService/UpdateCodePackageResponse")]
-        System.Threading.Tasks.Task UpdateCodePackageAsync(string codeReviewKey, string codePackageName, OnboardingService.ReviewService.CodePackage codePackage);
+        System.Threading.Tasks.Task UpdateCodePackageAsync(string codeReviewKey, string codePackageName, Onboarding.Service.ReviewService.CodePackage codePackage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateCodePackageStatus", ReplyAction="http://tempuri.org/IReviewService/UpdateCodePackageStatusResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateCodePackageStatusServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        void UpdateCodePackageStatus(string codeReviewKey, string codePackageName, OnboardingService.ReviewService.CodePackageStatus status);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateCodePackageStatusServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        void UpdateCodePackageStatus(string codeReviewKey, string codePackageName, Onboarding.Service.ReviewService.CodePackageStatus status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateCodePackageStatus", ReplyAction="http://tempuri.org/IReviewService/UpdateCodePackageStatusResponse")]
-        System.Threading.Tasks.Task UpdateCodePackageStatusAsync(string codeReviewKey, string codePackageName, OnboardingService.ReviewService.CodePackageStatus status);
+        System.Threading.Tasks.Task UpdateCodePackageStatusAsync(string codeReviewKey, string codePackageName, Onboarding.Service.ReviewService.CodePackageStatus status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddIteration", ReplyAction="http://tempuri.org/IReviewService/AddIterationResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddIterationServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.ReviewIteration AddIteration(string codeReviewKey, OnboardingService.ReviewService.ReviewIteration iteration, OnboardingService.ReviewService.CodePackage[] codePackages);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddIterationServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.ReviewIteration AddIteration(string codeReviewKey, Onboarding.Service.ReviewService.ReviewIteration iteration, Onboarding.Service.ReviewService.CodePackage[] codePackages);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddIteration", ReplyAction="http://tempuri.org/IReviewService/AddIterationResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.ReviewIteration> AddIterationAsync(string codeReviewKey, OnboardingService.ReviewService.ReviewIteration iteration, OnboardingService.ReviewService.CodePackage[] codePackages);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.ReviewIteration> AddIterationAsync(string codeReviewKey, Onboarding.Service.ReviewService.ReviewIteration iteration, Onboarding.Service.ReviewService.CodePackage[] codePackages);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateIteration", ReplyAction="http://tempuri.org/IReviewService/UpdateIterationResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateIterationServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        void UpdateIteration(string codeReviewKey, OnboardingService.ReviewService.ReviewIteration iteration, OnboardingService.ReviewService.CodePackage[] codePackages);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateIterationServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        void UpdateIteration(string codeReviewKey, Onboarding.Service.ReviewService.ReviewIteration iteration, Onboarding.Service.ReviewService.CodePackage[] codePackages);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateIteration", ReplyAction="http://tempuri.org/IReviewService/UpdateIterationResponse")]
-        System.Threading.Tasks.Task UpdateIterationAsync(string codeReviewKey, OnboardingService.ReviewService.ReviewIteration iteration, OnboardingService.ReviewService.CodePackage[] codePackages);
+        System.Threading.Tasks.Task UpdateIterationAsync(string codeReviewKey, Onboarding.Service.ReviewService.ReviewIteration iteration, Onboarding.Service.ReviewService.CodePackage[] codePackages);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateIterationStatus", ReplyAction="http://tempuri.org/IReviewService/UpdateIterationStatusResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateIterationStatusServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        void UpdateIterationStatus(string codeReviewKey, int revision, OnboardingService.ReviewService.IterationStatus status);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateIterationStatusServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        void UpdateIterationStatus(string codeReviewKey, int revision, Onboarding.Service.ReviewService.IterationStatus status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateIterationStatus", ReplyAction="http://tempuri.org/IReviewService/UpdateIterationStatusResponse")]
-        System.Threading.Tasks.Task UpdateIterationStatusAsync(string codeReviewKey, int revision, OnboardingService.ReviewService.IterationStatus status);
+        System.Threading.Tasks.Task UpdateIterationStatusAsync(string codeReviewKey, int revision, Onboarding.Service.ReviewService.IterationStatus status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddComment", ReplyAction="http://tempuri.org/IReviewService/AddCommentResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddCommentServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.Comment AddComment(string codeReviewKey, OnboardingService.ReviewService.Comment comment);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddCommentServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.Comment AddComment(string codeReviewKey, Onboarding.Service.ReviewService.Comment comment);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddComment", ReplyAction="http://tempuri.org/IReviewService/AddCommentResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.Comment> AddCommentAsync(string codeReviewKey, OnboardingService.ReviewService.Comment comment);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.Comment> AddCommentAsync(string codeReviewKey, Onboarding.Service.ReviewService.Comment comment);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/StartCommentThread", ReplyAction="http://tempuri.org/IReviewService/StartCommentThreadResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/StartCommentThreadServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CommentThread StartCommentThread(string codeReviewKey, OnboardingService.ReviewService.CommentThread thread);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/StartCommentThreadServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CommentThread StartCommentThread(string codeReviewKey, Onboarding.Service.ReviewService.CommentThread thread);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/StartCommentThread", ReplyAction="http://tempuri.org/IReviewService/StartCommentThreadResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CommentThread> StartCommentThreadAsync(string codeReviewKey, OnboardingService.ReviewService.CommentThread thread);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CommentThread> StartCommentThreadAsync(string codeReviewKey, Onboarding.Service.ReviewService.CommentThread thread);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/WithdrawCommentThread", ReplyAction="http://tempuri.org/IReviewService/WithdrawCommentThreadResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/WithdrawCommentThreadServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/WithdrawCommentThreadServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
         void WithdrawCommentThread(string codeReviewKey, int threadId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/WithdrawCommentThread", ReplyAction="http://tempuri.org/IReviewService/WithdrawCommentThreadResponse")]
         System.Threading.Tasks.Task WithdrawCommentThreadAsync(string codeReviewKey, int threadId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/WithdrawComment", ReplyAction="http://tempuri.org/IReviewService/WithdrawCommentResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/WithdrawCommentServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/WithdrawCommentServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
         void WithdrawComment(string codeReviewKey, int commentId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/WithdrawComment", ReplyAction="http://tempuri.org/IReviewService/WithdrawCommentResponse")]
         System.Threading.Tasks.Task WithdrawCommentAsync(string codeReviewKey, int commentId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateCommentThreadStatus", ReplyAction="http://tempuri.org/IReviewService/UpdateCommentThreadStatusResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateCommentThreadStatusServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        void UpdateCommentThreadStatus(string codeReviewKey, int threadId, OnboardingService.ReviewService.CommentThreadStatus status);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateCommentThreadStatusServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        void UpdateCommentThreadStatus(string codeReviewKey, int threadId, Onboarding.Service.ReviewService.CommentThreadStatus status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateCommentThreadStatus", ReplyAction="http://tempuri.org/IReviewService/UpdateCommentThreadStatusResponse")]
-        System.Threading.Tasks.Task UpdateCommentThreadStatusAsync(string codeReviewKey, int threadId, OnboardingService.ReviewService.CommentThreadStatus status);
+        System.Threading.Tasks.Task UpdateCommentThreadStatusAsync(string codeReviewKey, int threadId, Onboarding.Service.ReviewService.CommentThreadStatus status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/LikeComment", ReplyAction="http://tempuri.org/IReviewService/LikeCommentResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/LikeCommentServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.Like[] LikeComment(string codeReviewKey, int commentId, bool isLike);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/LikeCommentServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.Like[] LikeComment(string codeReviewKey, int commentId, bool isLike);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/LikeComment", ReplyAction="http://tempuri.org/IReviewService/LikeCommentResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.Like[]> LikeCommentAsync(string codeReviewKey, int commentId, bool isLike);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.Like[]> LikeCommentAsync(string codeReviewKey, int commentId, bool isLike);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/GetReviewComments", ReplyAction="http://tempuri.org/IReviewService/GetReviewCommentsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/GetReviewCommentsServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CommentThread[] GetReviewComments(string codeReviewKey, int currRevision);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/GetReviewCommentsServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CommentThread[] GetReviewComments(string codeReviewKey, int currRevision);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/GetReviewComments", ReplyAction="http://tempuri.org/IReviewService/GetReviewCommentsResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CommentThread[]> GetReviewCommentsAsync(string codeReviewKey, int currRevision);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CommentThread[]> GetReviewCommentsAsync(string codeReviewKey, int currRevision);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddReviewers", ReplyAction="http://tempuri.org/IReviewService/AddReviewersResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddReviewersServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        void AddReviewers(string codeReviewKey, OnboardingService.ReviewService.Reviewer[] reviewers);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddReviewersServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        void AddReviewers(string codeReviewKey, Onboarding.Service.ReviewService.Reviewer[] reviewers);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddReviewers", ReplyAction="http://tempuri.org/IReviewService/AddReviewersResponse")]
-        System.Threading.Tasks.Task AddReviewersAsync(string codeReviewKey, OnboardingService.ReviewService.Reviewer[] reviewers);
+        System.Threading.Tasks.Task AddReviewersAsync(string codeReviewKey, Onboarding.Service.ReviewService.Reviewer[] reviewers);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/RemoveReviewers", ReplyAction="http://tempuri.org/IReviewService/RemoveReviewersResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/RemoveReviewersServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/RemoveReviewersServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
         void RemoveReviewers(string codeReviewKey, string[] reviewerNames);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/RemoveReviewers", ReplyAction="http://tempuri.org/IReviewService/RemoveReviewersResponse")]
         System.Threading.Tasks.Task RemoveReviewersAsync(string codeReviewKey, string[] reviewerNames);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateReviewerStatus", ReplyAction="http://tempuri.org/IReviewService/UpdateReviewerStatusResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateReviewerStatusServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        void UpdateReviewerStatus(string codeReviewKey, string reviewerName, OnboardingService.ReviewService.ReviewerStatus status);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateReviewerStatusServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        void UpdateReviewerStatus(string codeReviewKey, string reviewerName, Onboarding.Service.ReviewService.ReviewerStatus status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateReviewerStatus", ReplyAction="http://tempuri.org/IReviewService/UpdateReviewerStatusResponse")]
-        System.Threading.Tasks.Task UpdateReviewerStatusAsync(string codeReviewKey, string reviewerName, OnboardingService.ReviewService.ReviewerStatus status);
+        System.Threading.Tasks.Task UpdateReviewerStatusAsync(string codeReviewKey, string reviewerName, Onboarding.Service.ReviewService.ReviewerStatus status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateReviewerType", ReplyAction="http://tempuri.org/IReviewService/UpdateReviewerTypeResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateReviewerTypeServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateReviewerTypeServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
         void UpdateReviewerType(string codeReviewKey, string reviewerName, bool required);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateReviewerType", ReplyAction="http://tempuri.org/IReviewService/UpdateReviewerTypeResponse")]
         System.Threading.Tasks.Task UpdateReviewerTypeAsync(string codeReviewKey, string reviewerName, bool required);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateAuthorStatus", ReplyAction="http://tempuri.org/IReviewService/UpdateAuthorStatusResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateAuthorStatusServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        void UpdateAuthorStatus(string codeReviewKey, OnboardingService.ReviewService.AuthorStatus status);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/UpdateAuthorStatusServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        void UpdateAuthorStatus(string codeReviewKey, Onboarding.Service.ReviewService.AuthorStatus status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/UpdateAuthorStatus", ReplyAction="http://tempuri.org/IReviewService/UpdateAuthorStatusResponse")]
-        System.Threading.Tasks.Task UpdateAuthorStatusAsync(string codeReviewKey, OnboardingService.ReviewService.AuthorStatus status);
+        System.Threading.Tasks.Task UpdateAuthorStatusAsync(string codeReviewKey, Onboarding.Service.ReviewService.AuthorStatus status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AuthorPing", ReplyAction="http://tempuri.org/IReviewService/AuthorPingResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AuthorPingServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AuthorPingServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
         void AuthorPing(string codeReviewKey, string messageFromAuthor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AuthorPing", ReplyAction="http://tempuri.org/IReviewService/AuthorPingResponse")]
         System.Threading.Tasks.Task AuthorPingAsync(string codeReviewKey, string messageFromAuthor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddLayer", ReplyAction="http://tempuri.org/IReviewService/AddLayerResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddLayerServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        void AddLayer(string codeReviewKey, int revision, OnboardingService.ReviewService.Layer layer);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/AddLayerServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        void AddLayer(string codeReviewKey, int revision, Onboarding.Service.ReviewService.Layer layer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/AddLayer", ReplyAction="http://tempuri.org/IReviewService/AddLayerResponse")]
-        System.Threading.Tasks.Task AddLayerAsync(string codeReviewKey, int revision, OnboardingService.ReviewService.Layer layer);
+        System.Threading.Tasks.Task AddLayerAsync(string codeReviewKey, int revision, Onboarding.Service.ReviewService.Layer layer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/GetActiveReviewsForReviewer", ReplyAction="http://tempuri.org/IReviewService/GetActiveReviewsForReviewerResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/GetActiveReviewsForReviewerServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CodeReviewSummary[] GetActiveReviewsForReviewer(string reviewerLogin);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/GetActiveReviewsForReviewerServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CodeReviewSummary[] GetActiveReviewsForReviewer(string reviewerLogin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/GetActiveReviewsForReviewer", ReplyAction="http://tempuri.org/IReviewService/GetActiveReviewsForReviewerResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReviewSummary[]> GetActiveReviewsForReviewerAsync(string reviewerLogin);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReviewSummary[]> GetActiveReviewsForReviewerAsync(string reviewerLogin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/GetActiveReviewsForProject", ReplyAction="http://tempuri.org/IReviewService/GetActiveReviewsForProjectResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/GetActiveReviewsForProjectServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CodeReviewSummary[] GetActiveReviewsForProject(string projectShortName);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/GetActiveReviewsForProjectServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CodeReviewSummary[] GetActiveReviewsForProject(string projectShortName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/GetActiveReviewsForProject", ReplyAction="http://tempuri.org/IReviewService/GetActiveReviewsForProjectResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReviewSummary[]> GetActiveReviewsForProjectAsync(string projectShortName);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReviewSummary[]> GetActiveReviewsForProjectAsync(string projectShortName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/GetActiveReviewsForAuthor", ReplyAction="http://tempuri.org/IReviewService/GetActiveReviewsForAuthorResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/GetActiveReviewsForAuthorServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.ReviewService.CodeReviewSummary[] GetActiveReviewsForAuthor(string authorLogin);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.ReviewService.ServiceFault), Action="http://tempuri.org/IReviewService/GetActiveReviewsForAuthorServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.ReviewService.CodeReviewSummary[] GetActiveReviewsForAuthor(string authorLogin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewService/GetActiveReviewsForAuthor", ReplyAction="http://tempuri.org/IReviewService/GetActiveReviewsForAuthorResponse")]
-        System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReviewSummary[]> GetActiveReviewsForAuthorAsync(string authorLogin);
+        System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReviewSummary[]> GetActiveReviewsForAuthorAsync(string authorLogin);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IReviewServiceChannel : OnboardingService.ReviewService.IReviewService, System.ServiceModel.IClientChannel {
+    public interface IReviewServiceChannel : Onboarding.Service.ReviewService.IReviewService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ReviewServiceClient : System.ServiceModel.ClientBase<OnboardingService.ReviewService.IReviewService>, OnboardingService.ReviewService.IReviewService {
+    public partial class ReviewServiceClient : System.ServiceModel.ClientBase<Onboarding.Service.ReviewService.IReviewService>, Onboarding.Service.ReviewService.IReviewService {
         
         public ReviewServiceClient() {
         }
@@ -2804,11 +2804,11 @@ namespace OnboardingService.ReviewService {
                 base(binding, remoteAddress) {
         }
         
-        public OnboardingService.ReviewService.CodeReview CreateReview(OnboardingService.ReviewService.Author author, string reviewName, string projectShortName) {
+        public Onboarding.Service.ReviewService.CodeReview CreateReview(Onboarding.Service.ReviewService.Author author, string reviewName, string projectShortName) {
             return base.Channel.CreateReview(author, reviewName, projectShortName);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> CreateReviewAsync(OnboardingService.ReviewService.Author author, string reviewName, string projectShortName) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> CreateReviewAsync(Onboarding.Service.ReviewService.Author author, string reviewName, string projectShortName) {
             return base.Channel.CreateReviewAsync(author, reviewName, projectShortName);
         }
         
@@ -2820,35 +2820,35 @@ namespace OnboardingService.ReviewService {
             return base.Channel.SetTitleAsync(codeReviewKey, title);
         }
         
-        public OnboardingService.ReviewService.CodeReview PublishReview(string codeReviewKey, string messageFromAuthor) {
+        public Onboarding.Service.ReviewService.CodeReview PublishReview(string codeReviewKey, string messageFromAuthor) {
             return base.Channel.PublishReview(codeReviewKey, messageFromAuthor);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> PublishReviewAsync(string codeReviewKey, string messageFromAuthor) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> PublishReviewAsync(string codeReviewKey, string messageFromAuthor) {
             return base.Channel.PublishReviewAsync(codeReviewKey, messageFromAuthor);
         }
         
-        public OnboardingService.ReviewService.CodeReview CompleteReview(string codeReviewKey, string messageFromAuthor) {
+        public Onboarding.Service.ReviewService.CodeReview CompleteReview(string codeReviewKey, string messageFromAuthor) {
             return base.Channel.CompleteReview(codeReviewKey, messageFromAuthor);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> CompleteReviewAsync(string codeReviewKey, string messageFromAuthor) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> CompleteReviewAsync(string codeReviewKey, string messageFromAuthor) {
             return base.Channel.CompleteReviewAsync(codeReviewKey, messageFromAuthor);
         }
         
-        public OnboardingService.ReviewService.CodeReview ExpireReview(string codeReviewKey) {
+        public Onboarding.Service.ReviewService.CodeReview ExpireReview(string codeReviewKey) {
             return base.Channel.ExpireReview(codeReviewKey);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> ExpireReviewAsync(string codeReviewKey) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> ExpireReviewAsync(string codeReviewKey) {
             return base.Channel.ExpireReviewAsync(codeReviewKey);
         }
         
-        public OnboardingService.ReviewService.CodeReview WithdrawReview(string codeReviewKey, string messageFromAuthor) {
+        public Onboarding.Service.ReviewService.CodeReview WithdrawReview(string codeReviewKey, string messageFromAuthor) {
             return base.Channel.WithdrawReview(codeReviewKey, messageFromAuthor);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> WithdrawReviewAsync(string codeReviewKey, string messageFromAuthor) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> WithdrawReviewAsync(string codeReviewKey, string messageFromAuthor) {
             return base.Channel.WithdrawReviewAsync(codeReviewKey, messageFromAuthor);
         }
         
@@ -2876,11 +2876,11 @@ namespace OnboardingService.ReviewService {
             return base.Channel.AddAuditLogEventAsync(codeReviewKey, user, eventName, message, arguments);
         }
         
-        public void AddAuditLog(string codeReviewKey, OnboardingService.ReviewService.AuditLog auditLog) {
+        public void AddAuditLog(string codeReviewKey, Onboarding.Service.ReviewService.AuditLog auditLog) {
             base.Channel.AddAuditLog(codeReviewKey, auditLog);
         }
         
-        public System.Threading.Tasks.Task AddAuditLogAsync(string codeReviewKey, OnboardingService.ReviewService.AuditLog auditLog) {
+        public System.Threading.Tasks.Task AddAuditLogAsync(string codeReviewKey, Onboarding.Service.ReviewService.AuditLog auditLog) {
             return base.Channel.AddAuditLogAsync(codeReviewKey, auditLog);
         }
         
@@ -2892,27 +2892,27 @@ namespace OnboardingService.ReviewService {
             return base.Channel.SetCustomDataAsync(codeReviewKey, customDataToSet);
         }
         
-        public void SetWorkItems(string codeReviewKey, OnboardingService.ReviewService.WorkItem[] workItems) {
+        public void SetWorkItems(string codeReviewKey, Onboarding.Service.ReviewService.WorkItem[] workItems) {
             base.Channel.SetWorkItems(codeReviewKey, workItems);
         }
         
-        public System.Threading.Tasks.Task SetWorkItemsAsync(string codeReviewKey, OnboardingService.ReviewService.WorkItem[] workItems) {
+        public System.Threading.Tasks.Task SetWorkItemsAsync(string codeReviewKey, Onboarding.Service.ReviewService.WorkItem[] workItems) {
             return base.Channel.SetWorkItemsAsync(codeReviewKey, workItems);
         }
         
-        public OnboardingService.ReviewService.CodeReview GetReview(string codeReviewKey) {
+        public Onboarding.Service.ReviewService.CodeReview GetReview(string codeReviewKey) {
             return base.Channel.GetReview(codeReviewKey);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReview> GetReviewAsync(string codeReviewKey) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReview> GetReviewAsync(string codeReviewKey) {
             return base.Channel.GetReviewAsync(codeReviewKey);
         }
         
-        public OnboardingService.ReviewService.ReviewUpdateCode CheckUpdates(string codeReviewKey, int currRevision) {
+        public Onboarding.Service.ReviewService.ReviewUpdateCode CheckUpdates(string codeReviewKey, int currRevision) {
             return base.Channel.CheckUpdates(codeReviewKey, currRevision);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.ReviewUpdateCode> CheckUpdatesAsync(string codeReviewKey, int currRevision) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.ReviewUpdateCode> CheckUpdatesAsync(string codeReviewKey, int currRevision) {
             return base.Channel.CheckUpdatesAsync(codeReviewKey, currRevision);
         }
         
@@ -2924,67 +2924,67 @@ namespace OnboardingService.ReviewService {
             return base.Channel.PokeReviewAsync(codeReviewKey);
         }
         
-        public OnboardingService.ReviewService.CodePackage AddCodePackage(string codeReviewKey, OnboardingService.ReviewService.CodePackage codePackage) {
+        public Onboarding.Service.ReviewService.CodePackage AddCodePackage(string codeReviewKey, Onboarding.Service.ReviewService.CodePackage codePackage) {
             return base.Channel.AddCodePackage(codeReviewKey, codePackage);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CodePackage> AddCodePackageAsync(string codeReviewKey, OnboardingService.ReviewService.CodePackage codePackage) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodePackage> AddCodePackageAsync(string codeReviewKey, Onboarding.Service.ReviewService.CodePackage codePackage) {
             return base.Channel.AddCodePackageAsync(codeReviewKey, codePackage);
         }
         
-        public void UpdateCodePackage(string codeReviewKey, string codePackageName, OnboardingService.ReviewService.CodePackage codePackage) {
+        public void UpdateCodePackage(string codeReviewKey, string codePackageName, Onboarding.Service.ReviewService.CodePackage codePackage) {
             base.Channel.UpdateCodePackage(codeReviewKey, codePackageName, codePackage);
         }
         
-        public System.Threading.Tasks.Task UpdateCodePackageAsync(string codeReviewKey, string codePackageName, OnboardingService.ReviewService.CodePackage codePackage) {
+        public System.Threading.Tasks.Task UpdateCodePackageAsync(string codeReviewKey, string codePackageName, Onboarding.Service.ReviewService.CodePackage codePackage) {
             return base.Channel.UpdateCodePackageAsync(codeReviewKey, codePackageName, codePackage);
         }
         
-        public void UpdateCodePackageStatus(string codeReviewKey, string codePackageName, OnboardingService.ReviewService.CodePackageStatus status) {
+        public void UpdateCodePackageStatus(string codeReviewKey, string codePackageName, Onboarding.Service.ReviewService.CodePackageStatus status) {
             base.Channel.UpdateCodePackageStatus(codeReviewKey, codePackageName, status);
         }
         
-        public System.Threading.Tasks.Task UpdateCodePackageStatusAsync(string codeReviewKey, string codePackageName, OnboardingService.ReviewService.CodePackageStatus status) {
+        public System.Threading.Tasks.Task UpdateCodePackageStatusAsync(string codeReviewKey, string codePackageName, Onboarding.Service.ReviewService.CodePackageStatus status) {
             return base.Channel.UpdateCodePackageStatusAsync(codeReviewKey, codePackageName, status);
         }
         
-        public OnboardingService.ReviewService.ReviewIteration AddIteration(string codeReviewKey, OnboardingService.ReviewService.ReviewIteration iteration, OnboardingService.ReviewService.CodePackage[] codePackages) {
+        public Onboarding.Service.ReviewService.ReviewIteration AddIteration(string codeReviewKey, Onboarding.Service.ReviewService.ReviewIteration iteration, Onboarding.Service.ReviewService.CodePackage[] codePackages) {
             return base.Channel.AddIteration(codeReviewKey, iteration, codePackages);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.ReviewIteration> AddIterationAsync(string codeReviewKey, OnboardingService.ReviewService.ReviewIteration iteration, OnboardingService.ReviewService.CodePackage[] codePackages) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.ReviewIteration> AddIterationAsync(string codeReviewKey, Onboarding.Service.ReviewService.ReviewIteration iteration, Onboarding.Service.ReviewService.CodePackage[] codePackages) {
             return base.Channel.AddIterationAsync(codeReviewKey, iteration, codePackages);
         }
         
-        public void UpdateIteration(string codeReviewKey, OnboardingService.ReviewService.ReviewIteration iteration, OnboardingService.ReviewService.CodePackage[] codePackages) {
+        public void UpdateIteration(string codeReviewKey, Onboarding.Service.ReviewService.ReviewIteration iteration, Onboarding.Service.ReviewService.CodePackage[] codePackages) {
             base.Channel.UpdateIteration(codeReviewKey, iteration, codePackages);
         }
         
-        public System.Threading.Tasks.Task UpdateIterationAsync(string codeReviewKey, OnboardingService.ReviewService.ReviewIteration iteration, OnboardingService.ReviewService.CodePackage[] codePackages) {
+        public System.Threading.Tasks.Task UpdateIterationAsync(string codeReviewKey, Onboarding.Service.ReviewService.ReviewIteration iteration, Onboarding.Service.ReviewService.CodePackage[] codePackages) {
             return base.Channel.UpdateIterationAsync(codeReviewKey, iteration, codePackages);
         }
         
-        public void UpdateIterationStatus(string codeReviewKey, int revision, OnboardingService.ReviewService.IterationStatus status) {
+        public void UpdateIterationStatus(string codeReviewKey, int revision, Onboarding.Service.ReviewService.IterationStatus status) {
             base.Channel.UpdateIterationStatus(codeReviewKey, revision, status);
         }
         
-        public System.Threading.Tasks.Task UpdateIterationStatusAsync(string codeReviewKey, int revision, OnboardingService.ReviewService.IterationStatus status) {
+        public System.Threading.Tasks.Task UpdateIterationStatusAsync(string codeReviewKey, int revision, Onboarding.Service.ReviewService.IterationStatus status) {
             return base.Channel.UpdateIterationStatusAsync(codeReviewKey, revision, status);
         }
         
-        public OnboardingService.ReviewService.Comment AddComment(string codeReviewKey, OnboardingService.ReviewService.Comment comment) {
+        public Onboarding.Service.ReviewService.Comment AddComment(string codeReviewKey, Onboarding.Service.ReviewService.Comment comment) {
             return base.Channel.AddComment(codeReviewKey, comment);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.Comment> AddCommentAsync(string codeReviewKey, OnboardingService.ReviewService.Comment comment) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.Comment> AddCommentAsync(string codeReviewKey, Onboarding.Service.ReviewService.Comment comment) {
             return base.Channel.AddCommentAsync(codeReviewKey, comment);
         }
         
-        public OnboardingService.ReviewService.CommentThread StartCommentThread(string codeReviewKey, OnboardingService.ReviewService.CommentThread thread) {
+        public Onboarding.Service.ReviewService.CommentThread StartCommentThread(string codeReviewKey, Onboarding.Service.ReviewService.CommentThread thread) {
             return base.Channel.StartCommentThread(codeReviewKey, thread);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CommentThread> StartCommentThreadAsync(string codeReviewKey, OnboardingService.ReviewService.CommentThread thread) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CommentThread> StartCommentThreadAsync(string codeReviewKey, Onboarding.Service.ReviewService.CommentThread thread) {
             return base.Channel.StartCommentThreadAsync(codeReviewKey, thread);
         }
         
@@ -3004,35 +3004,35 @@ namespace OnboardingService.ReviewService {
             return base.Channel.WithdrawCommentAsync(codeReviewKey, commentId);
         }
         
-        public void UpdateCommentThreadStatus(string codeReviewKey, int threadId, OnboardingService.ReviewService.CommentThreadStatus status) {
+        public void UpdateCommentThreadStatus(string codeReviewKey, int threadId, Onboarding.Service.ReviewService.CommentThreadStatus status) {
             base.Channel.UpdateCommentThreadStatus(codeReviewKey, threadId, status);
         }
         
-        public System.Threading.Tasks.Task UpdateCommentThreadStatusAsync(string codeReviewKey, int threadId, OnboardingService.ReviewService.CommentThreadStatus status) {
+        public System.Threading.Tasks.Task UpdateCommentThreadStatusAsync(string codeReviewKey, int threadId, Onboarding.Service.ReviewService.CommentThreadStatus status) {
             return base.Channel.UpdateCommentThreadStatusAsync(codeReviewKey, threadId, status);
         }
         
-        public OnboardingService.ReviewService.Like[] LikeComment(string codeReviewKey, int commentId, bool isLike) {
+        public Onboarding.Service.ReviewService.Like[] LikeComment(string codeReviewKey, int commentId, bool isLike) {
             return base.Channel.LikeComment(codeReviewKey, commentId, isLike);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.Like[]> LikeCommentAsync(string codeReviewKey, int commentId, bool isLike) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.Like[]> LikeCommentAsync(string codeReviewKey, int commentId, bool isLike) {
             return base.Channel.LikeCommentAsync(codeReviewKey, commentId, isLike);
         }
         
-        public OnboardingService.ReviewService.CommentThread[] GetReviewComments(string codeReviewKey, int currRevision) {
+        public Onboarding.Service.ReviewService.CommentThread[] GetReviewComments(string codeReviewKey, int currRevision) {
             return base.Channel.GetReviewComments(codeReviewKey, currRevision);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CommentThread[]> GetReviewCommentsAsync(string codeReviewKey, int currRevision) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CommentThread[]> GetReviewCommentsAsync(string codeReviewKey, int currRevision) {
             return base.Channel.GetReviewCommentsAsync(codeReviewKey, currRevision);
         }
         
-        public void AddReviewers(string codeReviewKey, OnboardingService.ReviewService.Reviewer[] reviewers) {
+        public void AddReviewers(string codeReviewKey, Onboarding.Service.ReviewService.Reviewer[] reviewers) {
             base.Channel.AddReviewers(codeReviewKey, reviewers);
         }
         
-        public System.Threading.Tasks.Task AddReviewersAsync(string codeReviewKey, OnboardingService.ReviewService.Reviewer[] reviewers) {
+        public System.Threading.Tasks.Task AddReviewersAsync(string codeReviewKey, Onboarding.Service.ReviewService.Reviewer[] reviewers) {
             return base.Channel.AddReviewersAsync(codeReviewKey, reviewers);
         }
         
@@ -3044,11 +3044,11 @@ namespace OnboardingService.ReviewService {
             return base.Channel.RemoveReviewersAsync(codeReviewKey, reviewerNames);
         }
         
-        public void UpdateReviewerStatus(string codeReviewKey, string reviewerName, OnboardingService.ReviewService.ReviewerStatus status) {
+        public void UpdateReviewerStatus(string codeReviewKey, string reviewerName, Onboarding.Service.ReviewService.ReviewerStatus status) {
             base.Channel.UpdateReviewerStatus(codeReviewKey, reviewerName, status);
         }
         
-        public System.Threading.Tasks.Task UpdateReviewerStatusAsync(string codeReviewKey, string reviewerName, OnboardingService.ReviewService.ReviewerStatus status) {
+        public System.Threading.Tasks.Task UpdateReviewerStatusAsync(string codeReviewKey, string reviewerName, Onboarding.Service.ReviewService.ReviewerStatus status) {
             return base.Channel.UpdateReviewerStatusAsync(codeReviewKey, reviewerName, status);
         }
         
@@ -3060,11 +3060,11 @@ namespace OnboardingService.ReviewService {
             return base.Channel.UpdateReviewerTypeAsync(codeReviewKey, reviewerName, required);
         }
         
-        public void UpdateAuthorStatus(string codeReviewKey, OnboardingService.ReviewService.AuthorStatus status) {
+        public void UpdateAuthorStatus(string codeReviewKey, Onboarding.Service.ReviewService.AuthorStatus status) {
             base.Channel.UpdateAuthorStatus(codeReviewKey, status);
         }
         
-        public System.Threading.Tasks.Task UpdateAuthorStatusAsync(string codeReviewKey, OnboardingService.ReviewService.AuthorStatus status) {
+        public System.Threading.Tasks.Task UpdateAuthorStatusAsync(string codeReviewKey, Onboarding.Service.ReviewService.AuthorStatus status) {
             return base.Channel.UpdateAuthorStatusAsync(codeReviewKey, status);
         }
         
@@ -3076,35 +3076,35 @@ namespace OnboardingService.ReviewService {
             return base.Channel.AuthorPingAsync(codeReviewKey, messageFromAuthor);
         }
         
-        public void AddLayer(string codeReviewKey, int revision, OnboardingService.ReviewService.Layer layer) {
+        public void AddLayer(string codeReviewKey, int revision, Onboarding.Service.ReviewService.Layer layer) {
             base.Channel.AddLayer(codeReviewKey, revision, layer);
         }
         
-        public System.Threading.Tasks.Task AddLayerAsync(string codeReviewKey, int revision, OnboardingService.ReviewService.Layer layer) {
+        public System.Threading.Tasks.Task AddLayerAsync(string codeReviewKey, int revision, Onboarding.Service.ReviewService.Layer layer) {
             return base.Channel.AddLayerAsync(codeReviewKey, revision, layer);
         }
         
-        public OnboardingService.ReviewService.CodeReviewSummary[] GetActiveReviewsForReviewer(string reviewerLogin) {
+        public Onboarding.Service.ReviewService.CodeReviewSummary[] GetActiveReviewsForReviewer(string reviewerLogin) {
             return base.Channel.GetActiveReviewsForReviewer(reviewerLogin);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReviewSummary[]> GetActiveReviewsForReviewerAsync(string reviewerLogin) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReviewSummary[]> GetActiveReviewsForReviewerAsync(string reviewerLogin) {
             return base.Channel.GetActiveReviewsForReviewerAsync(reviewerLogin);
         }
         
-        public OnboardingService.ReviewService.CodeReviewSummary[] GetActiveReviewsForProject(string projectShortName) {
+        public Onboarding.Service.ReviewService.CodeReviewSummary[] GetActiveReviewsForProject(string projectShortName) {
             return base.Channel.GetActiveReviewsForProject(projectShortName);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReviewSummary[]> GetActiveReviewsForProjectAsync(string projectShortName) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReviewSummary[]> GetActiveReviewsForProjectAsync(string projectShortName) {
             return base.Channel.GetActiveReviewsForProjectAsync(projectShortName);
         }
         
-        public OnboardingService.ReviewService.CodeReviewSummary[] GetActiveReviewsForAuthor(string authorLogin) {
+        public Onboarding.Service.ReviewService.CodeReviewSummary[] GetActiveReviewsForAuthor(string authorLogin) {
             return base.Channel.GetActiveReviewsForAuthor(authorLogin);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.ReviewService.CodeReviewSummary[]> GetActiveReviewsForAuthorAsync(string authorLogin) {
+        public System.Threading.Tasks.Task<Onboarding.Service.ReviewService.CodeReviewSummary[]> GetActiveReviewsForAuthorAsync(string authorLogin) {
             return base.Channel.GetActiveReviewsForAuthorAsync(authorLogin);
         }
     }

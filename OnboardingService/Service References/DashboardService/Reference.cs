@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnboardingService.DashboardService {
+namespace Onboarding.Service.DashboardService {
     using System.Runtime.Serialization;
     using System;
     
@@ -38,7 +38,7 @@ namespace OnboardingService.DashboardService {
         private string[] ProjectsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.DashboardService.CodeReviewStatus[] ReviewStatusesField;
+        private Onboarding.Service.DashboardService.CodeReviewStatus[] ReviewStatusesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string[] ReviewersField;
@@ -130,7 +130,7 @@ namespace OnboardingService.DashboardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public OnboardingService.DashboardService.CodeReviewStatus[] ReviewStatuses {
+        public Onboarding.Service.DashboardService.CodeReviewStatus[] ReviewStatuses {
             get {
                 return this.ReviewStatusesField;
             }
@@ -248,7 +248,7 @@ namespace OnboardingService.DashboardService {
         
         private System.TimeSpan QueryDurationField;
         
-        private OnboardingService.DashboardService.CodeReviewSummary[] ReviewsField;
+        private Onboarding.Service.DashboardService.CodeReviewSummary[] ReviewsField;
         
         private int TotalResultsField;
         
@@ -276,7 +276,7 @@ namespace OnboardingService.DashboardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.DashboardService.CodeReviewSummary[] Reviews {
+        public Onboarding.Service.DashboardService.CodeReviewSummary[] Reviews {
             get {
                 return this.ReviewsField;
             }
@@ -332,10 +332,10 @@ namespace OnboardingService.DashboardService {
         
         private int RevisionField;
         
-        private OnboardingService.DashboardService.CodeReviewStatus StatusField;
+        private Onboarding.Service.DashboardService.CodeReviewStatus StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.DashboardService.Author AuthorField;
+        private Onboarding.Service.DashboardService.Author AuthorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime CompletedOnField;
@@ -347,10 +347,10 @@ namespace OnboardingService.DashboardService {
         private int IterationCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.DashboardService.Reviewer[] ReviewersField;
+        private Onboarding.Service.DashboardService.Reviewer[] ReviewersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private OnboardingService.DashboardService.WorkItem[] WorkItemsField;
+        private Onboarding.Service.DashboardService.WorkItem[] WorkItemsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -441,7 +441,7 @@ namespace OnboardingService.DashboardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.DashboardService.CodeReviewStatus Status {
+        public Onboarding.Service.DashboardService.CodeReviewStatus Status {
             get {
                 return this.StatusField;
             }
@@ -454,7 +454,7 @@ namespace OnboardingService.DashboardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=7)]
-        public OnboardingService.DashboardService.Author Author {
+        public Onboarding.Service.DashboardService.Author Author {
             get {
                 return this.AuthorField;
             }
@@ -506,7 +506,7 @@ namespace OnboardingService.DashboardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=11)]
-        public OnboardingService.DashboardService.Reviewer[] Reviewers {
+        public Onboarding.Service.DashboardService.Reviewer[] Reviewers {
             get {
                 return this.ReviewersField;
             }
@@ -519,7 +519,7 @@ namespace OnboardingService.DashboardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=12)]
-        public OnboardingService.DashboardService.WorkItem[] WorkItems {
+        public Onboarding.Service.DashboardService.WorkItem[] WorkItems {
             get {
                 return this.WorkItemsField;
             }
@@ -558,7 +558,7 @@ namespace OnboardingService.DashboardService {
         
         private string NameField;
         
-        private OnboardingService.DashboardService.AuthorStatus StatusField;
+        private Onboarding.Service.DashboardService.AuthorStatus StatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -623,7 +623,7 @@ namespace OnboardingService.DashboardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.DashboardService.AuthorStatus Status {
+        public Onboarding.Service.DashboardService.AuthorStatus Status {
             get {
                 return this.StatusField;
             }
@@ -664,7 +664,7 @@ namespace OnboardingService.DashboardService {
         
         private bool RequiredField;
         
-        private OnboardingService.DashboardService.ReviewerStatus StatusField;
+        private Onboarding.Service.DashboardService.ReviewerStatus StatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -742,7 +742,7 @@ namespace OnboardingService.DashboardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.DashboardService.ReviewerStatus Status {
+        public Onboarding.Service.DashboardService.ReviewerStatus Status {
             get {
                 return this.StatusField;
             }
@@ -908,7 +908,7 @@ namespace OnboardingService.DashboardService {
         
         private System.TimeSpan QueryDurationField;
         
-        private OnboardingService.DashboardService.CodeReviewSummary[] ReviewsField;
+        private Onboarding.Service.DashboardService.CodeReviewSummary[] ReviewsField;
         
         private int TotalResultsField;
         
@@ -936,7 +936,7 @@ namespace OnboardingService.DashboardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public OnboardingService.DashboardService.CodeReviewSummary[] Reviews {
+        public Onboarding.Service.DashboardService.CodeReviewSummary[] Reviews {
             get {
                 return this.ReviewsField;
             }
@@ -1111,33 +1111,33 @@ namespace OnboardingService.DashboardService {
     public interface IReviewDashboardService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewDashboardService/Query", ReplyAction="http://tempuri.org/IReviewDashboardService/QueryResponse")]
-        OnboardingService.DashboardService.CodeReviewQueryResult Query([System.ServiceModel.MessageParameterAttribute(Name="query")] OnboardingService.DashboardService.CodeReviewQuery query1);
+        Onboarding.Service.DashboardService.CodeReviewQueryResult Query([System.ServiceModel.MessageParameterAttribute(Name="query")] Onboarding.Service.DashboardService.CodeReviewQuery query1);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewDashboardService/Query", ReplyAction="http://tempuri.org/IReviewDashboardService/QueryResponse")]
-        System.Threading.Tasks.Task<OnboardingService.DashboardService.CodeReviewQueryResult> QueryAsync(OnboardingService.DashboardService.CodeReviewQuery query);
+        System.Threading.Tasks.Task<Onboarding.Service.DashboardService.CodeReviewQueryResult> QueryAsync(Onboarding.Service.DashboardService.CodeReviewQuery query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewDashboardService/QueryReviewSummaries", ReplyAction="http://tempuri.org/IReviewDashboardService/QueryReviewSummariesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.DashboardService.ServiceFault), Action="http://tempuri.org/IReviewDashboardService/QueryReviewSummariesServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.DashboardService.QueryReviewSummariesResult QueryReviewSummaries(OnboardingService.DashboardService.CodeReviewQuery query);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.DashboardService.ServiceFault), Action="http://tempuri.org/IReviewDashboardService/QueryReviewSummariesServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.DashboardService.QueryReviewSummariesResult QueryReviewSummaries(Onboarding.Service.DashboardService.CodeReviewQuery query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewDashboardService/QueryReviewSummaries", ReplyAction="http://tempuri.org/IReviewDashboardService/QueryReviewSummariesResponse")]
-        System.Threading.Tasks.Task<OnboardingService.DashboardService.QueryReviewSummariesResult> QueryReviewSummariesAsync(OnboardingService.DashboardService.CodeReviewQuery query);
+        System.Threading.Tasks.Task<Onboarding.Service.DashboardService.QueryReviewSummariesResult> QueryReviewSummariesAsync(Onboarding.Service.DashboardService.CodeReviewQuery query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewDashboardService/QueryReviewIds", ReplyAction="http://tempuri.org/IReviewDashboardService/QueryReviewIdsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(OnboardingService.DashboardService.ServiceFault), Action="http://tempuri.org/IReviewDashboardService/QueryReviewIdsServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
-        OnboardingService.DashboardService.QueryReviewIdsResult QueryReviewIds(OnboardingService.DashboardService.CodeReviewQuery query);
+        [System.ServiceModel.FaultContractAttribute(typeof(Onboarding.Service.DashboardService.ServiceFault), Action="http://tempuri.org/IReviewDashboardService/QueryReviewIdsServiceFaultFault", Name="ServiceFault", Namespace="http://schemas.datacontract.org/2004/07/Microsoft.CodeFlow.ServiceModel")]
+        Onboarding.Service.DashboardService.QueryReviewIdsResult QueryReviewIds(Onboarding.Service.DashboardService.CodeReviewQuery query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReviewDashboardService/QueryReviewIds", ReplyAction="http://tempuri.org/IReviewDashboardService/QueryReviewIdsResponse")]
-        System.Threading.Tasks.Task<OnboardingService.DashboardService.QueryReviewIdsResult> QueryReviewIdsAsync(OnboardingService.DashboardService.CodeReviewQuery query);
+        System.Threading.Tasks.Task<Onboarding.Service.DashboardService.QueryReviewIdsResult> QueryReviewIdsAsync(Onboarding.Service.DashboardService.CodeReviewQuery query);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IReviewDashboardServiceChannel : OnboardingService.DashboardService.IReviewDashboardService, System.ServiceModel.IClientChannel {
+    public interface IReviewDashboardServiceChannel : Onboarding.Service.DashboardService.IReviewDashboardService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ReviewDashboardServiceClient : System.ServiceModel.ClientBase<OnboardingService.DashboardService.IReviewDashboardService>, OnboardingService.DashboardService.IReviewDashboardService {
+    public partial class ReviewDashboardServiceClient : System.ServiceModel.ClientBase<Onboarding.Service.DashboardService.IReviewDashboardService>, Onboarding.Service.DashboardService.IReviewDashboardService {
         
         public ReviewDashboardServiceClient() {
         }
@@ -1158,27 +1158,27 @@ namespace OnboardingService.DashboardService {
                 base(binding, remoteAddress) {
         }
         
-        public OnboardingService.DashboardService.CodeReviewQueryResult Query(OnboardingService.DashboardService.CodeReviewQuery query1) {
+        public Onboarding.Service.DashboardService.CodeReviewQueryResult Query(Onboarding.Service.DashboardService.CodeReviewQuery query1) {
             return base.Channel.Query(query1);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.DashboardService.CodeReviewQueryResult> QueryAsync(OnboardingService.DashboardService.CodeReviewQuery query) {
+        public System.Threading.Tasks.Task<Onboarding.Service.DashboardService.CodeReviewQueryResult> QueryAsync(Onboarding.Service.DashboardService.CodeReviewQuery query) {
             return base.Channel.QueryAsync(query);
         }
         
-        public OnboardingService.DashboardService.QueryReviewSummariesResult QueryReviewSummaries(OnboardingService.DashboardService.CodeReviewQuery query) {
+        public Onboarding.Service.DashboardService.QueryReviewSummariesResult QueryReviewSummaries(Onboarding.Service.DashboardService.CodeReviewQuery query) {
             return base.Channel.QueryReviewSummaries(query);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.DashboardService.QueryReviewSummariesResult> QueryReviewSummariesAsync(OnboardingService.DashboardService.CodeReviewQuery query) {
+        public System.Threading.Tasks.Task<Onboarding.Service.DashboardService.QueryReviewSummariesResult> QueryReviewSummariesAsync(Onboarding.Service.DashboardService.CodeReviewQuery query) {
             return base.Channel.QueryReviewSummariesAsync(query);
         }
         
-        public OnboardingService.DashboardService.QueryReviewIdsResult QueryReviewIds(OnboardingService.DashboardService.CodeReviewQuery query) {
+        public Onboarding.Service.DashboardService.QueryReviewIdsResult QueryReviewIds(Onboarding.Service.DashboardService.CodeReviewQuery query) {
             return base.Channel.QueryReviewIds(query);
         }
         
-        public System.Threading.Tasks.Task<OnboardingService.DashboardService.QueryReviewIdsResult> QueryReviewIdsAsync(OnboardingService.DashboardService.CodeReviewQuery query) {
+        public System.Threading.Tasks.Task<Onboarding.Service.DashboardService.QueryReviewIdsResult> QueryReviewIdsAsync(Onboarding.Service.DashboardService.CodeReviewQuery query) {
             return base.Channel.QueryReviewIdsAsync(query);
         }
     }
