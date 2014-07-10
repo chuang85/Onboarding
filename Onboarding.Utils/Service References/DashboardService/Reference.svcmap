@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cb167e33-38fd-44dd-be79-4dfe62579a20" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://CO1CDFLWEB02/DashboardService/DashboardService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DashboardService.xsd" MetadataType="Schema" ID="bebc39c1-09e2-42b5-ab44-506b0c44b55d" SourceId="1" SourceUrl="http://co1cdflweb02/DashboardService/DashboardService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DashboardService1.xsd" MetadataType="Schema" ID="12507c7c-bf38-4f8c-b831-50b28a300b07" SourceId="1" SourceUrl="http://co1cdflweb02/DashboardService/DashboardService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DashboardService2.xsd" MetadataType="Schema" ID="fee33800-dcc5-4445-b8b7-ee0a97007f43" SourceId="1" SourceUrl="http://co1cdflweb02/DashboardService/DashboardService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DashboardService3.xsd" MetadataType="Schema" ID="e706ba7a-e2df-4d24-afcb-74f3a7bc20fd" SourceId="1" SourceUrl="http://co1cdflweb02/DashboardService/DashboardService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DashboardService.wsdl" MetadataType="Wsdl" ID="4801495e-c9c1-42b9-accf-0240722f7da5" SourceId="1" SourceUrl="http://co1cdflweb02/DashboardService/DashboardService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

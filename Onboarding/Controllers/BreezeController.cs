@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using Breeze.ContextProvider;
-using Breeze.ContextProvider.EF6;
 using Breeze.WebApi2;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Onboarding.Models;
-using Onboarding.Utils;
-using System.Net.Mail;
 
 namespace Onboarding.Controllers
 {
@@ -19,7 +13,7 @@ namespace Onboarding.Controllers
     public class BreezeController : ApiController
     {
         //readonly EFContextProvider<OnboardingDbContext> _contextProvider = new EFContextProvider<OnboardingDbContext>();
-        readonly OnboardingRequestContextProvider _contextProvider = new OnboardingRequestContextProvider();
+        private readonly OnboardingRequestContextProvider _contextProvider = new OnboardingRequestContextProvider();
 
         // ~/breeze/Breeze/Metadata 
         [HttpGet]
@@ -31,9 +25,8 @@ namespace Onboarding.Controllers
             }
             catch (Exception e)
             {
-                return e.Message + System.Environment.NewLine + System.Environment.NewLine + e.StackTrace;
+                return e.Message + Environment.NewLine + Environment.NewLine + e.StackTrace;
             }
-            
         }
 
         // ~/breeze/Breeze/SaveChanges
@@ -45,8 +38,8 @@ namespace Onboarding.Controllers
 
         private static JsonSerializer CreateJsonSerializer()
         {
-            var serializerSettings = BreezeConfig.Instance.GetJsonSerializerSettings();
-            var jsonSerializer = JsonSerializer.Create(serializerSettings);
+            JsonSerializerSettings serializerSettings = BreezeConfig.Instance.GetJsonSerializerSettings();
+            JsonSerializer jsonSerializer = JsonSerializer.Create(serializerSettings);
             return jsonSerializer;
         }
 

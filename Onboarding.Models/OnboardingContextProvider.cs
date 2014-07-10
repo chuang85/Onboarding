@@ -1,20 +1,19 @@
-﻿using Breeze.ContextProvider;
-using Breeze.ContextProvider.EF6;
-using System;
+﻿using System;
 using System.Globalization;
+using Breeze.ContextProvider;
+using Breeze.ContextProvider.EF6;
 
 namespace Onboarding.Models
 {
     public class OnboardingRequestContextProvider : EFContextProvider<OnboardingDbContext>
     {
-
         protected override bool BeforeSaveEntity(EntityInfo entityInfo)
         {
             if (entityInfo.EntityState == EntityState.Added &&
                 entityInfo.Entity is OnboardingRequest)
             {
                 // Get the instance of the OnboardingRequest class.
-                var onboardingRequest = (OnboardingRequest)entityInfo.Entity;
+                var onboardingRequest = (OnboardingRequest) entityInfo.Entity;
 
                 // Set CreatedDate & ModifiedDate to Now.
                 SetCreatedTimeOnInitialization(onboardingRequest);
@@ -55,7 +54,7 @@ namespace Onboarding.Models
             string dateFormat = "M/d/yyyy h:mm tt";
             onboardingRequest.CreatedDate = DateTime.UtcNow;
             onboardingRequest.DisplayCreatedDate = onboardingRequest.CreatedDate.ToLocalTime().ToString(dateFormat,
-                  CultureInfo.CreateSpecificCulture("en-US"));
+                CultureInfo.CreateSpecificCulture("en-US"));
             onboardingRequest.ModifiedDate = onboardingRequest.CreatedDate;
             onboardingRequest.DisplayModifiedDate = onboardingRequest.DisplayCreatedDate;
         }

@@ -1,8 +1,9 @@
 using System.Web.Optimization;
 using Onboarding;
+using WebActivator;
 
-[assembly: WebActivator.PostApplicationStartMethod(
-    typeof(DurandalConfig), "PreStart")]
+[assembly: PostApplicationStartMethod(
+    typeof (DurandalConfig), "PreStart")]
 
 namespace Onboarding
 {

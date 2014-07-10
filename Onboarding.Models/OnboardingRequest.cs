@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Onboarding.Models
 {
@@ -44,7 +41,7 @@ namespace Onboarding.Models
 
         public int BuildNumber { get; set; }
 
-        public int RTONumber { get; set; } 
+        public int RTONumber { get; set; }
     }
 
     public enum RequestType

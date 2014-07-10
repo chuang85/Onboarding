@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6ad27798-3f39-4fa9-8892-b1f2c0df7eea" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://co1cdflweb03/Services/ReviewService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ReviewService.xsd" MetadataType="Schema" ID="a10f91af-58a1-4951-bb8d-3bd41bdf1df5" SourceId="1" SourceUrl="http://co1cdflweb03/Services/ReviewService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ReviewService1.xsd" MetadataType="Schema" ID="dede8273-4076-45fc-8b0a-8bd14b6e4971" SourceId="1" SourceUrl="http://co1cdflweb03/Services/ReviewService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ReviewService2.xsd" MetadataType="Schema" ID="e11dc149-3890-49bc-bd6b-c9b34aeecaff" SourceId="1" SourceUrl="http://co1cdflweb03/Services/ReviewService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ReviewService3.xsd" MetadataType="Schema" ID="b8ad2606-8b03-4176-8768-d07bd876ab66" SourceId="1" SourceUrl="http://co1cdflweb03/Services/ReviewService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ReviewService.wsdl" MetadataType="Wsdl" ID="db0c14e4-c199-435a-a854-d0d7823bbb1b" SourceId="1" SourceUrl="http://co1cdflweb03/Services/ReviewService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,4 +1,4 @@
-﻿define(['services/logger', 'services/dateformatter'], function (logger, dateformatter) {
+﻿define(['services/logger', 'services/dateformatter'], function(logger, dateformatter) {
 
     var vm = {
         requests: ko.observableArray(),
@@ -34,7 +34,7 @@
     /// </summary>
     function getRequests() {
         var query = breeze.EntityQuery.
-                from("OnboardingRequests");
+            from("OnboardingRequests");
 
         // Create where clause for filtering
         if (vm.filterText() && vm.filterText().length > 0) {

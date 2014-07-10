@@ -1,5 +1,5 @@
 ﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter'],
-    function (router, app, guidgenerator, dataformatter) {
+    function(router, app, guidgenerator, dataformatter) {
 
         var vm = {
             contact: ko.observable(),
@@ -73,8 +73,7 @@
         function canDeactivate() {
             if (!hasCreated) {
                 return app.showMessage('Create is not finished, are you sure you want to leave this page?', 'Create Not Finished', ['Yes', 'No']);
-            }
-            else {
+            } else {
                 return true;
             }
         };
@@ -124,7 +123,7 @@
         /// </summary>
         function clearInput() {
             app.showMessage('All the input fields will be cleaned, continue?', 'Clear All', ['Yes', 'No'])
-                .then(function (dialogResult) {
+                .then(function(dialogResult) {
                     if (dialogResult == 'Yes') {
                         clearInputOnloading();
                         collapsePanels();
@@ -159,7 +158,7 @@
             var inputField = $("<input class=\"form-control\" />");
             var removeButton = $("<span class=\"pull-right pointerLink glyphicon glyphicon-trash\"></span>");
 
-            removeButton.click(function () {
+            removeButton.click(function() {
                 $(this).parent().remove();
             });
 
@@ -223,7 +222,7 @@
             sp["Environments"] = {};
             var envArr = sp["Environments"]["Environment"] = [];
 
-            $("#environment .env-title a").each(function () {
+            $("#environment .env-title a").each(function() {
                 var env = {};
                 var envType = $(this).text().toLowerCase();
                 env["@name"] = envMap[envType];
@@ -233,7 +232,7 @@
 
                 // Hostnames
                 var hostnameArr = [];
-                $("." + envType + "-hostname-section input").each(function () {
+                $("." + envType + "-hostname-section input").each(function() {
                     var value = $(this).val();
                     if (value != "") {
                         hostnameArr.push(value);
@@ -247,7 +246,7 @@
 
                 // AdditionalSPNames
                 var additionalSPNameArr = [];
-                $("." + envType + "-spname-section input").each(function () {
+                $("." + envType + "-spname-section input").each(function() {
                     var value = $(this).val();
                     if (value != "") {
                         additionalSPNameArr.push(value);
@@ -261,7 +260,7 @@
 
                 // AppAddresses
                 var appAddressArr = [];
-                $("." + envType + "-appaddress-section input").each(function () {
+                $("." + envType + "-appaddress-section input").each(function() {
                     var value = $(this).val();
                     if (value != "") {
                         var appAddress = {};

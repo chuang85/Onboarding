@@ -1,5 +1,5 @@
 ﻿define(['plugins/router', 'durandal/app'],
-    function (router, app) {
+    function(router, app) {
 
         var vm = {
             certSpt: ko.observable(),
@@ -23,8 +23,8 @@
         /// <param name="id">The id of SPT to be queried</param>
         function getSpt(id) {
             var query = breeze.EntityQuery.
-                    from("ServicePrincipalTemplates").
-                    where("Id", "==", id);
+                from("ServicePrincipalTemplates").
+                where("Id", "==", id);
 
             return manager
                 .executeQuery(query)
@@ -69,4 +69,4 @@
         }
 
         return vm;
-});
+    });

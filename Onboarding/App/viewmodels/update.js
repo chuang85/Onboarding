@@ -1,4 +1,4 @@
-﻿define(['plugins/router'], function (router) {
+﻿define(['plugins/router'], function(router) {
     var vm = {
         editableSpt: ko.observable(),
         availableEnvironment: ko.observableArray(['Not specified', 'grn001', 'grn002', 'grnppe']),
@@ -21,8 +21,8 @@
     /// <param name="id">The id of SPT to be queried</param>
     function getSpt(id) {
         var query = breeze.EntityQuery.
-                from("ServicePrincipalTemplates").
-                where("Id", "==", id);
+            from("ServicePrincipalTemplates").
+            where("Id", "==", id);
 
         return manager
             .executeQuery(query)

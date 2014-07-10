@@ -1,5 +1,5 @@
 ﻿define(['durandal/system'],
-    function (system) {
+    function(system) {
         var logger = {
             log: log,
             logError: logError

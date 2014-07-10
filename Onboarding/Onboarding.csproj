@@ -60,8 +60,6 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -78,7 +76,6 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Routing" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Net.Http">
     </Reference>
@@ -113,26 +110,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DurandalController.cs" />
     <Compile Include="Controllers\BreezeController.cs" />
-    <Compile Include="Utils\CodeFlowHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\DashboardService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ReviewService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Utils\DBHelpers.cs" />
-    <Compile Include="Utils\SystemHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\main-built.js" />
     <Content Include="App\main.js" />
     <Content Include="App\services\dateformatter.js" />
     <Content Include="App\services\guidgenerator.js" />
@@ -222,51 +205,6 @@
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Service References\DashboardService\configuration91.svcinfo" />
-    <None Include="Service References\DashboardService\configuration.svcinfo" />
-    <Content Include="Service References\DashboardService\Onboarding.DashboardService.CodeReviewQueryResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\DashboardService\Onboarding.DashboardService.QueryReviewIdsResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\DashboardService\Onboarding.DashboardService.QueryReviewSummariesResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\DashboardService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\ReviewService\configuration91.svcinfo" />
-    <None Include="Service References\ReviewService\configuration.svcinfo" />
-    <Content Include="Service References\ReviewService\Onboarding.ReviewService.CodePackage.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReviewService\Onboarding.ReviewService.CodeReview.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReviewService\Onboarding.ReviewService.CodeReviewSummary.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReviewService\Onboarding.ReviewService.Comment.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReviewService\Onboarding.ReviewService.CommentThread.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReviewService\Onboarding.ReviewService.Like.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReviewService\Onboarding.ReviewService.ReviewIteration.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReviewService\Onboarding.ReviewService.ReviewUpdateCode.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\ReviewService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -278,32 +216,6 @@
     <Content Include="weyland-config.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Scripts\toastr.min.js.map" />
-    <None Include="Service References\DashboardService\DashboardService.wsdl" />
-    <None Include="Service References\DashboardService\DashboardService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DashboardService\DashboardService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DashboardService\DashboardService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DashboardService\DashboardService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReviewService\ReviewService.wsdl" />
-    <None Include="Service References\ReviewService\ReviewService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReviewService\ReviewService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReviewService\ReviewService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReviewService\ReviewService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -319,13 +231,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\DashboardService\" />
-    <WCFMetadataStorage Include="Service References\ReviewService\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Onboarding.Models\Onboarding.Models.csproj">

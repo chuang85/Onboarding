@@ -1,4 +1,4 @@
-﻿define(['plugins/router', 'durandal/app'], function (router, app) {
+﻿define(['plugins/router', 'durandal/app'], function(router, app) {
 
     var vm = {
         spt: ko.observable(),
@@ -21,8 +21,8 @@
     /// <param name="id">The id of SPT to be queried</param>
     function getSpt(id) {
         var query = breeze.EntityQuery.
-                from("ServicePrincipalTemplates").
-                where("Id", "==", id);
+            from("ServicePrincipalTemplates").
+            where("Id", "==", id);
 
         return manager
             .executeQuery(query)
@@ -54,8 +54,7 @@
     function goDelete(data) {
         if (data == 'No') {
             toastr.info('Aborted');
-        }
-        else {
+        } else {
             vm.spt().entityAspect.setDeleted();
 
             manager.saveChanges()

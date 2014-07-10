@@ -11,26 +11,26 @@ namespace Onboarding
             AddDefaultIgnorePatterns(bundles.IgnoreList);
 
             bundles.Add(
-              new ScriptBundle("~/Scripts/vendor")
-                  .Include("~/Scripts/jquery-{version}.js")
-                  .Include("~/Scripts/bootstrap.js")
-                  .Include("~/Scripts/knockout-{version}.js")
-                  .Include("~/Scripts/toastr.js")
-                  .Include("~/scripts/Q.js")
-                  .Include("~/scripts/breeze.debug.js")
-              );
+                new ScriptBundle("~/Scripts/vendor")
+                    .Include("~/Scripts/jquery-{version}.js")
+                    .Include("~/Scripts/bootstrap.js")
+                    .Include("~/Scripts/knockout-{version}.js")
+                    .Include("~/Scripts/toastr.js")
+                    .Include("~/scripts/Q.js")
+                    .Include("~/scripts/breeze.debug.js")
+                );
 
             bundles.Add(
-              new StyleBundle("~/Content/css")
-                .Include("~/Content/ie10mobile.css")
-                .Include("~/Content/bootstrap.min.css")
-                .Include("~/Content/bootstrap-responsive.min.css")
-                .Include("~/Content/font-awesome.min.css")
-                .Include("~/Content/durandal.css")
-                .Include("~/Content/starterkit.css")
-                .Include("~/Content/toastr.css")
-                .Include("~/Content/spt.css")
-              );
+                new StyleBundle("~/Content/css")
+                    .Include("~/Content/ie10mobile.css")
+                    .Include("~/Content/bootstrap.min.css")
+                    .Include("~/Content/bootstrap-responsive.min.css")
+                    .Include("~/Content/font-awesome.min.css")
+                    .Include("~/Content/durandal.css")
+                    .Include("~/Content/starterkit.css")
+                    .Include("~/Content/toastr.css")
+                    .Include("~/Content/spt.css")
+                );
         }
 
         public static void AddDefaultIgnorePatterns(IgnoreList ignoreList)
