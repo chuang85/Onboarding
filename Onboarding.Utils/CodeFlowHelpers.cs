@@ -63,9 +63,7 @@ namespace Onboarding.Utils
         /// </summary>
         /// <param name="client">An instance of <see cref="ReviewServiceClient" />.</param>
         /// <param name="reviewId">Id of the review to be added.</param>
-        /// <param name="authorDisplayName">Author's display name.</param>
-        /// <param name="emailAddress">Author's email address.</param>
-        /// <param name="reviewName">The title of review.</param>
+        /// <param name="codePackage">Code package to be added.</param>
         public static void AddCodePackage(ReviewServiceClient client, string reviewId, CodePackage codePackage)
         {
             client.AddCodePackage(reviewId, codePackage);
@@ -76,7 +74,7 @@ namespace Onboarding.Utils
         /// </summary>
         /// <param name="name">Reviewer's alias.</param>
         /// <param name="displayName">Reviewer's display name.</param>
-        /// <param name="userAgent">Reviewer's emailAddress.</param>
+        /// <param name="emailAddress">Reviewer's emailAddress.</param>
         /// <param name="required">Required or optional.</param>
         /// <returns>An instance of <see cref="ReviewService.Reviewer" />.</returns>
         public static Reviewer CreateReviewer(string name, string displayName, string emailAddress, bool required)
