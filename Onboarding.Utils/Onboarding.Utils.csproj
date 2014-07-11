@@ -51,7 +51,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="SystemHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Onboarding.Models\Onboarding.Models.csproj">

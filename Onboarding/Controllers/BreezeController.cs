@@ -12,7 +12,6 @@ namespace Onboarding.Controllers
     [BreezeController]
     public class BreezeController : ApiController
     {
-        //readonly EFContextProvider<OnboardingDbContext> _contextProvider = new EFContextProvider<OnboardingDbContext>();
         private readonly OnboardingRequestContextProvider _contextProvider = new OnboardingRequestContextProvider();
 
         // ~/breeze/Breeze/Metadata 

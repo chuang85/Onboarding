@@ -1,4 +1,5 @@
 ﻿using System;
+using Onboarding.Models;
 using Onboarding.Utils.DashboardService;
 using Onboarding.Utils.ReviewService;
 using Author = Onboarding.Utils.ReviewService.Author;
@@ -13,6 +14,33 @@ namespace Onboarding.Utils
     {
         public const string ProjectShortName = "MSODS";
         public const string EmailDomain = "@microsoft.com";
+
+        /// <summary>
+        /// All in one function for a code review.
+        /// </summary>
+        /// <param name="rClient">An instance of <see cref="ReviewServiceClient"/>.</param>
+        /// <param name="onboardingRequest">The given request to be used to submit a code review.</param>
+        public static void SubmitCodeReviewFromRequest(ReviewServiceClient rClient, OnboardingRequest onboardingRequest)
+        {
+            // Step 1 - Create a code review
+            // Assign ReviewId to the corresponding field in OnboardingRequest
+            onboardingRequest.CodeFlowId = CreateReview(rClient, onboardingRequest.CreatedBy, "Chengkan Huang",
+                GenerateEmailAddress(onboardingRequest), GenerateReivewName(onboardingRequest), ProjectShortName);
+
+            // Step 2 - Create a code package and add it to the review
+            AddCodePackage(rClient, onboardingRequest.CodeFlowId, CreateCodePackage("testing pack", onboardingRequest.CreatedBy, onboardingRequest.CreatedBy,
+                CodePackageFormat.SourceDepotPack, new Uri(SystemHelpers.DepotPath + GenerateFilename(onboardingRequest) + ".dpk")));
+
+            // Step 3 - Add reviewers to the review
+            AddReviewers(rClient, onboardingRequest.CodeFlowId, new Reviewer[]
+            {
+                CreateReviewer(onboardingRequest.CreatedBy, "Chengkan Huang", GenerateEmailAddress(onboardingRequest), true)
+            });
+
+            // Step 4 - Publish the review
+            PublishReview(rClient, onboardingRequest.CodeFlowId, "meesage from author");
+        }
+
 
         /// <summary>
         ///     Step 1 - Create a review. An id will be generated, but not pushlished.
@@ -122,8 +150,8 @@ namespace Onboarding.Utils
         {
             CodeReviewQueryResult response = client.Query(new CodeReviewQuery
             {
-                Authors = new[] {author},
-                ReviewStatuses = new[] {CodeReviewStatus.Active},
+                Authors = new[] { author },
+                ReviewStatuses = new[] { CodeReviewStatus.Active },
                 UserAgent = author
             });
             if (response != null)
@@ -145,6 +173,22 @@ namespace Onboarding.Utils
                 }
             }
             throw new Exception("No response found.");
+        }
+
+        private static string GenerateReivewName(OnboardingRequest onboardingRequest)
+        {
+            return onboardingRequest.Type + "-RequestId-" + onboardingRequest.RequestId;
+        }
+
+
+        private static string GenerateEmailAddress(OnboardingRequest onboardingRequest)
+        {
+            return onboardingRequest.CreatedBy + EmailDomain;
+        }
+
+        private static string GenerateFilename(OnboardingRequest onboardingRequest)
+        {
+            return onboardingRequest.DisplayName + "_" + onboardingRequest.CreatedBy + ".xml";
         }
     }
 }
