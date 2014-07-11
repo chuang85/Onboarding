@@ -8,6 +8,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using Onboarding.Models;
+using Onboarding.Utils;
 using Onboarding.Utils.ReviewService;
 
 namespace Onboarding.Services
@@ -20,15 +21,20 @@ namespace Onboarding.Services
         {
             InitializeComponent();
             _rClient = new ReviewServiceClient();
+            _obContext = new OnboardingDbContext();
         }
 
         protected override void OnStart(string[] args)
         {
-            
+            foreach (OnboardingRequest request in DbHelpers.SelectAllRequest(_obContext))
+            {
+                //CodeFlowHelpers.SubmitCodeReviewFromRequest(_rClient, request);
+            }
         }
 
         protected override void OnStop()
         {
+            _rClient.Close();
         }
     }
 }

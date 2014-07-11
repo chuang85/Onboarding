@@ -16,7 +16,8 @@ namespace Onboarding.Utils
         public const string EmailDomain = "@microsoft.com";
 
         /// <summary>
-        /// All in one function for a code review.
+        /// All in one function for submitting a code review.
+        /// Fill the RequestId field in DB.
         /// </summary>
         /// <param name="rClient">An instance of <see cref="ReviewServiceClient"/>.</param>
         /// <param name="onboardingRequest">The given request to be used to submit a code review.</param>
@@ -40,7 +41,6 @@ namespace Onboarding.Utils
             // Step 4 - Publish the review
             PublishReview(rClient, onboardingRequest.CodeFlowId, "meesage from author");
         }
-
 
         /// <summary>
         ///     Step 1 - Create a review. An id will be generated, but not pushlished.
