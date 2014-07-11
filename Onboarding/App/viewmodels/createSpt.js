@@ -32,7 +32,7 @@
 
         function activate() {
             clearInputOnloading();
-            collapsePanels();
+            collapsePanels();5
             generateAppId();
 
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {

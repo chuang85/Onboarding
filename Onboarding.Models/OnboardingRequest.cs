@@ -22,7 +22,7 @@ namespace Onboarding.Models
 
         public string DisplayModifiedDate { get; set; }
 
-        //[Required]
+        [Required]
         public string CreatedBy { get; set; }
 
         //public RequestState State { get; set; }
