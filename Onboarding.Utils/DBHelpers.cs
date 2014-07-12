@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Xml;
@@ -10,14 +11,16 @@ namespace Onboarding.Utils
     {
         public static IQueryable<OnboardingRequest> SelectAllRequest(OnboardingDbContext db)
         {
-            return 
+            return
                 from d in db.OnboardingRequests
                 select d;
         }
 
-        public static void SaveRequestId(OnboardingDbContext db)
+        public static void SaveCodeFlowId(OnboardingDbContext db, OnboardingRequest request, string codeFlowId)
         {
-            
+            request.CodeFlowId = codeFlowId;
+            db.OnboardingRequests.Attach(request);
+            db.Entry(request).State = EntityState.Modified;
         }
 
         public static XmlDocument GetXmlFromBlob(OnboardingRequest onboardingRequest)

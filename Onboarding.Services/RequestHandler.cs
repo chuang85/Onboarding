@@ -16,19 +16,28 @@ namespace Onboarding.Services
     public partial class RequestHandler : ServiceBase
     {
         private static ReviewServiceClient _rClient;
-        private static OnboardingDbContext _obContext;
         public RequestHandler()
         {
             InitializeComponent();
             _rClient = new ReviewServiceClient();
-            _obContext = new OnboardingDbContext();
         }
 
         protected override void OnStart(string[] args)
         {
-            foreach (OnboardingRequest request in DbHelpers.SelectAllRequest(_obContext))
+            using (var db = new OnboardingDbContext())
             {
-                //CodeFlowHelpers.SubmitCodeReviewFromRequest(_rClient, request);
+                try
+                {
+                    foreach (var request in DbHelpers.SelectAllRequest(db))
+                    {
+                        CodeFlowHelpers.SubmitCodeReviewFromRequest(db, _rClient, request);
+                    }
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred: " + ex.Message);
+                }
             }
         }
 

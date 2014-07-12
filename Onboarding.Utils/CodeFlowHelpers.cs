@@ -17,16 +17,19 @@ namespace Onboarding.Utils
 
         /// <summary>
         /// All in one function for submitting a code review.
-        /// Fill the RequestId field in DB.
         /// </summary>
+        /// <param name="db">An instance of <see cref="OnboardingDbContext"/>.</param>
         /// <param name="rClient">An instance of <see cref="ReviewServiceClient"/>.</param>
         /// <param name="onboardingRequest">The given request to be used to submit a code review.</param>
-        public static void SubmitCodeReviewFromRequest(ReviewServiceClient rClient, OnboardingRequest onboardingRequest)
+        public static void SubmitCodeReviewFromRequest(OnboardingDbContext db, ReviewServiceClient rClient, OnboardingRequest onboardingRequest)
         {
-            // Step 1 - Create a code review
-            // Assign ReviewId to the corresponding field in OnboardingRequest
-            onboardingRequest.CodeFlowId = CreateReview(rClient, onboardingRequest.CreatedBy, "Chengkan Huang",
+            // Step 1.1 - Create a code review.
+            var codeFlowId = CreateReview(rClient, onboardingRequest.CreatedBy, "Chengkan Huang",
                 GenerateEmailAddress(onboardingRequest), GenerateReivewName(onboardingRequest), ProjectShortName);
+
+            // Step 1.2
+            // Assign ReviewId to the corresponding field in OnboardingRequest
+            DbHelpers.SaveCodeFlowId(db, onboardingRequest, codeFlowId);
 
             // Step 2 - Create a code package and add it to the review
             AddCodePackage(rClient, onboardingRequest.CodeFlowId, CreateCodePackage("testing pack", onboardingRequest.CreatedBy, onboardingRequest.CreatedBy,
@@ -175,18 +178,18 @@ namespace Onboarding.Utils
             throw new Exception("No response found.");
         }
 
-        private static string GenerateReivewName(OnboardingRequest onboardingRequest)
+        public static string GenerateReivewName(OnboardingRequest onboardingRequest)
         {
             return onboardingRequest.Type + "-RequestId-" + onboardingRequest.RequestId;
         }
 
 
-        private static string GenerateEmailAddress(OnboardingRequest onboardingRequest)
+        public static string GenerateEmailAddress(OnboardingRequest onboardingRequest)
         {
             return onboardingRequest.CreatedBy + EmailDomain;
         }
 
-        private static string GenerateFilename(OnboardingRequest onboardingRequest)
+        public static string GenerateFilename(OnboardingRequest onboardingRequest)
         {
             return onboardingRequest.DisplayName + "_" + onboardingRequest.CreatedBy + ".xml";
         }
