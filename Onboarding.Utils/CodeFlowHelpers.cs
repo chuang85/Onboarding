@@ -27,8 +27,7 @@ namespace Onboarding.Utils
             var codeFlowId = CreateReview(rClient, onboardingRequest.CreatedBy, "Chengkan Huang",
                 GenerateEmailAddress(onboardingRequest), GenerateReivewName(onboardingRequest), ProjectShortName);
 
-            // Step 1.2
-            // Assign ReviewId to the corresponding field in OnboardingRequest
+            // Step 1.2 - Assign ReviewId to the corresponding field in OnboardingRequest
             DbHelpers.SaveCodeFlowId(db, onboardingRequest, codeFlowId);
 
             // Step 2 - Create a code package and add it to the review
@@ -151,7 +150,7 @@ namespace Onboarding.Utils
         /// <returns>True if at least one reviewer is signed off.</returns>
         public static bool ReviewCompleted(ReviewDashboardServiceClient client, string key, string author)
         {
-            CodeReviewQueryResult response = client.Query(new CodeReviewQuery
+            var response = client.Query(new CodeReviewQuery
             {
                 Authors = new[] { author },
                 ReviewStatuses = new[] { CodeReviewStatus.Active },
@@ -159,7 +158,7 @@ namespace Onboarding.Utils
             });
             if (response != null)
             {
-                foreach (CodeReviewSummary review in response.Reviews)
+                foreach (var review in response.Reviews)
                 {
                     if (review.Key.Equals(key))
                     {

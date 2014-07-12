@@ -28,9 +28,10 @@ namespace Onboarding.Services
             {
                 try
                 {
-                    foreach (var request in DbHelpers.SelectAllRequest(db))
+                    foreach (var request in DbHelpers.RequestsCreated(db))
                     {
-                        CodeFlowHelpers.SubmitCodeReviewFromRequest(db, _rClient, request);
+                        //CodeFlowHelpers.SubmitCodeReviewFromRequest(db, _rClient, request);
+
                     }
                     db.SaveChanges();
                 }

@@ -9,10 +9,29 @@ namespace Onboarding.Utils
 {
     public class DbHelpers
     {
-        public static IQueryable<OnboardingRequest> SelectAllRequest(OnboardingDbContext db)
+        public static IQueryable<OnboardingRequest> UncompletedRequests(OnboardingDbContext db)
         {
             return
                 from d in db.OnboardingRequests
+                where !d.State.Equals("Completed")
+                select d;
+        }
+
+        public static IQueryable<OnboardingRequest> RequestsCreated(OnboardingDbContext db)
+        {
+            return
+                from d in db.OnboardingRequests
+                where d.Type.Equals("CreateSPT") &&
+                d.State.Equals("Created")
+                select d;
+        }
+
+        public static IQueryable<OnboardingRequest> RequestsPendingReview(OnboardingDbContext db)
+        {
+            return
+                from d in db.OnboardingRequests
+                where d.Type.Equals("CreateSPT") &&
+                d.State.Equals("PendingReview")
                 select d;
         }
 

@@ -10,7 +10,7 @@
             microsoftPolicyGroup: ko.observable(),
             managedExternally: ko.observable(),
             // Set request type by default when navigating to this page
-            requestType: "Create SPT",
+            requestType: "CreateSPT",
             activate: activate,
             canDeactivate: canDeactivate,
             createEntity: createEntity,
