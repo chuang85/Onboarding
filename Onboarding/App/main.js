@@ -20,7 +20,7 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (s
     system.debug(true);
     //>>excludeEnd("build");
 
-    app.title = 'AAD Onboarding';
+    app.title = 'AAD Onboarding Portal';
 
     app.configurePlugins({
         router: true,
