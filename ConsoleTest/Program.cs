@@ -47,7 +47,6 @@ namespace ConsoleTest
                     // Handling request in state "PendingReview"
                     foreach (var request in DbHelpers.RequestsPendingReview(db))
                     {
-                        Console.WriteLine(request.CodeFlowId);
                         if (CodeFlowHelpers.ReviewCompleted(qClient, request.CodeFlowId, request.CreatedBy))
                         {
                             request.State = "ReviewApproved";

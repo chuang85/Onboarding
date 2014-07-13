@@ -4,7 +4,6 @@ using Onboarding.Utils.DashboardService;
 using Onboarding.Utils.ReviewService;
 using Author = Onboarding.Utils.ReviewService.Author;
 using CodeReviewStatus = Onboarding.Utils.DashboardService.CodeReviewStatus;
-using CodeReviewSummary = Onboarding.Utils.DashboardService.CodeReviewSummary;
 using Reviewer = Onboarding.Utils.ReviewService.Reviewer;
 using ReviewerStatus = Onboarding.Utils.DashboardService.ReviewerStatus;
 
@@ -162,19 +161,17 @@ namespace Onboarding.Utils
                 {
                     if (review.Key.Equals(key))
                     {
-                        foreach (DashboardService.Reviewer reviewer in review.Reviewers)
+                        foreach (var reviewer in review.Reviewers)
                         {
                             if (reviewer.Status == ReviewerStatus.SignedOff)
                             {
                                 return true;
                             }
                         }
-                        return false;
                     }
-                    throw new Exception("Given key not exist.");
                 }
             }
-            throw new Exception("No response found.");
+            return false;
         }
 
         public static string GenerateReivewName(OnboardingRequest onboardingRequest)
