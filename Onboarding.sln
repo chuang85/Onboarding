@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onboarding.Utils", "Onboard
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onboarding.Services", "Onboarding.Services\Onboarding.Services.csproj", "{63077AD0-105F-4768-8C53-BF3A373A493A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{4F039900-D69D-4ABB-8360-2D3DEB6E7650}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onboarding.ServiceWorker", "Onboarding.ServiceWorker\Onboarding.ServiceWorker.csproj", "{BD1DBAFF-ABC8-45F7-A76D-2FB64CB0A250}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{63077AD0-105F-4768-8C53-BF3A373A493A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63077AD0-105F-4768-8C53-BF3A373A493A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63077AD0-105F-4768-8C53-BF3A373A493A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F039900-D69D-4ABB-8360-2D3DEB6E7650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F039900-D69D-4ABB-8360-2D3DEB6E7650}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F039900-D69D-4ABB-8360-2D3DEB6E7650}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F039900-D69D-4ABB-8360-2D3DEB6E7650}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD1DBAFF-ABC8-45F7-A76D-2FB64CB0A250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD1DBAFF-ABC8-45F7-A76D-2FB64CB0A250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD1DBAFF-ABC8-45F7-A76D-2FB64CB0A250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD1DBAFF-ABC8-45F7-A76D-2FB64CB0A250}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
