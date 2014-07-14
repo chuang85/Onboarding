@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Onboarding.Models;
 using Onboarding.Utils;
 using Onboarding.Utils.ReviewService;
@@ -73,6 +74,8 @@ namespace Onboarding.ServiceWorker
                 CodeFlowHelpers.PublishReview(_rClient, request.CodeFlowId, "meesage from author");
                 // Change State from "Created" to "PendingReview"
                 request.State = "PendingReview";
+                // Revert file to clean the changelist
+                SystemHelpers.RevertFile(CodeFlowHelpers.GenerateFilename(request));
             }
         }
 
