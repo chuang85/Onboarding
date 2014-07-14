@@ -97,6 +97,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConsoleTest\ConsoleTest.csproj">
+      <Project>{4f039900-d69d-4abb-8360-2d3deb6e7650}</Project>
+      <Name>ConsoleTest</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Onboarding.Models\Onboarding.Models.csproj">
       <Project>{52452ffe-c1a0-4d69-b736-9cf48bb5176b}</Project>
       <Name>Onboarding.Models</Name>
