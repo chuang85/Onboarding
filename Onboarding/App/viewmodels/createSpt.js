@@ -171,6 +171,9 @@
             hasSubmitted = false;
             vm.displayName("");
             vm.serviceType("");
+            vm.externalUserAccountDelegationsAllowed("");
+            vm.microsoftPolicyGroup("");
+            vm.managedExternally("");
             $(":input").not("#appPrincipalId").val("");
         }
 
@@ -333,7 +336,7 @@
             if (sourceArray) {
                 for (var i = 0; i < sourceArray.length - 1; i++) {
                     delegationStr += sourceArray[i];
-                    delegationStr += ", "
+                    delegationStr += ", ";
                 }
                 delegationStr += sourceArray[sourceArray.length - 1];
             }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Timers;
 using Onboarding.Models;
 using Onboarding.Utils;
 using Onboarding.Utils.ReviewService;
@@ -13,30 +14,22 @@ namespace Onboarding.ServiceWorker
     {
         private static ReviewServiceClient _rClient;
         private static ReviewDashboardServiceClient _qClient;
+        private static Timer _timer;
         public static void Main()
         {
-            InitializeClients();
-            using (var db = new OnboardingDbContext())
-            {
-                UpdateServiceTypes(db);
-                //HandleRequests(db);
-                db.SaveChanges();
-            }
-            CloseClients();
-            Console.WriteLine("done");
-            Console.WriteLine("Hit enter...");
-            Console.Read();
-
-            //HardCodeReview();
-
+            //InitializeClients();
             //using (var db = new OnboardingDbContext())
             //{
-            //    foreach (var r in (from d in db.OnboardingRequests select d))
-            //    {
-            //        r.DisplayName = "kkkkkkkkkk";
-            //    }
+            //    UpdateServiceTypes(db);
+            //    HandleRequests(db);
             //    db.SaveChanges();
             //}
+            //CloseClients();
+            //Console.WriteLine("done");
+            //Console.WriteLine("Hit enter...");
+            //Console.Read();
+
+            HardCodeReview();
         }
 
         private static void InitializeClients()
