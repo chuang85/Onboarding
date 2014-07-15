@@ -38,9 +38,9 @@
 
         // Create where clause for filtering
         if (vm.filterText() && vm.filterText().length > 0) {
-            var Predicate = breeze.Predicate;
-            var p1 = Predicate.create("DisplayName", "substringof", vm.filterText());
-            var p2 = Predicate.create("DisplayName", "contains", vm.filterText());
+            var predicate = breeze.Predicate;
+            var p1 = predicate.create("DisplayName", "substringof", vm.filterText());
+            var p2 = predicate.create("DisplayName", "contains", vm.filterText());
             var whereClause = p1.or(p2);
 
             query = query.where(whereClause);

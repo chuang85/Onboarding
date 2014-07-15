@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Web;
 using System.Xml;
@@ -7,13 +9,13 @@ namespace Onboarding.Models
 {
     public static class SystemHelpers
     {
-        public const string CmdPath = @"C:\WINDOWS\system32\cmd.exe";
-
-        public const string CmdConfigArgs =
+        private const string CmdPath = @"C:\WINDOWS\system32\cmd.exe";
+        public const string DepotPath = @"E:\CUMULUS_MAIN\sources\dev\RestServices\GraphService\Tools\";
+        private const string ProductCatalogPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\productcatalog\";
+        private const string CmdConfigArgs =
             @"/k set inetroot=e:\cumulus_main&set corextbranch=main&e:\cumulus_main\tools\path1st\myenv.cmd";
 
-        public const string DepotPath = @"E:\CUMULUS_MAIN\sources\dev\RestServices\GraphService\Tools\";
-        public const string AppDataPathXml = @"../../App_Data/";
+        private const string AppDataPathXml = @"../../App_Data/";
 
         /// <summary>
         ///     Write string into an xml file and then save it
@@ -62,6 +64,41 @@ namespace Onboarding.Models
             Process.Start(startInfo);
         }
 
+        /// <summary>
+        ///     Keep the depot up-to-date, before retrieve the ServiceType list.
+        /// </summary>
+        public static void SyncDepot()
+        {
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = CmdPath,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                Arguments = CmdConfigArgs
+                                  + CmdSyncDepot()
+            };
+            Process.Start(startInfo);
+        }
+
+        /// <summary>
+        ///     Retrieve a list of ServiceTypes, 
+        /// </summary>
+        public static List<string> RetriveServiceTypes()
+        {
+            var serviceList = new List<string>();
+            foreach (var file in Directory.EnumerateFiles(ProductCatalogPath, "*.xml"))
+            {
+                var xmlDoc = new XmlDocument();
+                xmlDoc.Load(file);
+                var node = xmlDoc.GetElementsByTagName("ServiceType")[0];
+                if (node != null)
+                {
+                    serviceList.Add(node.InnerText);
+                }
+            }
+            serviceList.Sort();
+            return serviceList;
+        }
+
         private static string CmdRevertFile(string filename)
         {
             return " && cd " + DepotPath + " && sd revert -d " + filename;
@@ -70,6 +107,11 @@ namespace Onboarding.Models
         private static string CmdAddToDepotArgs(string filename)
         {
             return " && cd " + DepotPath + " && sd add " + filename + " && sdp pack " + filename + " -C \"some desc\"";
+        }
+
+        private static string CmdSyncDepot()
+        {
+            return " && cd " + DepotPath + " && sd sync";
         }
     }
 }
