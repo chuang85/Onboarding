@@ -155,6 +155,8 @@
     <Content Include="App\views\home.html" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap-select.css" />
+    <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap-switch\bootstrap2\bootstrap-switch.css" />
     <Content Include="Content\bootstrap-switch\bootstrap2\bootstrap-switch.min.css" />
     <Content Include="Content\bootstrap-switch\bootstrap3\bootstrap-switch.css" />
@@ -182,6 +184,8 @@
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
     <Content Include="Scripts\almond-custom.js" />
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap-switch.js" />
     <Content Include="Scripts\bootstrap-switch.min.js" />
     <Content Include="Scripts\bootstrap.js" />
