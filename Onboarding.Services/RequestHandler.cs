@@ -1,12 +1,16 @@
 ﻿using System;
 using System.ServiceProcess;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace Onboarding.Services
 {
     public partial class RequestHandler : ServiceBase
     {
         private Timer _timer;
+        CancellationTokenSource _cancelTokenSource = new CancellationTokenSource(); 
         public RequestHandler()
         {
             InitializeComponent();
@@ -33,6 +37,7 @@ namespace Onboarding.Services
         protected override void OnStop()
         {
             _timer.Stop();
+            _cancelTokenSource.Cancel();
             _timer = null;
             eventLog1.WriteEntry("Timer Stop");
         }
@@ -41,13 +46,14 @@ namespace Onboarding.Services
         {
             try
             {
-                ServiceWorker.Worker.Main();
+                Task.Run(
+                    () => ServiceWorker.Worker.Main(),
+                    _cancelTokenSource.Token);
             }
             catch (Exception ex)
             {
                 eventLog1.Log = "An error occurred: " + ex.Message;
             }
-            
         }
     }
 }

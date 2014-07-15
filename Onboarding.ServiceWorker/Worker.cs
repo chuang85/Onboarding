@@ -17,19 +17,19 @@ namespace Onboarding.ServiceWorker
         private static Timer _timer;
         public static void Main()
         {
-            //InitializeClients();
-            //using (var db = new OnboardingDbContext())
-            //{
-            //    UpdateServiceTypes(db);
-            //    HandleRequests(db);
-            //    db.SaveChanges();
-            //}
-            //CloseClients();
-            //Console.WriteLine("done");
-            //Console.WriteLine("Hit enter...");
-            //Console.Read();
+            InitializeClients();
+            using (var db = new OnboardingDbContext())
+            {
+                //UpdateServiceTypes(db);
+                HandleRequests(db);
+                db.SaveChanges();
+            }
+            CloseClients();
+            Console.WriteLine("done");
+            Console.WriteLine("Hit enter...");
+            Console.Read();
 
-            HardCodeReview();
+            //HardCodeReview();
         }
 
         private static void InitializeClients()
