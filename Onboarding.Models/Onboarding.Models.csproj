@@ -50,6 +50,7 @@
     <Compile Include="OnboardingDbContext.cs" />
     <Compile Include="OnboardingRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceType.cs" />
     <Compile Include="SystemHelpers.cs" />
   </ItemGroup>
   <ItemGroup>

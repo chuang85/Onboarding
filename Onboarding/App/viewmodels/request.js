@@ -30,7 +30,7 @@
     }
 
     /// <summary>
-    /// Query all SPT data.
+    /// Query requests data.
     /// </summary>
     function getRequests() {
         var query = breeze.EntityQuery.

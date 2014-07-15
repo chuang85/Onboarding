@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using Onboarding.Models;
 using Onboarding.Utils;
@@ -14,27 +15,28 @@ namespace Onboarding.ServiceWorker
         private static ReviewDashboardServiceClient _qClient;
         public static void Main()
         {
-            //InitializeClients();
-            //using (var db = new OnboardingDbContext())
-            //{
-            //    DoWork(db);
-            //    db.SaveChanges();
-            //}
-            //CloseClients();
-            //Console.WriteLine("done");
-            //Console.WriteLine("Hit enter...");
-            //Console.Read();
+            InitializeClients();
+            using (var db = new OnboardingDbContext())
+            {
+                UpdateServiceTypes(db);
+                //HandleRequests(db);
+                db.SaveChanges();
+            }
+            CloseClients();
+            Console.WriteLine("done");
+            Console.WriteLine("Hit enter...");
+            Console.Read();
 
             //HardCodeReview();
 
-            using (var db = new OnboardingDbContext())
-            {
-                foreach (var r in (from d in db.OnboardingRequests select d))
-                {
-                    r.DisplayName = "kkkkkkkkkk";
-                }
-                db.SaveChanges();
-            }
+            //using (var db = new OnboardingDbContext())
+            //{
+            //    foreach (var r in (from d in db.OnboardingRequests select d))
+            //    {
+            //        r.DisplayName = "kkkkkkkkkk";
+            //    }
+            //    db.SaveChanges();
+            //}
         }
 
         private static void InitializeClients()
@@ -49,10 +51,24 @@ namespace Onboarding.ServiceWorker
             _qClient.Close();
         }
 
-        private static void DoWork(OnboardingDbContext db)
+        private static void HandleRequests(OnboardingDbContext db)
         {
             HandleCreated(db);
             HandlePendingReview(db);
+        }
+
+        private static void UpdateServiceTypes(OnboardingDbContext db)
+        {
+            SystemHelpers.SyncDepot();
+            foreach (var st in SystemHelpers.RetriveServiceTypes())
+            {
+                db.ServiceTypes.Add(
+                    new ServiceType
+                    {
+                        ServiceTypeName = st
+                    });
+            }
+            db.SaveChanges();
         }
 
         private static void HandleCreated(OnboardingDbContext db)

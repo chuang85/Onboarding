@@ -48,5 +48,12 @@ namespace Onboarding.Controllers
         {
             return _contextProvider.Context.OnboardingRequests;
         }
+
+        // ~/breeze/Breeze/ServiceTypes
+        [HttpGet]
+        public IQueryable<ServiceType> ServiceTypes()
+        {
+            return _contextProvider.Context.ServiceTypes;
+        }
     }
 }

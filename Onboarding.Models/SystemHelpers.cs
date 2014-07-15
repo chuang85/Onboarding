@@ -45,7 +45,8 @@ namespace Onboarding.Models
                 Arguments = CmdConfigArgs
                                   + CmdAddToDepotArgs(filename)
             };
-            Process.Start(startInfo);
+            var process = Process.Start(startInfo);
+            //process.WaitForExit(3000);
         }
 
         /// <summary>
@@ -61,7 +62,8 @@ namespace Onboarding.Models
                 Arguments = CmdConfigArgs
                                   + CmdRevertFile(filename)
             };
-            Process.Start(startInfo);
+            var process = Process.Start(startInfo);
+            //process.WaitForExit(3000);
         }
 
         /// <summary>
@@ -76,7 +78,8 @@ namespace Onboarding.Models
                 Arguments = CmdConfigArgs
                                   + CmdSyncDepot()
             };
-            Process.Start(startInfo);
+            var process = Process.Start(startInfo);
+            //process.WaitForExit(3000);
         }
 
         /// <summary>
@@ -95,7 +98,7 @@ namespace Onboarding.Models
                     serviceList.Add(node.InnerText);
                 }
             }
-            serviceList.Sort();
+            //serviceList.Sort();
             return serviceList;
         }
 

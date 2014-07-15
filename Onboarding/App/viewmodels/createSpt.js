@@ -1,12 +1,12 @@
 ﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter'],
-    function(router, app, guidgenerator, dataformatter) {
+    function (router, app, guidgenerator, dataformatter) {
 
         var vm = {
             contact: ko.observable(),
             displayName: ko.observable(),
             serviceType: ko.observable(),
             appPrincipalId: ko.observable(),
-            constrainedDelegationTo: ko.observable(),
+            constrainedDelegationTo: ko.observableArray(),
             externalUserAccountDelegationsAllowed: ko.observable(),
             microsoftPolicyGroup: ko.observable(),
             managedExternally: ko.observable(),
@@ -35,6 +35,7 @@
             clearInputOnloading();
             collapsePanels();
             generateAppId();
+            getServiceTypes();
 
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess);
@@ -124,7 +125,7 @@
         /// </summary>
         function clearInput() {
             app.showMessage('All the input fields will be cleaned, continue?', 'Clear All', ['Yes', 'No'])
-                .then(function(dialogResult) {
+                .then(function (dialogResult) {
                     if (dialogResult == 'Yes') {
                         clearInputOnloading();
                         collapsePanels();
@@ -137,6 +138,28 @@
         };
 
         /********************PRIVATE METHODS********************/
+        function getServiceTypes() {
+            var query = breeze.EntityQuery
+                .from("ServiceTypes")
+                .select("ServiceTypeName")
+                .orderBy("ServiceTypeName");
+
+            return manager
+            .executeQuery(query)
+            .then(querySucceeded)
+            .fail(queryFailed);
+
+            function querySucceeded(data) {
+                for (var i = 0; i < data.results.length; i++) {
+                    vm.constrainedDelegationTo.push(data.results[i]["ServiceTypeName"]);
+                }
+            }
+
+            function queryFailed(error) {
+                toastr.error("Query failed: " + error.message);
+            }
+        }
+
         function generateAppId() {
             vm.appPrincipalId(guidgenerator.generateGuid());
         }
@@ -159,7 +182,7 @@
             var inputField = $("<input class=\"form-control\" />");
             var removeButton = $("<span class=\"pull-right pointerLink glyphicon glyphicon-trash\"></span>");
 
-            removeButton.click(function() {
+            removeButton.click(function () {
                 $(this).parent().remove();
             });
 
@@ -223,7 +246,7 @@
             sp["Environments"] = {};
             var envArr = sp["Environments"]["Environment"] = [];
 
-            $("#environment .env-title a").each(function() {
+            $("#environment .env-title a").each(function () {
                 var env = {};
                 var envType = $(this).text().toLowerCase();
                 env["@name"] = envMap[envType];
@@ -233,7 +256,7 @@
 
                 // Hostnames
                 var hostnameArr = [];
-                $("." + envType + "-hostname-section input").each(function() {
+                $("." + envType + "-hostname-section input").each(function () {
                     var value = $(this).val();
                     if (value != "") {
                         hostnameArr.push(value);
@@ -247,7 +270,7 @@
 
                 // AdditionalSPNames
                 var additionalSPNameArr = [];
-                $("." + envType + "-spname-section input").each(function() {
+                $("." + envType + "-spname-section input").each(function () {
                     var value = $(this).val();
                     if (value != "") {
                         additionalSPNameArr.push(value);
@@ -261,7 +284,7 @@
 
                 // AppAddresses
                 var appAddressArr = [];
-                $("." + envType + "-appaddress-section input").each(function() {
+                $("." + envType + "-appaddress-section input").each(function () {
                     var value = $(this).val();
                     if (value != "") {
                         var appAddress = {};
