@@ -32,7 +32,7 @@
         <div class="form-group">
             <label for="constrainedDelegationTo" class="col-sm-2 control-label">ConstrainedDelegationTo</label>
             <div class="col-sm-6">
-                <select class="form-control" id="constrainedDelegationTo" data-bind="options: constrainedDelegationTo" multiple="true"></select>
+                <select class="form-control" id="constrainedDelegationTo" data-bind="options: serviceTypeList, selectedOptions: constrainedDelegationTo" multiple="true"></select>
             </div>
         </div>
         <!--AppPrincipalId-->
@@ -285,38 +285,47 @@
             </div>
         </div>
         <!--ExternalUserAccountDelegationsAllowed-->
-        <!--<div class="form-group">
+        <div class="form-group">
             <label for="externalUserAccountDelegationsAllowed" class="col-sm-2 control-label">ExternalUserAccountDelegationsAllowed</label>
             <div class="col-sm-offset-4 col-sm-6">
-                <div class="btn-group btn-toggle" id="externalUserAccountDelegationsAllowed">
-                    <button class="btn btn-default">YES</button>
-                    <button class="btn btn-primary active">NO</button>
+                <div class="btn-group" id="externaluseraccountdelegationsallowed">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options1" value="true" data-bind="checked: externalUserAccountDelegationsAllowed">YES
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options1" value="false" data-bind="checked: externalUserAccountDelegationsAllowed">NO
+                    </label>
                 </div>
             </div>
-        </div>-->
-        <div class="make-switch">
-            <input type="checkbox" checked>
         </div>
         <!--MicrosoftPolicyGroup-->
-        <!--<div class="form-group">
+        <div class="form-group">
             <label for="microsoftPolicyGroup" class="col-sm-2 control-label">MicrosoftPolicyGroup</label>
             <div class="col-sm-offset-4 col-sm-6">
-                <div class="btn-group btn-toggle" id="microsoftPolicyGroup">
-                    <button class="btn btn-default">YES</button>
-                    <button class="btn btn-primary active">NO</button>
+                <div class="btn-group" id="microsoftPolicyGroup">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options2" value="true" data-bind="checked: microsoftPolicyGroup">YES
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options2" value="false" data-bind="checked: microsoftPolicyGroup">NO
+                    </label>
                 </div>
             </div>
-        </div>-->
+        </div>
         <!--ManagedExternally-->
-        <!--<div class="form-group">
+        <div class="form-group">
             <label for="managedExternally" class="col-sm-2 control-label">ManagedExternally</label>
             <div class="col-sm-offset-4 col-sm-6">
-                <div class="btn-group btn-toggle" id="managedExternally">
-                    <button class="btn btn-default">YES</button>
-                    <button class="btn btn-primary active">NO</button>
+                <div class="btn-group" id="managedExternally">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options3" value="true" data-bind="checked: managedExternally">YES
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options3" value="false" data-bind="checked: managedExternally">NO
+                    </label>
                 </div>
             </div>
-        </div>-->
+        </div>
         <!--Create&Clear button-->
         <div class="form-inline">
             <div class="col-sm-offset-2 col-sm-6">

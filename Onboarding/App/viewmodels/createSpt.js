@@ -6,10 +6,12 @@
             displayName: ko.observable(),
             serviceType: ko.observable(),
             appPrincipalId: ko.observable(),
+            serviceTypeList: ko.observableArray(),
             constrainedDelegationTo: ko.observableArray(),
             externalUserAccountDelegationsAllowed: ko.observable(),
             microsoftPolicyGroup: ko.observable(),
             managedExternally: ko.observable(),
+            optionsValue: ko.observable(),
             // Set request type by default when navigating to this page
             requestType: "CreateSPT",
             activate: activate,
@@ -151,7 +153,7 @@
 
             function querySucceeded(data) {
                 for (var i = 0; i < data.results.length; i++) {
-                    vm.constrainedDelegationTo.push(data.results[i]["ServiceTypeName"]);
+                    vm.serviceTypeList.push(data.results[i]["ServiceTypeName"]);
                 }
             }
 
@@ -242,6 +244,9 @@
             // AppClass
             sp["AppClass"] = vm.serviceType();
 
+            // ConstrainedDelegationTo
+            sp["ConstrainedDelegationTo"] = generateDelegationStr(vm.constrainedDelegationTo());
+
             // Environments
             sp["Environments"] = {};
             var envArr = sp["Environments"]["Environment"] = [];
@@ -309,20 +314,31 @@
             sp["AppPrincipalID"] = vm.appPrincipalId();
 
             // ExternalUserAccountDelegationsAllowed
-            sp["ExternalUserAccountDelegationsAllowed"] = "";
+            sp["ExternalUserAccountDelegationsAllowed"] = vm.externalUserAccountDelegationsAllowed();
 
             // KeyGroupID
             sp["KeyGroupID"] = guidgenerator.generateGuid().toString();
 
             // MicrosoftPolicyGroup
-            sp["MicrosoftPolicyGroup"] = "";
+            sp["MicrosoftPolicyGroup"] = vm.microsoftPolicyGroup();
 
             // ManagedExternally
-            sp["ManagedExternally"] = "";
+            sp["ManagedExternally"] = vm.managedExternally();
 
             return json;
         };
 
+        function generateDelegationStr(sourceArray) {
+            var delegationStr = "";
+            if (sourceArray) {
+                for (var i = 0; i < sourceArray.length - 1; i++) {
+                    delegationStr += sourceArray[i];
+                    delegationStr += ", "
+                }
+                delegationStr += sourceArray[sourceArray.length - 1];
+            }
+            return delegationStr;
+        }
         return vm;
 
     });
