@@ -18,19 +18,73 @@ namespace Onboarding.Utils
                 select d;
         }
 
-        public static void SaveCodeFlowId(OnboardingDbContext db, OnboardingRequest request, string codeFlowId)
+        public static void AddOrUpdateServiceTypes(OnboardingDbContext db)
         {
-            request.CodeFlowId = codeFlowId;
-            db.OnboardingRequests.Attach(request);
-            db.Entry(request).State = EntityState.Modified;
+            SystemHelpers.SyncDepot();
+            foreach (var st in SystemHelpers.RetriveServiceTypeMap())
+            {
+                var entity = new ServiceType
+                {
+                    ServiceTypeName = st.Key,
+                    ServiceTypeId = st.Value
+                };
+                if (db.ServiceTypes.Any(e => e.ServiceTypeId == entity.ServiceTypeId))
+                {
+                    db.ServiceTypes.Attach(entity);
+                    db.Entry(entity).State = EntityState.Modified;
+                }
+                else
+                {
+                    db.ServiceTypes.Add(entity);
+                }
+            }
+            db.SaveChanges();
         }
 
-        public static XmlDocument GetXmlFromBlob(OnboardingRequest onboardingRequest)
+        public static void AddOrUpdateTaskSets(OnboardingDbContext db)
         {
-            var doc = new XmlDocument();
-            string xml = Encoding.UTF8.GetString(onboardingRequest.Blob);
-            doc.LoadXml(xml);
-            return doc;
+            SystemHelpers.SyncDepot();
+            foreach (var ts in SystemHelpers.RetrieveTaskSetMap())
+            {
+                var entity = new TaskSet
+                {
+                    TaskSetName = ts.Key,
+                    TaskSetId = ts.Value
+                };
+                if (db.TaskSets.Any(e => e.TaskSetId == entity.TaskSetId))
+                {
+                    db.TaskSets.Attach(entity);
+                    db.Entry(entity).State = EntityState.Modified;
+                }
+                else
+                {
+                    db.TaskSets.Add(entity);
+                }
+            }
+            db.SaveChanges();
+        }
+
+        public static void AddOrUpdateScopes(OnboardingDbContext db)
+        {
+            SystemHelpers.SyncDepot();
+            foreach (var s in SystemHelpers.RetrieveScopeMap())
+            {
+                var entity = new Scope
+                {
+                    ScopeName = s.Key,
+                    ScopeId = s.Value
+                };
+                if (db.Scopes.Any(e => e.ScopeId == entity.ScopeId))
+                {
+                    db.Scopes.Attach(entity);
+                    db.Entry(entity).State = EntityState.Modified;
+                }
+                else
+                {
+                    db.Scopes.Add(entity);
+                }
+            }
+            db.SaveChanges();
         }
     }
 }

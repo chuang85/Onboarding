@@ -106,21 +106,21 @@ namespace Onboarding.Models
         /// <summary>
         ///     Retrieve a list of ServiceTypes,.
         /// </summary>
-        public static List<string> RetriveServiceTypes()
+        public static Dictionary<string, string> RetriveServiceTypeMap()
         {
-            var serviceList = new List<string>();
+            var serviceTypeMap = new Dictionary<string, string>();
             foreach (var file in Directory.EnumerateFiles(ProductCatalogPath, "*.xml"))
             {
                 var xmlDoc = new XmlDocument();
                 xmlDoc.Load(file);
-                var node = xmlDoc.GetElementsByTagName("ServiceType")[0];
-                if (node != null)
+                var name = xmlDoc.GetElementsByTagName("ServiceType")[0];
+                var id = xmlDoc.GetElementsByTagName("AppPrincipalID")[0];
+                if (name != null && id != null)
                 {
-                    serviceList.Add(node.InnerText);
+                    serviceTypeMap.Add(name.InnerText, id.InnerText);
                 }
             }
-            //serviceList.Sort();
-            return serviceList;
+            return serviceTypeMap;
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Timers;
@@ -19,9 +20,7 @@ namespace Onboarding.ServiceWorker
             InitializeClients();
             using (var db = new OnboardingDbContext())
             {
-                //UpdateServiceTypes(db);
-                UpdateTaskSets(db);
-                UpdateScopes(db);
+                UpdateDbInfo(db);
                 HandleRequests(db);
                 db.SaveChanges();
             }
@@ -61,48 +60,11 @@ namespace Onboarding.ServiceWorker
             }
         }
 
-        private static void UpdateServiceTypes(OnboardingDbContext db)
+        private static void UpdateDbInfo(OnboardingDbContext db)
         {
-            SystemHelpers.SyncDepot();
-            foreach (var st in SystemHelpers.RetriveServiceTypes())
-            {
-                db.ServiceTypes.Add(
-                    new ServiceType
-                    {
-                        ServiceTypeName = st
-                    });
-            }
-            db.SaveChanges();
-        }
-
-        private static void UpdateTaskSets(OnboardingDbContext db)
-        {
-            SystemHelpers.SyncDepot();
-            foreach (var ts in SystemHelpers.RetrieveTaskSetMap())
-            {
-                db.TaskSets.Add(
-                    new TaskSet
-                    {
-                        TaskSetName = ts.Key,
-                        TaskSetId = ts.Value
-                    });
-            }
-            db.SaveChanges();
-        }
-
-        private static void UpdateScopes(OnboardingDbContext db)
-        {
-            SystemHelpers.SyncDepot();
-            foreach (var s in SystemHelpers.RetrieveScopeMap())
-            {
-                db.Scopes.Add(
-                    new Scope
-                    {
-                        ScopeName = s.Key,
-                        ScopeId = s.Value
-                    });
-            }
-            db.SaveChanges();
+            //DbHelpers.AddOrUpdateServiceTypes(db);
+            DbHelpers.AddOrUpdateTaskSets(db);
+            DbHelpers.AddOrUpdateScopes(db);
         }
 
         private static void HandleCreated(OnboardingRequest request)
