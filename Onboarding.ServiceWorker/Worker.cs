@@ -45,47 +45,51 @@ namespace Onboarding.ServiceWorker
 
         private static void HandleRequests(OnboardingDbContext db)
         {
-            HandleCreated(db);
-            HandlePendingReview(db);
-        }
-
-        private static void HandleCreated(OnboardingDbContext db)
-        {
-            foreach (var request in DbHelpers.RequestsCreated(db))
+            foreach (var request in DbHelpers.UncompletedRequests(db))
             {
-                //SystemHelpers.SaveXmlToDisk(request);
-                //SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(request));
-
-                // Create a code review.
-                var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, request.CreatedBy, "Chengkan Huang",
-                    SystemHelpers.GenerateEmailAddress(request), SystemHelpers.GenerateReivewName(request), SystemHelpers.ProjectShortName);
-                // Assign ReviewId to the corresponding field in OnboardingRequest
-                request.CodeFlowId = codeFlowId;
-                // Create a code package and add it to the review
-                CodeFlowHelpers.AddCodePackage(_rClient, request.CodeFlowId, CodeFlowHelpers.CreateCodePackage("testing pack", request.CreatedBy, request.CreatedBy,
-                    CodePackageFormat.SourceDepotPack, new Uri(SystemHelpers.DepotPath + SystemHelpers.GenerateFilename(request) + ".dpk")));
-                // Add reviewers to the review
-                CodeFlowHelpers.AddReviewers(_rClient, request.CodeFlowId, new Reviewer[]
-                        {
-                            CodeFlowHelpers.CreateReviewer(request.CreatedBy, "Chengkan Huang", SystemHelpers.GenerateEmailAddress(request), true)
-                        });
-                // Publish the review
-                CodeFlowHelpers.PublishReview(_rClient, request.CodeFlowId, "meesage from author");
-                // Change State from "Created" to "PendingReview"
-                request.State = "PendingReview";
-                // Revert file to clean the changelist
-                SystemHelpers.RevertFile(SystemHelpers.GenerateFilename(request));
+                switch (request.State)
+                {
+                    case "Created":
+                        HandleCreated(request);
+                        break;
+                    case "PendingReview":
+                        HandlePendingReview(request);
+                        break;
+                }
             }
         }
 
-        private static void HandlePendingReview(OnboardingDbContext db)
+        private static void HandleCreated(OnboardingRequest request)
         {
-            foreach (var request in DbHelpers.RequestsPendingReview(db))
+            //SystemHelpers.SaveXmlToDisk(request);
+            //SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(request));
+
+            // Create a code review.
+            var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, request.CreatedBy, "Chengkan Huang",
+                SystemHelpers.GenerateEmailAddress(request), SystemHelpers.GenerateReivewName(request), SystemHelpers.ProjectShortName);
+            // Assign ReviewId to the corresponding field in OnboardingRequest
+            request.CodeFlowId = codeFlowId;
+            // Create a code package and add it to the review
+            CodeFlowHelpers.AddCodePackage(_rClient, request.CodeFlowId, CodeFlowHelpers.CreateCodePackage("testing pack", request.CreatedBy, request.CreatedBy,
+                CodePackageFormat.SourceDepotPack, new Uri(SystemHelpers.DepotPath + SystemHelpers.GenerateFilename(request) + ".dpk")));
+            // Add reviewers to the review
+            CodeFlowHelpers.AddReviewers(_rClient, request.CodeFlowId, new Reviewer[]
+                        {
+                            CodeFlowHelpers.CreateReviewer(request.CreatedBy, "Chengkan Huang", SystemHelpers.GenerateEmailAddress(request), true)
+                        });
+            // Publish the review
+            CodeFlowHelpers.PublishReview(_rClient, request.CodeFlowId, "meesage from author");
+            // Change State from "Created" to "PendingReview"
+            request.State = "PendingReview";
+            // Revert file to clean the changelist
+            SystemHelpers.RevertFile(SystemHelpers.GenerateFilename(request));
+        }
+
+        private static void HandlePendingReview(OnboardingRequest request)
+        {
+            if (CodeFlowHelpers.ReviewCompleted(_qClient, request.CodeFlowId, request.CreatedBy))
             {
-                if (CodeFlowHelpers.ReviewCompleted(_qClient, request.CodeFlowId, request.CreatedBy))
-                {
-                    request.State = "ReviewApproved";
-                }
+                request.State = "ReviewApproved";
             }
         }
     }

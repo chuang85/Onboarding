@@ -13,25 +13,8 @@ namespace Onboarding.Utils
         {
             return
                 from d in db.OnboardingRequests
-                where !d.State.Equals("Completed")
-                select d;
-        }
-
-        public static IQueryable<OnboardingRequest> RequestsCreated(OnboardingDbContext db)
-        {
-            return
-                from d in db.OnboardingRequests
-                where d.Type.Equals("CreateSPT") &&
-                d.State.Equals("Created")
-                select d;
-        }
-
-        public static IQueryable<OnboardingRequest> RequestsPendingReview(OnboardingDbContext db)
-        {
-            return
-                from d in db.OnboardingRequests
-                where d.Type.Equals("CreateSPT") &&
-                d.State.Equals("PendingReview")
+                where d.Type.Equals("CreateSPT") && 
+                !d.State.Equals("Completed")
                 select d;
         }
 

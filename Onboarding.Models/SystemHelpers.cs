@@ -59,7 +59,7 @@ namespace Onboarding.Models
             var startInfo = new ProcessStartInfo
             {
                 FileName = CmdPath,
-                //WindowStyle = ProcessWindowStyle.Hidden,
+                WindowStyle = ProcessWindowStyle.Hidden,
                 Arguments = CmdConfigArgs
                                   + CmdAddToDepotArgs(filename)
             };
