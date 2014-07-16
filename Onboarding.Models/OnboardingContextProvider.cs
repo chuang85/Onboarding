@@ -24,16 +24,11 @@ namespace Onboarding.Models
                 //onboardingRequest.State = RequestState.Created;
                 onboardingRequest.State = "Created";
 
-                // Write string formatted xml in to an file and assign it to Blob field.
-                string filename = SetSptFilename(onboardingRequest);
-                onboardingRequest.Blob = SystemHelpers.SaveStringToXml(onboardingRequest.TempXmlStore, filename);
+                // Write string formatted xml into binary and assign it to Blob field.
+                onboardingRequest.Blob = SystemHelpers.GenerateBlobFromString(onboardingRequest.TempXmlStore);
 
-                // Add xml to (local) source depot.
-                SystemHelpers.AddFileToDepot(filename);
-
-                // Revert file (after review completed?)
-                //SystemHelpers.RevertFile(filename);
-
+                SystemHelpers.SaveXmlToDisk(onboardingRequest);
+                SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(onboardingRequest));
                 return true;
             }
             return false;
@@ -48,9 +43,6 @@ namespace Onboarding.Models
             onboardingRequest.DisplayModifiedDate = onboardingRequest.DisplayCreatedDate;
         }
 
-        private static string SetSptFilename(OnboardingRequest onboardingRequest)
-        {
-            return onboardingRequest.DisplayName + "_" + onboardingRequest.CreatedBy + ".xml";
-        }
+        
     }
 }

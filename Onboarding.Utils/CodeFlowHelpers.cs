@@ -11,38 +11,6 @@ namespace Onboarding.Utils
 {
     public static class CodeFlowHelpers
     {
-        public const string ProjectShortName = "MSODS";
-        public const string EmailDomain = "@microsoft.com";
-
-        /// <summary>
-        /// All in one function for submitting a code review.
-        /// </summary>
-        /// <param name="db">An instance of <see cref="OnboardingDbContext"/>.</param>
-        /// <param name="rClient">An instance of <see cref="ReviewServiceClient"/>.</param>
-        /// <param name="onboardingRequest">The given request to be used to submit a code review.</param>
-        public static void SubmitCodeReviewFromRequest(OnboardingDbContext db, ReviewServiceClient rClient, OnboardingRequest onboardingRequest)
-        {
-            // Step 1.1 - Create a code review.
-            var codeFlowId = CreateReview(rClient, onboardingRequest.CreatedBy, "Chengkan Huang",
-                GenerateEmailAddress(onboardingRequest), GenerateReivewName(onboardingRequest), ProjectShortName);
-
-            // Step 1.2 - Assign ReviewId to the corresponding field in OnboardingRequest
-            DbHelpers.SaveCodeFlowId(db, onboardingRequest, codeFlowId);
-
-            // Step 2 - Create a code package and add it to the review
-            AddCodePackage(rClient, onboardingRequest.CodeFlowId, CreateCodePackage("testing pack", onboardingRequest.CreatedBy, onboardingRequest.CreatedBy,
-                CodePackageFormat.SourceDepotPack, new Uri(SystemHelpers.DepotPath + GenerateFilename(onboardingRequest) + ".dpk")));
-
-            // Step 3 - Add reviewers to the review
-            AddReviewers(rClient, onboardingRequest.CodeFlowId, new Reviewer[]
-            {
-                CreateReviewer(onboardingRequest.CreatedBy, "Chengkan Huang", GenerateEmailAddress(onboardingRequest), true)
-            });
-
-            // Step 4 - Publish the review
-            PublishReview(rClient, onboardingRequest.CodeFlowId, "meesage from author");
-        }
-
         /// <summary>
         ///     Step 1 - Create a review. An id will be generated, but not pushlished.
         /// </summary>
@@ -172,22 +140,6 @@ namespace Onboarding.Utils
                 }
             }
             return false;
-        }
-
-        public static string GenerateReivewName(OnboardingRequest onboardingRequest)
-        {
-            return onboardingRequest.Type + "-RequestId-" + onboardingRequest.RequestId;
-        }
-
-
-        public static string GenerateEmailAddress(OnboardingRequest onboardingRequest)
-        {
-            return onboardingRequest.CreatedBy + EmailDomain;
-        }
-
-        public static string GenerateFilename(OnboardingRequest onboardingRequest)
-        {
-            return onboardingRequest.DisplayName + "_" + onboardingRequest.CreatedBy + ".xml";
         }
     }
 }

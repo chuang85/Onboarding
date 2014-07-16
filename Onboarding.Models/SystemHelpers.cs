@@ -9,6 +9,8 @@ namespace Onboarding.Models
 {
     public static class SystemHelpers
     {
+        public const string ProjectShortName = "MSODS";
+        private const string EmailDomain = "@microsoft.com";
         private const string CmdPath = @"C:\WINDOWS\system32\cmd.exe";
         public const string DepotPath = @"E:\CUMULUS_MAIN\sources\dev\RestServices\GraphService\Tools\";
         private const string ProductCatalogPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\productcatalog\";
@@ -18,30 +20,46 @@ namespace Onboarding.Models
         private const string AppDataPathXml = @"../../App_Data/";
 
         /// <summary>
-        ///     Write string into an xml file and then save it
+        ///     Write string into binary array.
         /// </summary>
-        /// <param name="xmlString">Xml in format of string, to be written into file.</param>
-        /// <param name="filename">Name of file</param>
+        /// <param name="xmlString">Xml in format of string.</param>
         /// <returns>The xml in type of byte[]</returns>
-        public static byte[] SaveStringToXml(string xmlString, string filename)
+        public static byte[] GenerateBlobFromString(string xmlString)
         {
-            var xdoc = new XmlDocument();
-            xdoc.LoadXml(xmlString);
-            xdoc.Save(HttpContext.Current.Server.MapPath(AppDataPathXml + filename));
-            xdoc.Save(DepotPath + filename);
-            return Encoding.Default.GetBytes(xdoc.OuterXml);
+            return Encoding.Default.GetBytes(xmlString);
+        }
+
+        /// <summary>
+        ///     Convert binary data back to string format.
+        /// </summary>
+        /// <param name="blob">Xml in format of byte array.</param>
+        /// <returns>The xml in string format</returns>
+        public static string GenerateStringFromBlob(byte[] blob)
+        {
+            return Encoding.Default.GetString(blob);
+        }
+
+        /// <summary>
+        ///     Save .xml file to local disk, reading data from blob field of a request.
+        /// </summary>
+        /// <param name="onboardingRequest">The given request to be handled.</param>
+        public static void SaveXmlToDisk(OnboardingRequest onboardingRequest)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(GenerateStringFromBlob(onboardingRequest.Blob));
+            doc.Save(DepotPath + GenerateFilename(onboardingRequest));
         }
 
         /// <summary>
         ///     Copy SPT xml from App_Data to source depot destination path and run "sd add"
         /// </summary>
         /// <param name="filename">SPT xml file's name.</param>
-        public static void AddFileToDepot(string filename)
+        public static void AddFileToDepotAndPack(string filename)
         {
             var startInfo = new ProcessStartInfo
             {
                 FileName = CmdPath,
-                WindowStyle = ProcessWindowStyle.Hidden,
+                //WindowStyle = ProcessWindowStyle.Hidden,
                 Arguments = CmdConfigArgs
                                   + CmdAddToDepotArgs(filename)
             };
@@ -100,6 +118,21 @@ namespace Onboarding.Models
             }
             //serviceList.Sort();
             return serviceList;
+        }
+
+        public static string GenerateReivewName(OnboardingRequest onboardingRequest)
+        {
+            return onboardingRequest.Type + "-RequestId-" + onboardingRequest.RequestId;
+        }
+
+        public static string GenerateEmailAddress(OnboardingRequest onboardingRequest)
+        {
+            return onboardingRequest.CreatedBy + EmailDomain;
+        }
+
+        public static string GenerateFilename(OnboardingRequest onboardingRequest)
+        {
+            return onboardingRequest.DisplayName + "_" + onboardingRequest.CreatedBy + ".xml";
         }
 
         private static string CmdRevertFile(string filename)

@@ -14,7 +14,6 @@ namespace Onboarding.ServiceWorker
     {
         private static ReviewServiceClient _rClient;
         private static ReviewDashboardServiceClient _qClient;
-        private static Timer _timer;
         public static void Main()
         {
             InitializeClients();
@@ -50,43 +49,32 @@ namespace Onboarding.ServiceWorker
             HandlePendingReview(db);
         }
 
-        private static void UpdateServiceTypes(OnboardingDbContext db)
-        {
-            SystemHelpers.SyncDepot();
-            foreach (var st in SystemHelpers.RetriveServiceTypes())
-            {
-                db.ServiceTypes.Add(
-                    new ServiceType
-                    {
-                        ServiceTypeName = st
-                    });
-            }
-            db.SaveChanges();
-        }
-
         private static void HandleCreated(OnboardingDbContext db)
         {
             foreach (var request in DbHelpers.RequestsCreated(db))
             {
+                //SystemHelpers.SaveXmlToDisk(request);
+                //SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(request));
+
                 // Create a code review.
                 var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, request.CreatedBy, "Chengkan Huang",
-                    CodeFlowHelpers.GenerateEmailAddress(request), CodeFlowHelpers.GenerateReivewName(request), CodeFlowHelpers.ProjectShortName);
+                    SystemHelpers.GenerateEmailAddress(request), SystemHelpers.GenerateReivewName(request), SystemHelpers.ProjectShortName);
                 // Assign ReviewId to the corresponding field in OnboardingRequest
                 request.CodeFlowId = codeFlowId;
                 // Create a code package and add it to the review
                 CodeFlowHelpers.AddCodePackage(_rClient, request.CodeFlowId, CodeFlowHelpers.CreateCodePackage("testing pack", request.CreatedBy, request.CreatedBy,
-                    CodePackageFormat.SourceDepotPack, new Uri(SystemHelpers.DepotPath + CodeFlowHelpers.GenerateFilename(request) + ".dpk")));
+                    CodePackageFormat.SourceDepotPack, new Uri(SystemHelpers.DepotPath + SystemHelpers.GenerateFilename(request) + ".dpk")));
                 // Add reviewers to the review
                 CodeFlowHelpers.AddReviewers(_rClient, request.CodeFlowId, new Reviewer[]
                         {
-                            CodeFlowHelpers.CreateReviewer(request.CreatedBy, "Chengkan Huang", CodeFlowHelpers.GenerateEmailAddress(request), true)
+                            CodeFlowHelpers.CreateReviewer(request.CreatedBy, "Chengkan Huang", SystemHelpers.GenerateEmailAddress(request), true)
                         });
                 // Publish the review
                 CodeFlowHelpers.PublishReview(_rClient, request.CodeFlowId, "meesage from author");
                 // Change State from "Created" to "PendingReview"
                 request.State = "PendingReview";
                 // Revert file to clean the changelist
-                SystemHelpers.RevertFile(CodeFlowHelpers.GenerateFilename(request));
+                SystemHelpers.RevertFile(SystemHelpers.GenerateFilename(request));
             }
         }
 
@@ -99,26 +87,6 @@ namespace Onboarding.ServiceWorker
                     request.State = "ReviewApproved";
                 }
             }
-        }
-
-        private static void HardCodeReview()
-        {
-            _rClient = new ReviewServiceClient();
-
-            var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, "t-chehu", "Chengkan Huang",
-                "t-chehu@microsoft.com", "somename", CodeFlowHelpers.ProjectShortName);
-
-            // Create a code package and add it to the review
-            CodeFlowHelpers.AddCodePackage(_rClient, codeFlowId, CodeFlowHelpers.CreateCodePackage("testing pack", "t-chehu", "t-chehu",
-                CodePackageFormat.SourceDepotPack, new Uri(SystemHelpers.DepotPath + "qwe_t-chehu.xml" + ".dpk")));
-            // Add reviewers to the review
-            CodeFlowHelpers.AddReviewers(_rClient, codeFlowId, new Reviewer[]
-                        {
-                            CodeFlowHelpers.CreateReviewer("t-chehu", "Chengkan Huang", "t-chehu@microsoft.com", true)
-                        });
-            // Publish the review
-            CodeFlowHelpers.PublishReview(_rClient, codeFlowId, "meesage from author");
-
         }
     }
 }
