@@ -12,10 +12,13 @@ namespace Onboarding.Models
         public const string ProjectShortName = "MSODS";
         private const string EmailDomain = "@microsoft.com";
         private const string CmdPath = @"C:\WINDOWS\system32\cmd.exe";
-        public const string DepotPath = @"E:\CUMULUS_MAIN\sources\dev\RestServices\GraphService\Tools\";
-        private const string ProductCatalogPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\productcatalog\";
         private const string CmdConfigArgs =
             @"/k set inetroot=e:\cumulus_main&set corextbranch=main&e:\cumulus_main\tools\path1st\myenv.cmd";
+        public const string DepotPath = @"E:\CUMULUS_MAIN\sources\dev\RestServices\GraphService\Tools\";
+        private const string ProductCatalogPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\productcatalog\";
+        private const string RbacpolicyPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\rbacpolicy\";
+        private const string TaskSetsFilename = "TasksSets.xml";
+        private const string ScopesFilename = "Scopes.xml";
 
         private const string AppDataPathXml = @"../../App_Data/";
 
@@ -101,7 +104,7 @@ namespace Onboarding.Models
         }
 
         /// <summary>
-        ///     Retrieve a list of ServiceTypes, 
+        ///     Retrieve a list of ServiceTypes,.
         /// </summary>
         public static List<string> RetriveServiceTypes()
         {
@@ -118,6 +121,46 @@ namespace Onboarding.Models
             }
             //serviceList.Sort();
             return serviceList;
+        }
+
+        /// <summary>
+        ///     Retrieve a list of TaskSets. 
+        /// </summary>
+        public static Dictionary<string, string> RetrieveTaskSetMap()
+        {
+            var taskSetMap = new Dictionary<string, string>();
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(RbacpolicyPath + TaskSetsFilename);
+            var nameList = xmlDoc.GetElementsByTagName("DisplayName");
+            var idList = xmlDoc.GetElementsByTagName("TaskSetId");
+            if (nameList != null)
+            {
+                for (var i = 0; i < nameList.Count; i++)
+                {
+                    taskSetMap.Add(nameList[i].InnerText, idList[i].InnerText);
+                }
+            }
+            return taskSetMap;
+        }
+
+        /// <summary>
+        ///     Retrieve a list of Scopes. 
+        /// </summary>
+        public static Dictionary<string, string> RetrieveScopeMap()
+        {
+            var scopeMap = new Dictionary<string, string>();
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(RbacpolicyPath + ScopesFilename);
+            var nameList = xmlDoc.GetElementsByTagName("DisplayName");
+            var idList = xmlDoc.GetElementsByTagName("ScopeId");
+            if (nameList != null)
+            {
+                for (var i = 0; i < nameList.Count; i++)
+                {
+                    scopeMap.Add(nameList[i].InnerText, idList[i].InnerText);
+                }
+            }
+            return scopeMap;
         }
 
         public static string GenerateReivewName(OnboardingRequest onboardingRequest)

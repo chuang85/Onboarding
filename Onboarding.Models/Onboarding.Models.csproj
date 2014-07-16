@@ -50,8 +50,10 @@
     <Compile Include="OnboardingDbContext.cs" />
     <Compile Include="OnboardingRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scope.cs" />
     <Compile Include="ServiceType.cs" />
     <Compile Include="SystemHelpers.cs" />
+    <Compile Include="TaskSet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

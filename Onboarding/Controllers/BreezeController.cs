@@ -55,5 +55,19 @@ namespace Onboarding.Controllers
         {
             return _contextProvider.Context.ServiceTypes;
         }
+
+        // ~/breeze/Breeze/TaskSets
+        [HttpGet]
+        public IQueryable<TaskSet> TaskSets()
+        {
+            return _contextProvider.Context.TaskSets;
+        }
+
+        // ~/breeze/Breeze/Scopes
+        [HttpGet]
+        public IQueryable<Scope> Scopes()
+        {
+            return _contextProvider.Context.Scopes;
+        }
     }
 }

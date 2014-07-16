@@ -14,5 +14,9 @@ namespace Onboarding.Models
         public DbSet<OnboardingRequest> OnboardingRequests { get; set; }
 
         public DbSet<ServiceType> ServiceTypes { get; set; }
+
+        public DbSet<TaskSet> TaskSets { get; set; }
+
+        public DbSet<Scope> Scopes { get; set; }
     }
 }
