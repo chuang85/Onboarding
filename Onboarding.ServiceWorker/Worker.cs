@@ -67,8 +67,8 @@ namespace Onboarding.ServiceWorker
 
         private static void HandleCreated(OnboardingRequest request)
         {
-            //SystemHelpers.SaveXmlToDisk(request);
-            //SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(request));
+            SystemHelpers.SaveXmlToDisk(request);
+            SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(request));
 
             // Create a code review.
             var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, request.CreatedBy, "Chengkan Huang",

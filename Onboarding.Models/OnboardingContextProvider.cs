@@ -27,8 +27,8 @@ namespace Onboarding.Models
                 // Write string formatted xml into binary and assign it to Blob field.
                 onboardingRequest.Blob = SystemHelpers.GenerateBlobFromString(onboardingRequest.TempXmlStore);
 
-                SystemHelpers.SaveXmlToDisk(onboardingRequest);
-                SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(onboardingRequest));
+                //SystemHelpers.SaveXmlToDisk(onboardingRequest);
+                //SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(onboardingRequest));
                 return true;
             }
             return false;

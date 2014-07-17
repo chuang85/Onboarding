@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Xml;
 
@@ -55,19 +57,21 @@ namespace Onboarding.Models
 
         /// <summary>
         ///     Copy SPT xml from App_Data to source depot destination path and run "sd add"
+        ///     Create dpk file through a changespec so that editor won't popup
         /// </summary>
         /// <param name="filename">SPT xml file's name.</param>
         public static void AddFileToDepotAndPack(string filename)
         {
+            var changeSpecName = CreateChangeSpec(filename);
             var startInfo = new ProcessStartInfo
             {
                 FileName = CmdPath,
                 WindowStyle = ProcessWindowStyle.Hidden,
                 Arguments = CmdConfigArgs
-                                  + CmdAddToDepotArgs(filename)
+                                  + CmdAddToDepotArgs(filename, changeSpecName)
             };
             var process = Process.Start(startInfo);
-            //process.WaitForExit(3000);
+            DeleteChangeSpec(changeSpecName);
         }
 
         /// <summary>
@@ -84,7 +88,6 @@ namespace Onboarding.Models
                                   + CmdRevertFile(filename)
             };
             var process = Process.Start(startInfo);
-            //process.WaitForExit(3000);
         }
 
         /// <summary>
@@ -100,7 +103,6 @@ namespace Onboarding.Models
                                   + CmdSyncDepot()
             };
             var process = Process.Start(startInfo);
-            //process.WaitForExit(3000);
         }
 
         /// <summary>
@@ -186,14 +188,31 @@ namespace Onboarding.Models
             return " && cd " + DepotPath + " && sd revert -d " + filename;
         }
 
-        private static string CmdAddToDepotArgs(string filename)
+        private static string CmdAddToDepotArgs(string filename, string changeSpecName)
         {
-            return " && cd " + DepotPath + " && sd add " + filename + " && sdp pack " + filename + " -C \"some desc\"";
+            return " && cd " + DepotPath + " && sd add " + filename + " && sdp pack " + filename + " -I " + changeSpecName;
         }
 
         private static string CmdSyncDepot()
         {
             return " && cd " + DepotPath + " && sd sync";
+        }
+
+        private static string CreateChangeSpec(string sourceFilename)
+        {
+            var changeSpecName = Guid.NewGuid() + ".txt";
+            string[] lines =
+            {
+                "Description:some desc",
+                "Files:" + DepotPath + sourceFilename + " # edit"
+            };
+            File.WriteAllLines(DepotPath + changeSpecName, lines);
+            return changeSpecName;
+        }
+
+        private static void DeleteChangeSpec(string changeSpecName)
+        {
+            File.Delete(changeSpecName);
         }
     }
 }
