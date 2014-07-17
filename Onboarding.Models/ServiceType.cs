@@ -9,9 +9,9 @@ namespace Onboarding.Models
 {
     public class ServiceType
     {
+        //[Key]
+        //public string ServiceTypeId { get; set; } // Same as AppPrincipalId
         [Key]
-        public string ServiceTypeId { get; set; } // Same as AppPrincipalId
-
         public string ServiceTypeName { get; set; }
     }
 }

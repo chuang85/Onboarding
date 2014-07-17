@@ -9,15 +9,27 @@ namespace Onboarding.Utils
 {
     public class DbHelpers
     {
+        /// <summary>
+        /// Get all the requests that are not in state Completed or Canceled.
+        /// So that can handle each request in the list
+        /// </summary>
+        /// <param name="db">An instance of <see cref="OnboardingDbContext"/>.</param>
+        /// <returns>Requests that are not in state Completed or Canceled.</returns>
         public static IQueryable<OnboardingRequest> UncompletedRequests(OnboardingDbContext db)
         {
             return
                 from d in db.OnboardingRequests
                 where d.Type.Equals("CreateSPT") && 
-                !d.State.Equals("Completed")
+                !d.State.Equals("Completed") &&
+                !d.State.Equals("Canceled")
                 select d;
         }
 
+        /// <summary>
+        /// Store ServiceType names into database. 
+        /// To prevent duplication, do not add if the name already exists.
+        /// </summary>
+        /// <param name="db">An instance of <see cref="OnboardingDbContext"/>.</param>
         public static void AddOrUpdateServiceTypes(OnboardingDbContext db)
         {
             SystemHelpers.SyncDepot();
@@ -25,10 +37,12 @@ namespace Onboarding.Utils
             {
                 var entity = new ServiceType
                 {
-                    ServiceTypeName = st.Key,
-                    ServiceTypeId = st.Value
+                    //ServiceTypeName = st.Key,
+                    //ServiceTypeId = st.Value
+                    ServiceTypeName = st
                 };
-                if (db.ServiceTypes.Any(e => e.ServiceTypeId == entity.ServiceTypeId))
+                //if (db.ServiceTypes.Any(e => e.ServiceTypeId == entity.ServiceTypeId))
+                if (db.ServiceTypes.Any(e => e.ServiceTypeName == entity.ServiceTypeName))
                 {
                     db.ServiceTypes.Attach(entity);
                     db.Entry(entity).State = EntityState.Modified;
@@ -41,6 +55,11 @@ namespace Onboarding.Utils
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Store TaskSetName-TaskSetId pair into database.
+        /// To prevent duplication, do not add if the TaskSetId already exists.
+        /// </summary>
+        /// <param name="db">An instance of <see cref="OnboardingDbContext"/>.</param>
         public static void AddOrUpdateTaskSets(OnboardingDbContext db)
         {
             SystemHelpers.SyncDepot();
@@ -64,6 +83,11 @@ namespace Onboarding.Utils
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Store ScopeName-ScopeId pair into database.
+        /// To prevent duplication, do not add if the ScopeId already exists.
+        /// </summary>
+        /// <param name="db">An instance of <see cref="OnboardingDbContext"/>.</param>
         public static void AddOrUpdateScopes(OnboardingDbContext db)
         {
             SystemHelpers.SyncDepot();

@@ -28,8 +28,6 @@ namespace Onboarding.ServiceWorker
             Console.WriteLine("done");
             Console.WriteLine("Hit enter...");
             Console.Read();
-
-            //HardCodeReview();
         }
 
         private static void InitializeClients()
@@ -62,7 +60,7 @@ namespace Onboarding.ServiceWorker
 
         private static void UpdateDbInfo(OnboardingDbContext db)
         {
-            //DbHelpers.AddOrUpdateServiceTypes(db);
+            DbHelpers.AddOrUpdateServiceTypes(db);
             DbHelpers.AddOrUpdateTaskSets(db);
             DbHelpers.AddOrUpdateScopes(db);
         }
