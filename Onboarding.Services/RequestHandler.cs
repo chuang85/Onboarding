@@ -46,9 +46,12 @@ namespace Onboarding.Services
         {
             try
             {
+                //Task.Run(
+                //    () => ServiceWorker.Worker.Main(),
+                //    _cancelTokenSource.Token);
+                CancellationToken ct = _cancelTokenSource.Token;
                 Task.Run(
-                    () => ServiceWorker.Worker.Main(),
-                    _cancelTokenSource.Token);
+                    () => ServiceWorker.Worker.Main(), ct);
             }
             catch (Exception ex)
             {

@@ -68,7 +68,7 @@ namespace Onboarding.Models
                 FileName = CmdPath,
                 WindowStyle = ProcessWindowStyle.Hidden,
                 Arguments = CmdConfigArgs
-                                  + CmdAddToDepotArgs(filename, changeSpecName)
+                                  + CmdAddToDepotArgs(filename, changeSpecName) + " && exit"
             };
             var process = Process.Start(startInfo);
             DeleteChangeSpec(changeSpecName);
@@ -85,7 +85,7 @@ namespace Onboarding.Models
                 FileName = CmdPath,
                 WindowStyle = ProcessWindowStyle.Hidden,
                 Arguments = CmdConfigArgs
-                                  + CmdRevertFile(filename)
+                                  + CmdRevertFile(filename) + " && exit"
             };
             var process = Process.Start(startInfo);
         }
@@ -100,7 +100,7 @@ namespace Onboarding.Models
                 FileName = CmdPath,
                 WindowStyle = ProcessWindowStyle.Hidden,
                 Arguments = CmdConfigArgs
-                                  + CmdSyncDepot()
+                                  + CmdSyncDepot() + " && exit"
             };
             var process = Process.Start(startInfo);
         }

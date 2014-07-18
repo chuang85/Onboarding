@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Threading;
 using System.Timers;
 using Onboarding.Models;
 using Onboarding.Utils;
@@ -46,6 +47,7 @@ namespace Onboarding.ServiceWorker
         {
             foreach (var request in DbHelpers.UncompletedRequests(db))
             {
+                //ct.ThrowIfCancellationRequested();
                 switch (request.State)
                 {
                     case "Created":

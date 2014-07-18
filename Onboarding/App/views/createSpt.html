@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="contact" class="col-sm-2 control-label">Contact</label>
             <div class="col-sm-6">
-                <input class="form-control" id="contact" placeholder="Your alias" data-bind="value: contact">
+                <input class="form-control" id="contact" placeholder="Your alias" data-bind="value: contact" disabled>
             </div>
         </div>
         <!--DisplayName-->
@@ -324,6 +324,13 @@
                         <input type="radio" name="options3" value="false" data-bind="bsChecked: managedExternally">NO
                     </label>
                 </div>
+            </div>
+        </div>
+        <!--Permissions-->
+        <div class="form-group">
+            <label for="permissions" class="col-sm-2 control-label">Permissions</label>
+            <div class="col-sm-6">
+                <select class="form-control" id="permissions" data-bind="options: taskSetList"></select>
             </div>
         </div>
         <!--Create&Clear button-->

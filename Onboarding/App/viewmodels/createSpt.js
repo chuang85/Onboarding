@@ -2,7 +2,7 @@
     function (router, app, guidgenerator, dataformatter) {
 
         var vm = {
-            contact: ko.observable(),
+            contact: ko.observable(window.currentUser),
             displayName: ko.observable(),
             serviceType: ko.observable(),
             appPrincipalId: ko.observable(),
@@ -12,6 +12,7 @@
             microsoftPolicyGroup: ko.observable(),
             managedExternally: ko.observable(),
             optionsValue: ko.observable(),
+            taskSetList: ko.observableArray(),
             // Set request type by default when navigating to this page
             requestType: "CreateSPT",
             activate: activate,
@@ -38,6 +39,7 @@
             collapsePanels();
             generateAppId();
             getServiceTypes();
+            getTaskSets();
 
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess);
@@ -95,7 +97,7 @@
                 var newOnboardingRequest = manager.
                     createEntity('OnboardingRequest:#Onboarding.Models',
                     {
-                        CreatedBy: vm.contact(),
+                        CreatedBy: removeDomain(vm.contact()),
                         DisplayName: vm.displayName(),
                         TempXmlStore: xmlString,
                         //State: RequestState.Created,
@@ -162,6 +164,28 @@
             }
         }
 
+        function getTaskSets() {
+            var query = breeze.EntityQuery
+                .from("TaskSets")
+                .select("TaskSetName")
+                .orderBy("TaskSetName");
+
+            return manager
+            .executeQuery(query)
+            .then(querySucceeded)
+            .fail(queryFailed);
+
+            function querySucceeded(data) {
+                for (var i = 0; i < data.results.length; i++) {
+                    vm.taskSetList.push(data.results[i]["TaskSetName"]);
+                }
+            }
+
+            function queryFailed(error) {
+                toastr.error("Query failed: " + error.message);
+            }
+        }
+
         function generateAppId() {
             vm.appPrincipalId(guidgenerator.generateGuid());
         }
@@ -174,7 +198,8 @@
             vm.externalUserAccountDelegationsAllowed("");
             vm.microsoftPolicyGroup("");
             vm.managedExternally("");
-            $(":input").not("#appPrincipalId").val("");
+            $("input[type=radio]").attr("checked", false);
+            $(":input").not("#appPrincipalId, #contact").val("");
         }
 
         function collapsePanels() {
@@ -342,6 +367,16 @@
             }
             return delegationStr;
         }
+
+        function removeDomain(raw) {
+            if (raw.indexOf("\\") > -1) {
+                var res = raw.split("\\");
+                return res[res.length - 1];
+            } else {
+                return raw;
+            }
+        }
+
         return vm;
 
     });
