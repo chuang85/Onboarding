@@ -71,7 +71,7 @@ namespace Onboarding.Models
                                   + CmdAddToDepotArgs(filename, changeSpecName) + " && exit"
             };
             var process = Process.Start(startInfo);
-            DeleteChangeSpec(changeSpecName);
+            DeleteChangeSpec(filename, changeSpecName);
         }
 
         /// <summary>
@@ -210,9 +210,17 @@ namespace Onboarding.Models
             return changeSpecName;
         }
 
-        private static void DeleteChangeSpec(string changeSpecName)
+        private static void DeleteChangeSpec(string dpkfilename, string changeSpecName)
         {
-            File.Delete(changeSpecName);
+            while (true)
+            {
+                if (File.Exists(DepotPath + changeSpecName) &&
+                    File.Exists(DepotPath + dpkfilename + ".dpk"))
+                {
+                    File.Delete(DepotPath + changeSpecName);
+                    break;
+                }
+            }
         }
     }
 }
