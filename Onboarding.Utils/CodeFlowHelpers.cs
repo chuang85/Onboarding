@@ -125,15 +125,21 @@ namespace Onboarding.Utils
             });
             if (response != null)
             {
-                foreach (var review in response.Reviews)
+                if (response.Reviews != null)
                 {
-                    if (review.Key.Equals(key))
+                    foreach (var review in response.Reviews)
                     {
-                        foreach (var reviewer in review.Reviewers)
+                        if (review != null)
                         {
-                            if (reviewer.Status == ReviewerStatus.SignedOff)
+                            if (review.Key.Equals(key))
                             {
-                                return true;
+                                foreach (var reviewer in review.Reviewers)
+                                {
+                                    if (reviewer.Status == ReviewerStatus.SignedOff)
+                                    {
+                                        return true;
+                                    }
+                                }
                             }
                         }
                     }
