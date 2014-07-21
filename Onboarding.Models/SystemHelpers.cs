@@ -12,17 +12,17 @@ namespace Onboarding.Models
     public static class SystemHelpers
     {
         public const string ProjectShortName = "MSODS";
-        private const string EmailDomain = "@microsoft.com";
-        private const string CmdPath = @"C:\WINDOWS\system32\cmd.exe";
-        private const string CmdConfigArgs =
+        public const string EmailDomain = "@microsoft.com";
+        public const string CmdPath = @"C:\WINDOWS\system32\cmd.exe";
+        public const string CmdConfigArgs =
             @"/k set inetroot=e:\cumulus_main&set corextbranch=main&e:\cumulus_main\tools\path1st\myenv.cmd";
         public const string DepotPath = @"E:\CUMULUS_MAIN\sources\dev\RestServices\GraphService\Tools\";
-        private const string ProductCatalogPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\productcatalog\";
-        private const string RbacpolicyPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\rbacpolicy\";
-        private const string TaskSetsFilename = "TasksSets.xml";
-        private const string ScopesFilename = "Scopes.xml";
+        public const string ProductCatalogPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\productcatalog\";
+        public const string RbacpolicyPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\rbacpolicy\";
+        public const string TaskSetsFilename = "TasksSets.xml";
+        public const string ScopesFilename = "Scopes.xml";
 
-        private const string AppDataPathXml = @"../../App_Data/";
+        public const string AppDataPathXml = @"../../App_Data/";
 
         /// <summary>
         ///     Write string into binary array.
