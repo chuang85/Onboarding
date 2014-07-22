@@ -14,8 +14,15 @@
                 <p class="form-control-static" id="displayName" data-bind="text: request().DisplayName" />
             </div>
         </div>
+        <!--State-->
+        <div class="form-group">
+            <label for="state" class="col-sm-2 control-label">State</label>
+            <div class="col-sm-6">
+                <p class="form-control-static" id="state" data-bind="text: request().State" />
+            </div>
+        </div>
 
-        <div class="form-group need-auth-btns">
+        <div class="form-group need-auth-btns" style="display: none">
             <div class="col-sm-offset-2">
                 <!--Update button-->
                 <a class="btn btn-default" data-bind="attr: { href: '#request/update/' + request().RequestId() }">

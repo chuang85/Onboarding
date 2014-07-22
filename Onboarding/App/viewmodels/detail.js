@@ -53,26 +53,21 @@
         /// Handle a cancel operation.
         /// </summary>
         function goCancel(data) {
-            //if (data == 'No') {
-            //    toastr.info('Aborted');
-            //} else {
-            //    vm.request().entityAspect.setDeleted();
+            if (data == 'No') {
+                toastr.info('Aborted');
+            } else {
+                vm.request().State("Canceled");
+                manager.saveChanges()
+                    .then(cancelSucceeded)
+                    .fail(cancelFailed);
+            }
 
-            //    manager.saveChanges()
-            //        .then(deleteSucceeded)
-            //        .fail(deleteFailed);
-            //}
-            vm.request().State = "Canceled";
-            manager.saveChanges()
-                    .then(deleteSucceeded)
-                    .fail(deleteFailed);
-
-            function deleteSucceeded(data) {
+            function cancelSucceeded(data) {
                 toastr.success("Request Canceled");
                 router.navigate('#request');
             }
 
-            function deleteFailed(error) {
+            function cancelFailed(error) {
                 toastr.error("Request Cancel Failed");
                 manager.rejectChanges();
                 app.showMessage("The request could not be deleted.", "Cancel failed");
@@ -85,7 +80,8 @@
 
         /********************PRIVATE METHODS********************/
         function validateIdentity() {
-            if (vm.request().CreatedBy() == savehelper.removeDomain(window.currentUser)) {
+            if (vm.request().CreatedBy() == savehelper.removeDomain(window.currentUser)
+                && vm.request().State() != "Canceled") {
                 $(".need-auth-btns").show();
             }
         }
