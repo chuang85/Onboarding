@@ -4,7 +4,7 @@
         var vm = {
             request: ko.observable(),
             activate: activate,
-            deleteSpt: deleteSpt,
+            cancelRequest: cancelRequest,
             goBack: goBack
         };
 
@@ -45,16 +45,16 @@
         };
 
         /// <summary>
-        /// Listener for delete button.
-        /// If confirmed, "goDelete" will be called.
+        /// Listener for cancel button.
+        /// If confirmed, "goCancel" will be called.
         /// </summary>
-        function deleteSpt() {
+        function cancelRequest() {
             app.showMessage("Are you sure you want to cancel this request?", "Cancel Request", ['Yes', 'No'])
                 .then(goCancel);
         }
 
         /// <summary>
-        /// Handle a delete operation.
+        /// Handle a cancel operation.
         /// </summary>
         function goCancel(data) {
             if (data == 'No') {
@@ -69,14 +69,14 @@
 
 
             function deleteSucceeded(data) {
-                toastr.success("Deleted");
+                toastr.success("Request Canceled");
                 router.navigate('#request');
             }
 
             function deleteFailed(error) {
-                toastr.error("Delete failed");
+                toastr.error("Request Cancel Failed");
                 manager.rejectChanges();
-                app.showMessage("The SPT could not be deleted.", "Delete failed");
+                app.showMessage("The request could not be deleted.", "Cancel failed");
             }
         }
 
@@ -86,7 +86,8 @@
 
         /********************PRIVATE METHODS********************/
         function validateIdentity() {
-            if (vm.request().CreatedBy() == savehelper.removeDomain(window.currentUser)) {
+            if (vm.request().CreatedBy() == savehelper.removeDomain(window.currentUser)
+                && vm.request().State() == "PendingReview") {
                 $(".need-auth-btns").show();
             }
         }
