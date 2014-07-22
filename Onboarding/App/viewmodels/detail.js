@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'durandal/app', 'services/savehelper'],
-    function (router, app, savehelper) {
+﻿define(['plugins/router', 'durandal/app', 'services/savehelper', 'services/dataservices'],
+    function (router, app, savehelper, dataservices) {
 
         var vm = {
             request: ko.observable(),
@@ -8,15 +8,17 @@
             goBack: goBack
         };
 
-        var serviceName = 'breeze/Breeze';
+        //var serviceName = 'breeze/Breeze';
 
-        var manager = new breeze.EntityManager(serviceName);
+        //var manager = new breeze.EntityManager(serviceName);
 
-        var currUser = '';
+        var serviceName = dataservices.serviceName();
+
+        var manager = dataservices.manager();
 
         function activate(id) {
-            getRequest(id);
-            //validateIdentity();
+            $(".need-auth-btns").hide();
+            return getRequest(id);
         }
 
         /// <summary>
@@ -86,8 +88,7 @@
 
         /********************PRIVATE METHODS********************/
         function validateIdentity() {
-            if (vm.request().CreatedBy() == savehelper.removeDomain(window.currentUser)
-                && vm.request().State() == "PendingReview") {
+            if (vm.request().CreatedBy() == savehelper.removeDomain(window.currentUser)) {
                 $(".need-auth-btns").show();
             }
         }

@@ -1,6 +1,6 @@
 ﻿<section>
     <h2 class="page-title">
-        <span data-bind="text: request().DisplayName()"></span>
+        <span data-bind="text: request().DisplayName"></span>
     </h2>
     <!--Back link-->
     <div>
@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="form-group need-auth-btns" style="display: none">
+        <div class="form-group need-auth-btns">
             <div class="col-sm-offset-2">
                 <!--Update button-->
                 <a class="btn btn-default" data-bind="attr: { href: '#request/update/' + request().RequestId }">
