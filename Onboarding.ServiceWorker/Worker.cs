@@ -21,7 +21,7 @@ namespace Onboarding.ServiceWorker
             InitializeClients();
             using (var db = new OnboardingDbContext())
             {
-                //UpdateDbInfo(db);
+                UpdateDbInfo(db);
                 HandleRequests(db);
                 db.SaveChanges();
             }

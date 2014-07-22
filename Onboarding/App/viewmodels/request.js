@@ -1,19 +1,14 @@
-﻿define(['services/logger', 'services/dateformatter'], function(logger, dateformatter) {
+﻿define(['services/logger'], function(logger) {
 
     var vm = {
         requests: ko.observableArray(),
         activate: activate,
         filterText: ko.observable().extend({ rateLimit: 400 }),
-        testFunc: testFunc
     };
 
     var serviceName = 'breeze/Breeze';
 
     var manager = new breeze.EntityManager(serviceName);
-
-    function testFunc() {
-        return dateformatter.test();
-    }
 
     function activate() {
         vm.filterText.subscribe(onFilterChange);

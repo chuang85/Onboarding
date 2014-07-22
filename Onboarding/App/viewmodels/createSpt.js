@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter'],
-    function (router, app, guidgenerator, dataformatter) {
+﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter', 'services/savehelper'],
+    function (router, app, guidgenerator, dataformatter, savehelper) {
 
         var vm = {
             contact: ko.observable(window.currentUser),
@@ -97,7 +97,7 @@
                 var newOnboardingRequest = manager.
                     createEntity('OnboardingRequest:#Onboarding.Models',
                     {
-                        CreatedBy: removeDomain(vm.contact()),
+                        CreatedBy: savehelper.removeDomain(vm.contact()),
                         DisplayName: vm.displayName(),
                         TempXmlStore: xmlString,
                         //State: RequestState.Created,
@@ -366,15 +366,6 @@
                 delegationStr += sourceArray[sourceArray.length - 1];
             }
             return delegationStr;
-        }
-
-        function removeDomain(raw) {
-            if (raw.indexOf("\\") > -1) {
-                var res = raw.split("\\");
-                return res[res.length - 1];
-            } else {
-                return raw;
-            }
         }
 
         return vm;
