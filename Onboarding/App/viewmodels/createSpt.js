@@ -25,10 +25,6 @@
 
         var hasSubmitted = false;
 
-        //var serviceName = 'breeze/Breeze';
-
-        //var manager = new breeze.EntityManager(serviceName);
-
         var serviceName = dataservices.serviceName();
 
         var manager = dataservices.manager();

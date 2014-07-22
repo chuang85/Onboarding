@@ -8,28 +8,28 @@
         <div class="form-group">
             <label for="displayName" class="col-sm-2 control-label">DisplayName</label>
             <div class="col-sm-6">
-                <input class="form-control" type="text" id="displayName" data-bind="value: editableSpt().DisplayName" />
+                <input class="form-control" type="text" id="displayName" data-bind="value: editableRequest().DisplayName" />
             </div>
         </div>
         <!--AppClass-->
         <div class="form-group">
             <label for="appClass" class="col-sm-2 control-label">AppClass</label>
             <div class="col-sm-6">
-                <input class="form-control" type="text" id="AppClass" data-bind="value: editableSpt().AppClass" />
+                <input class="form-control" type="text" id="AppClass" data-bind="value: editableRequest().AppClass" />
             </div>
         </div>
         <!--AppPrincipalId-->
         <div class="form-group">
             <label for="appPrincipalId" class="col-sm-2 control-label">AppPrincipalId</label>
             <div class="col-sm-6">
-                <input class="form-control" id="appPrincipalId" data-bind="value: editableSpt().AppPrincipalID" readonly="readonly">
+                <input class="form-control" id="appPrincipalId" data-bind="value: editableRequest().AppPrincipalID" readonly="readonly">
             </div>
         </div>
         <!--Environment-->
         <div class="form-group">
             <label for="environment" class="col-sm-2 control-label">Environment</label>
             <div class="col-sm-6">
-                <select class="form-control" id="environment" data-bind="options: availableEnvironment(), value: editableSpt().Environment"></select>
+                <select class="form-control" id="environment" data-bind="options: availableEnvironment(), value: editableRequest().Environment"></select>
             </div>
         </div>
         <!--Save button-->

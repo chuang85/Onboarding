@@ -1,28 +1,27 @@
-﻿define(['plugins/router'], function(router) {
+﻿define(['plugins/router', 'services/dataservices'],
+    function (router, dataservices) {
     var vm = {
-        editableSpt: ko.observable(),
+        editableRequest: ko.observable(),
         availableEnvironment: ko.observableArray(['Not specified', 'grn001', 'grn002', 'grnppe']),
         activate: activate,
         saveChanges: saveChanges,
         goBack: goBack
     };
 
-    var serviceName = 'breeze/Breeze';
-
-    var manager = new breeze.EntityManager(serviceName);
+    var manager = dataservices.manager();
 
     function activate(id) {
-        return getSpt(id);
+        return getRequest(id);
     }
 
     /// <summary>
     /// Get a specific SPT given its id.
     /// </summary>
     /// <param name="id">The id of SPT to be queried</param>
-    function getSpt(id) {
+    function getRequest(id) {
         var query = breeze.EntityQuery.
-            from("ServicePrincipalTemplates").
-            where("Id", "==", id);
+            from("OnboardingRequests").
+            where("RequestId", "==", id);
 
         return manager
             .executeQuery(query)
@@ -31,7 +30,7 @@
 
 
         function querySucceeded(data) {
-            vm.editableSpt(data.results[0]);
+            vm.editableRequest(data.results[0]);
         }
 
         function queryFailed(error) {

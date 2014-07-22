@@ -7,12 +7,6 @@
         filterText: ko.observable().extend({ rateLimit: 400 }),
     };
 
-    //var serviceName = 'breeze/Breeze';
-
-    //var manager = new breeze.EntityManager(serviceName);
-
-    var serviceName = dataservices.serviceName();
-
     var manager = dataservices.manager();
 
     function activate() {

@@ -8,12 +8,6 @@
             goBack: goBack
         };
 
-        //var serviceName = 'breeze/Breeze';
-
-        //var manager = new breeze.EntityManager(serviceName);
-
-        var serviceName = dataservices.serviceName();
-
         var manager = dataservices.manager();
 
         function activate(id) {
@@ -59,16 +53,19 @@
         /// Handle a cancel operation.
         /// </summary>
         function goCancel(data) {
-            if (data == 'No') {
-                toastr.info('Aborted');
-            } else {
-                vm.request().entityAspect.setDeleted();
+            //if (data == 'No') {
+            //    toastr.info('Aborted');
+            //} else {
+            //    vm.request().entityAspect.setDeleted();
 
-                manager.saveChanges()
+            //    manager.saveChanges()
+            //        .then(deleteSucceeded)
+            //        .fail(deleteFailed);
+            //}
+            vm.request().State = "Canceled";
+            manager.saveChanges()
                     .then(deleteSucceeded)
                     .fail(deleteFailed);
-            }
-
 
             function deleteSucceeded(data) {
                 toastr.success("Request Canceled");
