@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter', 'services/savehelper'],
-    function (router, app, guidgenerator, dataformatter, savehelper) {
+﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter', 'services/savehelper', 'services/dataservices'],
+    function (router, app, guidgenerator, dataformatter, savehelper, dataservices) {
 
         var vm = {
             contact: ko.observable(window.currentUser),
@@ -25,9 +25,13 @@
 
         var hasSubmitted = false;
 
-        var serviceName = 'breeze/Breeze';
+        //var serviceName = 'breeze/Breeze';
 
-        var manager = new breeze.EntityManager(serviceName);
+        //var manager = new breeze.EntityManager(serviceName);
+
+        var serviceName = dataservices.serviceName();
+
+        var manager = dataservices.manager();
 
         var hasCreated = false;
 
