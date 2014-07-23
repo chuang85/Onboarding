@@ -141,6 +141,20 @@
             router.navigateBack();
         };
 
+        function addItem(envType, itemType) {
+            var fieldWrapper = $("<div class=\"fieldwrapper\" />");
+            var inputField = $("<input class=\"form-control\" />");
+            var removeButton = $("<span class=\"pull-right pointerLink glyphicon glyphicon-trash\"></span>");
+
+            removeButton.click(function () {
+                $(this).parent().remove();
+            });
+
+            fieldWrapper.append(inputField);
+            fieldWrapper.append(removeButton);
+            $("." + envType + "-" + itemType + "-section").append(fieldWrapper);
+        }
+
         /********************PRIVATE METHODS********************/
         function generateAppId() {
             vm.appPrincipalId(guidgenerator.generateGuid());
@@ -161,20 +175,6 @@
         function collapsePanels() {
             $('.fieldwrapper').remove();
             $('.panel-collapse').removeClass('in');
-        }
-
-        function addItem(envType, itemType) {
-            var fieldWrapper = $("<div class=\"fieldwrapper\" />");
-            var inputField = $("<input class=\"form-control\" />");
-            var removeButton = $("<span class=\"pull-right pointerLink glyphicon glyphicon-trash\"></span>");
-
-            removeButton.click(function () {
-                $(this).parent().remove();
-            });
-
-            fieldWrapper.append(inputField);
-            fieldWrapper.append(removeButton);
-            $("." + envType + "-" + itemType + "-section").append(fieldWrapper);
         }
 
         return vm;

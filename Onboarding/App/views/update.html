@@ -32,6 +32,248 @@
                 <input class="form-control" id="appPrincipalId" data-bind="value: appPrincipalId" readonly="readonly">
             </div>
         </div>
+        <!--Environment-->
+        <div id="env-group" class="form-group">
+            <label for="environment" class="col-sm-2 control-label">Environment</label>
+            <div class="col-sm-6 panel-group" id="environment">
+                <!--PROD-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title env-title">
+                            <a data-toggle="collapse" href="#collapse-prod">PROD</a>
+                        </h4>
+                    </div>
+                    <!--PROD details-->
+                    <div id="collapse-prod" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-12 panel-group" id="accordion">
+                                    <!--Hostnames-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-prod-hostname">Hostnames</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-prod-hostname" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="prod-hostname-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'prod', 'hostname')">Add Hostname</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--ServicePrincipalNames-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-prod-spname">AdditionalServicePrincipalNames</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-prod-spname" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="prod-spname-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'prod', 'spname')">Add ServicePrincipalName</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--AppAddress-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-prod-appaddress">AppAddress</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-prod-appaddress" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="prod-appaddress-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'prod', 'appaddress')">Add AppAddress</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--PPE-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title env-title">
+                            <a data-toggle="collapse" href="#collapse-ppe">PPE</a>
+                        </h4>
+                    </div>
+                    <!--PPE details-->
+                    <div id="collapse-ppe" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-12 panel-group" id="accordion">
+                                    <!--Hostnames-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-ppe-hostname">Hostnames</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-ppe-hostname" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="ppe-hostname-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'ppe', 'hostname')">Add Hostname</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--ServicePrincipalNames-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-ppe-spname">AdditionalServicePrincipalNames</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-ppe-spname" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="ppe-spname-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'ppe', 'spname')">Add ServicePrincipalName</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--AppAddress-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-ppe-appaddress">AppAddress</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-ppe-appaddress" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="ppe-appaddress-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'ppe', 'appaddress')">Add AppAddress</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Gallatin-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title env-title">
+                            <a data-toggle="collapse" href="#collapse-gallatin">Gallatin</a>
+                        </h4>
+                    </div>
+                    <!--Gallatin details-->
+                    <div id="collapse-gallatin" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-12 panel-group" id="accordion">
+                                    <!--Hostnames-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-gallatin-hostname">Hostnames</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-gallatin-hostname" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="gallatin-hostname-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'gallatin', 'hostname')">Add Hostname</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--ServicePrincipalNames-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-gallatin-spname">AdditionalServicePrincipalNames</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-gallatin-spname" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="gallatin-spname-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'gallatin', 'spname')">Add ServicePrincipalName</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--AppAddress-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-gallatin-appaddress">AppAddress</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-gallatin-appaddress" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="gallatin-appaddress-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'gallatin', 'appaddress')">Add AppAddress</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Default-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title env-title">
+                            <a data-toggle="collapse" href="#collapse-default">Default</a>
+                        </h4>
+                    </div>
+                    <!--Default details-->
+                    <div id="collapse-default" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-12 panel-group" id="accordion">
+                                    <!--Hostnames-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-default-hostname">Hostnames</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-default-hostname" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="default-hostname-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'default', 'hostname')">Add Hostname</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--ServicePrincipalNames-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-default-spname">AdditionalServicePrincipalNames</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-default-spname" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="default-spname-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'default', 'spname')">Add ServicePrincipalName</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--AppAddress-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse-default-appaddress">AppAddress</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse-default-appaddress" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="default-appaddress-section"></div>
+                                                <a class="pointerLink center" data-bind="click: addItem.bind($data, 'default', 'appaddress')">Add AppAddress</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--ExternalUserAccountDelegationsAllowed-->
         <div class="form-group">
             <label for="externalUserAccountDelegationsAllowed" class="col-sm-2 control-label">ExternalUserAccountDelegationsAllowed</label>

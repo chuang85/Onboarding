@@ -37,6 +37,7 @@ namespace Onboarding.Models
                     entityInfo.OriginalValuesMap.Add("ModifiedDate", onboardingRequest.ModifiedDate);
                     entityInfo.OriginalValuesMap.Add("DisplayModifiedDate", onboardingRequest.DisplayModifiedDate);
                     SetModifiedTimeOnchange(onboardingRequest);
+                    entityInfo.OriginalValuesMap.Add("TempXmlStore", onboardingRequest.TempXmlStore);
                 }
             }
             return true;

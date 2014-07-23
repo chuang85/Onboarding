@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'services/dataservices', 'services/dbhelper'],
-    function (router, dataservices, dbhelper) {
+﻿define(['plugins/router', 'services/dataservices', 'services/dataformatter', 'services/savehelper', 'services/jsonbuilder', 'services/dbhelper'],
+    function (router, dataservices, dataformatter, savehelper, jsonbuilder, dbhelper) {
 
         var vm = {
             editableRequest: ko.observable(),
@@ -17,7 +17,8 @@
             requestType: "UpdateSPT",
             activate: activate,
             saveChanges: saveChanges,
-            goBack: goBack
+            goBack: goBack,
+            addItem: addItem
         };
 
         var manager = dataservices.manager();
@@ -58,17 +59,15 @@
         /// Make change to DB.
         /// </summary>
         function saveChanges() {
-            if (manager.hasChanges()) {
-                manager.saveChanges()
-                    .then(saveSucceeded)
-                    .fail(saveFailed);
-            } else {
-                toastr.info("Nothing to save");
-            };
-
+            var xmlString = dataformatter.formatXml(dataformatter.json2xml(jsonbuilder.createJSONSpt(vm)));
+            vm.editableRequest().TempXmlStore(xmlString);
+            manager.saveChanges()
+                .then(saveSucceeded)
+                .fail(saveFailed);
 
             function saveSucceeded(data) {
                 toastr.success("Saved");
+                router.navigate('#request');
             }
 
             function saveFailed(error) {
@@ -78,6 +77,20 @@
 
         function goBack() {
             router.navigateBack();
+        }
+
+        function addItem(envType, itemType) {
+            var fieldWrapper = $("<div class=\"fieldwrapper\" />");
+            var inputField = $("<input class=\"form-control\" />");
+            var removeButton = $("<span class=\"pull-right pointerLink glyphicon glyphicon-trash\"></span>");
+
+            removeButton.click(function () {
+                $(this).parent().remove();
+            });
+
+            fieldWrapper.append(inputField);
+            fieldWrapper.append(removeButton);
+            $("." + envType + "-" + itemType + "-section").append(fieldWrapper);
         }
 
         /********************PRIVATE METHODS********************/
