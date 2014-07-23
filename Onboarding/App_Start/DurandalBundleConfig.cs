@@ -28,6 +28,7 @@ namespace Onboarding
                     .Include("~/Content/bootstrap.min.css")
                     .Include("~/Content/bootstrap-responsive.min.css")
                     .Include("~/Content/bootstrap-switch/bootstrap3/bootstrap-switch.min.css")
+                    .Include("~/Content/bootstrap-select.css")
                     .Include("~/Content/bootstrap-select.min.css")
                     .Include("~/Content/font-awesome.min.css")
                     .Include("~/Content/durandal.css")

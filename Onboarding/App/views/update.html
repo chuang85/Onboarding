@@ -8,14 +8,14 @@
         <div class="form-group">
             <label for="displayName" class="col-sm-2 control-label">DisplayName</label>
             <div class="col-sm-6">
-                <input class="form-control" type="text" id="displayName" data-bind="value: editableRequest().DisplayName" />
+                <input class="form-control" type="text" id="displayName" data-bind="value: displayName" />
             </div>
         </div>
         <!--ServiceType-->
         <div class="form-group">
             <label for="serviceType" class="col-sm-2 control-label">ServiceType</label>
             <div class="col-sm-6">
-                <input class="form-control" id="serviceType" data-bind="value: editableRequest().ServiceType">
+                <input class="form-control" id="serviceType" data-bind="value: serviceType">
             </div>
         </div>
         <!--ConstrainedDelegationTo-->
@@ -23,6 +23,55 @@
             <label for="constrainedDelegationTo" class="col-sm-2 control-label">ConstrainedDelegationTo</label>
             <div class="col-sm-6">
                 <select class="form-control selectpicker" id="constrainedDelegationTo" data-bind="options: serviceTypeList, selectedOptions: constrainedDelegationTo" multiple></select>
+            </div>
+        </div>
+        <!--AppPrincipalId-->
+        <div class="form-group">
+            <label for="appPrincipalId" class="col-sm-2 control-label">AppPrincipalId</label>
+            <div class="col-sm-6">
+                <input class="form-control" id="appPrincipalId" data-bind="value: appPrincipalId" readonly="readonly">
+            </div>
+        </div>
+        <!--ExternalUserAccountDelegationsAllowed-->
+        <div class="form-group">
+            <label for="externalUserAccountDelegationsAllowed" class="col-sm-2 control-label">ExternalUserAccountDelegationsAllowed</label>
+            <div class="col-sm-offset-4 col-sm-6">
+                <div class="btn-group" id="externalUserAccountDelegationsAllowed">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options1" value="true" data-bind="checked: externalUserAccountDelegationsAllowed">YES
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options1" value="false" data-bind="checked: externalUserAccountDelegationsAllowed">NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!--MicrosoftPolicyGroup-->
+        <div class="form-group">
+            <label for="microsoftPolicyGroup" class="col-sm-2 control-label">MicrosoftPolicyGroup</label>
+            <div class="col-sm-offset-4 col-sm-6">
+                <div class="btn-group" id="microsoftPolicyGroup">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options2" value="true" data-bind="checked: microsoftPolicyGroup">YES
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options2" value="false" data-bind="checked: microsoftPolicyGroup">NO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!--ManagedExternally-->
+        <div class="form-group">
+            <label for="managedExternally" class="col-sm-2 control-label">ManagedExternally</label>
+            <div class="col-sm-offset-4 col-sm-6">
+                <div class="btn-group" id="managedExternally">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options3" value="true" data-bind="checked: managedExternally">YES
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options3" value="false" data-bind="checked: managedExternally">NO
+                    </label>
+                </div>
             </div>
         </div>
         <!--Save button-->

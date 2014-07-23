@@ -27,21 +27,26 @@
         window.currentUser = '@HttpUtility.JavaScriptStringEncode(HttpContext.Current.User.Identity.Name)';
     </script>
 </head>
-    <body>
-        <div id="applicationHost">
-            @Html.Partial("_splash")
-        </div>
+<body>
+    <div id="applicationHost">
+        @Html.Partial("_splash")
+    </div>
 
-        @Scripts.Render("~/Scripts/vendor")
-        @*<script type="text/javascript" src="~/Scripts/require.js" data-main="/App/main"></script>*@
-        @if (HttpContext.Current.IsDebuggingEnabled)
-        {
-            <script type="text/javascript" src="~/Scripts/require.js" data-main="@Url.Content("~/App/main")"></script>
-        }
-        else
-        {
-            <script type="text/javascript" src="~/App/main-built.js"></script>
-        }
+    @Scripts.Render("~/Scripts/vendor")
+    @*<script type="text/javascript" src="~/Scripts/require.js" data-main="/App/main"></script>*@
+    @if (HttpContext.Current.IsDebuggingEnabled)
+    {
+        <script type="text/javascript" src="~/Scripts/require.js" data-main="@Url.Content("~/App/main")"></script>
+    }
+    else
+    {
+        <script type="text/javascript" src="~/App/main-built.js"></script>
+    }
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            $('.selectpicker').selectpicker();
+        });
+    </script>
 
-    </body>
+</body>
 </html>
