@@ -1,8 +1,20 @@
-﻿define(['plugins/router', 'services/dataservices'],
-    function (router, dataservices) {
+﻿define(['plugins/router', 'services/dataservices', 'services/dbhelper'],
+    function (router, dataservices, dbhelper) {
+
     var vm = {
         editableRequest: ko.observable(),
-        availableEnvironment: ko.observableArray(['Not specified', 'grn001', 'grn002', 'grnppe']),
+        displayName: ko.observable(),
+        serviceType: ko.observable(),
+        appPrincipalId: ko.observable(),
+        serviceTypeList: ko.observableArray(),
+        constrainedDelegationTo: ko.observableArray(),
+        externalUserAccountDelegationsAllowed: ko.observable(),
+        microsoftPolicyGroup: ko.observable(),
+        managedExternally: ko.observable(),
+        optionsValue: ko.observable(),
+        taskSetList: ko.observableArray(),
+        // Set request type by default when navigating to this page
+        requestType: "UpdateSPT",
         activate: activate,
         saveChanges: saveChanges,
         goBack: goBack

@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter', 'services/savehelper', 'services/dataservices', 'services/jsonbuilder'],
-    function (router, app, guidgenerator, dataformatter, savehelper, dataservices, jsonbuilder) {
+﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter', 'services/savehelper', 'services/dataservices', 'services/jsonbuilder', 'services/dbhelper'],
+    function (router, app, guidgenerator, dataformatter, savehelper, dataservices, jsonbuilder, dbhelper) {
 
         var vm = {
             contact: ko.observable(window.currentUser),
@@ -38,8 +38,8 @@
             clearInputOnloading();
             collapsePanels();
             generateAppId();
-            getServiceTypes();
-            getTaskSets();
+            dbhelper.getServiceTypes(vm);
+            dbhelper.getTaskSets(vm);
 
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess);
@@ -142,50 +142,6 @@
         };
 
         /********************PRIVATE METHODS********************/
-        function getServiceTypes() {
-            var query = breeze.EntityQuery
-                .from("ServiceTypes")
-                .select("ServiceTypeName")
-                .orderBy("ServiceTypeName");
-
-            return manager
-            .executeQuery(query)
-            .then(querySucceeded)
-            .fail(queryFailed);
-
-            function querySucceeded(data) {
-                for (var i = 0; i < data.results.length; i++) {
-                    vm.serviceTypeList.push(data.results[i]["ServiceTypeName"]);
-                }
-            }
-
-            function queryFailed(error) {
-                toastr.error("Query failed: " + error.message);
-            }
-        }
-
-        function getTaskSets() {
-            var query = breeze.EntityQuery
-                .from("TaskSets")
-                .select("TaskSetName")
-                .orderBy("TaskSetName");
-
-            return manager
-            .executeQuery(query)
-            .then(querySucceeded)
-            .fail(queryFailed);
-
-            function querySucceeded(data) {
-                for (var i = 0; i < data.results.length; i++) {
-                    vm.taskSetList.push(data.results[i]["TaskSetName"]);
-                }
-            }
-
-            function queryFailed(error) {
-                toastr.error("Query failed: " + error.message);
-            }
-        }
-
         function generateAppId() {
             vm.appPrincipalId(guidgenerator.generateGuid());
         }
