@@ -5,13 +5,14 @@
             request: ko.observable(),
             activate: activate,
             cancelRequest: cancelRequest,
+            select: select,
             goBack: goBack
         };
 
         var manager = dataservices.manager();
 
         function activate(id) {
-            $(".need-auth-btns").hide();
+            hideButtons();
             return getRequest(id);
         }
 
@@ -78,11 +79,25 @@
             router.navigateBack();
         };
 
+        function select(item) {
+            item.viewUrl = 'views/viewSpt';
+            app.showDialog(item);
+        }
+
         /********************PRIVATE METHODS********************/
+        function hideButtons() {
+            $(".update-spt-btn").hide();
+            $(".cancel-request-btn").hide();
+        }
+
         function validateIdentity() {
-            if (vm.request().CreatedBy() == savehelper.removeDomain(window.currentUser)
-                && vm.request().State() != "Canceled") {
-                $(".need-auth-btns").show();
+            if (vm.request().CreatedBy() == savehelper.removeDomain(window.currentUser)) {
+                if (vm.request().State() != "Canceled") {
+                    $(".cancel-request-btn").show();
+                    if (vm.request().Type() == "CreateSPT") {
+                        $(".update-spt-btn").show();
+                    }
+                }
             }
         }
 

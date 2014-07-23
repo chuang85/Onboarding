@@ -138,6 +138,7 @@
     <Content Include="App\main.js" />
     <Content Include="App\services\dataservices.js" />
     <Content Include="App\services\guidgenerator.js" />
+    <Content Include="App\services\jsonbuilder.js" />
     <Content Include="App\services\logger.js" />
     <Content Include="App\services\dataformatter.js" />
     <Content Include="App\services\savehelper.js" />
