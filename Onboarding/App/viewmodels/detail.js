@@ -6,7 +6,8 @@
             activate: activate,
             cancelRequest: cancelRequest,
             select: select,
-            goBack: goBack
+            goBack: goBack,
+            removeDomain: removeDomain
         };
 
         var manager = dataservices.manager();
@@ -84,6 +85,10 @@
             app.showDialog(item);
         }
 
+        function removeDomain(raw) {
+            return dataformatter.removeDomain(raw);
+        }
+
         /********************PRIVATE METHODS********************/
         function hideButtons() {
             $(".update-spt-btn").hide();
@@ -91,7 +96,7 @@
         }
 
         function validateIdentity() {
-            if (vm.request().CreatedBy() == dataformatter.removeDomain(window.currentUser)) {
+            if (vm.request().CreatedBy() == window.currentUser) {
                 if (vm.request().State() != "Canceled") {
                     $(".cancel-request-btn").show();
                     if (vm.request().Type() == "CreateSPT") {

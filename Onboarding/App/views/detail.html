@@ -36,7 +36,7 @@
         <div class="form-group">
             <label for="createdBy" class="col-sm-2 control-label">CreatedBy</label>
             <div class="col-sm-6">
-                <a id="createdBy" data-bind="attr: { href: 'https://who/is/' + request().CreatedBy() }">
+                <a id="createdBy" data-bind="attr: { href: 'https://who/is/' + $root.removeDomain(request().CreatedBy()) }">
                     <span class="form-control-static" id="CreatedBy" data-bind="text: request().CreatedBy"></span>
                 </a>
             </div>
