@@ -73,8 +73,8 @@ namespace Onboarding.ServiceWorker
             SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(request));
 
             // Create a code review.
-            var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, request.CreatedBy, "Chengkan Huang",
-                SystemHelpers.GenerateEmailAddress(request), SystemHelpers.GenerateReivewName(request), SystemHelpers.ProjectShortName);
+            var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, request.CreatedBy, MembershipCheckHelper.GetName(request.CreatedBy),
+                MembershipCheckHelper.GetEmailAddress(request.CreatedBy), SystemHelpers.GenerateReivewName(request), SystemHelpers.ProjectShortName);
             // Assign ReviewId to the corresponding field in OnboardingRequest
             request.CodeFlowId = codeFlowId;
             // Create a code package and add it to the review
@@ -83,7 +83,7 @@ namespace Onboarding.ServiceWorker
             // Add reviewers to the review
             CodeFlowHelpers.AddReviewers(_rClient, request.CodeFlowId, new Reviewer[]
                         {
-                            CodeFlowHelpers.CreateReviewer(request.CreatedBy, "Chengkan Huang", SystemHelpers.GenerateEmailAddress(request), true)
+                            CodeFlowHelpers.CreateReviewer(request.CreatedBy, MembershipCheckHelper.GetName(request.CreatedBy), MembershipCheckHelper.GetEmailAddress(request.CreatedBy), true)
                         });
             // Publish the review
             CodeFlowHelpers.PublishReview(_rClient, request.CodeFlowId, "meesage from author");

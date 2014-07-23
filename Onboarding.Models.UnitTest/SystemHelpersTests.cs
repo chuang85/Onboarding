@@ -74,12 +74,6 @@ namespace Onboarding.Models.UnitTest
         }
 
         [TestMethod()]
-        public void GenerateEmailAddressTest()
-        {
-            Assert.AreEqual("t-chehu@microsoft.com", SystemHelpers.GenerateEmailAddress(_request));
-        }
-
-        [TestMethod()]
         public void GenerateFilenameTest()
         {
             Assert.AreEqual("CreatedRequest_t-chehu.xml", SystemHelpers.GenerateFilename(_request));

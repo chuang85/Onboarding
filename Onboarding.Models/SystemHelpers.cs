@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -173,14 +174,9 @@ namespace Onboarding.Models
             return onboardingRequest.Type + "-RequestId-" + onboardingRequest.RequestId;
         }
 
-        public static string GenerateEmailAddress(OnboardingRequest onboardingRequest)
-        {
-            return onboardingRequest.CreatedBy + EmailDomain;
-        }
-
         public static string GenerateFilename(OnboardingRequest onboardingRequest)
         {
-            return onboardingRequest.DisplayName + "_" + onboardingRequest.CreatedBy + ".xml";
+            return onboardingRequest.DisplayName + "_" + NameWithoutDomain(onboardingRequest.CreatedBy) + ".xml";
         }
 
         private static string CmdRevertFile(string filename)
@@ -221,6 +217,14 @@ namespace Onboarding.Models
                     break;
                 }
             }
+        }
+
+        private static string NameWithoutDomain(string raw)
+        {
+            var tokens = raw.Split(new[] {"\\"}, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length < 2)
+                throw new ArgumentException(raw);
+            return tokens[1];
         }
     }
 }

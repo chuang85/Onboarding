@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onboarding.ServiceWorker", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onboarding.Models.UnitTest", "Onboarding.Models.UnitTest\Onboarding.Models.UnitTest.csproj", "{81DE8E94-14EF-4CEC-8946-A52099FB75CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onboarding.Utils.UnitTest", "Onboarding.Utils.UnitTest\Onboarding.Utils.UnitTest.csproj", "{7B469454-3BF9-45CB-ACEA-9B15A14D6637}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{81DE8E94-14EF-4CEC-8946-A52099FB75CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81DE8E94-14EF-4CEC-8946-A52099FB75CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81DE8E94-14EF-4CEC-8946-A52099FB75CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B469454-3BF9-45CB-ACEA-9B15A14D6637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B469454-3BF9-45CB-ACEA-9B15A14D6637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B469454-3BF9-45CB-ACEA-9B15A14D6637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B469454-3BF9-45CB-ACEA-9B15A14D6637}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

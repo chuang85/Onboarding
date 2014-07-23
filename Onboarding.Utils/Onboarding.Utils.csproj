@@ -40,6 +40,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
@@ -48,6 +50,7 @@
   <ItemGroup>
     <Compile Include="CodeFlowHelpers.cs" />
     <Compile Include="DbHelpers.cs" />
+    <Compile Include="MembershipCheckHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\DashboardService\Reference.cs">
       <AutoGen>True</AutoGen>
