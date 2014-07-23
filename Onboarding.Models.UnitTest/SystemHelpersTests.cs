@@ -21,8 +21,8 @@ namespace Onboarding.Models.UnitTest
             _request = new OnboardingRequest
             {
                 RequestId = 1,
-                DisplayName = "CreatedRequest",
-                CreatedBy = "t-chehu",
+                RequestSubject = "CreatedRequest",
+                CreatedBy = @"REDMOND\t-chehu",
                 State = "Created",
                 Type = "CreateSPT",
                 Blob = blob
@@ -76,7 +76,7 @@ namespace Onboarding.Models.UnitTest
         [TestMethod()]
         public void GenerateFilenameTest()
         {
-            Assert.AreEqual("CreatedRequest_t-chehu.xml", SystemHelpers.GenerateFilename(_request));
+            Assert.AreEqual("1_t-chehu.xml", SystemHelpers.GenerateFilename(_request));
         }
 
     }

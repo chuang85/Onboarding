@@ -3,6 +3,7 @@
 
         var vm = {
             contact: ko.observable(window.currentUser),
+            requestSubject: ko.observable(),
             displayName: ko.observable(),
             serviceType: ko.observable(),
             appPrincipalId: ko.observable(),
@@ -91,14 +92,13 @@
         function createEntity() {
             if (metaDataFetched && !hasSubmitted) {
                 hasSubmitted = true;
-                var xmlString = dataformatter.formatXml(dataformatter.json2xml(jsonbuilder.createJSONSpt(vm)));
-                console.log(xmlString);
+                var xmlString = dataformatter.removeUndefined(dataformatter.formatXml(dataformatter.json2xml(jsonbuilder.createJSONSpt(vm))));
 
                 var newOnboardingRequest = manager.
                     createEntity('OnboardingRequest:#Onboarding.Models',
                     {
                         CreatedBy: vm.contact(),
-                        DisplayName: vm.displayName(),
+                        RequestSubject: vm.requestSubject(),
                         TempXmlStore: xmlString,
                         Type: vm.requestType
                     });
@@ -162,6 +162,7 @@
         function clearInputOnloading() {
             hasCreated = false;
             hasSubmitted = false;
+            vm.requestSubject("");
             vm.displayName("");
             vm.serviceType("");
             vm.externalUserAccountDelegationsAllowed("");

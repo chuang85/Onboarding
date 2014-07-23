@@ -9,8 +9,8 @@ namespace Onboarding.Models
         public int RequestId { get; set; }
 
         // Need this?
-        //[Required]
-        public string DisplayName { get; set; }
+        [Required]
+        public string RequestSubject { get; set; }
 
         public string TempXmlStore { get; set; }
 

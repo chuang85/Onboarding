@@ -16,7 +16,7 @@
         <thead>
             <tr>
                 <th>RequestId</th>
-                <th>Name</th>
+                <th>RequestSubject</th>
                 <th>Modified</th>
                 <th>Created</th>
                 <th>CreatedBy</th>
@@ -31,7 +31,7 @@
                 </td>
                 <td>
                     <a data-bind="attr: { href: '#request/detail/' + RequestId() }">
-                        <span id="displayName" data-bind="text: DisplayName"></span>
+                        <span id="displayName" data-bind="text: RequestSubject"></span>
                     </a>
                 </td>
                 <td>

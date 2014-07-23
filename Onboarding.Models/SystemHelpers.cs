@@ -176,7 +176,7 @@ namespace Onboarding.Models
 
         public static string GenerateFilename(OnboardingRequest onboardingRequest)
         {
-            return onboardingRequest.DisplayName + "_" + NameWithoutDomain(onboardingRequest.CreatedBy) + ".xml";
+            return onboardingRequest.RequestId + "_" + NameWithoutDomain(onboardingRequest.CreatedBy) + ".xml";
         }
 
         private static string CmdRevertFile(string filename)

@@ -4,7 +4,8 @@ define(function() {
         parseXml: parseXml,
         json2xml: json2xml,
         formatXml: formatXml,
-        removeDomain: removeDomain
+        removeDomain: removeDomain,
+        removeUndefined: removeUndefined
     };
 
     /*	This work is licensed under Creative Commons GNU LGPL License.
@@ -247,6 +248,12 @@ define(function() {
             return res[res.length - 1];
         } else {
             return raw;
+        }
+    }
+
+    function removeUndefined(raw) {
+        if (raw) {
+            return raw.replace("undefined", "");
         }
     }
 

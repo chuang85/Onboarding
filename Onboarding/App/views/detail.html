@@ -4,18 +4,11 @@
         <h3><a class="pointerLink" data-bind="click: goBack">< Back</a></h3>
     </div>
     <form class="form-horizontal" role="form">
-        <!--RequestId-->
+        <!--RequestSubject-->
         <div class="form-group">
-            <label for="requestId" class="col-sm-2 control-label">RequestId</label>
+            <label for="requestSubject" class="col-sm-2 control-label">RequestSubject</label>
             <div class="col-sm-6">
-                <p class="form-control-static" id="requestId" data-bind="text: request().RequestId" />
-            </div>
-        </div>
-        <!--DisplayName-->
-        <div class="form-group">
-            <label for="displayName" class="col-sm-2 control-label">DisplayName</label>
-            <div class="col-sm-6">
-                <p class="form-control-static" id="displayName" data-bind="text: request().DisplayName" />
+                <p class="form-control-static" id="requestSubject" data-bind="text: request().RequestSubject"/>
             </div>
         </div>
         <!--Modified-->

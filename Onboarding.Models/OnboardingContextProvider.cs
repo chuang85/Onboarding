@@ -28,16 +28,12 @@ namespace Onboarding.Models
                     {
                         onboardingRequest.Blob = SystemHelpers.GenerateBlobFromString(onboardingRequest.TempXmlStore);
                     }
-
-                    //SystemHelpers.SaveXmlToDisk(onboardingRequest);
-                    //SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(onboardingRequest));
                 }
                 else if (entityInfo.EntityState == EntityState.Modified)
                 {
                     entityInfo.OriginalValuesMap.Add("ModifiedDate", onboardingRequest.ModifiedDate);
                     entityInfo.OriginalValuesMap.Add("DisplayModifiedDate", onboardingRequest.DisplayModifiedDate);
                     SetModifiedTimeOnchange(onboardingRequest);
-                    entityInfo.OriginalValuesMap.Add("TempXmlStore", onboardingRequest.TempXmlStore);
                 }
             }
             return true;
