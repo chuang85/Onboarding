@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'services/dataservices', 'services/dataformatter', 'services/savehelper', 'services/jsonbuilder', 'services/dbhelper'],
-    function (router, dataservices, dataformatter, savehelper, jsonbuilder, dbhelper) {
+﻿define(['plugins/router', 'services/dataservices', 'services/dataformatter', 'services/jsonbuilder', 'services/dbhelper'],
+    function (router, dataservices, dataformatter, jsonbuilder, dbhelper) {
 
         var vm = {
             editableRequest: ko.observable(),

@@ -41,8 +41,8 @@
                     <span id="CreatedDate" data-bind="text: DisplayCreatedDate"></span>
                 </td>
                 <td>
-                    <a data-bind="attr: { href: 'https://who/is/' + CreatedBy() }">
-                        <span id="CreatedBy" data-bind="text: CreatedBy"></span>
+                    <a data-bind="attr: { href: 'https://who/is/' + $root.removeDomain(CreatedBy()) }">
+                        <span id="CreatedBy" data-bind="text: $root.removeDomain(CreatedBy())"></span>
                     </a>
                 </td>
                 <td>

@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter', 'services/savehelper', 'services/dataservices', 'services/jsonbuilder', 'services/dbhelper'],
-    function (router, app, guidgenerator, dataformatter, savehelper, dataservices, jsonbuilder, dbhelper) {
+﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter', 'services/dataservices', 'services/jsonbuilder', 'services/dbhelper'],
+    function (router, app, guidgenerator, dataformatter, dataservices, jsonbuilder, dbhelper) {
 
         var vm = {
             contact: ko.observable(window.currentUser),
@@ -97,10 +97,9 @@
                 var newOnboardingRequest = manager.
                     createEntity('OnboardingRequest:#Onboarding.Models',
                     {
-                        CreatedBy: savehelper.removeDomain(vm.contact()),
+                        CreatedBy: vm.contact(),
                         DisplayName: vm.displayName(),
                         TempXmlStore: xmlString,
-                        //State: RequestState.Created,
                         Type: vm.requestType
                     });
                 manager.addEntity(newOnboardingRequest);

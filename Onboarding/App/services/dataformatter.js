@@ -3,7 +3,8 @@ define(function() {
         xml2json: xml2json,
         parseXml: parseXml,
         json2xml: json2xml,
-        formatXml: formatXml
+        formatXml: formatXml,
+        removeDomain: removeDomain
     };
 
     /*	This work is licensed under Creative Commons GNU LGPL License.
@@ -238,6 +239,15 @@ define(function() {
         });
 
         return formatted;
+    }
+
+    function removeDomain(raw) {
+        if (raw.indexOf("\\") > -1) {
+            var res = raw.split("\\");
+            return res[res.length - 1];
+        } else {
+            return raw;
+        }
     }
 
     return vm;

@@ -1,10 +1,11 @@
-﻿define(['services/logger', 'services/dataservices'],
-    function (logger, dataservices) {
+﻿define(['services/logger', 'services/dataservices', 'services/dataformatter'],
+    function (logger, dataservices, dataformatter) {
 
     var vm = {
         requests: ko.observableArray(),
         activate: activate,
         filterText: ko.observable().extend({ rateLimit: 400 }),
+        removeDomain: removeDomain
     };
 
     var manager = dataservices.manager();
@@ -53,6 +54,10 @@
             toastr.error("Query failed: " + error.message);
         }
     };
+
+    function removeDomain(raw) {
+        return dataformatter.removeDomain(raw);
+    }
 
     return vm;
 });

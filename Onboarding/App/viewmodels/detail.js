@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'durandal/app', 'services/savehelper', 'services/dataservices'],
-    function (router, app, savehelper, dataservices) {
+﻿define(['plugins/router', 'durandal/app', 'services/dataformatter', 'services/dataservices'],
+    function (router, app, dataformatter, dataservices) {
 
         var vm = {
             request: ko.observable(),
@@ -91,7 +91,7 @@
         }
 
         function validateIdentity() {
-            if (vm.request().CreatedBy() == savehelper.removeDomain(window.currentUser)) {
+            if (vm.request().CreatedBy() == dataformatter.removeDomain(window.currentUser)) {
                 if (vm.request().State() != "Canceled") {
                     $(".cancel-request-btn").show();
                     if (vm.request().Type() == "CreateSPT") {
