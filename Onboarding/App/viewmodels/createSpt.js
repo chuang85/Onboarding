@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter', 'services/dataservices', 'services/jsonbuilder', 'services/dbhelper'],
-    function (router, app, guidgenerator, dataformatter, dataservices, jsonbuilder, dbhelper) {
+﻿define(['plugins/router', 'durandal/app', 'services/guidgenerator', 'services/dataformatter', 'services/dataservices', 'services/jsonbuilder', 'services/dbhelper', 'services/bindings'],
+    function (router, app, guidgenerator, dataformatter, dataservices, jsonbuilder, dbhelper, bindings) {
 
         var vm = {
             contact: ko.observable(window.currentUser),
@@ -14,8 +14,10 @@
             managedExternally: ko.observable(),
             optionsValue: ko.observable(),
             taskSetList: ko.observableArray(),
+            permissions: ko.observableArray(),
             // Set request type by default when navigating to this page
             requestType: "CreateSPT",
+            attached: attached,
             activate: activate,
             canDeactivate: canDeactivate,
             createEntity: createEntity,
@@ -34,6 +36,10 @@
 
         // Prevent metaData not fetched exception
         var metaDataFetched = false;
+
+        function attached(view) {
+            $('.selectpicker', view).selectpicker();
+        }
 
         function activate() {
             clearInputOnloading();
