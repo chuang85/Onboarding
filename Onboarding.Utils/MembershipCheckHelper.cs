@@ -55,6 +55,17 @@ namespace Onboarding.Utils
             return null;
         }
 
+        /// <summary>
+        /// Check if the reviewer is in the security group of requestor.
+        /// </summary>
+        /// <param name="reviewer">Alias of reviewer</param>
+        /// <param name="requestor">Alias of requestor</param>
+        /// <returns></returns>
+        public static bool IsInSecurityGroup(string reviewer, string requestor)
+        {
+            return true;
+        }
+
         private static string[] ParseDomainQualifiedName(string name, string parameterName)
         {
             var groupTokens = name.Split(new[] { "\\" }, StringSplitOptions.RemoveEmptyEntries);

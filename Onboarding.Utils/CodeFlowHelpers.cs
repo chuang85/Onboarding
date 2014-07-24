@@ -135,7 +135,8 @@ namespace Onboarding.Utils
                             {
                                 foreach (var reviewer in review.Reviewers)
                                 {
-                                    if (reviewer.Status == ReviewerStatus.SignedOff)
+                                    if (reviewer.Status == ReviewerStatus.SignedOff
+                                        && MembershipCheckHelper.IsInSecurityGroup(reviewer.Name, author))
                                     {
                                         return true;
                                     }
