@@ -46,6 +46,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbHelpers.cs" />
     <Compile Include="OnboardingContextProvider.cs" />
     <Compile Include="OnboardingDbContext.cs" />
     <Compile Include="OnboardingRequest.cs" />

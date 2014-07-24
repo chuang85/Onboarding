@@ -3,9 +3,8 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Xml;
-using Onboarding.Models;
 
-namespace Onboarding.Utils
+namespace Onboarding.Models
 {
     public class DbHelpers
     {
@@ -19,8 +18,7 @@ namespace Onboarding.Utils
         {
             return
                 from d in db.OnboardingRequests
-                where d.Type.Equals("CreateSPT") && 
-                !d.State.Equals("Completed") &&
+                where !d.State.Equals("Completed") &&
                 !d.State.Equals("Canceled")
                 select d;
         }
