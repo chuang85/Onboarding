@@ -1,4 +1,4 @@
-﻿define(['plugins/router', 'durandal/app'], function (router, app) {
+﻿define(['plugins/router', 'durandal/app', 'services/bindings'], function (router, app, bindings) {
     return {
         router: router,
         search: function () {

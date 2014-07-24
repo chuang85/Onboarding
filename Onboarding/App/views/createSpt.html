@@ -39,7 +39,7 @@
         <div class="form-group">
             <label for="constrainedDelegationTo" class="col-sm-2 control-label">ConstrainedDelegationTo</label>
             <div class="col-sm-6">
-                <select id="constrainedDelegationTo" class="form-control selectpicker" multiple data-bind="selectPicker: constrainedDelegationTo, selectPickerOptions: { optionsArray: serviceTypeList }" data-size="5"></select>
+                <select id="constrainedDelegationTo" class="form-control selectpicker" multiple data-size="8" data-bind="selectPicker: constrainedDelegationTo, selectPickerOptions: { optionsArray: serviceTypeList }"></select>
             </div>
         </div>
         <!--AppPrincipalId-->
@@ -334,13 +334,12 @@
             </div>
         </div>
         <!--Permissions-->
-        <div class="form-group">
+        <!--<div class="form-group">
             <label for="permissions" class="col-sm-2 control-label">Permissions</label>
             <div class="col-sm-6">
                 <select id="permissions" class="form-control selectpicker" multiple data-bind="selectPicker: permissions, selectPickerOptions: { optionsArray: taskSetList }" data-size="5"></select>
-
             </div>
-        </div>
+        </div>-->
         <!--Create&Clear button-->
         <div class="form-inline">
             <div class="col-sm-offset-2 col-sm-6">
