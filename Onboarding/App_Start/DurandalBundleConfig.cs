@@ -34,7 +34,7 @@ namespace Onboarding
                     .Include("~/Content/durandal.css")
                     .Include("~/Content/starterkit.css")
                     .Include("~/Content/toastr.css")
-                    .Include("~/Content/spt.css")
+                    .Include("~/Content/aadonboarding.css")
                 );
         }
 

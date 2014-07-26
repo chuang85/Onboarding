@@ -9,8 +9,10 @@
         activate: function () {
             router.map([
                 { route: '', title: 'Home', moduleId: 'viewmodels/home', nav: true },
-                { route: 'createSpt', title: 'Create SPT', moduleId: 'viewmodels/createSpt', nav: true },
-                { route: 'request', title: 'Request', moduleId: 'viewmodels/request', nav: true },
+                { route: 'getStarted', title: 'Get Started', moduleId: 'viewmodels/getStarted', nav: true },
+                { route: 'request', title: 'View Request', moduleId: 'viewmodels/request', nav: true },
+                { route: 'info', title: 'More Info', moduleId: 'viewmodels/info', nav: true },
+                { route: 'createSpt', title: 'Create SPT', moduleId: 'viewmodels/createSpt' },
                 { route: 'request/detail/:id', title: 'Detail', moduleId: 'viewmodels/detail' },
                 { route: 'request/update/:id', title: 'Update', moduleId: 'viewmodels/update' },
                 { route: 'request/cert/:id', title: 'Cert', moduleId: 'viewmodels/cert' }

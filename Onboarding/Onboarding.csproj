@@ -153,6 +153,8 @@
     <Content Include="App\services\dataformatter.js" />
     <Content Include="App\viewmodels\cert.js" />
     <Content Include="App\viewmodels\detail.js" />
+    <Content Include="App\viewmodels\getStarted.js" />
+    <Content Include="App\viewmodels\info.js" />
     <Content Include="App\viewmodels\request.js" />
     <Content Include="App\viewmodels\update.js" />
     <Content Include="App\viewmodels\createSpt.js" />
@@ -160,6 +162,8 @@
     <Content Include="App\viewmodels\home.js" />
     <Content Include="App\views\cert.html" />
     <Content Include="App\views\detail.html" />
+    <Content Include="App\views\getStarted.html" />
+    <Content Include="App\views\info.html" />
     <Content Include="App\views\request.html" />
     <Content Include="App\views\update.html" />
     <Content Include="App\views\createSpt.html" />
@@ -187,7 +191,8 @@
     <Content Include="Content\images\icon.png" />
     <Content Include="Content\images\ios-startup-image-landscape.png" />
     <Content Include="Content\images\ios-startup-image-portrait.png" />
-    <Content Include="Content\spt.css" />
+    <Content Include="Content\aadonboarding.css" />
+    <Content Include="Content\images\page-under-construction.jpg" />
     <Content Include="Content\starterkit.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />

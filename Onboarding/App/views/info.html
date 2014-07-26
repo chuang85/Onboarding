@@ -1,0 +1,154 @@
+﻿<section>
+    <h1 class="page-header">AAD Onboarding Info</h1>
+
+    <!--What is Azure Active Directory-->
+    <h2 class="pointerLink" data-bind="click: toggle">What is Azure Active Directory</h2>
+    <div>
+        <p>First and foremost you will want to understand <strong>what Azure Active Directory is</strong>, what <strong>benefits it can provide</strong>, and <strong>where applications fit</strong> in the AAD model.</p>
+        <ul>
+            <li>
+                <strong>What is AAD?</strong>
+                <ul>
+                    <li><a href="http://msdn.microsoft.com/library/azure/jj673460.aspx">Here's what MSDN has to say</a></li>
+                    <li><a href="http://channel9.msdn.com/Series/Windows-Azure-Active-Directory/Windows-Azure-Active-Directory-Cartoon">In cartoon form</a> as part of the <a href="http://channel9.msdn.com/Series/Windows-Azure-Active-Directory">Channel 9 AAD video series</a></li>
+                </ul>
+            </li>
+            <li>
+                <strong>What's under the hood?</strong>The <a href="https://msft.spoppe.com/sites/Identity/MSODS/SitePages/AAD%20Architecture.aspx">AAD Architecture Model</a> should shed some light
+            </li>
+            <li>
+                <strong>How are applications added?</strong><a href="http://msdn.microsoft.com/en-us/library/azure/dn151122.aspx">Here is what the process looks like to customers</a>
+            </li>
+            <li>
+                <strong>Where can I test and deploy with it?</strong>In the <a href="https://msft.spoppe.com/sites/Identity/MSODS/SitePages/AAD%20Environments.aspx">AAD Supported Environments</a>
+            </li>
+            <li>
+                <strong>What's new?</strong>Check out the <a href="http://blogs.technet.com/b/ad/">AAD Blog</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--Why onboard with us internally-->
+    <h2>Why onboard with us internally</h2>
+    <div>
+        <p>Now why would you onboard with us internally, versus going to the Azure portal and adding the application yourself? Here are some of the benefits you get from being a first party service:</p>
+        <ul>
+            <li>
+                Your service gets implicit consent to customer tenants once they purchase appropriate subscription. You can read more about the consent framework <a href="http://msdn.microsoft.com/en-us/library/office/dn605895%28v=office.15%29.aspx">here</a>.
+            </li>
+            <li>
+                You get additional claims in the user token, such as PUID.
+            </li>
+            <li>
+                You get access to a private version of the <a href="https://msft.spoppe.com/sites/Identity/MSODS/SitePages/Accessing%20the%20Graph%20API.aspx">Graph API</a> that is exclusively available to our first party services.
+            </li>
+        </ul>
+        <p>If you do not need any of these items, you may find it sufficient to onboard your application using the self-service functionality of the Azure Management portal.</p>
+
+        <!--Application Fundamentals-->
+        <h2>Application Fundamentals</h2>
+        <p>It is important to be familiar with the common attributes, object types, and other concepts are relevant for all applications in AAD. Read about them here: </p>
+        <ul>
+            <li>
+                <a href="http://msdn.microsoft.com/en-us/library/azure/dn132599.aspx">Adding, Updating, and Removing an Application</a> - discusses the customer-facing onboarding process, the fundamentals still apply to first party applications
+            </li>
+            <li>
+                <a href="http://msdn.microsoft.com/en-us/library/azure/dn132633.aspx">Application Objects and Service Principal Objects</a> - the building blocks for applications in AAD
+            </li>
+        </ul>
+    </div>
+
+    <!--Authentication and Authorization-->
+    <h2>Authentication and Authorization</h2>
+    <p>Next you will need to understand the Authentication and Authorization scenarios possible with AAD, and how your application fits into these models. This is very important, and here are some resources that will be helpful:</p>
+    <ul>
+        <li>
+            Crucial reading before onboarding: <a href="http://msdn.microsoft.com/en-us/library/azure/dn499820.aspx">Authentication Scenarios for Azure AD</a>
+        </li>
+        <li>
+            Code samples applicable to many scenarios: <a href="http://msdn.microsoft.com/en-us/library/azure/dn646737.aspx">Azure Active Directory Code Samples</a>
+        </li>
+        <li>
+            AuthN in AAD: <a href="http://msdn.microsoft.com/en-us/library/azure/dn151124.aspx">Azure Active Directory Authentication Protocols</a>
+        </li>
+        <li>
+            AuthZ in AAD: <a href="http://msdn.microsoft.com/en-us/library/azure/dn385718.aspx">Using Windows Azure AD for Authorization</a>
+        </li>
+    </ul>
+
+    <h3>OpenId Connect <small>recommended</small></h3>
+    <p><i>OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0 protocol. It enables Clients to verify the identity of the End-User based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the End-User in an interoperable and REST-like manner.</i></p>
+    <p>Read more about <a href="http://msdn.microsoft.com/en-us/library/azure/dn645541.aspx">OpenId Connect with AAD</a> and from the <a href="http://openid.net/specs/openid-connect-core-1_0.html">public spec</a></p>
+
+    <h3>OAuth 2.0 </h3>
+    <p><i>The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service, either on behalf of a resource owner by orchestrating an approval interaction between the resource owner and the HTTP service, or by allowing the third-party application to obtain access on its own behalf.</i></p>
+    <p>Read more about <a href="http://msdn.microsoft.com/en-us/library/azure/dn645545.aspx">OAuth 2.0 with AAD</a> and from the <a href="http://tools.ietf.org/html/rfc6749">public framework</a></p>
+    
+    <h3>WS-Federation <small>(legacy- web app SSO only)</small></h3>
+    <p><i>WS-Federation extends WS-Trust to provide a flexible Federated Identity architecture with clean separation between trust mechanisms, security token formats, and the protocol for obtaining tokens.</i></p>
+    <p>Read about using <a href="http://msdn.microsoft.com/library/azure/dn151790.aspx">WS-Fed with AAD</a> and get a deeper view <a href="http://msdn.microsoft.com/en-us/library/bb498017.aspx">from MSDN</a></p>
+
+    <h3>SAML 2.0 <small>(legacy- web app SSO only)</small></h3>
+    <p><i>SAML 2.0 is an XML-based protocol that uses security tokens containing assertions to pass information about a principal (usually an end user) between a SAML authority, that is, an identity provider, and a SAML consumer, that is, a service provider.</i></p>
+    <p>Read about using <a href="http://msdn.microsoft.com/library/azure/dn195591.aspx">SAML with AAD</a> and see the <a href="http://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf">OASIS spec</a></p>
+    
+    <!--Libraries-->
+    <h2>Libraries</h2>
+    <p>There are various libraries available which we recommend leveraging to help with :</p>
+    <ul>
+        <li>
+            <a href="http://msdn.microsoft.com/en-us/library/azure/jj573266.aspx">Windows Azure Active Directory Authentication Library (ADAL) for .NET</a>
+        </li>
+        <li>
+            <a href="http://msdn.microsoft.com/en-us/library/azure/dn132602.aspx">•ADAL for Windows Store</a>
+        </li>
+        <li>
+            <a href="https://github.com/AzureAD/passport-azure-ad">Windows Azure AD Node.js Module</a>
+        </li>
+        <li>
+            <a href="https://www.nuget.org/packages?q=openidconnect&prerelease=true&sortOrder=relevance">OWIN MiddleWare for OpenID Connect</a>
+        </li>
+        <li>
+            <a href="https://github.com/AzureAD/azure-activedirectory-library-for-objc">iOS Library</a>
+        </li>
+        <li>
+            <a href="https://github.com/AzureAD/azure-activedirectory-library-for-android">Android Library</a>
+        </li>
+    </ul>
+    <p>Another important thing to understand before onboarding is how your application will <strong>retrieve user attributes</strong> and other <strong>tenant data</strong> from AAD. There are three options, although we <strong>recommend the Graph API</strong> for most use cases. <a href="https://msft.spoppe.com/sites/Identity/MSODS/SitePages/Programmatic%20access%20to%20Azure%20Active%20Directory%20(aka%20MSODS).aspx">This table</a> compares the options and you can read in more depth on each: </p>
+    <ul>
+        <li>
+            <a href="https://msft.spoppe.com/sites/Identity/MSODS/SitePages/Accessing%20the%20Graph%20API.aspx">Graph API (Preferred)</a>
+        </li>
+        <li>
+            <a href="https://msft.spoppe.com/sites/Identity/MSODS/SitePages/On-boarding%20to%20AAD%20BecWS%20api.aspx">BEC WebService</a>
+        </li>
+        <li>
+            <a href="http://sharepoint/sites/onlineinfo/tools/Pages/Connect/sync.aspx">Sync WebService</a>
+        </li>
+    </ul>
+    
+    <!--Ready to onboard-->
+    <h2>Ready to onboard?</h2>
+    <p>Do you have a full understanding of the scenario you are trying to enable for your application and how AAD fits into the picture? If so, great! If not, leverage the above resources or reach out to the team at <a href="mailto:aadonboarding@microsoft.com">aadonboarding@microsoft.com</a> to help get clarity. </p>
+    <p>Before you submit your request we ask that you familiarize yourself with the <a href="https://msft.spoppe.com/sites/Identity/MSODS/SitePages/AAD%20Onboarding%20Procedure.aspx">AAD Onboarding Procedure</a> so you know what to expect.</p>
+    <p>Once you have reviewed all of the relevant information and have a clear picture of your scenario, you're ready to <a href="#getStarted">submit your onboarding request!</a></p>
+    <p><strong>Don't stop there!</strong> Once you are on-boarded you will need to <strong>test</strong> to ensure your <strong>end-to-end</strong> flows are all working. Here are some testing resources:</p>
+    <ul>
+        <li>
+            <a href="http://adbuild/nova/">Requesting Nova topology</a>
+        </li>
+        <li>
+            <a href="https://msft.spoppe.com/sites/Identity/MSODS/SitePages/On-boarding%20to%20AAD%20BecWS%20api.aspx">Test guidelines for BecWS</a>
+        </li>
+        <li>
+            <a href="https://msft.spoppe.com/sites/Identity/MSODS/SitePages/Accessing%20the%20Graph%20API.aspx">Test guidelines for Graph api</a>
+        </li>
+        <li>
+            <a href="http://sharepoint/sites/onlineinfo/tools/Pages/Connect/tools/Tools.aspx">Other Test Tools</a>
+        </li>
+        <li>
+            <a href="https://msft.spoppe.com/sites/Identity/MSODS/SitePages/PPE%20Tenant%20Creation%20instructions%20(O365%20and%20Azure).aspx">Setting up tenant in PPE</a>
+        </li>
+    </ul>
+</section>
