@@ -1,10 +1,5 @@
 ﻿define(function () {
-    var vm = {
-        toggle: toggle
+    return {
+
     };
-
-    function toggle() {
-    }
-
-    return vm;
 });
