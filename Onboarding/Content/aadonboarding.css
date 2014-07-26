@@ -67,3 +67,7 @@
   background-color: #f0f7fd;
   border-color: #d0e3f0;
 }
+
+span.glyphicon-question-sign {
+    font-size: 20px
+}

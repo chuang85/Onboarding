@@ -5,7 +5,8 @@
         requests: ko.observableArray(),
         activate: activate,
         filterText: ko.observable().extend({ rateLimit: 400 }),
-        removeDomain: removeDomain
+        removeDomain: removeDomain,
+        refresh: refresh
     };
 
     var manager = dataservices.manager();
@@ -57,7 +58,11 @@
 
     function removeDomain(raw) {
         return dataformatter.removeDomain(raw);
-    }
+    };
+
+    function refresh() {
+        getRequests();
+    };
 
     return vm;
 });

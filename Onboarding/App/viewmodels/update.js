@@ -80,7 +80,7 @@
         }
 
         function addItem(envType, itemType) {
-            var fieldWrapper = $("<div class=\"fieldwrapper\" />");
+            var fieldWrapper = $("<div class=\"fieldwrapper row\" />");
             var inputField = $("<input class=\"form-control\" />");
             var removeButton = $("<span class=\"pull-right pointerLink glyphicon glyphicon-trash\"></span>");
 
