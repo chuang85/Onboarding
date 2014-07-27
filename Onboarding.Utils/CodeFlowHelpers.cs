@@ -1,4 +1,5 @@
 ﻿using System;
+using Onboarding.Config;
 using Onboarding.Utils.DashboardService;
 using Onboarding.Utils.ReviewService;
 using Author = Onboarding.Utils.ReviewService.Author;
@@ -135,7 +136,7 @@ namespace Onboarding.Utils
                                 foreach (var reviewer in review.Reviewers)
                                 {
                                     if (reviewer.Status == ReviewerStatus.SignedOff
-                                        && MembershipCheckHelper.IsInSecurityGroup(reviewer.Name, author))
+                                        && MembershipCheckHelper.IsInSecurityGroup(reviewer.Name, Constants.SecurityGroup))
                                     {
                                         return true;
                                     }

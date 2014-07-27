@@ -59,10 +59,35 @@ namespace Onboarding.Utils
         /// Check if the reviewer is in the security group of requestor.
         /// </summary>
         /// <param name="reviewer">Alias of reviewer</param>
-        /// <param name="requestor">Alias of requestor</param>
+        /// <param name="requestorGroup">Requestor's group</param>
         /// <returns></returns>
-        public static bool IsInSecurityGroup(string reviewer, string requestor)
+        public static bool IsInSecurityGroup(string reviewer, string requestorGroup)
         {
+            //var userTokens = ParseDomainQualifiedName(reviewer, "user");
+            //using (var userContext = new PrincipalContext(ContextType.Domain, userTokens[0]))
+            //{
+            //    using (
+            //        var identity = UserPrincipal.FindByIdentity(userContext, IdentityType.SamAccountName, userTokens[1])
+            //        )
+            //    {
+            //        if (identity != null)
+            //        {
+            //            var groupTokens = ParseDomainQualifiedName(requestorGroup, "group");
+            //            using (var groupContext = new PrincipalContext(ContextType.Domain, groupTokens[0]))
+            //            {
+            //                using (
+            //                    var identity2 = GroupPrincipal.FindByIdentity(groupContext, IdentityType.SamAccountName,
+            //                        groupTokens[1]))
+            //                {
+            //                    if (identity2 != null)
+            //                    {
+            //                        return identity.IsMemberOf(identity2);
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
             return true;
         }
 

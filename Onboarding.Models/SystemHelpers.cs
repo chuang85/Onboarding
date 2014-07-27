@@ -7,24 +7,12 @@ using System.Text;
 using System.Threading;
 using System.Web;
 using System.Xml;
+using Onboarding.Config;
 
 namespace Onboarding.Models
 {
     public static class SystemHelpers
     {
-        public const string ProjectShortName = "MSODS";
-        public const string EmailDomain = "@microsoft.com";
-        public const string CmdPath = @"C:\WINDOWS\system32\cmd.exe";
-        public const string CmdConfigArgs =
-            @"/k set inetroot=e:\cumulus_main&set corextbranch=main&e:\cumulus_main\tools\path1st\myenv.cmd";
-        public const string DepotPath = @"E:\CUMULUS_MAIN\sources\dev\RestServices\GraphService\Tools\";
-        public const string ProductCatalogPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\productcatalog\";
-        public const string RbacpolicyPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\rbacpolicy\";
-        public const string TaskSetsFilename = "TasksSets.xml";
-        public const string ScopesFilename = "Scopes.xml";
-        public const string DescriptionFilePath = @"E:\CUMULUS_MAIN\sources\dev\RestServices\GraphService\Tools\descriptions.xml";
-        public const string AppDataPathXml = @"../../App_Data/";
-
         /// <summary>
         ///     Write string into binary array.
         /// </summary>
@@ -53,7 +41,7 @@ namespace Onboarding.Models
         {
             var doc = new XmlDocument();
             doc.LoadXml(GenerateStringFromBlob(onboardingRequest.Blob));
-            doc.Save(DepotPath + GenerateFilename(onboardingRequest));
+            doc.Save(Constants.DepotPath + GenerateFilename(onboardingRequest));
         }
 
         /// <summary>
@@ -66,9 +54,9 @@ namespace Onboarding.Models
             var changeSpecName = CreateChangeSpec(filename);
             var startInfo = new ProcessStartInfo
             {
-                FileName = CmdPath,
+                FileName = Constants.CmdPath,
                 WindowStyle = ProcessWindowStyle.Hidden,
-                Arguments = CmdConfigArgs
+                Arguments = Constants.CmdConfigArgs
                                   + CmdAddToDepotArgs(filename, changeSpecName) + " && exit"
             };
             var process = Process.Start(startInfo);
@@ -83,9 +71,9 @@ namespace Onboarding.Models
         {
             var startInfo = new ProcessStartInfo
             {
-                FileName = CmdPath,
+                FileName = Constants.CmdPath,
                 WindowStyle = ProcessWindowStyle.Hidden,
-                Arguments = CmdConfigArgs
+                Arguments = Constants.CmdConfigArgs
                                   + CmdRevertFile(filename) + " && exit"
             };
             var process = Process.Start(startInfo);
@@ -98,9 +86,9 @@ namespace Onboarding.Models
         {
             var startInfo = new ProcessStartInfo
             {
-                FileName = CmdPath,
+                FileName = Constants.CmdPath,
                 WindowStyle = ProcessWindowStyle.Hidden,
-                Arguments = CmdConfigArgs
+                Arguments = Constants.CmdConfigArgs
                                   + CmdSyncDepot() + " && exit"
             };
             var process = Process.Start(startInfo);
@@ -114,7 +102,7 @@ namespace Onboarding.Models
         {
             //var serviceTypeMap = new Dictionary<string, string>();
             var serviceList = new List<string>();
-            foreach (var file in Directory.EnumerateFiles(ProductCatalogPath, "*.xml"))
+            foreach (var file in Directory.EnumerateFiles(Constants.ProductCatalogPath, "*.xml"))
             {
                 var xmlDoc = new XmlDocument();
                 xmlDoc.Load(file);
@@ -136,7 +124,7 @@ namespace Onboarding.Models
         {
             var taskSetMap = new Dictionary<string, string>();
             var xmlDoc = new XmlDocument();
-            xmlDoc.Load(RbacpolicyPath + TaskSetsFilename);
+            xmlDoc.Load(Constants.RbacpolicyPath + Constants.TaskSetsFilename);
             var nameList = xmlDoc.GetElementsByTagName("DisplayName");
             var idList = xmlDoc.GetElementsByTagName("TaskSetId");
             if (nameList != null)
@@ -156,7 +144,7 @@ namespace Onboarding.Models
         {
             var scopeMap = new Dictionary<string, string>();
             var xmlDoc = new XmlDocument();
-            xmlDoc.Load(RbacpolicyPath + ScopesFilename);
+            xmlDoc.Load(Constants.RbacpolicyPath + Constants.ScopesFilename);
             var nameList = xmlDoc.GetElementsByTagName("DisplayName");
             var idList = xmlDoc.GetElementsByTagName("ScopeId");
             if (nameList != null)
@@ -176,7 +164,7 @@ namespace Onboarding.Models
         {
             var descMap = new Dictionary<string, string>();
             var xmlDoc = new XmlDocument();
-            xmlDoc.Load(DescriptionFilePath);
+            xmlDoc.Load(Constants.DescriptionFilePath);
             var list = xmlDoc.GetElementsByTagName("Descriptions")[0].ChildNodes;
             for (var i = 0; i < list.Count; i++)
             {
@@ -197,17 +185,17 @@ namespace Onboarding.Models
 
         private static string CmdRevertFile(string filename)
         {
-            return " && cd " + DepotPath + " && sd revert -d " + filename;
+            return " && cd " + Constants.DepotPath + " && sd revert -d " + filename;
         }
 
         private static string CmdAddToDepotArgs(string filename, string changeSpecName)
         {
-            return " && cd " + DepotPath + " && sd add " + filename + " && sdp pack " + filename + " -I " + changeSpecName;
+            return " && cd " + Constants.DepotPath + " && sd add " + filename + " && sdp pack " + filename + " -I " + changeSpecName;
         }
 
         private static string CmdSyncDepot()
         {
-            return " && cd " + DepotPath + " && sd sync";
+            return " && cd " + Constants.DepotPath + " && sd sync";
         }
 
         private static string CreateChangeSpec(string sourceFilename)
@@ -216,9 +204,9 @@ namespace Onboarding.Models
             string[] lines =
             {
                 "Description:some desc",
-                "Files:" + DepotPath + sourceFilename + " # edit"
+                "Files:" + Constants.DepotPath + sourceFilename + " # edit"
             };
-            File.WriteAllLines(DepotPath + changeSpecName, lines);
+            File.WriteAllLines(Constants.DepotPath + changeSpecName, lines);
             return changeSpecName;
         }
 
@@ -226,10 +214,10 @@ namespace Onboarding.Models
         {
             while (true)
             {
-                if (File.Exists(DepotPath + changeSpecName) &&
-                    File.Exists(DepotPath + dpkfilename + ".dpk"))
+                if (File.Exists(Constants.DepotPath + changeSpecName) &&
+                    File.Exists(Constants.DepotPath + dpkfilename + ".dpk"))
                 {
-                    File.Delete(DepotPath + changeSpecName);
+                    File.Delete(Constants.DepotPath + changeSpecName);
                     break;
                 }
             }

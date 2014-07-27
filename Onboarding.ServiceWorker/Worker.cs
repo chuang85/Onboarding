@@ -6,6 +6,7 @@ using System.Threading;
 using System.Timers;
 using Onboarding.Models;
 using Onboarding.Utils;
+using Onboarding.Config;
 using Onboarding.Utils.ReviewService;
 using Onboarding.Utils.DashboardService;
 using Reviewer = Onboarding.Utils.ReviewService.Reviewer;
@@ -75,12 +76,12 @@ namespace Onboarding.ServiceWorker
 
             // Create a code review.
             var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, request.CreatedBy, MembershipCheckHelper.GetName(request.CreatedBy),
-                MembershipCheckHelper.GetEmailAddress(request.CreatedBy), SystemHelpers.GenerateReivewName(request), SystemHelpers.ProjectShortName);
+                MembershipCheckHelper.GetEmailAddress(request.CreatedBy), SystemHelpers.GenerateReivewName(request), Constants.ProjectShortName);
             // Assign ReviewId to the corresponding field in OnboardingRequest
             request.CodeFlowId = codeFlowId;
             // Create a code package and add it to the review
             CodeFlowHelpers.AddCodePackage(_rClient, request.CodeFlowId, CodeFlowHelpers.CreateCodePackage("testing pack", request.CreatedBy, request.CreatedBy,
-                CodePackageFormat.SourceDepotPack, new Uri(SystemHelpers.DepotPath + SystemHelpers.GenerateFilename(request) + ".dpk")));
+                CodePackageFormat.SourceDepotPack, new Uri(Constants.DepotPath + SystemHelpers.GenerateFilename(request) + ".dpk")));
             // Add reviewers to the review
             CodeFlowHelpers.AddReviewers(_rClient, request.CodeFlowId, new Reviewer[]
                         {

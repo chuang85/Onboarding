@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Onboarding.Config;
 using Onboarding.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Onboarding.Models.UnitTest
@@ -39,7 +40,7 @@ namespace Onboarding.Models.UnitTest
         [TestMethod()]
         public void SaveXmlToDiskTest()
         {
-            var filePath = SystemHelpers.DepotPath + SystemHelpers.GenerateFilename(_request);
+            var filePath = Constants.DepotPath + SystemHelpers.GenerateFilename(_request);
             Assert.IsFalse(File.Exists(filePath));
             SystemHelpers.SaveXmlToDisk(_request);
             Assert.IsTrue(File.Exists(filePath));
@@ -49,8 +50,8 @@ namespace Onboarding.Models.UnitTest
         [TestMethod()]
         public void AddFileToDepotAndPackTest()
         {
-            var xmlPath = SystemHelpers.DepotPath + SystemHelpers.GenerateFilename(_request);
-            var dpkPath = SystemHelpers.DepotPath + SystemHelpers.GenerateFilename(_request) + ".dpk";
+            var xmlPath = Constants.DepotPath + SystemHelpers.GenerateFilename(_request);
+            var dpkPath = Constants.DepotPath + SystemHelpers.GenerateFilename(_request) + ".dpk";
             Assert.IsFalse(File.Exists(dpkPath));
             SystemHelpers.SaveXmlToDisk(_request);
             SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(_request));

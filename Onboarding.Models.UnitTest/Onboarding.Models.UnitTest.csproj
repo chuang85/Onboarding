@@ -54,6 +54,10 @@
     <Compile Include="SystemHelpersTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Onboarding.Config\Onboarding.Config.csproj">
+      <Project>{4fc45f4a-fdfb-43c7-8995-006b5cf320bd}</Project>
+      <Name>Onboarding.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Onboarding.Models\Onboarding.Models.csproj">
       <Project>{52452FFE-C1A0-4D69-B736-9CF48BB5176B}</Project>
       <Name>Onboarding.Models</Name>
