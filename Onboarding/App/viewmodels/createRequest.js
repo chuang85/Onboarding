@@ -20,8 +20,9 @@
             optionsValue: ko.observable(),
             taskSetList: ko.observableArray(),
             permissions: ko.observableArray(),
-            
+
             /* public functions */
+            attached: attached,
             activate: activate,
             canDeactivate: canDeactivate,
             createEntity: createEntity,
@@ -31,34 +32,40 @@
             advancedToggle: advancedToggle,
             
             /* descripstions */
-            //descContact: ko.observable(),
-            //descRequestSubject: ko.observable(),
-            //descDisplayName: ko.observable(),
-            //descServiceType: ko.observable(),
-            //descAppPrincipalId: ko.observable(),
-            //descEnvironment: ko.observable(),
+            descContact: ko.observable(),
+            descRequestSubject: ko.observable(),
+            descDisplayName: ko.observable(),
+            descServiceType: ko.observable(),
+            descAppPrincipalId: ko.observable(),
+            descEnvironment: ko.observable(),
         };
-
-        var hasSubmitted = false;
 
         var serviceName = dataservices.serviceName();
 
         var manager = dataservices.manager();
+
+        var hasSubmitted = false;
 
         var hasCreated = false;
 
         // Prevent metaData not fetched exception
         var metaDataFetched = false;
 
+        function attached(view) {
+        }
+
         function activate() {
             clearInputOnloading();
             collapsePanels();
             generateAppId();
-
+            
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess);
                 dbhelper.getServiceTypes(vm);
                 dbhelper.getTaskSets(vm);
+                dbhelper.getDescriptions(vm);
+                //assignDesc();
+
                 //.then(function (data) {
                 //    console.log(data.schema.enumType);
                 //    // extract all enums as global objects

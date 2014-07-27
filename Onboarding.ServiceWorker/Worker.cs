@@ -65,6 +65,7 @@ namespace Onboarding.ServiceWorker
             DbHelpers.AddOrUpdateServiceTypes(db);
             DbHelpers.AddOrUpdateTaskSets(db);
             DbHelpers.AddOrUpdateScopes(db);
+            DbHelpers.AddOrUpdateDescriptions(db);
         }
 
         private static void HandleCreated(OnboardingRequest request)

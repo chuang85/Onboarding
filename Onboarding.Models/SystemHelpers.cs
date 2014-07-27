@@ -22,7 +22,7 @@ namespace Onboarding.Models
         public const string RbacpolicyPath = @"E:\CUMULUS_MAIN\sources\dev\ds\content\rbacpolicy\";
         public const string TaskSetsFilename = "TasksSets.xml";
         public const string ScopesFilename = "Scopes.xml";
-
+        public const string DescriptionFilePath = @"E:\CUMULUS_MAIN\sources\dev\RestServices\GraphService\Tools\descriptions.xml";
         public const string AppDataPathXml = @"../../App_Data/";
 
         /// <summary>
@@ -168,6 +168,22 @@ namespace Onboarding.Models
             }
             return scopeMap;
         }
+
+        /// <summary>
+        ///     Retrieve a list of descripstions.
+        /// </summary>
+        public static Dictionary<string, string> RetrieveDescriptions()
+        {
+            var descMap = new Dictionary<string, string>();
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(DescriptionFilePath);
+            var list = xmlDoc.GetElementsByTagName("Descriptions")[0].ChildNodes;
+            for (var i = 0; i < list.Count; i++)
+            {
+                descMap.Add(list[i].Name, list[i].InnerText);
+            }
+            return descMap;
+        } 
 
         public static string GenerateReivewName(OnboardingRequest onboardingRequest)
         {

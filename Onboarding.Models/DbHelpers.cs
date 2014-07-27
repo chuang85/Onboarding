@@ -108,5 +108,33 @@ namespace Onboarding.Models
             }
             db.SaveChanges();
         }
+
+        /// <summary>
+        /// Store name-description pair into database.
+        /// Change source xml to update description at request creation page.
+        /// </summary>
+        /// <param name="db">An instance of <see cref="OnboardingDbContext"/>.</param>
+        public static void AddOrUpdateDescriptions(OnboardingDbContext db)
+        {
+            SystemHelpers.SyncDepot();
+            foreach (var d in SystemHelpers.RetrieveDescriptions())
+            {
+                var entity = new Description
+                {
+                    Name = d.Key,
+                    Content = d.Value
+                };
+                if (db.Descriptions.Any(e => e.Name == entity.Name))
+                {
+                    db.Descriptions.Attach(entity);
+                    db.Entry(entity).State = EntityState.Modified;
+                }
+                else
+                {
+                    db.Descriptions.Add(entity);
+                }
+            }
+            db.SaveChanges();
+        }
     }
 }

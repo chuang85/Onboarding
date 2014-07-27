@@ -69,5 +69,12 @@ namespace Onboarding.Controllers
         {
             return _contextProvider.Context.Scopes;
         }
+
+        // ~/breeze/Breeze/Descriptions
+        [HttpGet]
+        public IQueryable<Description> Descriptions()
+        {
+            return _contextProvider.Context.Descriptions;
+        }
     }
 }

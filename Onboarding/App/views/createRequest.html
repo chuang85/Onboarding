@@ -10,12 +10,8 @@
                 <input class="form-control" id="contact" placeholder="Your alias" data-bind="value: contact" readonly="readonly">
             </div>
             <div class="col-xs-3">
-                <span class="pull-right pointerLink glyphicon glyphicon-question-sign" data-bind="popover: {template: 'zlz', title: 'Contact', trigger: 'focus'}"></span>
+                <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descContact, placement: 'right'}"></span>
             </div>
-            <script type="text/html" id="zlz">
-                <button class="close pull-right" type="button" data-dismiss="popover">×</button>
-                some desc
-            </script>
         </div>
         <!--RequestSubject-->
         <div class="form-group item-header">
@@ -24,7 +20,7 @@
                 <input class="form-control" id="requestSubject" data-bind="value: requestSubject">
             </div>
             <div class="col-xs-3">
-                <span class="pull-right pointerLink glyphicon glyphicon-question-sign"></span>
+                <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descRequestSubject, placement: 'right'}"></span>
             </div>
         </div>
         <!--DisplayName-->
@@ -34,7 +30,7 @@
                 <input class="form-control" id="displayName" data-bind="value: displayName">
             </div>
             <div class="col-xs-3">
-                <span class="pull-right pointerLink glyphicon glyphicon-question-sign"></span>
+                <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descDisplayName, placement: 'right'}"></span>
             </div>
         </div>
         <!--ServiceType-->
@@ -44,9 +40,9 @@
                 <input class="form-control" id="serviceType" data-bind="value: serviceType">
             </div>
             <div class="col-xs-3">
-                <span class="pull-right pointerLink glyphicon glyphicon-question-sign"></span>
+                <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descServiceType, placement: 'right'}"></span>
             </div>
-        </div>       
+        </div>
         <!--AppPrincipalId-->
         <div class="form-group item-header">
             <label for="appPrincipalId" class="col-xs-3 control-label">AppPrincipalId</label>
@@ -54,7 +50,7 @@
                 <input class="form-control" id="appPrincipalId" data-bind="value: appPrincipalId" readonly="readonly">
             </div>
             <div class="col-xs-3">
-                <span class="pull-right pointerLink glyphicon glyphicon-question-sign"></span>
+                <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descAppPrincipalId, placement: 'right'}"></span>
             </div>
         </div>
         <!--Environment-->
@@ -299,7 +295,7 @@
                 </div>
             </div>
             <div class="col-xs-3">
-                <span class="pull-right pointerLink glyphicon glyphicon-question-sign"></span>
+                <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descEnvironment, placement: 'right'}"></span>
             </div>
         </div>
         <!--ExternalUserAccountDelegationsAllowed-->
@@ -316,7 +312,7 @@
                 </div>
             </div>
             <div class="col-xs-3">
-                <span class="pull-right pointerLink glyphicon glyphicon-question-sign"></span>
+                <span class="pointerLink glyphicon glyphicon-question-sign"></span>
             </div>
         </div>
         <!--MicrosoftPolicyGroup-->
@@ -333,7 +329,7 @@
                 </div>
             </div>
             <div class="col-xs-3">
-                <span class="pull-right pointerLink glyphicon glyphicon-question-sign"></span>
+                <span class="pointerLink glyphicon glyphicon-question-sign"></span>
             </div>
         </div>
         <!--ManagedExternally-->
@@ -350,7 +346,7 @@
                 </div>
             </div>
             <div class="col-xs-3">
-                <span class="pull-right pointerLink glyphicon glyphicon-question-sign"></span>
+                <span class="pointerLink glyphicon glyphicon-question-sign"></span>
             </div>
         </div>
         <!--Permissions-->
@@ -360,7 +356,7 @@
                     <select id="permissions" class="form-control selectpicker" multiple data-bind="selectPicker: permissions, selectPickerOptions: { optionsArray: taskSetList }" data-size="5"></select>
                 </div>
             </div>-->
-        
+
         <h3 class="title-header pointerLink" data-bind="click: advancedToggle">Advanced <small>click to see more</small></h3>
         <div class="advanced-area">
             <!--ConstrainedDelegationTo-->
@@ -370,7 +366,7 @@
                     <select id="constrainedDelegationTo" class="form-control selectpicker" multiple data-size="8" data-bind="selectPicker: constrainedDelegationTo, selectPickerOptions: { optionsArray: serviceTypeList }"></select>
                 </div>
                 <div class="col-xs-3">
-                    <span class="pull-right pointerLink glyphicon glyphicon-question-sign"></span>
+                    <span class="pointerLink glyphicon glyphicon-question-sign"></span>
                 </div>
             </div>
         </div>

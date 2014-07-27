@@ -18,5 +18,7 @@ namespace Onboarding.Models
         public DbSet<TaskSet> TaskSets { get; set; }
 
         public DbSet<Scope> Scopes { get; set; }
+
+        public DbSet<Description> Descriptions { get; set; }
     }
 }
