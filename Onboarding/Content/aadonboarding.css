@@ -1,26 +1,33 @@
-﻿.spt { }
-
-.spt img.spt-cover {
-    -moz-box-shadow: 1px 1px 5px #999;
-    -webkit-box-shadow: 1px 1px 5px #999;
-    border: solid 3px #fff;
-    box-shadow: 1px 1px 5px #999;
-    float: left;
-    margin: 4px;
-    max-height: 250px;
-    max-width: 250px;
+﻿.spt {
 }
 
-.spt div.spt-environment {
-    float: left;
-    height: 200px;
+    .spt img.spt-cover {
+        -moz-box-shadow: 1px 1px 5px #999;
+        -webkit-box-shadow: 1px 1px 5px #999;
+        border: solid 3px #fff;
+        box-shadow: 1px 1px 5px #999;
+        float: left;
+        margin: 4px;
+        max-height: 250px;
+        max-width: 250px;
+    }
+
+    .spt div.spt-environment {
+        float: left;
+        height: 200px;
+    }
+
+    .spt div.spt-name {
+        font-weight: bold;
+    }
+
+.pointerLink {
+    cursor: pointer;
 }
 
-.spt div.spt-name { font-weight: bold; }
-
-.pointerLink { cursor: pointer; }
-
-.propertyError { color: #f00; }
+.propertyError {
+    color: #f00;
+}
 
 .center {
     display: table;
@@ -29,7 +36,9 @@
     width: auto;
 }
 
-.text-center { text-align: center; }
+.text-center {
+    text-align: center;
+}
 
 .chart-layer-editor .layer-btn,
 .backtrack-stack .layer-btn {
@@ -39,35 +48,72 @@
 }
 
 .bs-callout {
-  margin: 20px 0;
-  padding: 15px 30px 15px 15px;
-  border-left: 5px solid #eee;
+    margin: 20px 0;
+    padding: 15px 30px 15px 15px;
+    border-left: 5px solid #eee;
 }
-.bs-callout h4 {
-  margin-top: 0;
-}
-.bs-callout p:last-child {
-  margin-bottom: 0;
-}
-.bs-callout code,
-.bs-callout .highlight {
-  background-color: #fff;
-}
- 
+
+    .bs-callout h4 {
+        margin-top: 0;
+    }
+
+    .bs-callout p:last-child {
+        margin-bottom: 0;
+    }
+
+    .bs-callout code,
+    .bs-callout .highlight {
+        background-color: #fff;
+    }
+
 /* Themes for different contexts */
 .bs-callout-danger {
-  background-color: #fcf2f2;
-  border-color: #dFb5b4;
+    background-color: #fcf2f2;
+    border-color: #dFb5b4;
 }
+
 .bs-callout-warning {
-  background-color: #fefbed;
-  border-color: #f1e7bc;
+    background-color: #fefbed;
+    border-color: #f1e7bc;
 }
+
 .bs-callout-info {
-  background-color: #f0f7fd;
-  border-color: #d0e3f0;
+    background-color: #f0f7fd;
+    border-color: #d0e3f0;
 }
 
 span.glyphicon-question-sign {
-    font-size: 20px
+    font-size: 20px;
+}
+
+.title-header {
+    padding: 20px;
+    border-bottom: 2px solid #88b9e3;
+}
+
+.item-header {
+    position: relative;
+    padding-bottom: 22px;
+    margin-top: 22px;
+    min-height: 37px;
+    border-bottom: 1px solid #eee;
+}
+
+.form-top {
+    padding-bottom: 10px;
+    margin: 40px 0 20px;
+}
+
+.form-bottom {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.home-btn-group {
+    margin: 0px auto 10px; 
+    max-width: 400px;
+}
+
+.advanced-area {
+    display: none;
 }

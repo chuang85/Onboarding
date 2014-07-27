@@ -9,10 +9,11 @@
         activate: function () {
             router.map([
                 { route: '', title: 'Home', moduleId: 'viewmodels/home', nav: true },
-                { route: 'getStarted', title: 'Get Started', moduleId: 'viewmodels/getStarted', nav: true },
-                { route: 'request', title: 'View Request', moduleId: 'viewmodels/request', nav: true },
+                { route: 'createRequest', title: 'Create Request', moduleId: 'viewmodels/createRequest', nav:true },
+                { route: 'viewRequest', title: 'View Request', moduleId: 'viewmodels/viewRequest', nav: true },
+                { route: 'updateProperties', title: 'Update Properties', moduleId: 'viewmodels/updateProperties', nav: true },
+                { route: 'addCert', title: 'Add Certificate', moduleId: 'viewmodel/addCert', nav: true},
                 { route: 'info', title: 'More Info', moduleId: 'viewmodels/info', nav: true },
-                { route: 'createSpt', title: 'Create SPT', moduleId: 'viewmodels/createSpt' },
                 { route: 'request/detail/:id', title: 'Detail', moduleId: 'viewmodels/detail' },
                 { route: 'request/update/:id', title: 'Update', moduleId: 'viewmodels/update' },
                 { route: 'request/cert/:id', title: 'Cert', moduleId: 'viewmodels/cert' }

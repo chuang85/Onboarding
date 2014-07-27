@@ -2,8 +2,13 @@
     function (router, app, guidgenerator, dataformatter, dataservices, jsonbuilder, dbhelper) {
 
         var vm = {
+            /* Request data */
             contact: ko.observable(window.currentUser),
             requestSubject: ko.observable(),
+            // Need to change this
+            requestType: "CreateSPT",
+
+            /* SPT data */
             displayName: ko.observable(),
             serviceType: ko.observable(),
             appPrincipalId: ko.observable(),
@@ -15,14 +20,23 @@
             optionsValue: ko.observable(),
             taskSetList: ko.observableArray(),
             permissions: ko.observableArray(),
-            // Set request type by default when navigating to this page
-            requestType: "CreateSPT",
+            
+            /* public functions */
             activate: activate,
             canDeactivate: canDeactivate,
             createEntity: createEntity,
             clearInput: clearInput,
             goBack: goBack,
             addItem: addItem,
+            advancedToggle: advancedToggle,
+            
+            /* descripstions */
+            //descContact: ko.observable(),
+            //descRequestSubject: ko.observable(),
+            //descDisplayName: ko.observable(),
+            //descServiceType: ko.observable(),
+            //descAppPrincipalId: ko.observable(),
+            //descEnvironment: ko.observable(),
         };
 
         var hasSubmitted = false;
@@ -40,11 +54,11 @@
             clearInputOnloading();
             collapsePanels();
             generateAppId();
-            dbhelper.getServiceTypes(vm);
-            dbhelper.getTaskSets(vm);
 
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess);
+                dbhelper.getServiceTypes(vm);
+                dbhelper.getTaskSets(vm);
                 //.then(function (data) {
                 //    console.log(data.schema.enumType);
                 //    // extract all enums as global objects
@@ -153,6 +167,10 @@
             fieldWrapper.append(inputField);
             fieldWrapper.append(removeButton);
             $("." + envType + "-" + itemType + "-section").append(fieldWrapper);
+        }
+
+        function advancedToggle() {
+            $('.advanced-area').toggle();
         }
 
         /********************PRIVATE METHODS********************/

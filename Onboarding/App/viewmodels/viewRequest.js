@@ -62,6 +62,7 @@
 
     function refresh() {
         getRequests();
+        toastr.success("Requests updated");
     };
 
     return vm;
