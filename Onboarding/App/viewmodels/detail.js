@@ -5,15 +5,35 @@
             request: ko.observable(),
             activate: activate,
             cancelRequest: cancelRequest,
-            select: select,
             goBack: goBack,
             removeDomain: removeDomain
         };
 
+        var serviceName = dataservices.serviceName();
+
         var manager = dataservices.manager();
 
+        var hasSubmitted = false;
+
+        // Prevent metaData not fetched exception
+        var metaDataFetched = false;
+
         function activate(id) {
+            clearInputOnloading();
             hideButtons();
+            if (!manager.metadataStore.hasMetadataFor(serviceName)) {
+                manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
+                .then(dataservices.fetchEnum);
+            }
+
+            function fetchMetadataSuccess(rawMetadata) {
+                toastr.info("Loading data on initialization...");
+                metaDataFetched = true;
+            }
+
+            function fetchMetadataFail(exception) {
+                toastr.error("Fetch metadata failed");
+            }
             return getRequest(id);
         }
 
@@ -56,34 +76,34 @@
         /// </summary>
         function goCancel(data) {
             if (data == 'No') {
-                toastr.info('Aborted');
+                toastr.info('Request not canceled');
             } else {
-                vm.request().State("Canceled");
-                manager.saveChanges()
-                    .then(cancelSucceeded)
-                    .fail(cancelFailed);
-            }
-
-            function cancelSucceeded(data) {
-                toastr.success("Request Canceled");
-                router.navigate('#request');
-            }
-
-            function cancelFailed(error) {
-                toastr.error("Request Cancel Failed");
-                manager.rejectChanges();
-                app.showMessage("The request could not be deleted.", "Cancel failed");
+                if (metaDataFetched && !hasSubmitted) {
+                    hasSubmitted = true;
+                    vm.request().State(RequestState.Canceled);
+                    manager.saveChanges()
+                        .then(cancelSucceeded)
+                        .fail(cancelFailed);
+                }
             }
         }
+
+        function cancelSucceeded(data) {
+            toastr.success("Request Canceled");
+            router.navigate('#viewRequest');
+        }
+
+        function cancelFailed(error) {
+            hasSubmitted = false;
+            toastr.error("Request Cancel Failed");
+            manager.rejectChanges();
+            app.showMessage("The request could not be deleted.", "Cancel failed");
+        }
+
 
         function goBack() {
             router.navigateBack();
         };
-
-        function select(item) {
-            item.viewUrl = 'views/viewSpt';
-            app.showDialog(item);
-        }
 
         function removeDomain(raw) {
             return dataformatter.removeDomain(raw);
@@ -91,17 +111,17 @@
 
         /********************PRIVATE METHODS********************/
         function hideButtons() {
-            $(".update-spt-btn").hide();
             $(".cancel-request-btn").hide();
+        }
+
+        function clearInputOnloading() {
+            hasSubmitted = false;
         }
 
         function validateIdentity() {
             if (vm.request().CreatedBy() == window.currentUser) {
-                if (vm.request().State() != "Canceled") {
+                if (vm.request().State() != RequestState.Canceled) {
                     $(".cancel-request-btn").show();
-                    if (vm.request().Type() == "CreateSPT") {
-                        $(".update-spt-btn").show();
-                    }
                 }
             }
         }

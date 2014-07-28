@@ -22,7 +22,7 @@ namespace Onboarding.ServiceWorker
             InitializeClients();
             using (var db = new OnboardingDbContext())
             {
-                UpdateDbInfo(db);
+                //UpdateDbInfo(db);
                 HandleRequests(db);
                 db.SaveChanges();
             }
@@ -57,6 +57,15 @@ namespace Onboarding.ServiceWorker
                     case RequestState.PendingReview:
                         HandlePendingReview(request);
                         break;
+                    case RequestState.ReviewCompleted:
+                        HandleReviewCompleted(request);
+                        break;
+                    case RequestState.RTDQueued:
+                        HandleRtdQueued(request);
+                        break;
+                    case RequestState.RTDApproved:
+                        HandleRtdApproved(request);
+                        break;
                 }
             }
         }
@@ -71,28 +80,36 @@ namespace Onboarding.ServiceWorker
 
         private static void HandleCreated(OnboardingRequest request)
         {
-            SystemHelpers.SaveXmlToDisk(request);
-            SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(request));
+            if (request.Type == RequestType.CreateSPT || request.Type == RequestType.UpdateSPT)
+            {
+                SystemHelpers.SaveXmlToDisk(request);
+                SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(request));
 
-            // Create a code review.
-            var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, request.CreatedBy, MembershipCheckHelpers.GetName(request.CreatedBy),
-                MembershipCheckHelpers.GetEmailAddress(request.CreatedBy), SystemHelpers.GenerateReivewName(request), Constants.ProjectShortName);
-            // Assign ReviewId to the corresponding field in OnboardingRequest
-            request.CodeFlowId = codeFlowId;
-            // Create a code package and add it to the review
-            CodeFlowHelpers.AddCodePackage(_rClient, request.CodeFlowId, CodeFlowHelpers.CreateCodePackage("testing pack", request.CreatedBy, request.CreatedBy,
-                CodePackageFormat.SourceDepotPack, new Uri(Constants.DepotPath + SystemHelpers.GenerateFilename(request) + ".dpk")));
-            // Add reviewers to the review
-            CodeFlowHelpers.AddReviewers(_rClient, request.CodeFlowId, new Reviewer[]
-                        {
-                            CodeFlowHelpers.CreateReviewer(request.CreatedBy, MembershipCheckHelpers.GetName(request.CreatedBy), MembershipCheckHelpers.GetEmailAddress(request.CreatedBy), true)
-                        });
-            // Publish the review
-            CodeFlowHelpers.PublishReview(_rClient, request.CodeFlowId, "meesage from author");
-            // Change State from "Created" to "PendingReview"
-            request.State = RequestState.PendingReview;
-            // Revert file to clean the changelist
-            SystemHelpers.RevertFile(SystemHelpers.GenerateFilename(request));
+                // Create a code review.
+                var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, request.CreatedBy,
+                    MembershipCheckHelpers.GetName(request.CreatedBy),
+                    MembershipCheckHelpers.GetEmailAddress(request.CreatedBy), SystemHelpers.GenerateReivewName(request),
+                    Constants.ProjectShortName);
+                // Assign ReviewId to the corresponding field in OnboardingRequest
+                request.CodeFlowId = codeFlowId;
+                // Create a code package and add it to the review
+                CodeFlowHelpers.AddCodePackage(_rClient, request.CodeFlowId,
+                    CodeFlowHelpers.CreateCodePackage("testing pack", request.CreatedBy, request.CreatedBy,
+                        CodePackageFormat.SourceDepotPack,
+                        new Uri(Constants.DepotPath + SystemHelpers.GenerateFilename(request) + ".dpk")));
+                // Add reviewers to the review
+                CodeFlowHelpers.AddReviewers(_rClient, request.CodeFlowId, new Reviewer[]
+                {
+                    CodeFlowHelpers.CreateReviewer(request.CreatedBy, MembershipCheckHelpers.GetName(request.CreatedBy),
+                        MembershipCheckHelpers.GetEmailAddress(request.CreatedBy), true)
+                });
+                // Publish the review
+                CodeFlowHelpers.PublishReview(_rClient, request.CodeFlowId, "meesage from author");
+                // Change State from "Created" to "PendingReview"
+                request.State = RequestState.PendingReview;
+                // Revert file to clean the changelist
+                SystemHelpers.RevertFile(SystemHelpers.GenerateFilename(request));
+            }
         }
 
         private static void HandlePendingReview(OnboardingRequest request)
@@ -101,6 +118,21 @@ namespace Onboarding.ServiceWorker
             {
                 request.State = RequestState.ReviewCompleted;
             }
+        }
+
+        private static void HandleReviewCompleted(OnboardingRequest request)
+        {
+            //TODO: fire off RTD
+        }
+
+        private static void HandleRtdQueued(OnboardingRequest request)
+        {
+            //TODO: run RTD
+        }
+
+        private static void HandleRtdApproved(OnboardingRequest request)
+        {
+            //TODO: mark completed
         }
     }
 }

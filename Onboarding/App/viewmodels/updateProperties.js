@@ -42,6 +42,7 @@
         var metaDataFetched = false;
 
         function activate() {
+            clearInputOnloading();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 loadDataFromDb();
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
@@ -142,6 +143,10 @@
         }
 
         /********************PRIVATE METHODS********************/
+        function clearInputOnloading() {
+            hasSubmitted = false;
+        }
+
         function loadDataFromDb() {
             dbhelper.getExistingSptsNames(vm);
             dbhelper.getDescriptions(vm);

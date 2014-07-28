@@ -65,16 +65,12 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2">
-                <!--Update button-->
-                <a style="display: none" class="btn btn-default update-spt-btn" data-bind="attr: { href: '#request/update/' + request().RequestId() }">
-                    <span>Update SPT</span>
-                </a>
-                <!--Cancel button-->
-                <a style="display: none" class="btn btn-danger cancel-request-btn" data-bind="click: cancelRequest">
-                    <span>Cancel Request</span>
-                </a>
+        <!--Cancel button-->
+        <div class="form-group form-bottom">
+            <div class="col-xs-offset-4 col-xs-4">
+                <div style="margin: 0px auto 10px; max-width: 300px;">
+                    <button style="display: none" id="submit-btn" class="btn btn-danger btn-block cancel-request-btn" data-bind="click: cancelRequest">Cancel Request</button>
+                </div>
             </div>
         </div>
     </form>

@@ -15,8 +15,6 @@
                 { route: 'addCert', title: 'Add Certificate', moduleId: 'viewmodel/addCert', nav: true},
                 { route: 'info', title: 'More Info', moduleId: 'viewmodels/info', nav: true },
                 { route: 'request/detail/:id', title: 'Detail', moduleId: 'viewmodels/detail' },
-                { route: 'request/update/:id', title: 'Update', moduleId: 'viewmodels/update' },
-                { route: 'request/cert/:id', title: 'Cert', moduleId: 'viewmodels/cert' }
             ]).buildNavigationModel();
 
             return router.activate();
