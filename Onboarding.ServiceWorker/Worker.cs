@@ -51,10 +51,10 @@ namespace Onboarding.ServiceWorker
                 //ct.ThrowIfCancellationRequested();
                 switch (request.State)
                 {
-                    case "Created":
+                    case RequestState.Created:
                         HandleCreated(request);
                         break;
-                    case "PendingReview":
+                    case RequestState.PendingReview:
                         HandlePendingReview(request);
                         break;
                 }
@@ -90,7 +90,7 @@ namespace Onboarding.ServiceWorker
             // Publish the review
             CodeFlowHelpers.PublishReview(_rClient, request.CodeFlowId, "meesage from author");
             // Change State from "Created" to "PendingReview"
-            request.State = "PendingReview";
+            request.State = RequestState.PendingReview;
             // Revert file to clean the changelist
             SystemHelpers.RevertFile(SystemHelpers.GenerateFilename(request));
         }
@@ -99,7 +99,7 @@ namespace Onboarding.ServiceWorker
         {
             if (CodeFlowHelpers.ReviewCompleted(_qClient, request.CodeFlowId, request.CreatedBy))
             {
-                request.State = "ReviewApproved";
+                request.State = RequestState.ReviewCompleted;
             }
         }
     }

@@ -5,8 +5,7 @@
             /* Request data */
             contact: ko.observable(window.currentUser),
             requestSubject: ko.observable(),
-            // Need to change this
-            requestType: "CreateSPT",
+            requestType: ko.observable(),
 
             /* SPT data */
             displayName: ko.observable(),
@@ -60,30 +59,21 @@
             generateAppId();
             
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
-                manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess);
-                dbhelper.getServiceTypes(vm);
-                dbhelper.getTaskSets(vm);
-                dbhelper.getDescriptions(vm);
-                //assignDesc();
-
-                //.then(function (data) {
-                //    console.log(data.schema.enumType);
-                //    // extract all enums as global objects
-                //    console.log("out");
-                //    ko.utils.arrayForEach(data.schema.enumType, function (c) {
-                //        console.log("mid");
-                //        window[c.name] = {};
-                //        ko.utils.arrayForEach(c.member, function (m) {
-                //            console.log("in");
-                //            window[c.name][m.name] = m.value;
-                //            console.log(c.name);
-                //            console.log(m.name);
-                //        });
-                //    });
-                //    console.log("start");
-                //    console.log(window);
-                //    console.log("end");
-                //});
+                manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
+                .then(function (data) {
+                    // Extract all enums as global objects
+                    ko.utils.arrayForEach(data.schema.enumType, function (c) {
+                        window[c.name] = {};
+                        ko.utils.arrayForEach(c.member, function (m) {
+                            window[c.name][m.name] = m.value;
+                            console.log(c.name);
+                            console.log(m.name);
+                        });
+                    });
+                    dbhelper.getServiceTypes(vm);
+                    dbhelper.getTaskSets(vm);
+                    dbhelper.getDescriptions(vm);
+                });
             }
 
             function fetchMetadataSuccess(rawMetadata) {
@@ -114,6 +104,7 @@
         function createEntity() {
             if (metaDataFetched && !hasSubmitted) {
                 hasSubmitted = true;
+                determinRequestType();
                 var xmlString = dataformatter.removeUndefined(dataformatter.formatXml(dataformatter.json2xml(jsonbuilder.createJSONSpt(vm))));
 
                 var newOnboardingRequest = manager.
@@ -122,8 +113,9 @@
                         CreatedBy: vm.contact(),
                         RequestSubject: vm.requestSubject(),
                         TempXmlStore: xmlString,
-                        Type: vm.requestType
-                    });
+                        Type: vm.requestType(),
+                        State: RequestState.Created
+            });
                 manager.addEntity(newOnboardingRequest);
                 manager.saveChanges()
                     .then(createSucceeded)
@@ -132,7 +124,7 @@
                 function createSucceeded(data) {
                     hasCreated = true;
                     toastr.success("Created");
-                    router.navigate('#/request');
+                    router.navigate('#/viewRequest');
                 }
 
                 function createFailed(error) {
@@ -201,6 +193,11 @@
         function collapsePanels() {
             $('.fieldwrapper').remove();
             $('.panel-collapse').removeClass('in');
+        }
+
+        function determinRequestType() {
+            // TODO: Modify this
+            vm.requestType(RequestType.CreateSPT);
         }
 
         return vm;

@@ -24,8 +24,8 @@ namespace Onboarding.Models.UnitTest
                 RequestId = 1,
                 RequestSubject = "CreatedRequest",
                 CreatedBy = @"REDMOND\t-chehu",
-                State = "Created",
-                Type = "CreateSPT",
+                State = RequestState.Created,
+                Type = RequestType.CreateSPT,
                 Blob = blob
             };
         }

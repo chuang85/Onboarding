@@ -9,7 +9,6 @@ namespace Onboarding.Config
     public static class Constants
     {
         public const string ProjectShortName = "MSODS";
-        public const string EmailDomain = "@microsoft.com";
         public const string CmdPath = @"C:\WINDOWS\system32\cmd.exe";
         public const string CmdConfigArgs =
             @"/k set inetroot=e:\cumulus_main&set corextbranch=main&e:\cumulus_main\tools\path1st\myenv.cmd";

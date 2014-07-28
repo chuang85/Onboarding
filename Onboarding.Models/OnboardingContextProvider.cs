@@ -19,10 +19,6 @@ namespace Onboarding.Models
                     // Set CreatedDate & ModifiedDate to Now.
                     SetCreatedTimeOnInitialization(onboardingRequest);
 
-                    // Set RequestState to "Created".
-                    //onboardingRequest.State = RequestState.Created;
-                    onboardingRequest.State = "Created";
-
                     // Write string formatted xml into binary and assign it to Blob field.
                     if (onboardingRequest.TempXmlStore != null)
                     {

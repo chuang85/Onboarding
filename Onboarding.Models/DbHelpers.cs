@@ -18,8 +18,8 @@ namespace Onboarding.Models
         {
             return
                 from d in db.OnboardingRequests
-                where !d.State.Equals("Completed") &&
-                !d.State.Equals("Canceled")
+                where d.State != RequestState.Completed &&
+                d.State != RequestState.Canceled
                 select d;
         }
 
