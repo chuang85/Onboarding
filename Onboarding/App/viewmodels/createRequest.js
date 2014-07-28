@@ -170,8 +170,10 @@
             vm.externalUserAccountDelegationsAllowed("");
             vm.microsoftPolicyGroup("");
             vm.managedExternally("");
+            vm.constrainedDelegationTo([]);
             $("input[type=radio]").attr("checked", false);
             $(":input").not("#appPrincipalId, #contact").val("");
+            $('.advanced-area').hide();
         }
 
         function collapsePanels() {
