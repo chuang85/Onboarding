@@ -63,10 +63,10 @@ namespace Onboarding.ServiceWorker
 
         private static void UpdateDbInfo(OnboardingDbContext db)
         {
-            DbHelpers.AddOrUpdateServiceTypes(db);
             DbHelpers.AddOrUpdateTaskSets(db);
             DbHelpers.AddOrUpdateScopes(db);
             DbHelpers.AddOrUpdateDescriptions(db);
+            DbHelpers.AddOrUpdateExistingSpts(db);
         }
 
         private static void HandleCreated(OnboardingRequest request)
@@ -75,8 +75,8 @@ namespace Onboarding.ServiceWorker
             SystemHelpers.AddFileToDepotAndPack(SystemHelpers.GenerateFilename(request));
 
             // Create a code review.
-            var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, request.CreatedBy, MembershipCheckHelper.GetName(request.CreatedBy),
-                MembershipCheckHelper.GetEmailAddress(request.CreatedBy), SystemHelpers.GenerateReivewName(request), Constants.ProjectShortName);
+            var codeFlowId = CodeFlowHelpers.CreateReview(_rClient, request.CreatedBy, MembershipCheckHelpers.GetName(request.CreatedBy),
+                MembershipCheckHelpers.GetEmailAddress(request.CreatedBy), SystemHelpers.GenerateReivewName(request), Constants.ProjectShortName);
             // Assign ReviewId to the corresponding field in OnboardingRequest
             request.CodeFlowId = codeFlowId;
             // Create a code package and add it to the review
@@ -85,7 +85,7 @@ namespace Onboarding.ServiceWorker
             // Add reviewers to the review
             CodeFlowHelpers.AddReviewers(_rClient, request.CodeFlowId, new Reviewer[]
                         {
-                            CodeFlowHelpers.CreateReviewer(request.CreatedBy, MembershipCheckHelper.GetName(request.CreatedBy), MembershipCheckHelper.GetEmailAddress(request.CreatedBy), true)
+                            CodeFlowHelpers.CreateReviewer(request.CreatedBy, MembershipCheckHelpers.GetName(request.CreatedBy), MembershipCheckHelpers.GetEmailAddress(request.CreatedBy), true)
                         });
             // Publish the review
             CodeFlowHelpers.PublishReview(_rClient, request.CodeFlowId, "meesage from author");

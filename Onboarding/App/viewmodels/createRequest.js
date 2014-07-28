@@ -59,6 +59,7 @@
             generateAppId();
             
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
+                loadDataFromDb();
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
                 .then(function (data) {
                     // Extract all enums as global objects
@@ -70,14 +71,11 @@
                             console.log(m.name);
                         });
                     });
-                    dbhelper.getServiceTypes(vm);
-                    dbhelper.getTaskSets(vm);
-                    dbhelper.getDescriptions(vm);
                 });
             }
 
             function fetchMetadataSuccess(rawMetadata) {
-                toastr.success("Fetch metadata succeed");
+                toastr.info("Loading data on initialization...");
                 metaDataFetched = true;
             }
 
@@ -193,6 +191,13 @@
         function collapsePanels() {
             $('.fieldwrapper').remove();
             $('.panel-collapse').removeClass('in');
+        }
+
+        function loadDataFromDb() {
+            dbhelper.getServiceTypes(vm);
+            dbhelper.getTaskSets(vm);
+            dbhelper.getDescriptions(vm);
+            
         }
 
         function determinRequestType() {

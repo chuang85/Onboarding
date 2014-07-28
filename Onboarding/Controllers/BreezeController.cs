@@ -49,13 +49,6 @@ namespace Onboarding.Controllers
             return _contextProvider.Context.OnboardingRequests;
         }
 
-        // ~/breeze/Breeze/ServiceTypes
-        [HttpGet]
-        public IQueryable<ServiceType> ServiceTypes()
-        {
-            return _contextProvider.Context.ServiceTypes;
-        }
-
         // ~/breeze/Breeze/TaskSets
         [HttpGet]
         public IQueryable<TaskSet> TaskSets()
@@ -75,6 +68,13 @@ namespace Onboarding.Controllers
         public IQueryable<Description> Descriptions()
         {
             return _contextProvider.Context.Descriptions;
+        }
+
+        // ~/breeze/Breeze/ExistingSpts
+        [HttpGet]
+        public IQueryable<ExistingSpt> ExistingSpts()
+        {
+            return _contextProvider.Context.ExistingSpts;
         }
     }
 }

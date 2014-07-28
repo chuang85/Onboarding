@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Onboarding.Models
 {
-    public class ServiceType
+    public class ExistingSpt
     {
-        //[Key]
-        //public string ServiceTypeId { get; set; } // Same as AppPrincipalId
         [Key]
-        public string ServiceTypeName { get; set; }
+        public string Name { get; set; }
+
+        public string XmlContent { get; set; }
+
+        public string ServiceType { get; set; }
     }
 }

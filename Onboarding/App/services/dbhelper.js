@@ -2,6 +2,7 @@
     function (dataservices) {
 
         var vm = {
+            getExistingSpts: getExistingSpts,
             getServiceTypes: getServiceTypes,
             getTaskSets: getTaskSets,
             getDescriptions: getDescriptions
@@ -9,11 +10,11 @@
 
         var manager = dataservices.manager();
 
-        function getServiceTypes(vm) {
+        function getExistingSpts(vm) {
             var query = breeze.EntityQuery
-                    .from("ServiceTypes")
-                    .select("ServiceTypeName")
-                    .orderBy("ServiceTypeName");
+                    .from("ExistingSpts")
+                    .select("Name, XmlContent")
+                    .orderBy("Name");
 
             return manager
             .executeQuery(query)
@@ -22,7 +23,29 @@
 
             function querySucceeded(data) {
                 for (var i = 0; i < data.results.length; i++) {
-                    vm.serviceTypeList.push(data.results[i]["ServiceTypeName"]);
+                    vm.sptList.push(data.results[i]["XmlContent"]);
+                }
+            }
+
+            function queryFailed(error) {
+                toastr.error("Query failed: " + error.message);
+            }
+        }
+
+        function getServiceTypes(vm) {
+            var query = breeze.EntityQuery
+                    .from("ExistingSpts")
+                    .select("ServiceType")
+                    .orderBy("ServiceType");
+
+            return manager
+            .executeQuery(query)
+            .then(querySucceeded)
+            .fail(queryFailed);
+
+            function querySucceeded(data) {
+                for (var i = 0; i < data.results.length; i++) {
+                    vm.serviceTypeList.push(data.results[i]["ServiceType"]);
                 }
             }
 

@@ -16,15 +16,15 @@ namespace Onboarding.Utils.UnitTest
         [TestMethod()]
         public void GetNameTest()
         {
-            Assert.AreEqual("Chengkan Huang", MembershipCheckHelper.GetName(User0));
-            Assert.AreEqual("Sriram Dhanasekaran", MembershipCheckHelper.GetName(User1));
+            Assert.AreEqual("Chengkan Huang", MembershipCheckHelpers.GetName(User0));
+            Assert.AreEqual("Sriram Dhanasekaran", MembershipCheckHelpers.GetName(User1));
         }
 
         [TestMethod()]
         public void GetEmailAddressTest()
         {
-            Assert.AreEqual("t-chehu@microsoft.com", MembershipCheckHelper.GetEmailAddress(User0));
-            Assert.AreEqual("sriramd@microsoft.com", MembershipCheckHelper.GetEmailAddress(User1));
+            Assert.AreEqual("t-chehu@microsoft.com", MembershipCheckHelpers.GetEmailAddress(User0));
+            Assert.AreEqual("sriramd@microsoft.com", MembershipCheckHelpers.GetEmailAddress(User1));
         }
     }
 }

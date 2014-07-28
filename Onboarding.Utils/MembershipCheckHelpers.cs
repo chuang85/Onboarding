@@ -9,7 +9,7 @@ using System.DirectoryServices;
 
 namespace Onboarding.Utils
 {
-    public static class MembershipCheckHelper
+    public static class MembershipCheckHelpers
     {
         /// <summary>
         /// Get the full display name of a given user.

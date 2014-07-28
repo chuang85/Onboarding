@@ -8,6 +8,7 @@ using System.Threading;
 using System.Web;
 using System.Xml;
 using Onboarding.Config;
+using Onboarding.Models;
 
 namespace Onboarding.Models
 {
@@ -93,85 +94,6 @@ namespace Onboarding.Models
             };
             var process = Process.Start(startInfo);
         }
-
-        /// <summary>
-        ///     Retrieve a list of ServiceTypes,.
-        /// </summary>
-        //public static Dictionary<string, string> RetriveServiceTypeMap()
-        public static List<string>  RetriveServiceTypeMap()
-        {
-            //var serviceTypeMap = new Dictionary<string, string>();
-            var serviceList = new List<string>();
-            foreach (var file in Directory.EnumerateFiles(Constants.ProductCatalogPath, "*.xml"))
-            {
-                var xmlDoc = new XmlDocument();
-                xmlDoc.Load(file);
-                var name = xmlDoc.GetElementsByTagName("ServiceType")[0];
-                var id = xmlDoc.GetElementsByTagName("AppPrincipalID")[0];
-                if (name != null && id != null)
-                {
-                    //serviceTypeMap.Add(name.InnerText, id.InnerText);
-                    serviceList.Add(name.InnerText);
-                }
-            }
-            return serviceList;
-        }
-
-        /// <summary>
-        ///     Retrieve a list of TaskSets. 
-        /// </summary>
-        public static Dictionary<string, string> RetrieveTaskSetMap()
-        {
-            var taskSetMap = new Dictionary<string, string>();
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load(Constants.RbacpolicyPath + Constants.TaskSetsFilename);
-            var nameList = xmlDoc.GetElementsByTagName("DisplayName");
-            var idList = xmlDoc.GetElementsByTagName("TaskSetId");
-            if (nameList != null)
-            {
-                for (var i = 0; i < nameList.Count; i++)
-                {
-                    taskSetMap.Add(nameList[i].InnerText, idList[i].InnerText);
-                }
-            }
-            return taskSetMap;
-        }
-
-        /// <summary>
-        ///     Retrieve a list of Scopes. 
-        /// </summary>
-        public static Dictionary<string, string> RetrieveScopeMap()
-        {
-            var scopeMap = new Dictionary<string, string>();
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load(Constants.RbacpolicyPath + Constants.ScopesFilename);
-            var nameList = xmlDoc.GetElementsByTagName("DisplayName");
-            var idList = xmlDoc.GetElementsByTagName("ScopeId");
-            if (nameList != null)
-            {
-                for (var i = 0; i < nameList.Count; i++)
-                {
-                    scopeMap.Add(nameList[i].InnerText, idList[i].InnerText);
-                }
-            }
-            return scopeMap;
-        }
-
-        /// <summary>
-        ///     Retrieve a list of descripstions.
-        /// </summary>
-        public static Dictionary<string, string> RetrieveDescriptions()
-        {
-            var descMap = new Dictionary<string, string>();
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load(Constants.DescriptionFilePath);
-            var list = xmlDoc.GetElementsByTagName("Descriptions")[0].ChildNodes;
-            for (var i = 0; i < list.Count; i++)
-            {
-                descMap.Add(list[i].Name, list[i].InnerText);
-            }
-            return descMap;
-        } 
 
         public static string GenerateReivewName(OnboardingRequest onboardingRequest)
         {

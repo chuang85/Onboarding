@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Onboarding.Config;
-using Onboarding.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace Onboarding.Models.UnitTest
 {
     [TestClass()]
@@ -21,7 +21,7 @@ namespace Onboarding.Models.UnitTest
             byte[] blob = SystemHelpers.GenerateBlobFromString(DummyXml);
             _request = new OnboardingRequest
             {
-                RequestId = 1,
+                RequestId = 15,
                 RequestSubject = "CreatedRequest",
                 CreatedBy = @"REDMOND\t-chehu",
                 State = RequestState.Created,
@@ -71,13 +71,13 @@ namespace Onboarding.Models.UnitTest
         [TestMethod()]
         public void GenerateReivewNameTest()
         {
-            Assert.AreEqual("CreateSPT-RequestId-1", SystemHelpers.GenerateReivewName(_request));
+            Assert.AreEqual("CreateSPT-RequestId-15", SystemHelpers.GenerateReivewName(_request));
         }
 
         [TestMethod()]
         public void GenerateFilenameTest()
         {
-            Assert.AreEqual("1_t-chehu.xml", SystemHelpers.GenerateFilename(_request));
+            Assert.AreEqual("15_t-chehu.xml", SystemHelpers.GenerateFilename(_request));
         }
 
     }
