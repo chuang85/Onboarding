@@ -100,26 +100,6 @@
                 }
             }
         }
-        /// <summary>
-        /// Listener for update button.
-        /// Make change to DB.
-        /// </summary>
-        //function saveChanges() {
-        //    var xmlString = dataformatter.formatXml(dataformatter.json2xml(jsonbuilder.createJSONSpt(vm)));
-        //    vm.editableRequest().TempXmlStore(xmlString);
-        //    manager.saveChanges()
-        //        .then(saveSucceeded)
-        //        .fail(saveFailed);
-
-        //    function saveSucceeded(data) {
-        //        toastr.success("Saved");
-        //        router.navigate('#request');
-        //    }
-
-        //    function saveFailed(error) {
-        //        toastr.error("Save failed");
-        //    }
-        //};
 
         function addItem(envType, itemType) {
             var fieldWrapper = $("<div class=\"fieldwrapper row\" />");
@@ -144,6 +124,7 @@
 
         /********************PRIVATE METHODS********************/
         function clearInputOnloading() {
+            hasCreated = false;
             hasSubmitted = false;
         }
 

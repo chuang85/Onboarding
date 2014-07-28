@@ -1,71 +1,121 @@
-﻿define(['plugins/router', 'durandal/app'],
-    function(router, app) {
+﻿define(['plugins/router', 'durandal/app', 'services/dataservices', 'services/dbhelper'],
+    function (router, app, dataservices, dbhelper) {
 
         var vm = {
-            certSpt: ko.observable(),
-            availableEnvironment: ko.observableArray(['Not specified', 'grn001', 'grn002', 'grnppe']),
+            /* Request data */
+            contact: ko.observable(window.currentUser),
+            requestSubject: ko.observable(),
+            requestType: ko.observable(),
+            
+            /* SPT data */
+            sptList: ko.observableArray([]),
+            chosenSptName: ko.observable(),
+
+            /* public functions */
             activate: activate,
-            saveChanges: saveChanges,
-            goBack: goBack
+            canDeactivate: canDeactivate,
+            search: search,
+            createEntity: createEntity,
+
+            /* descripstions */
+            descContact: ko.observable(),
+            descRequestSubject: ko.observable(),
+            descDisplayName: ko.observable(),
+            descServiceType: ko.observable(),
+            descAppPrincipalId: ko.observable(),
+            descEnvironment: ko.observable(),
         };
 
-        var serviceName = 'breeze/Breeze';
+        var serviceName = dataservices.serviceName();
 
-        var manager = new breeze.EntityManager(serviceName);
+        var manager = dataservices.manager();
 
-        function activate(id) {
-            return getSpt(id);
+        var hasSubmitted = false;
+
+        var hasCreated = false;
+
+        // Prevent metaData not fetched exception
+        var metaDataFetched = false;
+
+        function activate() {
+            clearInputOnloading();
+            if (!manager.metadataStore.hasMetadataFor(serviceName)) {
+                loadDataFromDb();
+                manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
+                .then(dataservices.fetchEnum);
+            }
+
+            function fetchMetadataSuccess(rawMetadata) {
+                toastr.info("Loading data on initialization...");
+                metaDataFetched = true;
+            }
+
+            function fetchMetadataFail(exception) {
+                toastr.error("Fetch metadata failed");
+            }
         }
 
-        /// <summary>
-        /// Get a specific SPT given its id.
-        /// </summary>
-        /// <param name="id">The id of SPT to be queried</param>
-        function getSpt(id) {
-            var query = breeze.EntityQuery.
-                from("ServicePrincipalTemplates").
-                where("Id", "==", id);
-
-            return manager
-                .executeQuery(query)
-                .then(querySucceeded)
-                .fail(queryFailed);
-
-
-            function querySucceeded(data) {
-                vm.certSpt(data.results[0]);
-            }
-
-            function queryFailed(error) {
-                toastr.error("Query failed: " + error.message);
-            }
-        };
-
-        /// <summary>
-        /// Listener for update button.
-        /// Make change to DB.
-        /// </summary>
-        function saveChanges() {
-            if (manager.hasChanges()) {
-                manager.saveChanges()
-                    .then(saveSucceeded)
-                    .fail(saveFailed);
+        function canDeactivate() {
+            if (!hasCreated) {
+                return app.showMessage('Add certificate is not finished, are you sure you want to leave this page?', 'Add Certificate Not Finished', ['Yes', 'No']);
             } else {
-                toastr.info("Nothing to save");
-            };
-
-
-            function saveSucceeded(data) {
-                toastr.success("Saved");
-            }
-
-            function saveFailed(error) {
-                toastr.error("Save failed");
+                return true;
             }
         };
 
-        function goBack() {
-            router.navigateBack();
+        function createEntity() {
+            if (metaDataFetched && !hasSubmitted) {
+                hasSubmitted = true;
+                determinRequestType();
+
+                var newOnboardingRequest = manager.
+                    createEntity('OnboardingRequest:#Onboarding.Models',
+                    {
+                        CreatedBy: vm.contact(),
+                        RequestSubject: vm.requestSubject(),
+                        Type: vm.requestType(),
+                        State: RequestState.Created
+                    });
+                manager.addEntity(newOnboardingRequest);
+                manager.saveChanges()
+                    .then(createSucceeded)
+                    .fail(createFailed);
+
+                function createSucceeded(data) {
+                    hasCreated = true;
+                    toastr.success("Created");
+                    router.navigate('#/viewRequest');
+                }
+
+                function createFailed(error) {
+                    hasSubmitted = false;
+                    toastr.error("Create failed");
+                    console.log(error);
+                    manager.rejectChanges();
+                }
+            }
+        }
+
+        function search() {
+            if (metaDataFetched) {
+                dbhelper.getSptByName(vm);
+            }
+        }
+
+        /********************PRIVATE METHODS********************/
+        function clearInputOnloading() {
+            hasCreated = false;
+            hasSubmitted = false;
+        }
+
+        function loadDataFromDb() {
+            dbhelper.getExistingSptsNames(vm);
+            dbhelper.getDescriptions(vm);
+        }
+
+        function determinRequestType() {
+            // TODO: Modify this
+            vm.requestType(RequestType.AddCertToKeyGroup);
         }
 
         return vm;

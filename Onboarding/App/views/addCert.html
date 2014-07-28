@@ -1,45 +1,49 @@
 ﻿<section>
-    <!--Back link-->
-    <div>
-        <h3><a class="pointerLink" data-bind="click: goBack">< Back</a></h3>
-    </div>
-
-    <h2>Cert/Renewal</h2> <br />
+    <h2 class="form-top">Add Certificate</h2>
 
     <form class="form-horizontal" role="form">
-        <!--AppPrincipalId-->
-        <div class="form-group">
-            <label for="appPrincipalId" class="col-sm-2 control-label">AppPrincipalId</label>
-            <div class="col-sm-6">
-                <input class="form-control" id="appPrincipalId" data-bind="value: certSpt().AppPrincipalID" readonly="readonly">
+        <!--Choose App-->
+        <div class="form-group title-header">
+            <label for="chooseupdate" class="col-xs-3 control-label">Choose an service to be updated</label>
+            <div class="col-xs-6">
+                <select id="chooseupdate" class="form-control selectpicker" data-size="8" data-bind="selectPicker: chosenSptName, selectPickerOptions: { optionsArray: sptList }"></select>
+            </div>
+            <div class="col-xs-3">
+                <button class="btn btn-default" data-bind="click: search"><span class="pointerLink glyphicon glyphicon-flash"></span></button>
             </div>
         </div>
-        <!--Environment-->
-        <div class="form-group">
-            <label for="environment" class="col-sm-2 control-label">Environment</label>
-            <div class="col-sm-6">
-                <select class="form-control" id="environment" data-bind="options: availableEnvironment(), value: editableSpt().Environment"></select>
-                <!--<div class="propertyError" data-bind="text: getPropertyError('Environment')"></div>-->
+        <!--CreatedBy-->
+        <div class="form-group item-header">
+            <label for="contact" class="col-xs-3 control-label">Contact</label>
+            <div class="col-xs-6">
+                <input class="form-control" id="contact" placeholder="Your alias" data-bind="value: contact" readonly="readonly">
+            </div>
+            <div class="col-xs-3">
+                <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descContact, placement: 'right'}"></span>
             </div>
         </div>
-        <!--KeyGroupId-->
-        <div class="form-group">
-            <label for="keyGroupId" class="col-sm-2 control-label">KeyGroupId</label>
-            <div class="col-sm-6">
-                <input class="form-control" type="text" id="keyGroupId"/>
+        <!--RequestSubject-->
+        <div class="form-group item-header">
+            <label for="requestSubject" class="col-xs-3 control-label">RequestSubject</label>
+            <div class="col-xs-6">
+                <input class="form-control" id="requestSubject" data-bind="value: requestSubject">
+            </div>
+            <div class="col-xs-3">
+                <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descRequestSubject, placement: 'right'}"></span>
             </div>
         </div>
-        <!--Upload cert file-->
-        <div class="form-group">
-            <label for="certFile" class="col-sm-2 control-label">Upload Cert File</label>
-            <div class="col-sm-6">
-                <input type="file" id="certFile">
-            </div>
+        <!--Upload file-->
+        <div class="form-group item-header">
+            <label for="inputFile">File input</label>
+            <input type="file" id="inputFile">
+            <p class="help-block">Add your certificate file here.</p>
         </div>
-        <!--Create button-->
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-6">
-                <button class="btn btn-default">Confirm</button>
+        <!--Add button-->
+        <div class="form-group form-bottom">
+            <div class="col-xs-offset-4 col-xs-4">
+                <div style="margin: 0px auto 10px; max-width: 300px;">
+                    <button id="submit-btn" class="btn btn-default btn-block" data-bind="click: createEntity">Submit</button>
+                </div>
             </div>
         </div>
     </form>

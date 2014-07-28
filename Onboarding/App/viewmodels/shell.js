@@ -12,7 +12,7 @@
                 { route: 'createRequest', title: 'Create Request', moduleId: 'viewmodels/createRequest', nav:true },
                 { route: 'viewRequest', title: 'View Request', moduleId: 'viewmodels/viewRequest', nav: true },
                 { route: 'updateProperties', title: 'Update Properties', moduleId: 'viewmodels/updateProperties', nav: true },
-                { route: 'addCert', title: 'Add Certificate', moduleId: 'viewmodel/addCert', nav: true},
+                { route: 'addCert', title: 'Add Certificate', moduleId: 'viewmodels/addCert', nav: true },
                 { route: 'info', title: 'More Info', moduleId: 'viewmodels/info', nav: true },
                 { route: 'request/detail/:id', title: 'Detail', moduleId: 'viewmodels/detail' },
             ]).buildNavigationModel();
