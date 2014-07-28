@@ -21,7 +21,6 @@
             permissions: ko.observableArray(),
 
             /* public functions */
-            attached: attached,
             activate: activate,
             canDeactivate: canDeactivate,
             createEntity: createEntity,
@@ -29,7 +28,7 @@
             goBack: goBack,
             addItem: addItem,
             advancedToggle: advancedToggle,
-            
+
             /* descripstions */
             descContact: ko.observable(),
             descRequestSubject: ko.observable(),
@@ -50,28 +49,15 @@
         // Prevent metaData not fetched exception
         var metaDataFetched = false;
 
-        function attached(view) {
-        }
-
         function activate() {
             clearInputOnloading();
             collapsePanels();
             generateAppId();
-            
+
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 loadDataFromDb();
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
-                .then(function (data) {
-                    // Extract all enums as global objects
-                    ko.utils.arrayForEach(data.schema.enumType, function (c) {
-                        window[c.name] = {};
-                        ko.utils.arrayForEach(c.member, function (m) {
-                            window[c.name][m.name] = m.value;
-                            console.log(c.name);
-                            console.log(m.name);
-                        });
-                    });
-                });
+                .then(dataservices.fetchEnum);
             }
 
             function fetchMetadataSuccess(rawMetadata) {
@@ -113,7 +99,7 @@
                         TempXmlStore: xmlString,
                         Type: vm.requestType(),
                         State: RequestState.Created
-            });
+                    });
                 manager.addEntity(newOnboardingRequest);
                 manager.saveChanges()
                     .then(createSucceeded)
@@ -197,7 +183,7 @@
             dbhelper.getServiceTypes(vm);
             dbhelper.getTaskSets(vm);
             dbhelper.getDescriptions(vm);
-            
+
         }
 
         function determinRequestType() {

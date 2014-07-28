@@ -2,7 +2,8 @@
     function (dataservices) {
 
         var vm = {
-            getExistingSpts: getExistingSpts,
+            getExistingSptsNames: getExistingSptsNames,
+            getSptByName: getSptByName,
             getServiceTypes: getServiceTypes,
             getTaskSets: getTaskSets,
             getDescriptions: getDescriptions
@@ -10,10 +11,10 @@
 
         var manager = dataservices.manager();
 
-        function getExistingSpts(vm) {
+        function getExistingSptsNames(vm) {
             var query = breeze.EntityQuery
                     .from("ExistingSpts")
-                    .select("Name, XmlContent")
+                    .select("Name")
                     .orderBy("Name");
 
             return manager
@@ -23,7 +24,7 @@
 
             function querySucceeded(data) {
                 for (var i = 0; i < data.results.length; i++) {
-                    vm.sptList.push(data.results[i]["XmlContent"]);
+                    vm.sptList.push(data.results[i]["Name"]);
                 }
             }
 
@@ -31,6 +32,27 @@
                 toastr.error("Query failed: " + error.message);
             }
         }
+
+        function getSptByName(vm) {
+            var query = breeze.EntityQuery
+                .from("ExistingSpts")
+                .where("Name", "==", vm.chosenSptName())
+                .select("XmlContent");
+
+            return manager
+                .executeQuery(query)
+                .then(querySucceeded)
+                .fail(queryFailed);
+
+
+            function querySucceeded(data) {
+                vm.chosenSptContent(data.results[0]["XmlContent"]);
+            }
+
+            function queryFailed(error) {
+                toastr.error("Query failed: " + error.message);
+            }
+        };
 
         function getServiceTypes(vm) {
             var query = breeze.EntityQuery
