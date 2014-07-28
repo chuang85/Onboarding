@@ -20,7 +20,7 @@
 
         function activate(id) {
             clearInputOnloading();
-            hideButtons();
+            //hideButtons();
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 manager.metadataStore.fetchMetadata(serviceName, fetchMetadataSuccess, fetchMetadataSuccess)
                 .then(dataservices.fetchEnum);
@@ -54,7 +54,6 @@
 
             function querySucceeded(data) {
                 vm.request(data.results[0]);
-                validateIdentity();
             }
 
             function queryFailed(error) {
@@ -78,7 +77,7 @@
             if (data == 'No') {
                 toastr.info('Request not canceled');
             } else {
-                if (metaDataFetched && !hasSubmitted) {
+                if (metaDataFetched && !hasSubmitted && isValidCancel()) {
                     hasSubmitted = true;
                     vm.request().State(RequestState.Canceled);
                     manager.saveChanges()
@@ -110,19 +109,21 @@
         }
 
         /********************PRIVATE METHODS********************/
-        function hideButtons() {
-            $(".cancel-request-btn").hide();
-        }
-
         function clearInputOnloading() {
             hasSubmitted = false;
         }
 
-        function validateIdentity() {
+        function isValidCancel() {
             if (vm.request().CreatedBy() == window.currentUser) {
-                if (vm.request().State() != RequestState.Canceled) {
-                    $(".cancel-request-btn").show();
+                if (vm.request().State() != "Canceled") {
+                    return true;
+                } else {
+                    toastr.warning("The request has already been canceled.");
+                    return false;
                 }
+            } else {
+                toastr.warning("You are not authorized to cancel.");
+                return false;;
             }
         }
 
