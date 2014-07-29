@@ -11,6 +11,8 @@
             displayName: ko.observable(),
             serviceType: ko.observable(),
             appPrincipalId: ko.observable(),
+            objectId: ko.observable(),
+            keyGroupId: ko.observable(),
             serviceTypeList: ko.observableArray(),
             constrainedDelegationTo: ko.observableArray(),
             externalUserAccountDelegationsAllowed: ko.observable(),
@@ -52,7 +54,7 @@
         function activate() {
             clearInputOnloading();
             collapsePanels();
-            generateAppId();
+            generateGuids();
 
             if (!manager.metadataStore.hasMetadataFor(serviceName)) {
                 loadDataFromDb();
@@ -157,8 +159,10 @@
         }
 
         /********************PRIVATE METHODS********************/
-        function generateAppId() {
+        function generateGuids() {
             vm.appPrincipalId(guidgenerator.generateGuid());
+            vm.objectId(guidgenerator.generateGuid());
+            vm.keyGroupId(guidgenerator.generateGuid());
         }
 
         function clearInputOnloading() {
@@ -183,7 +187,6 @@
 
         function loadDataFromDb() {
             dbhelper.getServiceTypes(vm);
-            dbhelper.getTaskSets(vm);
             dbhelper.getDescriptions(vm);
 
         }

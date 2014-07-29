@@ -13,11 +13,18 @@
             chosenSptContent: ko.observable(),
             displayName: ko.observable(),
             serviceType: ko.observable(),
+            appPrincipalId: ko.observable(),
+            objectId: ko.observable(),
+            keyGroupId: ko.observable(),
+            constrainedDelegationTo: ko.observableArray(),
+            externalUserAccountDelegationsAllowed: ko.observable(),
+            microsoftPolicyGroup: ko.observable(),
+            managedExternally: ko.observable(),
 
             /* public functions */
             activate: activate,
             canDeactivate: canDeactivate,
-            //addItem: addItem,
+            addItem: addItem,
             search: search,
             createEntity: createEntity,
 
@@ -71,13 +78,17 @@
             if (metaDataFetched && !hasSubmitted) {
                 hasSubmitted = true;
                 determinRequestType();
+                console.log("lol");
+                var xmlString = dataformatter.removeUndefined(dataformatter.formatXml(dataformatter.json2xml(jsonbuilder.createJSONSpt(vm))));
+                console.log(xmlString);
+                console.log("lol?");
 
                 var newOnboardingRequest = manager.
                     createEntity('OnboardingRequest:#Onboarding.Models',
                     {
                         CreatedBy: vm.contact(),
                         RequestSubject: vm.requestSubject(),
-                        TempXmlStore: vm.chosenSptContent(),
+                        TempXmlStore: xmlString,
                         Type: vm.requestType(),
                         State: RequestState.Created
                     });
@@ -150,12 +161,70 @@
 
         function parseSpt(xml) {
             var spt = loadXMLString(xml);
-            vm.displayName(spt.getElementsByTagName("DisplayName")[0].childNodes[0].nodeValue);
-            vm.serviceType(spt.getElementsByTagName("ServiceType")[0].getElementsByTagName("Value")[0].childNodes[0].nodeValue);
-            //vm.appPrincipalId(spt.getElementsByTagName("AppPrincipalID")[0].childNodes[0].nodeValue);
-            //vm.externalUserAccountDelegationsAllowed(spt.getElementsByTagName("ExternalUserAccountDelegationsAllowed")[0].childNodes[0].nodeValue);
-            //vm.microsoftPolicyGroup(spt.getElementsByTagName("MicrosoftPolicyGroup")[0].childNodes[0].nodeValue);
-            //vm.managedExternally(spt.getElementsByTagName("ManagedExternally")[0].childNodes[0].nodeValue);
+            var displayName = spt.getElementsByTagName("DisplayName")[0].childNodes[0].nodeValue;
+            if (displayName) {
+                vm.displayName(displayName);
+            } else {
+                vm.displayName("");
+            }
+
+            var serviceType = spt.getElementsByTagName("ServiceType")[0].getElementsByTagName("Value")[0].childNodes[0].nodeValue;
+            if (serviceType) {
+                vm.serviceType(serviceType);
+            } else {
+                vm.serviceType("");
+            }
+
+            var appPrincipalId = spt.getElementsByTagName("AppPrincipalID")[0].childNodes[0].nodeValue;
+            if (appPrincipalId) {
+                vm.appPrincipalId(appPrincipalId);
+            } else {
+                vm.appPrincipalId("");
+            }
+
+            var objectId = spt.getElementsByTagName("DirectoryObject")[0].getAttribute("ObjectId");
+            if (objectId) {
+                vm.objectId(objectId);
+            } else {
+                vm.objectId("");
+            }
+
+            var keyGroupId = spt.getElementsByTagName("KeyGroupID")[0].childNodes[0].nodeValue;
+            if (keyGroupId) {
+                vm.keyGroupId(keyGroupId);
+            } else {
+                vm.keyGroupId("");
+            }
+
+            var constrainedDelegationTo = spt.getElementsByTagName("ConstrainedDelegationTo")[0].childNodes[0];
+            if (constrainedDelegationTo) {
+                vm.constrainedDelegationTo(constrainedDelegationTo.nodeValue);
+            } else {
+                vm.constrainedDelegationTo("");
+            }
+
+            var externalUserAccountDelegationsAllowed = spt.getElementsByTagName("ExternalUserAccountDelegationsAllowed")[0].childNodes[0].nodeValue;
+            if (externalUserAccountDelegationsAllowed) {
+                vm.externalUserAccountDelegationsAllowed(externalUserAccountDelegationsAllowed);
+            } else {
+                vm.externalUserAccountDelegationsAllowed("");
+            }
+
+            var microsoftPolicyGroup = spt.getElementsByTagName("MicrosoftPolicyGroup")[0].childNodes[0].nodeValue;
+            if (microsoftPolicyGroup) {
+                vm.microsoftPolicyGroup(microsoftPolicyGroup);
+            } else {
+                vm.microsoftPolicyGroup("");
+            }
+
+            var managedExternally = spt.getElementsByTagName("ManagedExternally")[0];
+            if (managedExternally) {
+                console.log();
+                vm.managedExternally(managedExternally.childNodes[0].nodeValue);
+            } else {
+                vm.managedExternally("");
+            }
+            console.log("999");
             console.log("start");
             console.log();
             console.log("end");
@@ -166,7 +235,7 @@
         }
 
         function getTagNested(spt, tagname) {
-            return spt.getElementsByTagName(tagname)[0].getElementsByTagName("Value")[0].childNodes[0].nodeValue
+            return spt.getElementsByTagName(tagname)[0].getElementsByTagName("Value")[0].childNodes[0].nodeValue;
         }
 
         function determinRequestType() {
