@@ -40,9 +40,12 @@ namespace Onboarding.Models
         /// <param name="onboardingRequest">The given request to be handled.</param>
         public static void SaveXmlToDisk(OnboardingRequest onboardingRequest)
         {
-            var doc = new XmlDocument();
-            doc.LoadXml(GenerateStringFromBlob(onboardingRequest.Blob));
-            doc.Save(Constants.DepotPath + GenerateFilename(onboardingRequest));
+            if (onboardingRequest.Blob != null)
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml(GenerateStringFromBlob(onboardingRequest.Blob));
+                doc.Save(Constants.DepotPath + GenerateFilename(onboardingRequest));
+            }
         }
 
         /// <summary>
