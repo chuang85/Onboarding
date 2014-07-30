@@ -1,0 +1,66 @@
+<DirectoryChanges xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/online/directoryservices/change/2008/11">
+  <DirectoryObject xsi:type="Service" ContextId="00000000-0000-0000-0000-000000000000" ObjectId="00000000-0000-0000-0000-000000000000">
+    <ServiceInstanceMap>
+      <Value>
+        <Maps>
+          <Map>
+            <WeightedServiceInstances>
+              <WeightedServiceInstance Name="ADUXP/*" Weight="1"/>
+            </WeightedServiceInstances>
+          </Map>
+        </Maps>
+      </Value>
+    </ServiceInstanceMap>
+    <AuthorizedRestrictedSyncAttributeSet>
+      <Value>externalSecretsRestrictedSet</Value>
+    </AuthorizedRestrictedSyncAttributeSet>
+    <ServiceType>
+      <Value>zzz</Value>
+    </ServiceType>
+  </DirectoryObject>
+  <DirectoryObject xsi:type="ServiceInstance" ContextId="00000000-0000-0000-0000-000000000000" ObjectId="00000000-0000-0000-0000-000000000000">
+    <ServiceInstanceName>
+      <Value>ADUXP/*</Value>
+    </ServiceInstanceName>
+    <GeographicLocation>
+      <Value>
+        <Location Region="NA" Country="US" />
+      </Value>
+    </GeographicLocation>
+    <ServiceInstanceOptions>
+      <Value>1</Value>
+    </ServiceInstanceOptions>
+  </DirectoryObject>
+  <DirectoryObject xsi:type="Service" ContextId="00000000-0000-0000-0000-000000000000" ObjectId="00000000-0000-0000-0000-000000000000">
+    <ServiceInstanceMap>
+      <Value>
+        <Maps>
+          <Map>
+            <WeightedServiceInstances>
+              <WeightedServiceInstance Name="zzzzz/*" Weight="1"/>
+            </WeightedServiceInstances>
+          </Map>
+        </Maps>
+      </Value>
+    </ServiceInstanceMap>
+    <AuthorizedRestrictedSyncAttributeSet>
+      <Value>externalSecretsRestrictedSet</Value>
+    </AuthorizedRestrictedSyncAttributeSet>
+    <ServiceType>
+      <Value>PasswordSSO</Value>
+    </ServiceType>
+  </DirectoryObject>
+  <DirectoryObject xsi:type="ServiceInstance" ContextId="00000000-0000-0000-0000-000000000000" ObjectId="00000000-0000-0000-0000-000000000000">
+    <ServiceInstanceName>
+      <Value>zzzzz/*</Value>
+    </ServiceInstanceName>
+    <GeographicLocation>
+      <Value>
+        <Location Region="NA" Country="US" />
+      </Value>
+    </GeographicLocation>
+    <ServiceInstanceOptions>
+      <Value>1</Value>
+    </ServiceInstanceOptions>
+  </DirectoryObject>
+</DirectoryChanges>

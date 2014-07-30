@@ -54,7 +54,8 @@ namespace Onboarding.Utils
             if (IsValidXml(xmlDoc, source))
             {
                 var obj = xmlDoc.GetElementsByTagName("DirectoryObject");
-                if (obj[0] != null && obj[0].Attributes != null)
+                var sptTag = xmlDoc.GetElementsByTagName("ServicePrincipalTemplate");
+                if (sptTag[0] != null && obj[0] != null && obj[0].Attributes != null)
                 {
                     if (obj[0].Attributes["xsi:type"] != null && obj[0].Attributes["xsi:type"].Value.Equals("Service"))
                     {

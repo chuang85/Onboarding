@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Onboarding.Utils.UnitTest
 {
     [TestClass()]
-    public class MembershipCheckHelperTests
+    public class MembershipCheckHelpersTests
     {
         private const string User0 = @"REDMOND\t-chehu";
         private const string User1 = @"fareast\sriramd";

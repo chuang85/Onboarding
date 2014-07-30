@@ -1,0 +1,69 @@
+<DirectoryChanges xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/online/directoryservices/change/2008/11">
+  <DirectoryObject p2:type="Service" ContextId="00000000-0000-0000-0000-000000000000" ObjectId="46E49F15-716D-4B8C-AEA7-CD175FD59324" xmlns:p2="http://www.w3.org/2001/XMLSchema-instance">
+    <ContextPriorityQuotaLimit>
+      <Value>35000</Value>
+    </ContextPriorityQuotaLimit>
+    <ServiceInstanceMap>
+      <Value>
+        <Maps>
+          <Map>
+            <WeightedServiceInstances>
+              <WeightedServiceInstance Name="TESTRMSSERVICE/1" Weight="33" />
+              <WeightedServiceInstance Name="TESTRMSSERVICE/2" Weight="33" />
+              <WeightedServiceInstance Name="TESTRMSSERVICE/3" Weight="33" />
+            </WeightedServiceInstances>
+          </Map>
+        </Maps>
+      </Value>
+    </ServiceInstanceMap>
+    <ServiceType>
+      <Value>TESTRMSSERVICE</Value>
+    </ServiceType>
+  </DirectoryObject>
+
+  <DirectoryObject p2:type="ServicePlan" ContextId="00000000-0000-0000-0000-000000000000" ObjectId="F41197F7-301B-4CF7-B1C0-0EC74452B6C2" xmlns:p2="http://www.w3.org/2001/XMLSchema-instance">
+    <Capability>
+      <Value>
+        <Capability Plan="Test only RMS Subscription" xmlns="http://schemas.microsoft.com/online/TestRmsService/2009/01" />
+      </Value>
+    </Capability>
+    <LicenseType>
+      <Value>root</Value>
+    </LicenseType>
+    <PlanId>
+      <Value>8B1007DB-6A3C-4280-B73B-7136505CC72D</Value>
+    </PlanId>
+    <ServicePlanName>
+      <Value>TESTRMSSERVICEPLAN</Value>
+    </ServicePlanName>
+    <ServiceType>
+      <Value>TESTRMSSERVICE</Value>
+    </ServiceType>
+    <SubsetOf />
+    <TargetClass>
+      <Value>1</Value>
+    </TargetClass>
+  </DirectoryObject>
+
+  <DirectoryObject p2:type="StockKeepingUnit" ContextId="00000000-0000-0000-0000-000000000000" ObjectId="2E757348-6B30-40DF-9BEB-D0BA62A67218" xmlns:p2="http://www.w3.org/2001/XMLSchema-instance">
+    <PartNumber>
+      <Value>TESTRMSSKU</Value>
+    </PartNumber>
+    <ServicePlanGranted>
+      <Value>F41197F7-301B-4CF7-B1C0-0EC74452B6C2</Value>
+      <Value>ac6c1fbd-7458-4a65-a8c3-de01e84b0f01</Value>
+      <Value>45875EC0-F985-43E7-91FE-C6969274EF39</Value>
+      <Value>68bb3976-ebf9-4436-a0d0-b1272c658577</Value>
+      <Value>3fff97b2-b94c-4ba4-b015-b565f1f1b079</Value>
+      <Value>263981cc-0c1b-4c7a-b42e-ce731f5d68c1</Value>
+      <Value>57A23207-ED97-4FB6-B28C-08DFB7F2D88F</Value>
+      <Value>2ED59A53-2DB7-48DC-8942-C85DE6711734</Value>
+    </ServicePlanGranted>
+    <SkuId>
+      <Value>0589B042-F09E-4753-BBDB-02928EEC0E65</Value>
+    </SkuId>
+    <TargetClass>
+      <Value>1</Value>
+    </TargetClass>
+  </DirectoryObject>
+</DirectoryChanges>

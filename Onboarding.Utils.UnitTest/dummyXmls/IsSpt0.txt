@@ -1,0 +1,35 @@
+<DirectoryChanges xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/online/directoryservices/change/2008/11">
+  <DirectoryObject xsi:type="Service" ContextId="00000000-0000-0000-0000-000000000000" ObjectId="00000000-0000-0000-0000-000000000000">
+    <ServiceInstanceMap>
+      <Value>
+        <Maps>
+          <Map>
+            <WeightedServiceInstances>
+              <WeightedServiceInstance Name="qqq/SDF" Weight="1"/>
+            </WeightedServiceInstances>
+          </Map>
+        </Maps>
+      </Value>
+    </ServiceInstanceMap>
+    <ServiceType>
+      <Value>qqq</Value>
+    </ServiceType>
+    <ServicePrincipalTemplate>
+      <Value>
+        <ServicePrincipals xmlns="">
+          <ServicePrincipal>
+            <DisplayName>qqq</DisplayName>
+            <AppClass>RbacBackfill</AppClass>
+            <ConstrainedDelegationTo></ConstrainedDelegationTo>
+            <AppPrincipalID>00000000-0000-0000-0000-000000000000</AppPrincipalID>
+            <ExternalUserAccountDelegationsAllowed>False</ExternalUserAccountDelegationsAllowed>
+            <KeyGroupID>00000000-0000-0000-0000-000000000000</KeyGroupID>
+            <MicrosoftPolicyGroup>True</MicrosoftPolicyGroup>
+            <ManagedExternally>True</ManagedExternally>
+            <AppPlusUserAuthPolicy />
+          </ServicePrincipal>
+        </ServicePrincipals>
+      </Value>
+    </ServicePrincipalTemplate>
+  </DirectoryObject>
+</DirectoryChanges>

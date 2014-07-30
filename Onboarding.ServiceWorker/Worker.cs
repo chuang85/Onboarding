@@ -78,8 +78,8 @@ namespace Onboarding.ServiceWorker
 
         private static void UpdateDbInfo(OnboardingDbContext db)
         {
-            DbHelpers.AddOrUpdateTaskSets(db);
-            DbHelpers.AddOrUpdateScopes(db);
+            //DbHelpers.AddOrUpdateTaskSets(db);
+            //DbHelpers.AddOrUpdateScopes(db);
             DbHelpers.AddOrUpdateDescriptions(db);
             DbHelpers.AddOrUpdateExistingSpts(db);
         }
