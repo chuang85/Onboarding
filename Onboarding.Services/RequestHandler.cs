@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Reflection;
 using System.ServiceProcess;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
+using log4net;
+using log4net.Repository.Hierarchy;
 using Timer = System.Timers.Timer;
 
 namespace Onboarding.Services
 {
     public partial class RequestHandler : ServiceBase
     {
+        private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private Timer _timer;
         CancellationTokenSource _cancelTokenSource = new CancellationTokenSource(); 
         public RequestHandler()
@@ -32,6 +36,7 @@ namespace Onboarding.Services
             _timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
             _timer.Start();
             eventLog1.WriteEntry("Timer Start");
+            Logger.Debug("Timer Start"); 
         }
 
         protected override void OnStop()
@@ -40,10 +45,12 @@ namespace Onboarding.Services
             _cancelTokenSource.Cancel();
             _timer = null;
             eventLog1.WriteEntry("Timer Stop");
+            Logger.Debug("Timer Stop"); 
         }
 
         private void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
+            Logger.Debug("Service worker starts running"); 
             try
             {
                 //Task.Run(
@@ -56,6 +63,7 @@ namespace Onboarding.Services
             catch (Exception ex)
             {
                 eventLog1.Log = "An error occurred: " + ex.Message;
+                Logger.Error("An error occurred: " + ex.Message);
             }
         }
     }

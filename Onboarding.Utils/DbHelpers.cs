@@ -2,8 +2,10 @@
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
+using System.Reflection;
 using System.Text;
 using System.Xml;
+using log4net;
 using Onboarding.Config;
 using Onboarding.Models;
 
@@ -11,6 +13,8 @@ namespace Onboarding.Utils
 {
     public class DbHelpers
     {
+        private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// Get all the requests that are not in state Completed or Canceled.
         /// So that can handle each request in the list
@@ -33,6 +37,7 @@ namespace Onboarding.Utils
         /// <param name="db">An instance of <see cref="OnboardingDbContext"/>.</param>
         public static void AddOrUpdateTaskSets(OnboardingDbContext db)
         {
+            Logger.Debug("Updating TaskSets by retrieving from source depot...");
             SystemHelpers.SyncDepot();
             var xmlDoc = new XmlDocument();
             xmlDoc.Load(Constants.RbacpolicyPath + Constants.TaskSetsFilename);
@@ -58,7 +63,8 @@ namespace Onboarding.Utils
                     }
                 }
             }
-            db.SaveChanges();
+            var num = db.SaveChanges();
+            Logger.Debug(num + " TaskSets have been updated in database");
         }
 
         /// <summary>
@@ -68,6 +74,7 @@ namespace Onboarding.Utils
         /// <param name="db">An instance of <see cref="OnboardingDbContext"/>.</param>
         public static void AddOrUpdateScopes(OnboardingDbContext db)
         {
+            Logger.Debug("Updating Scopes by retrieving from source depot...");
             SystemHelpers.SyncDepot();
             var xmlDoc = new XmlDocument();
             xmlDoc.Load(Constants.RbacpolicyPath + Constants.ScopesFilename);
@@ -93,7 +100,8 @@ namespace Onboarding.Utils
                     }
                 }
             }
-            db.SaveChanges();
+            var num = db.SaveChanges();
+            Logger.Debug(num + " Scopes have been updated in database");
         }
 
         /// <summary>
@@ -103,6 +111,7 @@ namespace Onboarding.Utils
         /// <param name="db">An instance of <see cref="OnboardingDbContext"/>.</param>
         public static void AddOrUpdateDescriptions(OnboardingDbContext db)
         {
+            Logger.Debug("Updating descriptions by retrieving from source depot...");
             SystemHelpers.SyncDepot();
             var xmlDoc = new XmlDocument();
             xmlDoc.Load(Constants.DescriptionFilePath);
@@ -124,7 +133,8 @@ namespace Onboarding.Utils
                     db.Descriptions.Add(entity);
                 }
             }
-            db.SaveChanges();
+            var num = db.SaveChanges();
+            Logger.Debug(num + " descriptions have been updated in database");
         }
 
         /// <summary>
@@ -133,6 +143,7 @@ namespace Onboarding.Utils
         /// <param name="db">An instance of <see cref="OnboardingDbContext"/>.</param>
         public static void AddOrUpdateExistingSpts(OnboardingDbContext db)
         {
+            Logger.Debug("Updating ExistingSpts by retrieving from source depot...");
             SystemHelpers.SyncDepot();
             foreach (var file in Directory.EnumerateFiles(Constants.ProductCatalogPath, "*.xml"))
             {
@@ -169,7 +180,8 @@ namespace Onboarding.Utils
                     }
                 }
             }
-            db.SaveChanges();
+            var num = db.SaveChanges();
+            Logger.Debug(num + " ExistingSpts have been updated in database");
         }
     }
 }

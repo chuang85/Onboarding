@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using log4net;
 using Onboarding.Config;
 using Onboarding.Utils.DashboardService;
 using Onboarding.Utils.ReviewService;
@@ -11,6 +13,8 @@ namespace Onboarding.Utils
 {
     public static class CodeFlowHelpers
     {
+        private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         ///     Step 1 - Create a review. An id will be generated, but not pushlished.
         /// </summary>
@@ -24,6 +28,7 @@ namespace Onboarding.Utils
         public static string CreateReview(ReviewServiceClient client, string authorName, string authorDisplayName,
             string emailAddress, string reviewName, string projectShortName)
         {
+            Logger.Info("Creating a new code review...");
             return client.CreateReview(
                 new Author
                 {
@@ -138,6 +143,7 @@ namespace Onboarding.Utils
                                     if (reviewer.Status == ReviewerStatus.SignedOff
                                         && MembershipCheckHelpers.IsInSecurityGroup(reviewer.Name, Constants.SecurityGroup))
                                     {
+                                        Logger.Info("[" + reviewer.DisplayName + "] has approved the request. Review with id = [" + key + "] is completed");
                                         return true;
                                     }
                                 }

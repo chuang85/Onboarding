@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Web;
 using System.Xml;
+using log4net;
 using Onboarding.Config;
 using Onboarding.Models;
 
@@ -14,6 +16,8 @@ namespace Onboarding.Models
 {
     public static class SystemHelpers
     {
+        private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         ///     Write string into binary array.
         /// </summary>
@@ -31,7 +35,14 @@ namespace Onboarding.Models
         /// <returns>The xml in string format</returns>
         public static string GenerateStringFromBlob(byte[] blob)
         {
-            return Encoding.Default.GetString(blob);
+            if (blob != null)
+            {
+                return Encoding.Default.GetString(blob);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -88,6 +99,7 @@ namespace Onboarding.Models
         /// </summary>
         public static void SyncDepot()
         {
+            Logger.Debug("Syncing source depot...");
             var startInfo = new ProcessStartInfo
             {
                 FileName = Constants.CmdPath,

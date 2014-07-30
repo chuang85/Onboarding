@@ -2,8 +2,10 @@
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Timers;
+using log4net;
 using Onboarding.Models;
 using Onboarding.Utils;
 using Onboarding.Config;
@@ -15,6 +17,7 @@ namespace Onboarding.ServiceWorker
 {
     public class Worker
     {
+        private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private static ReviewServiceClient _rClient;
         private static ReviewDashboardServiceClient _qClient;
         public static void Main()
@@ -22,24 +25,26 @@ namespace Onboarding.ServiceWorker
             InitializeClients();
             using (var db = new OnboardingDbContext())
             {
-                //UpdateDbInfo(db);
+                UpdateDbInfo(db);
                 HandleRequests(db);
                 db.SaveChanges();
             }
             CloseClients();
-            Console.WriteLine("done");
-            Console.WriteLine("Hit enter...");
-            Console.Read();
+            //Console.WriteLine("done");
+            //Console.WriteLine("Hit enter...");
+            //Console.Read();
         }
 
         private static void InitializeClients()
         {
+            Logger.Debug("Initializing CodeFlow Review Clients...");
             _rClient = new ReviewServiceClient();
             _qClient = new ReviewDashboardServiceClient();
         }
 
         private static void CloseClients()
         {
+            Logger.Debug("Closing CodeFlow Review Clients...");
             _rClient.Close();
             _qClient.Close();
         }
@@ -49,6 +54,7 @@ namespace Onboarding.ServiceWorker
             foreach (var request in DbHelpers.UncompletedRequests(db))
             {
                 //ct.ThrowIfCancellationRequested();
+                Logger.Info("Handling request with id [" + request.RequestId + "], type [" + request.Type + "] state [" + request.State + "]");
                 switch (request.State)
                 {
                     case RequestState.Created:
@@ -105,8 +111,10 @@ namespace Onboarding.ServiceWorker
                 });
                 // Publish the review
                 CodeFlowHelpers.PublishReview(_rClient, request.CodeFlowId, "meesage from author");
+                Logger.Info("Code review with id [" + request.CodeFlowId + "] has been published");
                 // Change State from "Created" to "PendingReview"
                 request.State = RequestState.PendingReview;
+                Logger.Info("Change the state of request with id [" + request.RequestId + "] to [PendingReview]");
                 // Revert file to clean the changelist
                 SystemHelpers.RevertFile(SystemHelpers.GenerateFilename(request));
             }
@@ -117,6 +125,7 @@ namespace Onboarding.ServiceWorker
             if (CodeFlowHelpers.ReviewCompleted(_qClient, request.CodeFlowId, request.CreatedBy))
             {
                 request.State = RequestState.ReviewCompleted;
+                Logger.Info("Change the state of request with id [" + request.RequestId + "] to [ReviewCompleted]");
             }
         }
 
