@@ -18,7 +18,6 @@
             externalUserAccountDelegationsAllowed: ko.observable(),
             microsoftPolicyGroup: ko.observable(),
             managedExternally: ko.observable(),
-            optionsValue: ko.observable(),
             taskSetList: ko.observableArray(),
             permissions: ko.observableArray(),
 

@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+@using Onboarding.Utils
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,9 @@
             msViewportStyle.appendChild(document.createTextNode(mq));
             document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
         }
+        // Authentication
         window.currentUser = '@HttpUtility.JavaScriptStringEncode(HttpContext.Current.User.Identity.Name)';
+        //window.isCurrentUserAdmin = '@MembershipCheckHelpers.IsInSecurityGroup(HttpUtility.JavaScriptStringEncode(HttpContext.Current.User.Identity.Name), @"REDMOND\MSODSDEVFTE")';
     </script>
 </head>
 <body>

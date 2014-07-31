@@ -16,6 +16,7 @@
             appPrincipalId: ko.observable(),
             objectId: ko.observable(),
             keyGroupId: ko.observable(),
+            serviceTypeList: ko.observableArray(),
             constrainedDelegationTo: ko.observableArray(),
             externalUserAccountDelegationsAllowed: ko.observable(),
             microsoftPolicyGroup: ko.observable(),
@@ -78,11 +79,8 @@
             if (metaDataFetched && !hasSubmitted) {
                 hasSubmitted = true;
                 determinRequestType();
-                console.log("lol");
                 var xmlString = dataformatter.removeUndefined(dataformatter.formatXml(dataformatter.json2xml(jsonbuilder.createJSONSpt(vm))));
                 console.log(xmlString);
-                console.log("lol?");
-
                 var newOnboardingRequest = manager.
                     createEntity('OnboardingRequest:#Onboarding.Models',
                     {
@@ -130,6 +128,7 @@
             if (metaDataFetched) {
                 dbhelper.getSptByName(vm);
                 parseSpt(vm.chosenSptContent());
+                $('.form-need-hidden').show();
             }
         }
 
@@ -137,10 +136,12 @@
         function clearInputOnloading() {
             hasCreated = false;
             hasSubmitted = false;
+            $('.form-need-hidden').hide();
         }
 
         function loadDataFromDb() {
             dbhelper.getExistingSptsNames(vm);
+            dbhelper.getServiceTypes(vm);
             dbhelper.getDescriptions(vm);
         }
 
@@ -148,7 +149,7 @@
             var xmlDoc;
             if (window.DOMParser) {
                 var parser = new DOMParser();
-                xmlDoc = parser.parseFromString(txt, "text/xml");
+                xmlDoc = parser.parseFromString(txt.toString(), "text/xml");
             }
             else // code for IE
             {
@@ -161,35 +162,35 @@
 
         function parseSpt(xml) {
             var spt = loadXMLString(xml);
-            var displayName = spt.getElementsByTagName("DisplayName")[0].childNodes[0].nodeValue;
+            var displayName = getTagValue(spt, "DisplayName");
             if (displayName) {
                 vm.displayName(displayName);
             } else {
                 vm.displayName("");
             }
 
-            var serviceType = spt.getElementsByTagName("ServiceType")[0].getElementsByTagName("Value")[0].childNodes[0].nodeValue;
+            var serviceType = getTagNested(spt, "ServiceType");
             if (serviceType) {
                 vm.serviceType(serviceType);
             } else {
                 vm.serviceType("");
             }
 
-            var appPrincipalId = spt.getElementsByTagName("AppPrincipalID")[0].childNodes[0].nodeValue;
+            var appPrincipalId = getTagValue(spt, "AppPrincipalID");
             if (appPrincipalId) {
                 vm.appPrincipalId(appPrincipalId);
             } else {
                 vm.appPrincipalId("");
             }
 
-            var objectId = spt.getElementsByTagName("DirectoryObject")[0].getAttribute("ObjectId");
+            var objectId = getTagAttribute(spt, "DirectoryObject", "ObjectId");
             if (objectId) {
                 vm.objectId(objectId);
             } else {
                 vm.objectId("");
             }
 
-            var keyGroupId = spt.getElementsByTagName("KeyGroupID")[0].childNodes[0].nodeValue;
+            var keyGroupId = getTagValue(spt, "KeyGroupID");
             if (keyGroupId) {
                 vm.keyGroupId(keyGroupId);
             } else {
@@ -198,40 +199,42 @@
 
             var constrainedDelegationTo = spt.getElementsByTagName("ConstrainedDelegationTo")[0].childNodes[0];
             if (constrainedDelegationTo) {
-                vm.constrainedDelegationTo(constrainedDelegationTo.nodeValue);
+                var ss = constrainedDelegationTo.textContent.split(", ");
+                for (var i in ss) {
+                    vm.constrainedDelegationTo.push(ss[i]);
+                }
             } else {
-                vm.constrainedDelegationTo("");
+                vm.constrainedDelegationTo([]);
             }
 
-            var externalUserAccountDelegationsAllowed = spt.getElementsByTagName("ExternalUserAccountDelegationsAllowed")[0].childNodes[0].nodeValue;
+            var externalUserAccountDelegationsAllowed = spt.getElementsByTagName("ExternalUserAccountDelegationsAllowed")[0];
             if (externalUserAccountDelegationsAllowed) {
-                vm.externalUserAccountDelegationsAllowed(externalUserAccountDelegationsAllowed);
+                vm.externalUserAccountDelegationsAllowed(externalUserAccountDelegationsAllowed.childNodes[0].nodeValue);
             } else {
                 vm.externalUserAccountDelegationsAllowed("");
             }
 
-            var microsoftPolicyGroup = spt.getElementsByTagName("MicrosoftPolicyGroup")[0].childNodes[0].nodeValue;
+            var microsoftPolicyGroup = spt.getElementsByTagName("MicrosoftPolicyGroup")[0];
             if (microsoftPolicyGroup) {
-                vm.microsoftPolicyGroup(microsoftPolicyGroup);
+                vm.microsoftPolicyGroup(microsoftPolicyGroup.childNodes[0].nodeValue);
             } else {
                 vm.microsoftPolicyGroup("");
             }
 
             var managedExternally = spt.getElementsByTagName("ManagedExternally")[0];
             if (managedExternally) {
-                console.log();
                 vm.managedExternally(managedExternally.childNodes[0].nodeValue);
             } else {
                 vm.managedExternally("");
             }
-            console.log("999");
-            console.log("start");
-            console.log();
-            console.log("end");
         }
 
         function getTagValue(spt, tagname) {
             return spt.getElementsByTagName(tagname)[0].childNodes[0].nodeValue;
+        }
+
+        function getTagAttribute(spt, tagname, attrname) {
+            return spt.getElementsByTagName(tagname)[0].getAttribute(attrname);
         }
 
         function getTagNested(spt, tagname) {

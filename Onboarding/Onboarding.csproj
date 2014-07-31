@@ -280,6 +280,10 @@
       <Project>{52452ffe-c1a0-4d69-b736-9cf48bb5176b}</Project>
       <Name>Onboarding.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Onboarding.Utils\Onboarding.Utils.csproj">
+      <Project>{5ad2d2e4-99d3-441c-afdf-359358da6035}</Project>
+      <Name>Onboarding.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
