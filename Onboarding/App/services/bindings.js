@@ -1,4 +1,5 @@
-﻿define(function() {
+﻿define(function () {
+    /* selectPicker */
     ko.bindingHandlers.selectPicker = {
         init: function (element, valueAccessor, allBindingsAccessor) {
             if ($(element).is('select')) {
@@ -49,6 +50,7 @@
         }
     };
 
+    /* bootstrapSwitchOn */
     ko.bindingHandlers.bootstrapSwitchOn = {
         init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
             var $elem = $(element);

@@ -23,7 +23,9 @@ namespace Onboarding.Models
                     SetCreatedTimeOnInitialization(onboardingRequest);
 
                     // Write string formatted xml into binary and assign it to Blob field.
-                    if (onboardingRequest.TempXmlStore != null)
+                    if ((onboardingRequest.Type == RequestType.CreateSPT 
+                        || onboardingRequest.Type == RequestType.UpdateSPT)
+                        && onboardingRequest.TempXmlStore != null)
                     {
                         onboardingRequest.Blob = SystemHelpers.GenerateBlobFromString(onboardingRequest.TempXmlStore);
                     }

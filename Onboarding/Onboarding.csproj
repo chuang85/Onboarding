@@ -137,6 +137,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DurandalController.cs" />
     <Compile Include="Controllers\BreezeController.cs" />
+    <Compile Include="Controllers\UploadingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
