@@ -4,7 +4,7 @@
     <form class="form-horizontal" role="form">
         <!--Choose App-->
         <div class="form-group title-header">
-            <label for="chooseupdate" class="col-xs-3 control-label">Choose an service to be updated</label>
+            <label for="chooseupdate" class="col-xs-3 control-label">Choose an service to add certificate</label>
             <div class="col-xs-6">
                 <select id="chooseupdate" class="form-control selectpicker" data-size="8" data-bind="selectPicker: chosenSptName, selectPickerOptions: { optionsArray: sptList }"></select>
             </div>
@@ -12,37 +12,60 @@
                 <button class="btn btn-default" data-bind="click: search"><span class="pointerLink glyphicon glyphicon-flash"></span></button>
             </div>
         </div>
-        <!--CreatedBy-->
-        <div class="form-group item-header">
-            <label for="contact" class="col-xs-3 control-label">Contact</label>
-            <div class="col-xs-6">
-                <input class="form-control" id="contact" placeholder="Your alias" data-bind="value: contact" readonly="readonly">
+        <!--Should display after above is filled-->
+        <div class="form-need-hidden" style="display: none">
+            <!--CreatedBy-->
+            <div class="form-group item-header">
+                <label for="contact" class="col-xs-3 control-label">Contact</label>
+                <div class="col-xs-6">
+                    <input class="form-control" id="contact" placeholder="Your alias" data-bind="value: contact" readonly="readonly">
+                </div>
+                <div class="col-xs-3">
+                    <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descContact, placement: 'right'}"></span>
+                </div>
             </div>
-            <div class="col-xs-3">
-                <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descContact, placement: 'right'}"></span>
+            <!--RequestSubject-->
+            <div class="form-group item-header">
+                <label for="requestSubject" class="col-xs-3 control-label">RequestSubject</label>
+                <div class="col-xs-6">
+                    <input class="form-control" id="requestSubject" data-bind="value: requestSubject">
+                </div>
+                <div class="col-xs-3">
+                    <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descRequestSubject, placement: 'right'}"></span>
+                </div>
             </div>
-        </div>
-        <!--RequestSubject-->
-        <div class="form-group item-header">
-            <label for="requestSubject" class="col-xs-3 control-label">RequestSubject</label>
-            <div class="col-xs-6">
-                <input class="form-control" id="requestSubject" data-bind="value: requestSubject">
+            <!--DisplayName-->
+            <div class="form-group item-header">
+                <label for="displayName" class="col-xs-3 control-label">DisplayName</label>
+                <div class="col-xs-6">
+                    <input class="form-control" id="displayName" data-bind="value: displayName" readonly="readonly">
+                </div>
+                <div class="col-xs-3">
+                    <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descDisplayName, placement: 'right'}"></span>
+                </div>
             </div>
-            <div class="col-xs-3">
-                <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descRequestSubject, placement: 'right'}"></span>
+            <!--KeyGroupId-->
+            <div class="form-group item-header">
+                <label for="keyGroupId" class="col-xs-3 control-label">KeyGroupId</label>
+                <div class="col-xs-6">
+                    <input class="form-control" id="keyGroupId" data-bind="value: keyGroupId" readonly="readonly">
+                </div>
+                <div class="col-xs-3">
+                    <span class="pointerLink glyphicon glyphicon-question-sign"></span>
+                </div>
             </div>
-        </div>
-        <!--Upload file-->
-        <div class="form-group item-header">
-            <label for="inputFile">File input</label>
-            <input type="file" id="inputFile">
-            <p class="help-block">Add your certificate file here.</p>
-        </div>
-        <!--Add button-->
-        <div class="form-group form-bottom">
-            <div class="col-xs-offset-4 col-xs-4">
-                <div style="margin: 0px auto 10px; max-width: 300px;">
-                    <button id="submit-btn" class="btn btn-default btn-block" data-bind="click: createEntity">Submit</button>
+            <!--Upload file-->
+            <div class="form-group item-header">
+                <label for="inputFile">File input</label>
+                <input type="file" id="inputFile">
+                <p class="help-block">Add your certificate file here.</p>
+            </div>
+            <!--Add button-->
+            <div class="form-group form-bottom">
+                <div class="col-xs-offset-4 col-xs-4">
+                    <div style="margin: 0px auto 10px; max-width: 300px;">
+                        <button id="submit-btn" class="btn btn-default btn-block" data-bind="click: createEntity">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>

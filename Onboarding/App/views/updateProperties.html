@@ -48,7 +48,7 @@
             <div class="form-group item-header">
                 <label for="serviceType" class="col-xs-3 control-label">ServiceType</label>
                 <div class="col-xs-6">
-                    <input class="form-control" id="serviceType" data-bind="value: serviceType">
+                    <input class="form-control" id="serviceType" data-bind="value: serviceType" readonly="readonly">
                 </div>
                 <div class="col-xs-3">
                     <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descServiceType, placement: 'right'}"></span>
@@ -307,6 +307,57 @@
                 </div>
                 <div class="col-xs-3">
                     <span class="pointerLink glyphicon glyphicon-question-sign" data-bind="tooltip: {title: descEnvironment, placement: 'right'}"></span>
+                </div>
+            </div>
+            <!--ExternalUserAccountDelegationsAllowed-->
+            <div class="form-group item-header">
+                <label for="externalUserAccountDelegationsAllowed" class="col-xs-3 control-label">ExternalUserAccountDelegationsAllowed</label>
+                <div class="col-xs-offset-4 col-xs-2">
+                    <div class="btn-group" id="externalUserAccountDelegationsAllowed">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="options1" value="True" data-bind="checked: externalUserAccountDelegationsAllowed">YES
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="options1" value="False" data-bind="checked: externalUserAccountDelegationsAllowed">NO
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <span class="pointerLink glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+            <!--MicrosoftPolicyGroup-->
+            <div class="form-group item-header">
+                <label for="microsoftPolicyGroup" class="col-xs-3 control-label">MicrosoftPolicyGroup</label>
+                <div class="col-xs-offset-4 col-xs-2">
+                    <div class="btn-group" id="microsoftPolicyGroup">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="options2" value="True" data-bind="checked: microsoftPolicyGroup">YES
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="options2" value="False" data-bind="checked: microsoftPolicyGroup">NO
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <span class="pointerLink glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+            <!--ManagedExternally-->
+            <div class="form-group item-header">
+                <label for="managedExternally" class="col-xs-3 control-label">ManagedExternally</label>
+                <div class="col-xs-offset-4 col-xs-2">
+                    <div class="btn-group" id="managedExternally">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="options3" value="True" data-bind="checked: managedExternally">YES
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="options3" value="False" data-bind="checked: managedExternally">NO
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <span class="pointerLink glyphicon glyphicon-question-sign"></span>
                 </div>
             </div>
             <!--ConstrainedDelegationTo-->

@@ -15,7 +15,6 @@
             serviceType: ko.observable(),
             appPrincipalId: ko.observable(),
             objectId: ko.observable(),
-            keyGroupId: ko.observable(),
             serviceTypeList: ko.observableArray(),
             constrainedDelegationTo: ko.observableArray(),
             externalUserAccountDelegationsAllowed: ko.observable(),
@@ -80,7 +79,7 @@
                 hasSubmitted = true;
                 determinRequestType();
                 var xmlString = dataformatter.removeUndefined(dataformatter.formatXml(dataformatter.json2xml(jsonbuilder.createJSONSpt(vm))));
-                console.log(xmlString);
+                console.log(xmlString)
                 var newOnboardingRequest = manager.
                     createEntity('OnboardingRequest:#Onboarding.Models',
                     {
@@ -188,13 +187,6 @@
                 vm.objectId(objectId);
             } else {
                 vm.objectId("");
-            }
-
-            var keyGroupId = getTagValue(spt, "KeyGroupID");
-            if (keyGroupId) {
-                vm.keyGroupId(keyGroupId);
-            } else {
-                vm.keyGroupId("");
             }
 
             var constrainedDelegationTo = spt.getElementsByTagName("ConstrainedDelegationTo")[0].childNodes[0];

@@ -10,6 +10,9 @@
             /* SPT data */
             sptList: ko.observableArray([]),
             chosenSptName: ko.observable(),
+            chosenSptContent: ko.observable(),
+            displayName: ko.observable(),
+            keyGroupId: ko.observable(),
 
             /* public functions */
             activate: activate,
@@ -99,6 +102,8 @@
         function search() {
             if (metaDataFetched) {
                 dbhelper.getSptByName(vm);
+                parseSpt(vm.chosenSptContent());
+                $('.form-need-hidden').show();
             }
         }
 
@@ -106,11 +111,48 @@
         function clearInputOnloading() {
             hasCreated = false;
             hasSubmitted = false;
+            $('.form-need-hidden').hide();
         }
 
         function loadDataFromDb() {
             dbhelper.getExistingSptsNames(vm);
             dbhelper.getDescriptions(vm);
+        }
+
+        function loadXMLString(txt) {
+            var xmlDoc;
+            if (window.DOMParser) {
+                var parser = new DOMParser();
+                xmlDoc = parser.parseFromString(txt.toString(), "text/xml");
+            }
+            else // code for IE
+            {
+                xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+                xmlDoc.async = false;
+                xmlDoc.loadXML(txt);
+            }
+            return xmlDoc;
+        }
+
+        function parseSpt(xml) {
+            var spt = loadXMLString(xml);
+            var displayName = getTagValue(spt, "DisplayName");
+            if (displayName) {
+                vm.displayName(displayName);
+            } else {
+                vm.displayName("");
+            }
+
+            var keyGroupId = getTagValue(spt, "KeyGroupID");
+            if (keyGroupId) {
+                vm.keyGroupId(keyGroupId);
+            } else {
+                vm.keyGroupId("");
+            }
+        }
+
+        function getTagValue(spt, tagname) {
+            return spt.getElementsByTagName(tagname)[0].childNodes[0].nodeValue;
         }
 
         function determinRequestType() {
